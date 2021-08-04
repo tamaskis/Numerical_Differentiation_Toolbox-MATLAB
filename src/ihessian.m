@@ -23,8 +23,7 @@
 % INPUT:
 % ------
 %   f       - (function_handle) scalar-valued function (f:Rn-->R)
-%   x       - (n×1 double) independent variable at which to evaluate the
-%             Hessian matrix
+%   x       - (n×1 double) point at which to evaluate the Hessian matrix
 %
 % -------
 % OUTPUT:

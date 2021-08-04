@@ -1,9 +1,9 @@
 %==========================================================================
 %
-% iderivative  Approximates the derivative of a vector-valued function
-% using the complex step approximation of a derivative.
+% iderivative  Derivative of a univariate function using the complex-step
+% approximation.
 %
-%   df = ijacobian(f,x)
+%   df = iderivative(f,x)
 %
 % See also igradient, ijacobian, ihessian.
 %
@@ -13,24 +13,27 @@
 % Contact: tamas.a.kis@outlook.com
 %
 % REFERENCES:
-%   [1] 
+%   [1] Squire et. al, "Using Complex Variables to Estimate Derivatives of 
+%       "Real Functions", https://epubs.siam.org/doi/pdf/10.1137/S003614459631241X
+%   [2] Martins et. al, "The Complex-Step Derivative Approximation",
+%       https://dl.acm.org/doi/pdf/10.1145/838250.838251
 %
 %--------------------------------------------------------------------------
 %
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) vector-valued function (f:Rn-->Rm)
-%   x       - (n×1 double) independent variable at which to evaluate the
-%             derivative
+%   f       - (function_handle) univariate, scalar-valued function 
+%             (f:R-->R)
+%   x       - (1×1 double) point at which to differentiate
 %
 % -------
 % OUTPUT:
 % -------
-%   J       - (n×1 double) derivative of f evaluated at x
+%   df    	- (1×1 double) derivative of f evaluated at x
 %
 %==========================================================================
 function df = iderivative(f,x)
-    h = 1e-20;
+    h = 1e-10;
     df = imag(f(x+h*1i)/h);
 end

@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% ijacobian  Approximates the Jacobian of a vector-valued function using
-% the complex step approximation of a derivative.
+% ijacobian  Jacobian matrix of a vector-valued function using the 
+% complex-step approximation.
 %
 %   J = ijacobian(f,x)
 %
@@ -21,8 +21,7 @@
 % INPUT:
 % ------
 %   f       - (function_handle) vector-valued function (f:Rn-->Rm)
-%   x       - (n×1 double) independent variable at which to evaluate the
-%             Jacobian matrix
+%   x       - (n×1 double) point at which to evaluate the Jacobian matrix
 %
 % -------
 % OUTPUT:

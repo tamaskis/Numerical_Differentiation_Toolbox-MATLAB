@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % ijacobian  Approximates the gradient of a scalar-valued function using
-% the complex step approximation of a derivative.
+% the complex-step approximation of a derivative.
 %
 %   grad = igradient(f,x)
 %
@@ -21,8 +21,7 @@
 % INPUT:
 % ------
 %   f       - (function_handle) vector-valued function (f:Rn-->R)
-%   x       - (n×1 double) independent variable at which to evaluate the
-%             gradient of f
+%   x       - (n×1 double) point at which to evaluate the gradient
 %
 % -------
 % OUTPUT:
@@ -38,15 +37,15 @@ function grad = igradient(f,x)
     % determines dimension of x
     n = length(x);
     
-    % determines gradient
-    grad = zeros(size(x));
+    % preallocate a vector to store the gradient
+    grad = zeros(n,1);
     
-    % complex step array
+    % complex-step matrix
     dX = h*1i*eye(n);
     
     % evaluates gradient
     for j = 1:n
-        grad(j) = imag(f(x+dX(:,j))/h);
+        grad(j) = imag(f(x+dX(:,j)))/h;
     end
     
 end
