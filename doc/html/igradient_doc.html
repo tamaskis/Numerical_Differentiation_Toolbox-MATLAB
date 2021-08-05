@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>igradient</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-03"><meta name="DC.source" content="igradient_doc.m"><style type="text/css">
+      --><title>igradient</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-05"><meta name="DC.source" content="igradient_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>igradient</tt></h1><!--introduction--><p>Gradient of a scalar-valued function using the complex-step approximation.</p><p><a href="Numerical_Differentiation_Toolbox_Contents.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Input/Output Parameters</a></li><li><a href="#3">Example #1</a></li><li><a href="#4">Example #2</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">grad = igradient(f,x)
+  </style></head><body><div class="content"><h1><tt>igradient</tt></h1><!--introduction--><p>Gradient of a multivariate, scalar-valued function using the complex-step approximation.</p><p><a href="Numerical_Differentiation_Toolbox_Contents_doc.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Input/Output Parameters</a></li><li><a href="#3">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">g = igradient(f,x)
+g = igradient(f,x,h)
 </pre><h2 id="2">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
@@ -78,10 +79,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td rowspan="2" style="text-align:center"><b>Input</b></td>
+          <td rowspan="3" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /></td>
           <td><TT>f</TT></td>
-          <td>scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
+          <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
@@ -91,35 +92,48 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">n×1<BR>double</td>
       </tr>
       <tr>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+          <td><TT>h</TT></td>
+          <td>(OPTIONAL) step size</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\boldmath{\nabla}f(\mathbf{x})" title="" /></td>
-          <td><TT>grad</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{g}=\boldmath{\nabla}f(\mathbf{x})" title="" /></td>
+          <td><TT>g</TT></td>
           <td>gradient of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
           <td style="text-align:center">n×n<BR>double</td>
       </tr>
   </table>
-</p><h2 id="3">Example #1</h2><p><i>Evaluate the derivative of <img src="igradient_doc_eq03748366526259078888.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="igradient_doc_eq06735456421992790325.png" alt="$x=2$" style="width:26px;height:8px;">.</i></p><pre class="codeinput">f = @(x) x^3;
-df = iderivative(f,2)
+</p><h2 id="3">Example</h2><p><i>Approximate the gradient of</i></p><p><img src="igradient_doc_eq11517778156997074061.png" alt="$$f(\mathbf{x})=x_{1}^{5}+\sin^{3}{x_{2}}$$" style="width:90px;height:13px;"></p><p><i>at</i></p><p><img src="igradient_doc_eq04675912912513562869.png" alt="$$\mathbf{x}=\pmatrix{5\cr8}$$" style="width:45px;height:27px;"></p><p><i>using the <tt>igradient</tt> function, and compare the result to the true result of</i></p><p><img src="igradient_doc_eq17948796420288185127.png" alt="$$\nabla f\left(\pmatrix{5\cr8}\right)=\pmatrix{3125\cr3\sin^{2}{(8)}\cos{(8)}}$$" style="width:165px;height:27px;"></p><p>Approximating the gradient,</p><pre class="codeinput">f = @(x) x(1)^5+sin(x(2))^3;
+x = [5;8];
+g = igradient(f,x)
 </pre><pre class="codeoutput">
-df =
+g =
 
-    12
+   1.0e+03 *
 
-</pre><h2 id="4">Example #2</h2><p><i>Evaluate the derivative <img src="igradient_doc_eq00600131107805972496.png" alt="$f(x)=\cos{x}$" style="width:59px;height:11px;"> at <img src="igradient_doc_eq17014082639638836868.png" alt="$x=0$" style="width:26px;height:8px;">.</i></p><pre class="codeinput">f = @(x) cos(x);
-df = iderivative(f,0)
+    3.1250
+   -0.0004
+
+</pre><p>Calculating the error,</p><pre class="codeinput">error = g-[3125;3*sin(8)^2*cos(8)]
 </pre><pre class="codeoutput">
-df =
+error =
 
-     0
+   1.0e-16 *
 
-</pre><h2 id="5">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="ijacaobian_doc.html"><tt>ijacobian</tt></a> | <a href="ihessian_doc.html"><tt>ihessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+         0
+    0.5551
+
+</pre><p>The approximation is essentially accurate to double precision.</p><h2 id="6">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="idirderivative_doc.html"><tt>idirderivative</tt></a> | <a href="ijacaobian_doc.html"><tt>ijacobian</tt></a> | <a href="ihessian_doc.html"><tt>ihessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |igradient|
-% Gradient of a scalar-valued function using the complex-step approximation.
+% Gradient of a multivariate, scalar-valued function using the complex-step approximation.
 % 
-% <Numerical_Differentiation_Toolbox_Contents.html Back to Numerical Differentiation Toolbox Contents>.
+% <Numerical_Differentiation_Toolbox_Contents_doc.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
-%   grad = igradient(f,x)
+%   g = igradient(f,x)
+%   g = igradient(f,x,h)
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -131,10 +145,10 @@ df =
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /></td>
 %           <td><TT>f</TT></td>
-%           <td>scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
+%           <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
@@ -144,24 +158,46 @@ df =
 %           <td style="text-align:center">n×1<BR>double</td>
 %       </tr>
 %       <tr>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+%           <td><TT>h</TT></td>
+%           <td>(OPTIONAL) step size</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\boldmath{\nabla}f(\mathbf{x})" title="" /></td>
-%           <td><TT>grad</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{g}=\boldmath{\nabla}f(\mathbf{x})" title="" /></td>
+%           <td><TT>g</TT></td>
 %           <td>gradient of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
 %           <td style="text-align:center">n×n<BR>double</td>
 %       </tr>
 %   </table>
 % </html>
-%% Example #1
-% _Evaluate the derivative of $f(x)=x^{3}$ at $x=2$._
-f = @(x) x^3;
-df = iderivative(f,2)
-%% Example #2
-% _Evaluate the derivative $f(x)=\cos{x}$ at $x=0$._
-f = @(x) cos(x);
-df = iderivative(f,0)
+%% Example
+% _Approximate the gradient of_
+%
+% $$f(\mathbf{x})=x_{1}^{5}+\sin^{3}{x_{2}}$$
+%
+% _at_
+%
+% $$\mathbf{x}=\pmatrix{5\cr8}$$
+%
+% _using the |igradient| function, and compare the result to the true result
+% of_
+%
+% $$\nabla f\left(\pmatrix{5\cr8}\right)=\pmatrix{3125\cr3\sin^{2}{(8)}\cos{(8)}}$$
+%
+% Approximating the gradient,
+f = @(x) x(1)^5+sin(x(2))^3;
+x = [5;8];
+g = igradient(f,x)
+%%
+% Calculating the error,
+error = g-[3125;3*sin(8)^2*cos(8)]
+%%
+% The approximation is essentially accurate to double precision.
 %% See also
 % <iderivative_doc.html |iderivative|> | 
+% <idirderivative_doc.html |idirderivative|> | 
 % <ijacaobian_doc.html |ijacobian|> | 
 % <ihessian_doc.html |ihessian|>
 ##### SOURCE END #####

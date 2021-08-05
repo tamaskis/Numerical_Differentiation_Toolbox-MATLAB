@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ihessian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-03"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
+      --><title>ihessian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-05"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>ihessian</tt></h1><!--introduction--><p>Hessian matrix of a scalar-valued function using the complex-step approximation.</p><p><a href="Numerical_Differentiation_Toolbox_Contents.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Input/Output Parameters</a></li><li><a href="#3">Example #1</a></li><li><a href="#4">Example #2</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = ihessian(f,x)
+  </style></head><body><div class="content"><h1><tt>ihessian</tt></h1><!--introduction--><p>Hessian matrix of a multivariate, scalar-valued function using the complex-step approximation.</p><p><a href="Numerical_Differentiation_Toolbox_Contents_doc.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Input/Output Parameters</a></li><li><a href="#3">Example #1</a></li><li><a href="#4">Example #2</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = ihessian(f,x)
+H = ihessian(f,x,h)
 </pre><h2 id="2">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
@@ -78,10 +79,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td rowspan="2" style="text-align:center"><b>Input</b></td>
+          <td rowspan="3" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /></td>
           <td><TT>f</TT></td>
-          <td>scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
+          <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
@@ -89,6 +90,12 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td><TT>x</TT></td>
           <td>point at which to evaluate the Hessian matrix</td>
           <td style="text-align:center">n×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+          <td><TT>h</TT></td>
+          <td>(OPTIONAL) step size</td>
+          <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
@@ -112,15 +119,15 @@ df =
 
      0
 
-</pre><h2 id="5">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="igradient_doc.html"><tt>igradient</tt></a> | <a href="ijacobian_doc.html"><tt>ijacobian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+</pre><h2 id="5">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="igradient_doc.html"><tt>igradient</tt></a> | <a href="idirderivative_doc.html"><tt>idirderivative</tt></a> | <a href="ijacobian_doc.html"><tt>ijacobian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |ihessian|
-% Hessian matrix of a scalar-valued function using the complex-step 
-% approximation.
+% Hessian matrix of a multivariate, scalar-valued function using the complex-step approximation.
 % 
-% <Numerical_Differentiation_Toolbox_Contents.html Back to Numerical Differentiation Toolbox Contents>.
+% <Numerical_Differentiation_Toolbox_Contents_doc.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
 %   H = ihessian(f,x)
+%   H = ihessian(f,x,h)
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -132,10 +139,10 @@ df =
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /></td>
 %           <td><TT>f</TT></td>
-%           <td>scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
+%           <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
@@ -143,6 +150,12 @@ df =
 %           <td><TT>x</TT></td>
 %           <td>point at which to evaluate the Hessian matrix</td>
 %           <td style="text-align:center">n×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+%           <td><TT>h</TT></td>
+%           <td>(OPTIONAL) step size</td>
+%           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
@@ -164,6 +177,7 @@ df = iderivative(f,0)
 %% See also
 % <iderivative_doc.html |iderivative|> | 
 % <igradient_doc.html |igradient|> | 
+% <idirderivative_doc.html |idirderivative|> | 
 % <ijacobian_doc.html |ijacobian|>
 ##### SOURCE END #####
 --></body></html>

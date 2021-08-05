@@ -1,14 +1,15 @@
 %==========================================================================
 %
-% iderivative  Derivative of a univariate function using the complex-step
-% approximation.
+% iderivative  Derivative of a univariate, scalar or vector-valued function
+% using the complex-step approximation.
 %
 %   df = iderivative(f,x)
+%   df = iderivative(f,x,h)
 %
-% See also igradient, ijacobian, ihessian.
+% See also igradient, idirderivative, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-03
+% Last Update: 2021-08-04
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -23,17 +24,30 @@
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) univariate, scalar-valued function 
-%             (f:R-->R)
+%   f       - (function_handle) univariate, scalar or vector-valued 
+%             function (f:R->R or f:R->Rm)
 %   x       - (1×1 double) point at which to differentiate
+%   h       - (OPTIONAL) (1×1 double) step size (defaults to sqrt(eps))
 %
 % -------
 % OUTPUT:
 % -------
-%   df    	- (1×1 double) derivative of f evaluated at x
+%   df    	- (m×1 double) derivative of f evaluated at x
+%
+% -----
+% NOTE:
+% -----
+%   --> If the function is univariate, then m = 1.
 %
 %==========================================================================
-function df = iderivative(f,x)
-    h = 1e-10;
+function df = iderivative(f,x,h)
+
+    % sets the default step size if not input
+    if nargin == 2 || isempty(h)
+        h = sqrt(eps);
+    end
+    
+    % evaluates derivative
     df = imag(f(x+h*1i)/h);
+    
 end

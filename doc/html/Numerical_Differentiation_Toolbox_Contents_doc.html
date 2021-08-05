@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Numerical Differentiation Toolbox Documentation</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-03"><meta name="DC.source" content="Numerical_Differentiation_Toolbox_Contents.m"><style type="text/css">
+      --><title>Numerical Differentiation Toolbox Documentation</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-05"><meta name="DC.source" content="Numerical_Differentiation_Toolbox_Contents_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Numerical Differentiation Toolbox Documentation</h1><!--introduction--><p><img vspace="5" hspace="5" src="ode_solver_toolbox_small.png" alt=""> </p><p>Copyright &copy; 2021 Tamas Kis</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Functions</a></li><li><a href="#2">Written Documentation</a></li></ul></div><h2 id="1">Functions</h2><div><ul><li><a href="iderivative_doc.html"><b><tt>iderivative</tt></b></a> Derivative of a univariate function.</li><li><a href="igradient_doc.html"><b><tt>igradient</tt></b></a> Gradient of a scalar-valued function.</li><li><a href="ijacobian_doc.html"><b><tt>ijacobian</tt></b></a> Jacobian matrix of a vector-valued function.</li><li><a href="ihessian_doc.html"><b><tt>ihessian</tt></b></a> Hessian matrix of a scalar-valued function.</li></ul></div><h2 id="2">Written Documentation</h2><p>Written documentation is available at</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+  </style></head><body><div class="content"><h1>Numerical Differentiation Toolbox Documentation</h1><!--introduction--><p><img vspace="5" hspace="5" src="ode_solver_toolbox_small.png" alt=""> </p><p>Copyright &copy; 2021 Tamas Kis</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Functions</a></li><li><a href="#2">Methology</a></li></ul></div><h2 id="1">Functions</h2><div><ul><li><a href="iderivative_doc.html"><b><tt>iderivative</tt></b></a> Derivative of a univariate, scalar or vector-valued function.</li><li><a href="igradient_doc.html"><b><tt>igradient</tt></b></a> Gradient of a multivariate, scalar-valued function.</li><li><a href="idirderivative_doc.html"><b><tt>idirderivative</tt></b></a> Directional derivative of a multivariate, scalar-valued function.</li><li><a href="ijacobian_doc.html"><b><tt>ijacobian</tt></b></a> Jacobian matrix of a multivariate, vector-valued function.</li><li><a href="ihessian_doc.html"><b><tt>ihessian</tt></b></a> Hessian matrix of a multivariate, scalar-valued function.</li></ul></div><h2 id="2">Methology</h2><p>All of these functions are implemented using the complex-step approximation of the derivative (this is why each function is prefixed with an "i"; it is meant to indicate the imaginary unit). A complete written documentation is available that details the implementation in depth.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Numerical Differentiation Toolbox Documentation
 %
@@ -75,11 +75,16 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %
 % Copyright © 2021 Tamas Kis
 %% Functions
-% * <iderivative_doc.html *|iderivative|*> Derivative of a univariate function.
-% * <igradient_doc.html *|igradient|*> Gradient of a scalar-valued function.
-% * <ijacobian_doc.html *|ijacobian|*> Jacobian matrix of a vector-valued function.
-% * <ihessian_doc.html *|ihessian|*> Hessian matrix of a scalar-valued function.
-%% Written Documentation
-% Written documentation is available at
+% * <iderivative_doc.html *|iderivative|*> Derivative of a univariate, scalar or vector-valued function.
+% * <igradient_doc.html *|igradient|*> Gradient of a multivariate, scalar-valued function.
+% * <idirderivative_doc.html *|idirderivative|*> Directional derivative of a multivariate, scalar-valued function.
+% * <ijacobian_doc.html *|ijacobian|*> Jacobian matrix of a multivariate, vector-valued function.
+% * <ihessian_doc.html *|ihessian|*> Hessian matrix of a multivariate, scalar-valued function.
+%% Methology
+% All of these functions are implemented using the complex-step
+% approximation of the derivative (this is why each function is prefixed
+% with an "i"; it is meant to indicate the imaginary unit). A complete
+% written documentation is available that details the implementation in
+% depth.
 ##### SOURCE END #####
 --></body></html>

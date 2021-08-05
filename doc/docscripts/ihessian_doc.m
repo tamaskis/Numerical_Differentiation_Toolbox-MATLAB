@@ -1,10 +1,10 @@
 %% |ihessian|
-% Hessian matrix of a scalar-valued function using the complex-step 
-% approximation.
+% Hessian matrix of a multivariate, scalar-valued function using the complex-step approximation.
 % 
-% <Numerical_Differentiation_Toolbox_Contents.html Back to Numerical Differentiation Toolbox Contents>.
+% <Numerical_Differentiation_Toolbox_Contents_doc.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
 %   H = ihessian(f,x)
+%   H = ihessian(f,x,h)
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -16,10 +16,10 @@
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /></td>
 %           <td><TT>f</TT></td>
-%           <td>scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
+%           <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
@@ -27,6 +27,12 @@
 %           <td><TT>x</TT></td>
 %           <td>point at which to evaluate the Hessian matrix</td>
 %           <td style="text-align:center">n×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+%           <td><TT>h</TT></td>
+%           <td>(OPTIONAL) step size</td>
+%           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
@@ -48,4 +54,5 @@ df = iderivative(f,0)
 %% See also
 % <iderivative_doc.html |iderivative|> | 
 % <igradient_doc.html |igradient|> | 
+% <idirderivative_doc.html |idirderivative|> | 
 % <ijacobian_doc.html |ijacobian|>

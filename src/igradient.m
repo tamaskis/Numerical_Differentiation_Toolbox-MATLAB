@@ -1,51 +1,60 @@
 %==========================================================================
 %
-% ijacobian  Approximates the gradient of a scalar-valued function using
-% the complex-step approximation of a derivative.
+% igradient  Gradient of a multivariate, scalar-valued function using the 
+% complex-step approximation.
 %
-%   grad = igradient(f,x)
+%   g = igradient(f,x)
+%   g = igradient(f,x,h)
 %
-% See also iderivative, ijacobian, ihessian.
+% See also iderivative, idirderivative, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-03
+% Last Update: 2021-08-04
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 % REFERENCES:
-%   [1] 
+%   [1] Squire et. al, "Using Complex Variables to Estimate Derivatives of 
+%       "Real Functions", https://epubs.siam.org/doi/pdf/10.1137/S003614459631241X
+%   [2] Martins et. al, "The Complex-Step Derivative Approximation",
+%       https://dl.acm.org/doi/pdf/10.1145/838250.838251
+%   [3] https://en.wikipedia.org/wiki/Gradient
 %
 %--------------------------------------------------------------------------
 %
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) vector-valued function (f:Rn-->R)
+%   f       - (function_handle) multivariate, scalar-valued function 
+%             (f:Rn->R)
 %   x       - (n×1 double) point at which to evaluate the gradient
+%   h       - (OPTIONAL) (1×1 double) step size (defaults to sqrt(eps))
 %
 % -------
 % OUTPUT:
 % -------
-%   grad    - (n×1 double) gradient of f evaluated at x
+%   g       - (n×1 double) gradient of f evaluated at x
 %
 %==========================================================================
-function grad = igradient(f,x)
+function g = igradient(f,x,h)
     
-    % step size
-    h = 1e-20;
+    % sets the default step size if not input
+    if nargin == 2 || isempty(h)
+        h = sqrt(eps);
+    end
     
     % determines dimension of x
     n = length(x);
     
     % preallocate a vector to store the gradient
-    grad = zeros(n,1);
+    g = zeros(n,1);
     
     % complex-step matrix
     dX = h*1i*eye(n);
     
     % evaluates gradient
     for j = 1:n
-        grad(j) = imag(f(x+dX(:,j)))/h;
+        g(j) = imag(f(x+dX(:,j)))/h;
     end
     
 end

@@ -1,29 +1,36 @@
 %==========================================================================
 %
-% ihessian  Calculates the Hessian of a scalar-valued function using a
-% combination of a complex step approximation and central difference
-% approximation.
+% ihessian  Hessian matrix of a multivariate, scalar-valued function using 
+% the complex-step approximation.
 %
 %   H = ihessian(f,x)
+%   H = ihessian(f,x,h)
 %
-% See also iderivative, igradient, ijacobian.
+% See also iderivative, igradient, idirderivative, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-03
+% Last Update: 2021-08-04
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 % REFERENCES:
-%   [1] https://www.mathworks.com/matlabcentral/fileexchange/65434-dt-qp-project?s_tid=srchtitle
-%   [2] https://www.mathworks.com/matlabcentral/fileexchange/18177-complex-step-hessian?s_tid=srchtitle
+%   [1] Squire et. al, "Using Complex Variables to Estimate Derivatives of 
+%       "Real Functions", https://epubs.siam.org/doi/pdf/10.1137/S003614459631241X
+%   [2] Martins et. al, "The Complex-Step Derivative Approximation",
+%       https://dl.acm.org/doi/pdf/10.1145/838250.838251
+%   [3] https://en.wikipedia.org/wiki/Hessian_matrix
+%   [4] https://www.mathworks.com/matlabcentral/fileexchange/65434-dt-qp-project?s_tid=srchtitle
+%   [5] https://www.mathworks.com/matlabcentral/fileexchange/18177-complex-step-hessian?s_tid=srchtitle
 %
 %--------------------------------------------------------------------------
 %
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) scalar-valued function (f:Rn-->R)
+%   f       - (function_handle) multivariate, scalar-valued function 
+%             (f:Rn->R)
 %   x       - (n×1 double) point at which to evaluate the Hessian matrix
+%   h       - (OPTIONAL) (1×1 double) step size (defaults to sqrt(eps))
 %
 % -------
 % OUTPUT:
@@ -31,10 +38,12 @@
 %   H       - (n×1 double) Hessian matrix of f evaluated at x
 %
 %==========================================================================
-function H = ihessian(f,x)
+function H = ihessian(f,x,h)
     
-    % step size
-    h = sqrt(eps);
+    % sets the default step size if not input
+    if nargin == 2 || isempty(h)
+        h = sqrt(eps);
+    end
     
     % determines dimension of "x"
     n = length(x);
