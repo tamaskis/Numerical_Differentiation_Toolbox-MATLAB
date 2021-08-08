@@ -1,7 +1,7 @@
 %% CREATE_HTML_DOCUMENTATION.m  Creates html documentation.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-04
+% Last Update: 2021-08-07
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 
@@ -22,7 +22,7 @@ code_folders = ["../../src"];
 
 % specific .m documentation files that should be published
 %   --> define as "[]" if you want to publish all .m documentation files
-mfiles = ["ijacobian_doc.m"];
+mfiles = [];
 
 % specific image files that should be published
 %   --> define as "[]" if you want to publish all image files
@@ -30,7 +30,7 @@ imagefiles = [];
 
 % true if previous "doc/html" folder should be completely deleted, false
 % otherwise
-delete_html = false;
+delete_html = true;
 
 
 

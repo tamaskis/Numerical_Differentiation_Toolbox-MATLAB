@@ -1,15 +1,15 @@
 %==========================================================================
 %
 % ihessian  Hessian matrix of a multivariate, scalar-valued function using 
-% the complex-step and central difference approximations.
+% the complex-step approximation.
 %
-%   H = ihessian(f,x0)
-%   H = ihessian(f,x0,h)
+%   H = ihessian(f,x)
+%   H = ihessian(f,x,h)
 %
 % See also iderivative, ipartial, igradient, idirectional, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-07
+% Last Update: 2021-08-06
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -48,33 +48,37 @@ function H = ihessian(f,x0,h)
     % determines dimension of x0
     n = length(x0);
     
-    % preallocates array to store Hessian matrix
+    % preallocates array to store Hessian
     H = zeros(n);
-    
-    % complex-step and real-step matrices
-    X = h*1i*eye(n);
-    U = h*eye(n);
     
     % loops over each independent variable
     for k = 1:n
         
         % reference point with complex increment in kth independent
         % variable
-        xr = x0+X(:,k);
+        xr = x0;
+        xr(k) = xr(k)+h*1i;
         
         % loops through diagonal + upper triangular elements
-        for j = k:n
+        for l = k:n
             
-            % reference point with real increment in jth independent
-            % variable
-            yp = xr+U(:,j);
-            ym = xr-U(:,j);
+            % reference point with lth independent variable incremented
+            xp = xr;
+            xp(l) = xp(l)+h;
+            
+            % reference point with lth independent variable decremented
+            xm = xr;
+            xm(l) = xm(l)-h;
+            
+            % evaluates function at xp and xm
+            up = f(xp);
+            um = f(xm);
             
             % Hessian (central + complex step)
-            H(k,j) = imag(f(yp)-f(ym))/(2*h^2);
+            H(k,l) = imag(up-um)/(2*h^2);
             
             % symmetry
-            H(j,k) = H(k,j);
+            H(l,k) = H(k,l);
             
         end
 

@@ -18,6 +18,8 @@
 % ------
 %   code_folders    - (array of strings) filepaths to all code needed to 
 %                     run examples in the documentation
+%   indexfile       - (string) name of .m file defining main HTML page
+%                     (i.e. the index)
 %   mfiles          - (array of strings) stores specific .m files to
 %                     publish; if input as an empty array, all .m files in
 %                     "docscripts" are published
@@ -28,7 +30,7 @@
 %                     should be deleted, false otherwise
 %
 %==========================================================================
-function export_html(code_folders,mfiles,imagefiles,delete_html)
+function export_html(code_folders,indexfile,mfiles,imagefiles,delete_html)
     
     % -----------------------------
     % SETS UP DIRECTORIES/FILEPATHS
@@ -103,9 +105,16 @@ function export_html(code_folders,mfiles,imagefiles,delete_html)
     % publishes documentation, moving html files from "html" folder in 
     % "docsripts" to "html" folder in "doc"
     for i = 1:length(mfiles)
-        fprintf("Publishing "+extractBetween(mfiles(i),1,...
-        strlength(mfiles(i))-2)+".html\n");
-        publish(mfiles(i),'html');
+        if strcmp(indexfile,mfiles(i))
+            fprintf("Publishing index.html\n");
+            publish(mfiles(i),'html');
+            %movefile(extractBetween(mfiles(i),1,strlength(mfiles(i))-2)+...
+             %   ".html","index.html");
+        else
+            fprintf("Publishing "+extractBetween(mfiles(i),1,...
+            strlength(mfiles(i))-2)+".html\n");
+            publish(mfiles(i),'html');
+        end
         movefile("html/*","../html/");
     end
 

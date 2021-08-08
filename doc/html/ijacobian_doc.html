@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ijacobian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-05"><meta name="DC.source" content="ijacobian_doc.m"><style type="text/css">
+      --><title>ijacobian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-07"><meta name="DC.source" content="ijacobian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>ijacobian</tt></h1><!--introduction--><p>Jacobian matrix of a multivariate, vector-valued function using the complex-step approximation.</p><p><a href="Numerical_Differentiation_Toolbox_Contents_doc.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Input/Output Parameters</a></li><li><a href="#3">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">J = ijacobian(f,x)
-J = ijacobian(f,x,h)
+  </style></head><body><div class="content"><h1><tt>ijacobian</tt></h1><!--introduction--><p>Jacobian matrix of a multivariate, vector-valued function using the complex-step approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Input/Output Parameters</a></li><li><a href="#3">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">J = ijacobian(f,x0)
+J = ijacobian(f,x0,h)
 </pre><h2 id="2">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
@@ -80,14 +80,14 @@ J = ijacobian(f,x,h)
       </tr>
       <tr>
           <td rowspan="3" style="text-align:center"><b>Input</b></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /></td>
           <td><TT>f</TT></td>
           <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
-          <td><TT>x</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
+          <td><TT>x0</TT></td>
           <td>point at which to evaluate the Jacobian matrix</td>
           <td style="text-align:center">n×1<BR>double</td>
       </tr>
@@ -99,13 +99,13 @@ J = ijacobian(f,x,h)
       </tr>
       <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{J}(\mathbf{x})=\dfrac{\partial\mathbf{f}}{\partial\mathbf{x}}" title="" /></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{J}(\mathbf{x}_{0})" title="" /></td>
           <td><TT>J</TT></td>
-          <td>Jacobian matrix of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
+          <td>Jacobian matrix of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
           <td style="text-align:center">m×n<BR>double</td>
       </tr>
   </table>
-</p><h2 id="3">Example</h2><p><i>Approximate the Jacobian matrix of</i></p><p><img src="ijacobian_doc_eq14795943884337857865.png" alt="$$f(\mathbf{x})=\pmatrix{x_{1} \cr 5x_{3} \cr 4x_{2}^{2}-2x_{3} \cr x_{3}\sin{x_{1}}}$$" style="width:102px;height:48px;"></p><p><i>at</i></p><p><img src="ijacobian_doc_eq18136420980866398959.png" alt="$$\mathbf{x}=\pmatrix{5\cr6\cr7}$$" style="width:47px;height:40px;"></p><p><i>using the <tt>ijacobian</tt> function, and compare the result to the true result of</i></p><p><img src="ijacobian_doc_eq14303430718683116040.png" alt="$$\mathbf{J}\left(\pmatrix{5\cr6\cr7}\right)=\pmatrix{1 &amp; 0 &amp; 0 \cr 0 &amp; 0 &amp; 5 \cr 0 &amp; 48 &amp; -2 \cr 7\cos{(5)} &amp; 0 &amp; \sin{(5)}}$$" style="width:191px;height:50px;"></p><p>Approximating the Jacobian,</p><pre class="codeinput">f = @(x) [x(1);5*x(3);4*x(2)^2-2*x(3);x(3)*sin(x(1))];
+</p><h2 id="3">Example</h2><p><i>Approximate the Jacobian matrix of</i></p><p><img src="ijacobian_doc_eq14795943884337857865.png" alt="$$f(\mathbf{x})=\pmatrix{x_{1} \cr 5x_{3} \cr 4x_{2}^{2}-2x_{3} \cr x_{3}\sin{x_{1}}}$$" style="width:102px;height:48px;"></p><p><i>at <img src="ijacobian_doc_eq08820355699380723406.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(5,6,7)^{T}$" style="width:88px;height:13px;"> using the <tt>ijacobian</tt> function, and compare the result to the true result of</i></p><p><img src="ijacobian_doc_eq14245066428485253659.png" alt="$$\mathbf{J}(\mathbf{x}_{0})=\pmatrix{1 &amp; 0 &amp; 0 \cr 0 &amp; 0 &amp; 5 \cr 0 &amp; 48&#xA;&amp; -2 \cr 7\cos{(5)} &amp; 0 &amp; \sin{(5)}}$$" style="width:161px;height:50px;"></p><p>Approximating the Jacobian,</p><pre class="codeinput">f = @(x) [x(1);5*x(3);4*x(2)^2-2*x(3);x(3)*sin(x(1))];
 x = [5;6;7];
 J = ijacobian(f,x)
 </pre><pre class="codeoutput">
@@ -125,15 +125,15 @@ error =
      0     0     0
      0     0     0
 
-</pre><p>The approximation is essentially accurate to double precision.</p><p><i><b>NOTE:</b> The function and its corresponding Jacobian are from an example on <a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant#Example_4">Wikipedia</a>.</i></p><h2 id="6">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="igradient_doc.html"><tt>igradient</tt></a> | <a href="idirderivative_doc.html"><tt>idirderivative</tt></a> | <a href="ihessian_doc.html"><tt>ihessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+</pre><p>The approximation is essentially accurate to double precision.</p><p><i><b>NOTE:</b> The function and its corresponding Jacobian are from an example on <a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant#Example_4">Wikipedia</a>.</i></p><h2 id="6">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="ipartial_doc.html"><tt>ipartial</tt></a> | <a href="igradient_doc.html"><tt>igradient</tt></a> | <a href="idirectional_doc.html"><tt>idirectional</tt></a> | <a href="ihessian_doc.html"><tt>ihessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |ijacobian|
 % Jacobian matrix of a multivariate, vector-valued function using the complex-step approximation.
 % 
-% <Numerical_Differentiation_Toolbox_Contents_doc.html Back to Numerical Differentiation Toolbox Contents>.
+% <index.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
-%   J = ijacobian(f,x)
-%   J = ijacobian(f,x,h)
+%   J = ijacobian(f,x0)
+%   J = ijacobian(f,x0,h)
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -146,14 +146,14 @@ error =
 %       </tr>
 %       <tr>
 %           <td rowspan="3" style="text-align:center"><b>Input</b></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /></td>
 %           <td><TT>f</TT></td>
 %           <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
-%           <td><TT>x</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
+%           <td><TT>x0</TT></td>
 %           <td>point at which to evaluate the Jacobian matrix</td>
 %           <td style="text-align:center">n×1<BR>double</td>
 %       </tr>
@@ -165,9 +165,9 @@ error =
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{J}(\mathbf{x})=\dfrac{\partial\mathbf{f}}{\partial\mathbf{x}}" title="" /></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{J}(\mathbf{x}_{0})" title="" /></td>
 %           <td><TT>J</TT></td>
-%           <td>Jacobian matrix of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
+%           <td>Jacobian matrix of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
 %           <td style="text-align:center">m×n<BR>double</td>
 %       </tr>
 %   </table>
@@ -177,14 +177,11 @@ error =
 %
 % $$f(\mathbf{x})=\pmatrix{x_{1} \cr 5x_{3} \cr 4x_{2}^{2}-2x_{3} \cr x_{3}\sin{x_{1}}}$$
 %
-% _at_
+% _at $\mathbf{x}=\mathbf{x}_{0}=(5,6,7)^{T}$ using the |ijacobian| 
+% function, and compare the result to the true result of_
 %
-% $$\mathbf{x}=\pmatrix{5\cr6\cr7}$$
-%
-% _using the |ijacobian| function, and compare the result to the true
-% result of_
-%
-% $$\mathbf{J}\left(\pmatrix{5\cr6\cr7}\right)=\pmatrix{1 & 0 & 0 \cr 0 & 0 & 5 \cr 0 & 48 & -2 \cr 7\cos{(5)} & 0 & \sin{(5)}}$$
+% $$\mathbf{J}(\mathbf{x}_{0})=\pmatrix{1 & 0 & 0 \cr 0 & 0 & 5 \cr 0 & 48 
+% & -2 \cr 7\cos{(5)} & 0 & \sin{(5)}}$$
 %
 % Approximating the Jacobian,
 f = @(x) [x(1);5*x(3);4*x(2)^2-2*x(3);x(3)*sin(x(1))];
@@ -200,8 +197,9 @@ error = J-[1,0,0;0,0,5;0,48,-02;7*cos(5),0,sin(5)]
 % on <https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant#Example_4 Wikipedia>._
 %% See also
 % <iderivative_doc.html |iderivative|> | 
+% <ipartial_doc.html |ipartial|> | 
 % <igradient_doc.html |igradient|> | 
-% <idirderivative_doc.html |idirderivative|> | 
+% <idirectional_doc.html |idirectional|> | 
 % <ihessian_doc.html |ihessian|>
 ##### SOURCE END #####
 --></body></html>
