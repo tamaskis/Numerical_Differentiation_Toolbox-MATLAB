@@ -32,7 +32,7 @@
 % -------
 % OUTPUT:
 % -------
-%   df    	- (m×1 double) derivative of f(x) evaluated at x0
+%   df      - (m×1 double) derivative of f(x) evaluated at x0
 %
 % -----
 % NOTE:
