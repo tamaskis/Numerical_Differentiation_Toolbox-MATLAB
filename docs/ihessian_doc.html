@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ihessian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-07"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
+      --><title>ihessian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-08"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -106,8 +106,8 @@ H = ihessian(f,x0,h)
       </tr>
   </table>
 </p><h2 id="3">Example</h2><p><i>Approximate the Hessian matrix of <img src="ihessian_doc_eq01638700281929074509.png" alt="$f(\mathbf{x})=x_{1}^{5}x_{2}+x_{1}\sin^{3}{x_{2}}$" style="width:113px;height:13px;"> at <img src="ihessian_doc_eq14645407224006285978.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(5,8)^{T}$" style="width:77px;height:13px;"> using the <tt>ihessian</tt> function, and compare the result to the true result of</i></p><p><img src="ihessian_doc_eq05339355338835441791.png" alt="$$\mathbf{H}(\mathbf{x}_{0})=\left.\pmatrix{20x_{1}^{3}x_{2} &amp; 5x_{1}^{4}&#xA;+3\sin^{2}{x_{2}}\cos{x_{2}} \cr 5x_{1}^{4}+3\sin^{2}{x_{2}}\cos{x_{2}} &amp;&#xA;6x_{1}\sin{x_{2}}\cos^{2}{x_{2}}-3x_{1}\sin^{3}{x_{2}}}\right|_{(x_{1},&#xA;x_{2})=(5,8)}=\pmatrix{20(5)^{3}(8) &amp; 5(5)^{4}+3\sin^{2}{(8)}\cos{(8)}&#xA;\cr 5(5)^{4}+3\sin^{2}{(8)}\cos{(8)} &amp; 6(5)\sin{(8)}\cos^{2}{(8)}&#xA;-3(5)\sin^{3}{(8)}}$$" style="width:673px;height:30px;"></p><p>Approximating the Hessian matrix,</p><pre class="codeinput">f = @(x) x(1)^5*x(2)+x(1)*sin(x(2))^3;
-x = [5;8];
-H = ihessian(f,x)
+x0 = [5;8];
+H = ihessian(f,x0)
 </pre><pre class="codeoutput">
 H =
 
@@ -187,8 +187,8 @@ error =
 %
 % Approximating the Hessian matrix,
 f = @(x) x(1)^5*x(2)+x(1)*sin(x(2))^3;
-x = [5;8];
-H = ihessian(f,x)
+x0 = [5;8];
+H = ihessian(f,x0)
 %%
 % Calculating the error,
 error = H-[20*5^3*8,5*5^4+3*sin(8)^2*cos(8);5*5^4+3*sin(8)^2*cos(8),...

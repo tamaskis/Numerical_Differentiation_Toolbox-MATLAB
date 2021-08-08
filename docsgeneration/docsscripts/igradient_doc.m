@@ -52,8 +52,8 @@
 %
 % Approximating the gradient,
 f = @(x) x(1)^5+sin(x(2))^3;
-x = [5;8];
-g = igradient(f,x)
+x0 = [5;8];
+g = igradient(f,x0)
 %%
 % Calculating the error,
 error = g-[3125;3*sin(8)^2*cos(8)]

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>idirectional</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-07"><meta name="DC.source" content="idirectional_doc.m"><style type="text/css">
+      --><title>idirectional</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-08"><meta name="DC.source" content="idirectional_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -114,9 +114,9 @@ Dv = idirectional(f,x0,v,h)
       </tr>
   </table>
 </p><h2 id="3">Example</h2><p><i>Approximate the directional derivative of <img src="idirectional_doc_eq05227318088148433395.png" alt="$f(\mathbf{x})=x_{1}^{5}+\sin^{3}{x_{2}}$" style="width:90px;height:13px;"> at <img src="idirectional_doc_eq14645407224006285978.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(5,8)^{T}$" style="width:77px;height:13px;"> in the direction of <img src="idirectional_doc_eq09748372650183434739.png" alt="$\mathbf{v}=(10,20)^{T}$" style="width:63px;height:13px;"> using the <tt>idirectional</tt> function, and compare the result to the true result of <img src="idirectional_doc_eq17185484919768056638.png" alt="$D_{\mathbf{v}}f(\mathbf{x}_{0})=31250+60\sin^{2}{(8)}\cos{(8)}$" style="width:175px;height:13px;"></i>.</p><p>Approximating the directional derivative,</p><pre class="codeinput">f = @(x) x(1)^5+sin(x(2))^3;
-x = [5;8];
+x0 = [5;8];
 v = [10;20];
-Dv = idirectional(f,x,v)
+Dv = idirectional(f,x0,v)
 </pre><pre class="codeoutput">
 Dv =
 
@@ -189,9 +189,9 @@ error =
 %
 % Approximating the directional derivative,
 f = @(x) x(1)^5+sin(x(2))^3;
-x = [5;8];
+x0 = [5;8];
 v = [10;20];
-Dv = idirectional(f,x,v)
+Dv = idirectional(f,x0,v)
 %%
 % Calculating the error,
 error = Dv-(31250+60*sin(8)^2*cos(8))

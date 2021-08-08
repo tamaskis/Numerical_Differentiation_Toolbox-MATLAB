@@ -57,9 +57,9 @@
 %
 % Approximating the directional derivative,
 f = @(x) x(1)^5+sin(x(2))^3;
-x = [5;8];
+x0 = [5;8];
 v = [10;20];
-Dv = idirectional(f,x,v)
+Dv = idirectional(f,x0,v)
 %%
 % Calculating the error,
 error = Dv-(31250+60*sin(8)^2*cos(8))

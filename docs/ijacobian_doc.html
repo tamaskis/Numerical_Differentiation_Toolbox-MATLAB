@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ijacobian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-07"><meta name="DC.source" content="ijacobian_doc.m"><style type="text/css">
+      --><title>ijacobian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-08"><meta name="DC.source" content="ijacobian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -106,8 +106,8 @@ J = ijacobian(f,x0,h)
       </tr>
   </table>
 </p><h2 id="3">Example</h2><p><i>Approximate the Jacobian matrix of</i></p><p><img src="ijacobian_doc_eq14795943884337857865.png" alt="$$f(\mathbf{x})=\pmatrix{x_{1} \cr 5x_{3} \cr 4x_{2}^{2}-2x_{3} \cr x_{3}\sin{x_{1}}}$$" style="width:102px;height:48px;"></p><p><i>at <img src="ijacobian_doc_eq08820355699380723406.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(5,6,7)^{T}$" style="width:88px;height:13px;"> using the <tt>ijacobian</tt> function, and compare the result to the true result of</i></p><p><img src="ijacobian_doc_eq14245066428485253659.png" alt="$$\mathbf{J}(\mathbf{x}_{0})=\pmatrix{1 &amp; 0 &amp; 0 \cr 0 &amp; 0 &amp; 5 \cr 0 &amp; 48&#xA;&amp; -2 \cr 7\cos{(5)} &amp; 0 &amp; \sin{(5)}}$$" style="width:161px;height:50px;"></p><p>Approximating the Jacobian,</p><pre class="codeinput">f = @(x) [x(1);5*x(3);4*x(2)^2-2*x(3);x(3)*sin(x(1))];
-x = [5;6;7];
-J = ijacobian(f,x)
+x0 = [5;6;7];
+J = ijacobian(f,x0)
 </pre><pre class="codeoutput">
 J =
 
@@ -185,8 +185,8 @@ error =
 %
 % Approximating the Jacobian,
 f = @(x) [x(1);5*x(3);4*x(2)^2-2*x(3);x(3)*sin(x(1))];
-x = [5;6;7];
-J = ijacobian(f,x)
+x0 = [5;6;7];
+J = ijacobian(f,x0)
 %%
 % Calculating the error,
 error = J-[1,0,0;0,0,5;0,48,-02;7*cos(5),0,sin(5)]

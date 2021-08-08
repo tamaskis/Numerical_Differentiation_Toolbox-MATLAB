@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, idirectional, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-07
+% Last Update: 2021-08-08
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

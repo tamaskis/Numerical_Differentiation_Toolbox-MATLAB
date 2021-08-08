@@ -57,8 +57,8 @@
 %
 % Approximating the Hessian matrix,
 f = @(x) x(1)^5*x(2)+x(1)*sin(x(2))^3;
-x = [5;8];
-H = ihessian(f,x)
+x0 = [5;8];
+H = ihessian(f,x0)
 %%
 % Calculating the error,
 error = H-[20*5^3*8,5*5^4+3*sin(8)^2*cos(8);5*5^4+3*sin(8)^2*cos(8),...

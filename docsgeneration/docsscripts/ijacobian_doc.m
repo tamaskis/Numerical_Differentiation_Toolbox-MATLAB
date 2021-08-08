@@ -56,8 +56,8 @@
 %
 % Approximating the Jacobian,
 f = @(x) [x(1);5*x(3);4*x(2)^2-2*x(3);x(3)*sin(x(1))];
-x = [5;6;7];
-J = ijacobian(f,x)
+x0 = [5;6;7];
+J = ijacobian(f,x0)
 %%
 % Calculating the error,
 error = J-[1,0,0;0,0,5;0,48,-02;7*cos(5),0,sin(5)]
