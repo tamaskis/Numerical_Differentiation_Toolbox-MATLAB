@@ -1,6 +1,6 @@
 %% Numerical Differentiation Toolbox Documentation
 %
-% <<ode_solver_toolbox_small.png>>
+% <<numerical_differentiation_toolbox.png>>
 %
 % Copyright © 2021 Tamas Kis
 %% Functions

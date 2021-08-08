@@ -1,4 +1,5 @@
-%% CREATE_HTML_DOCUMENTATION.m  Creates html documentation.
+%% PUBLISH_HTML_DOCUMENTATION.m
+% Wrapper script to publish HTML documentation.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2021-08-07
@@ -28,12 +29,11 @@ mfiles = [];
 %   --> define as "[]" if you want to publish all image files
 imagefiles = [];
 
-% true if previous "doc/html" folder should be completely deleted, false
-% otherwise
-delete_html = true;
+% true if contents of "docs" folder should be deleted, false otherwise
+delete_docs = false;
 
 
 
-%% PRODUCE HTML DOCUMENTATION
+%% PRODUCES HTML DOCUMENTATION
 
-export_html(code_folders,mfiles,imagefiles,delete_html);
+publish_html(code_folders,mfiles,imagefiles,delete_docs);

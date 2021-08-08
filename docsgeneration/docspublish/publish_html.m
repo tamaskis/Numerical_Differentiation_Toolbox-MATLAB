@@ -1,10 +1,10 @@
 %==========================================================================
 %
-% export_html  Publishes documentation (written in .m files) to html files,
-% and copies necessary images for documentation to the folder containing
-% the html documentation.
+% publish_html  Publishes documentation (written in .m files) to HTML
+% files, and copies necessary images for documentation to the folder
+% containing the HTML documentation.
 %
-%   export_html(toolbox,documentation,images)
+%   publish_html(toolbox,documentation,images)
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2021-08-07
@@ -24,26 +24,26 @@
 %   imagefiles    	- (array of strings) stores specific images to publish;
 %                     if input as an empty array, all images in "docimages"
 %                     are published
-%   delete_html     - (1×1 logical) true if previous "doc/html" folder
+%   delete_docs     - (1×1 logical) true if contents of "docs" folder
 %                     should be deleted, false otherwise
 %
 %==========================================================================
-function export_html(code_folders,mfiles,imagefiles,delete_html)
+function publish_html(code_folders,mfiles,imagefiles,delete_docs)
     
     % -----------------------------
     % SETS UP DIRECTORIES/FILEPATHS
     % -----------------------------
     
-    % creates "doc/docs" if it does not exist
-    if exist("../docs",'dir') == 0
-        mkdir("../docs");
+    % creates "docs" if it does not exist
+    if exist("../../docs",'dir') == 0
+        mkdir("../../docs");
     end
     
-    % deletes contents of "doc/docs" folder if specified
-    if delete_html
-        docs = dir("../docs");
+    % deletes contents of "docs" folder if specified
+    if delete_docs
+        docs = dir("../../docs");
         for k = 1:length(docs)
-            delete("../docs/"+docs(k).name)
+            delete("../../docs/"+docs(k).name)
         end
         clc;
     end
@@ -57,13 +57,13 @@ function export_html(code_folders,mfiles,imagefiles,delete_html)
     % IMAGES
     % ------
     
-    % moves to "doc/docimages" folder (folder storing all images)
-    cd("../docimages/");
+    % moves to "docsimages" folder (folder storing all images)
+    cd("../docsimages/");
     
     % creates list of images to publish (either a list of image file names
     % specified by the user, or if the user didn't specify anything, then
     % all .png, .jpg, .svg, .eps, .pbm, .pdf, and .bmp files in the
-    % "doc/docimages" folder are included)
+    % "docimages" folder are included)
     if isempty(imagefiles)
         extensions = ["png","jpg","svg","eps","pbm","pdf","bmp"];
         imagefiles = "";
@@ -76,22 +76,22 @@ function export_html(code_folders,mfiles,imagefiles,delete_html)
         imagefiles = imagefiles(2:end);
     end
     
-    % copies images to "doc/html"
+    % copies images to "docs"
     for i = 1:length(imagefiles)
-        copyfile(imagefiles(i),"../docs/"+imagefiles(i));
+        copyfile(imagefiles(i),"../../docs/"+imagefiles(i));
     end
     
     % -------------
     % DOCUMENTATION
     % -------------
     
-    % moves to "doc/docscripts" folder (folder storing all .m file
+    % moves to "docsscripts" folder (folder storing all .m file
     % documentation)
-    cd("../docscripts/");
+    cd("../docsscripts/");
     
     % creates list of .m files to publish (either a list of .m files
     % specified by the user, or if the user didn't specify anything then
-    % all .m files in "doc/docscripts" are included)
+    % all .m files in "docscripts" are included)
     if isempty(mfiles)
         mfiles_struct = dir(fullfile(pwd,'*.m'));
         mfiles = strings(length(mfiles_struct),1);
@@ -101,18 +101,18 @@ function export_html(code_folders,mfiles,imagefiles,delete_html)
     end
     
     % publishes documentation, moving html files from "html" folder in 
-    % "docsripts" to "docs" folder in "doc"
+    % "docssripts" to "docs" folder
     for i = 1:length(mfiles)
         fprintf("Publishing "+extractBetween(mfiles(i),1,...
         strlength(mfiles(i))-2)+".html\n");
         publish(mfiles(i),'html');
-        movefile("html/*","../docs/");
+        movefile("html/*","../../docs/");
     end
 
-    % removes "html" folder from "docscripts" folder
+    % removes "html" folder from "docsscripts" folder
     rmdir("html");
     
-    % returns to "docgeneration" folder
-    cd("../docgeneration/");
+    % returns to "docspublish" folder
+    cd("../docspublish/");
 
 end
