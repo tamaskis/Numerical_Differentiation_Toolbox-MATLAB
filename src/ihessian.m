@@ -9,9 +9,12 @@
 % See also iderivative, ipartial, igradient, idirectional, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-08
+% Last Update: 2021-08-10
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
+%
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf
 %
 % REFERENCES:
 %   [1] Martins et. al, "The Complex-Step Derivative Approximation",
