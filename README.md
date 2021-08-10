@@ -3,7 +3,7 @@
 
 ## Documentation
 
-[Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)
+[Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)\
 [Technical Documentation](https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf).
 
 
