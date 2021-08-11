@@ -6,7 +6,7 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 ## Documentation
 
 [Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)\
-[Technical Documentation](https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf)
+[Technical Documentation](https://tamaskis.github.io/documentation/Numerical_Differentiation_Using_the_Complex-Step_Approximation.pdf)
 
 
 ## Functions
