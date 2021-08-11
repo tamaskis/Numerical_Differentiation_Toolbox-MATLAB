@@ -14,14 +14,14 @@
 % *NOTE:* Two other functions, |iatan2| and |iabs|, are also included with
 % this toolbox. These functions are simply "complexified" versions of
 % |atan2| and |abs| and are thus left undocumented.
-%% Written Documentation
+%% Technical Documentation
 % Click <https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf here>.
 %% Methology
 % All of these functions are implemented using the complex-step
 % approximation of the derivative (this is why each function is prefixed
 % with an "i"; it is meant to indicate the imaginary unit). A complete
 % <https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf
-% written documentation> is available that details the implementation in
+% technical documentation> is available that details the implementation in
 % depth.
 %% Warnings/Disclaimers
 % * There are some special cases of functions where the complex-step 
@@ -35,11 +35,11 @@
 % * Most differentiable functions can be used with the various functions of
 % this toolbox. Functions that result in errors (likely due to
 % complexification issues) are summarized in Section 1.3.3 of the <https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf
-% written documentation>.
+% technical documentation>.
 % * The functions in this toolbox cannot perform higher-order derivatives
 % (this limitation is discussed in Section 1.3.1 of the
 % <https://tamaskis.github.io/documentation/Numerical%20Differentiation%20Using%20the%20Complex-Step%20Approximation.pdf
-% written documentation>).
+% technical documentation>).
 % * All of the functions are (generally) accurate to double precision *with the
 % the exception of* <ihessian_doc.html |ihessian|>. An alternative that
 % will perform better is the |hessian| function provided by the <https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation?s_tid=srchtitle
