@@ -7,7 +7,7 @@
 %   publish_html(code_folders,mfiles,imagefiles,delete_docs)
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-08
+% Last Update: 2021-08-11
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -50,7 +50,7 @@ function publish_html(code_folders,mfiles,imagefiles,delete_docs)
     
     % adds path to all directories containing code needed
     for i = 1:length(code_folders)
-        addpath(genpath(code_folders(i)));
+        addpath(code_folders(i))
     end
     
     % ------

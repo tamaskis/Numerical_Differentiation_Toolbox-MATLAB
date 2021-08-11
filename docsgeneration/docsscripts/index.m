@@ -51,13 +51,10 @@
 % The downloaded zip folder contains the following:
 %
 % * *docs* → Contains the HTML documentation. To open a copy of the HTML
-% documentation locally on your computer (without need of an internet
-% connection), open docs/index.html.
-% * *docsgeneration* → Contains all scripts/functions/images needed to
-% produce the HTML documentation.
+% documentation locally on your computer, open docs/index.html.
 % * *LICENSE* → Software license.
 % * *Numerical Differentiation Toolbox.mltbx* → Toolbox installer.
-% * *Numerical Differentiation Using the Complex-Step Approximation.pdf* → Written documentation.
+% * *Numerical Differentiation Using the Complex-Step Approximation.pdf* → Technical documentation.
 % * *README.md* → Markdown documentation for GitHub repository.
 % * *src* → Contains the actual functions/software.
 % * *test* → Contains scripts that perform unit tests on various functions.
