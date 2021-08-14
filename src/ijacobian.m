@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, idirectional, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-11
+% Last Update: 2021-08-14
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -58,7 +58,7 @@ function J = ijacobian(f,x0,h)
     
     % evaluates Jacobian matrix
     for j = 1:n
-        J(:,j) = imag(f(x0+X(:,j))/h);
+        J(:,j) = imag(f(x0+X(:,j)))/h;
     end
     
 end

@@ -9,7 +9,7 @@
 % See also iderivative, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-11
+% Last Update: 2021-08-14
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -57,6 +57,6 @@ function pf = ipartial(f,x0,j,h)
     x0(j) = x0(j)+h*1i;
     
     % evaluates partial derivative with respect to xj
-    pf = imag(f(x0)/h);
+    pf = imag(f(x0))/h;
     
 end

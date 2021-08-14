@@ -14,6 +14,6 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 `df = iderivative(f,x0)`\
 `pf = ipartial(f,x0,j)`\
 `g = igradient(f,x0)`\
-`Dv = idirectional(f,x0,v,h)`\
+`Dv = idirectional(f,x0,v)`\
 `J = ijacobian(f,x0)`\
 `H = ihessian(f,x0)`

@@ -9,7 +9,7 @@
 % See also ipartial, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-11
+% Last Update: 2021-08-14
 % Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -51,6 +51,6 @@ function df = iderivative(f,x0,h)
     end
     
     % evaluates derivative
-    df = imag(f(x0+h*1i)/h);
+    df = imag(f(x0+h*1i))/h;
     
 end
