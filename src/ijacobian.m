@@ -9,9 +9,12 @@
 % See also iderivative, ipartial, igradient, idirectional, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-14
-% Website: tamaskis.github.io
+% Last Update: 2021-08-27
+% Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
+%
+% TOOLBOX DOCUMENTATION:
+% https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
 % https://tamaskis.github.io/documentation/Numerical_Differentiation_Using_the_Complex-Step_Approximation.pdf

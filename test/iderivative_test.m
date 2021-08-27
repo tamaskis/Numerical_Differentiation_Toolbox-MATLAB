@@ -2,8 +2,8 @@
 % Unit testing of the iderivative function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-14
-% Website: tamaskis.github.io
+% Last Update: 2021-08-27
+% Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 
 
@@ -11,7 +11,7 @@
 %% SCRIPT SETUP
 
 % clears Workspace and Command Window, closes all figures
-clear;clc;close all;
+clear; clc; close all;
 
 % adds path to "Numerical Differentiation Toolbox" functions
 addpath(genpath("../src"));
@@ -239,3 +239,6 @@ assert(round(iderivative(@(x) asinh(x),x0),6) == round(1/sqrt(1+x0^2),6));
 assert(round(iderivative(@(x) acsch(x),x0),6) == round(-1/(abs(x0)*sqrt(...
     x0^2+1)),6));
 assert(round(iderivative(@(x) acoth(x),x0),6) == round(1/(1-x0^2),6));
+
+% prints success message
+fprintf("All tests passed.\n")
