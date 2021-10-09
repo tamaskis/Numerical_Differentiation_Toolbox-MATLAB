@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>iderivative</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-27"><meta name="DC.source" content="iderivative_doc.m"><style type="text/css">
+      --><title>iderivative</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-10-09"><meta name="DC.source" content="iderivative_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -73,34 +73,34 @@ df = iderivative(f,x0,h)
   <table border=1>
       <tr>
           <td></td>
-          <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>f</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(x)" title="" /></td>
-          <td><TT>f</TT></td>
           <td>univariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}\rightarrow\mathbb{R}^{m}" title="" />)</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
+          <td style="text-align:center"><TT>x0</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{0}" title="" /></td>
-          <td><TT>x0</TT></td>
           <td>point at which to differentiate</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
+          <td style="text-align:center"><TT>h</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-          <td><TT>h</TT></td>
           <td>(OPTIONAL) step size</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>df</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dfrac{d\mathbf{f}}{dx}\bigg\rvert_{x=x_{0}}" title="" /></td>
-          <td><TT>df</TT></td>
           <td>derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(x)" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_{0}" title="" /></td>
           <td style="text-align:center">m×1<BR>double</td>
       </tr>
@@ -123,8 +123,8 @@ df = iderivative(f,1)
 </pre><pre class="codeoutput">
 df =
 
-    0.5403
-   -0.8415
+   0.540302305868140
+  -0.841470984807897
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = df-[cos(1);-sin(1)]
 </pre><pre class="codeoutput">
@@ -147,34 +147,34 @@ error =
 %   <table border=1>
 %       <tr>
 %           <td></td>
-%           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
 %           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>f</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(x)" title="" /></td>
-%           <td><TT>f</TT></td>
 %           <td>univariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}\rightarrow\mathbb{R}^{m}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
+%           <td style="text-align:center"><TT>x0</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{0}" title="" /></td>
-%           <td><TT>x0</TT></td>
 %           <td>point at which to differentiate</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
+%           <td style="text-align:center"><TT>h</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-%           <td><TT>h</TT></td>
 %           <td>(OPTIONAL) step size</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>df</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dfrac{d\mathbf{f}}{dx}\bigg\rvert_{x=x_{0}}" title="" /></td>
-%           <td><TT>df</TT></td>
 %           <td>derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(x)" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_{0}" title="" /></td>
 %           <td style="text-align:center">m×1<BR>double</td>
 %       </tr>

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ihessian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-27"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
+      --><title>ihessian</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-10-09"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -73,34 +73,34 @@ H = ihessian(f,x0,h)
   <table border=1>
       <tr>
           <td></td>
-          <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>f</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f(\mathbf{x})" title="" /></td>
-          <td><TT>f</TT></td>
           <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
+          <td style="text-align:center"><TT>x0</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
-          <td><TT>x0</TT></td>
           <td>point at which to evaluate the Hessian matrix</td>
           <td style="text-align:center">n×1<BR>double</td>
       </tr>
       <tr>
+          <td style="text-align:center"><TT>h</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-          <td><TT>h</TT></td>
           <td>(OPTIONAL) step size</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>H</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{x}_{0})" title="" /></td>
-          <td><TT>H</TT></td>
           <td>Hessian matrix of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(\mathbf{x}_{0})" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
           <td style="text-align:center">n×n<BR>double</td>
       </tr>
@@ -113,8 +113,8 @@ H =
 
    1.0e+04 *
 
-    2.0000    0.3125
-    0.3125   -0.0014
+   2.000000000000000   0.312457275390625
+   0.312457275390625  -0.001389785766602
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = H-[20*5^3*8,5*5^4+3*sin(8)^2*cos(8);5*5^4+3*sin(8)^2*cos(8),<span class="keyword">...</span>
     6*5*sin(8)*cos(8)^2-3*5*sin(8)^3]
@@ -123,8 +123,8 @@ error =
 
    1.0e-04 *
 
-         0    0.1319
-    0.1319   -0.0767
+                   0   0.131871092889924
+   0.131871092889924  -0.076686034251594
 
 </pre><h2 id="5">See also</h2><p><a href="iderivative_doc.html"><tt>iderivative</tt></a> | <a href="ipartial_doc.html"><tt>ipartial</tt></a> | <a href="igradient_doc.html"><tt>igradient</tt></a> | <a href="idirectional_doc.html"><tt>idirectional</tt></a> | <a href="ijacobian_doc.html"><tt>ijacobian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
@@ -140,34 +140,34 @@ error =
 %   <table border=1>
 %       <tr>
 %           <td></td>
-%           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
 %           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>f</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f(\mathbf{x})" title="" /></td>
-%           <td><TT>f</TT></td>
 %           <td>multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
+%           <td style="text-align:center"><TT>x0</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
-%           <td><TT>x0</TT></td>
 %           <td>point at which to evaluate the Hessian matrix</td>
 %           <td style="text-align:center">n×1<BR>double</td>
 %       </tr>
 %       <tr>
+%           <td style="text-align:center"><TT>h</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-%           <td><TT>h</TT></td>
 %           <td>(OPTIONAL) step size</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>H</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{x}_{0})" title="" /></td>
-%           <td><TT>H</TT></td>
 %           <td>Hessian matrix of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(\mathbf{x}_{0})" title="" /> evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
 %           <td style="text-align:center">n×n<BR>double</td>
 %       </tr>
