@@ -9,7 +9,7 @@
 % See also iderivative, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-27
+% Last Update: 2021-11-14
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -40,7 +40,7 @@
 % -------
 % OUTPUT:
 % -------
-%   pf    	- (m×1 double) partial derivative of f with respect to xj, 
+%   pf      - (m×1 double) partial derivative of f with respect to xj, 
 %             evaluated at x0
 %
 % -----
