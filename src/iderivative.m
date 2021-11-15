@@ -17,7 +17,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_Using_the_Complex-Step_Approximation.pdf
+% https://tamaskis.github.io/documentation/Numerical_Differentiation_Using_the_Complex_Step_Approximation.pdf
 %
 % REFERENCES:
 %   [1] Martins et. al, "The Complex-Step Derivative Approximation",
