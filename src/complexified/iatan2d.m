@@ -1,10 +1,11 @@
 %==========================================================================
 %
-% iabs "Complexified" version of the absolute value (abs) function.
+% iatan2d "Complexified" version of the four quadrant inverse tangent 
+% (atan2d) function (in degrees).
 %
-%   y = iabs(x)
+%   z = iatan2d(y,x)
 %
-% See also abs.
+% See also atan2d.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2021-11-22
@@ -25,18 +26,19 @@
 % ------
 % INPUT:
 % ------
+%   y       - (1×1 complex) input argument
 %   x       - (1×1 complex) input argument
 %
 % -------
 % OUTPUT:
 % -------
-%   y       - (1×1 complex) absolute value of x
+%   z       - (1×1 complex) four quadrant inverse tangent of (x,y) [deg]
 %
 %==========================================================================
-function result = iabs(x)
-    if (real(x) < 0)
-        result = -real(x)-1i*imag(x);
-    else
-        result = x;
-    end
+function result = iatan2d(y,x)
+    a = real(y);
+    b = imag(y);
+    c = real(x);
+    d = imag(x);
+    result = (180/pi)*(atan2(a,c)+1i*((c*b-a*d)/(a^2+c^2)));
 end

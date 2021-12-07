@@ -2,7 +2,7 @@
 % Unit testing of the iderivative function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-27
+% Last Update: 2021-11-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 
@@ -18,46 +18,48 @@ addpath(genpath("../src"));
 
 
 
+%% ERROR TOLERANCE
+
+err = 1e-10;
+
+
+
 %% FUNCTIONS THAT WILL RESULT IN ERRORS
 
 % absolute value (x0 > 0 and x0 < 0) -- FIX IN NEXT SECTION
-assert(~(round(iderivative(@(x) abs(x),-1),6) == -1));
-assert(~(round(iderivative(@(x) abs(x),1),6) == 1));
+TEST_UNEQUAL(iderivative(@(x) abs(x), -1), -1, err);
+TEST_UNEQUAL(iderivative(@(x) abs(x),  1),  1, err);
 
 % inverse trigonometric functions (x0 < -1) --> NO FIX
 x0 = -1.5;
-assert(~(round(iderivative(@(x) acsc(x),x0),6) == round(-1/(x0*sqrt(x0^...
-    2-1)),6)));
-assert(~(round(iderivative(@(x) asec(x),x0),6) == round(1/(x0*sqrt(x0^2-...
-    1)),6)));
+TEST_UNEQUAL(iderivative(@(x) acsc(x), x0), -1/(x0*sqrt(x0^2-1)), err);
+TEST_UNEQUAL(iderivative(@(x) asec(x), x0),  1/(x0*sqrt(x0^2-1)), err);
 
 % inverse hyperbolic functions (0 < x0 < 1) --> NO FIX
 x0 = 0.5;
-assert(~(round(iderivative(@(x) acoth(x),x0),6) == round(1/(1-x0^2),6)));
+TEST_UNEQUAL(iderivative(@(x) acoth(x), x0), 1/(1-x0^2), err);
 
 % inverse hyperbolic functions (x0 > 1) --> NO FIX
 x0 = 1.5;
-assert(~(round(iderivative(@(x) atanh(x),x0),6) == round(1/(1-x0^2),6)));
+TEST_UNEQUAL(iderivative(@(x) atanh(x), x0), 1/(1-x0^2), err);
 
 % inverse hyperbolic functions (-1 < x0 < 0) --> NO FIX
 x0 = -0.5;
-assert(~(round(iderivative(@(x) asech(x),x0),6) == round(-1/(x0*sqrt(1-...
-    x0^2)),6)));
-assert(~(round(iderivative(@(x) acoth(x),x0),6) == round(1/(1-x0^2),6)));
+TEST_UNEQUAL(iderivative(@(x) asech(x), x0), -1/(x0*sqrt(1-x0^2)), err);
+TEST_UNEQUAL(iderivative(@(x) acoth(x), x0),  1/(1-x0^2),          err);
 
 % inverse hyperbolic functions (x0 < -1) --> NO FIX
 x0 = -1.5;
-assert(~(round(iderivative(@(x) acosh(x),x0),6) == round(1/sqrt(x0^2-1),...
-    6)));
-assert(~(round(iderivative(@(x) atanh(x),x0),6) == round(1/(1-x0^2),6)));
+TEST_UNEQUAL(iderivative(@(x) acosh(x), x0), 1/sqrt(x0^2-1), err);
+TEST_UNEQUAL(iderivative(@(x) atanh(x), x0), 1/(1-x0^2),     err);
 
 
 
 %% COMPLEXIFIED FUNCTIONS TO ADDRESS ERRORS FROM PREVIOUS SECTION
 
 % absolute value (x0 > 0 and x0 < 0)
-assert((round(iderivative(@(x) iabs(x),-1),6) == -1));
-assert((round(iderivative(@(x) iabs(x),1),6) == 1));
+TEST_EQUAL(iderivative(@(x) iabs(x), -1), -1, err);
+TEST_EQUAL(iderivative(@(x) iabs(x),  1),  1, err);
 
 
 
@@ -65,11 +67,11 @@ assert((round(iderivative(@(x) iabs(x),1),6) == 1));
 
 % x0 < 1
 x0 = 0.5;
-assert(round(iderivative(@(x) sqrt(x),x0),6) == round(0.5*x0^(-0.5),6));
+TEST_EQUAL(iderivative(@(x) sqrt(x), x0), 0.5*x0^(-0.5), err);
 
 % x0 > 1
 x0 = 1.5;
-assert(round(iderivative(@(x) sqrt(x),x0),6) == round(0.5*x0^(-0.5),6));
+TEST_EQUAL(iderivative(@(x) sqrt(x), x0), 0.5*x0^(-0.5), err);
 
 
 
@@ -80,18 +82,18 @@ b = 5;
 
 % x0 > 0
 x0 = 1;
-assert(round(iderivative(@(x) exp(x),x0),6) == round(exp(x0),6));
-assert(round(iderivative(@(x) b^x,x0),6) == round((b^x0)*log(b),6));
+TEST_EQUAL(iderivative(@(x) exp(x), x0), exp(x0),       err);
+TEST_EQUAL(iderivative(@(x) b^x,    x0), (b^x0)*log(b), err);
 
 % x0 < 0
 x0 = -1;
-assert(round(iderivative(@(x) exp(x),x0),6) == round(exp(x0),6));
-assert(round(iderivative(@(x) b^x,x0),6) == round((b^x0)*log(b),6));
+TEST_EQUAL(iderivative(@(x) exp(x), x0), exp(x0),       err);
+TEST_EQUAL(iderivative(@(x) b^x,    x0), (b^x0)*log(b), err);
 
 % x0 = 0
 x0 = 0;
-assert(round(iderivative(@(x) exp(x),x0),6) == round(exp(x0),6));
-assert(round(iderivative(@(x) b^x,x0),6) == round((b^x0)*log(b),6));
+TEST_EQUAL(iderivative(@(x) exp(x), x0), exp(x0),       err);
+TEST_EQUAL(iderivative(@(x) b^x,    x0), (b^x0)*log(b), err);
 
 
 
@@ -99,13 +101,13 @@ assert(round(iderivative(@(x) b^x,x0),6) == round((b^x0)*log(b),6));
 
 % 0 < x0 < 1
 x0 = 0.5;
-assert(round(iderivative(@(x) log(x),x0),6) == round(1/x0,6));
-assert(round(iderivative(@(x) log10(x),x0),6) == round(1/(x0*log(10)),6));
+TEST_EQUAL(iderivative(@(x) log(x),   x0), 1/x0,           err);
+TEST_EQUAL(iderivative(@(x) log10(x), x0), 1/(x0*log(10)), err);
 
 % x0 > 1
 x0 = 1.5;
-assert(round(iderivative(@(x) log(x),x0),6) == round(1/x0,6));
-assert(round(iderivative(@(x) log10(x),x0),6) == round(1/(x0*log(10)),6));
+TEST_EQUAL(iderivative(@(x) log(x),   x0), 1/x0,           err);
+TEST_EQUAL(iderivative(@(x) log10(x), x0), 1/(x0*log(10)), err);
 
 
 
@@ -113,39 +115,39 @@ assert(round(iderivative(@(x) log10(x),x0),6) == round(1/(x0*log(10)),6));
 
 % quadrant I
 x0 = pi/4;
-assert(round(iderivative(@(x) sin(x),x0),6) == round(cos(x0),6));
-assert(round(iderivative(@(x) cos(x),x0),6) == round(-sin(x0),6));
-assert(round(iderivative(@(x) tan(x),x0),6) == round(sec(x0)^2,6));
-assert(round(iderivative(@(x) csc(x),x0),6) == round(-csc(x0)*cot(x0),6));
-assert(round(iderivative(@(x) sec(x),x0),6) == round(sec(x0)*tan(x0),6));
-assert(round(iderivative(@(x) cot(x),x0),6) == round(-csc(x0)^2,6));
+TEST_EQUAL(iderivative(@(x) sin(x), x0),  cos(x0),         err);
+TEST_EQUAL(iderivative(@(x) cos(x), x0), -sin(x0),         err);
+TEST_EQUAL(iderivative(@(x) tan(x), x0),  sec(x0)^2,       err);
+TEST_EQUAL(iderivative(@(x) csc(x), x0), -csc(x0)*cot(x0), err);
+TEST_EQUAL(iderivative(@(x) sec(x), x0),  sec(x0)*tan(x0), err);
+TEST_EQUAL(iderivative(@(x) cot(x), x0), -csc(x0)^2,       err);
 
 % quadrant II
 x0 = 3*pi/4;
-assert(round(iderivative(@(x) sin(x),x0),6) == round(cos(x0),6));
-assert(round(iderivative(@(x) cos(x),x0),6) == round(-sin(x0),6));
-assert(round(iderivative(@(x) tan(x),x0),6) == round(sec(x0)^2,6));
-assert(round(iderivative(@(x) csc(x),x0),6) == round(-csc(x0)*cot(x0),6));
-assert(round(iderivative(@(x) sec(x),x0),6) == round(sec(x0)*tan(x0),6));
-assert(round(iderivative(@(x) cot(x),x0),6) == round(-csc(x0)^2,6));
+TEST_EQUAL(iderivative(@(x) sin(x), x0),  cos(x0),         err);
+TEST_EQUAL(iderivative(@(x) cos(x), x0), -sin(x0),         err);
+TEST_EQUAL(iderivative(@(x) tan(x), x0),  sec(x0)^2,       err);
+TEST_EQUAL(iderivative(@(x) csc(x), x0), -csc(x0)*cot(x0), err);
+TEST_EQUAL(iderivative(@(x) sec(x), x0),  sec(x0)*tan(x0), err);
+TEST_EQUAL(iderivative(@(x) cot(x), x0), -csc(x0)^2,       err);
 
 % quadrant III
 x0 = 5*pi/4;
-assert(round(iderivative(@(x) sin(x),x0),6) == round(cos(x0),6));
-assert(round(iderivative(@(x) cos(x),x0),6) == round(-sin(x0),6));
-assert(round(iderivative(@(x) tan(x),x0),6) == round(sec(x0)^2,6));
-assert(round(iderivative(@(x) csc(x),x0),6) == round(-csc(x0)*cot(x0),6));
-assert(round(iderivative(@(x) sec(x),x0),6) == round(sec(x0)*tan(x0),6));
-assert(round(iderivative(@(x) cot(x),x0),6) == round(-csc(x0)^2,6));
+TEST_EQUAL(iderivative(@(x) sin(x), x0),  cos(x0),         err);
+TEST_EQUAL(iderivative(@(x) cos(x), x0), -sin(x0),         err);
+TEST_EQUAL(iderivative(@(x) tan(x), x0),  sec(x0)^2,       err);
+TEST_EQUAL(iderivative(@(x) csc(x), x0), -csc(x0)*cot(x0), err);
+TEST_EQUAL(iderivative(@(x) sec(x), x0),  sec(x0)*tan(x0), err);
+TEST_EQUAL(iderivative(@(x) cot(x), x0), -csc(x0)^2,       err);
 
 % quadrant IV
 x0 = 7*pi/4;
-assert(round(iderivative(@(x) sin(x),x0),6) == round(cos(x0),6));
-assert(round(iderivative(@(x) cos(x),x0),6) == round(-sin(x0),6));
-assert(round(iderivative(@(x) tan(x),x0),6) == round(sec(x0)^2,6));
-assert(round(iderivative(@(x) csc(x),x0),6) == round(-csc(x0)*cot(x0),6));
-assert(round(iderivative(@(x) sec(x),x0),6) == round(sec(x0)*tan(x0),6));
-assert(round(iderivative(@(x) cot(x),x0),6) == round(-csc(x0)^2,6));
+TEST_EQUAL(iderivative(@(x) sin(x), x0),  cos(x0),         err);
+TEST_EQUAL(iderivative(@(x) cos(x), x0), -sin(x0),         err);
+TEST_EQUAL(iderivative(@(x) tan(x), x0),  sec(x0)^2,       err);
+TEST_EQUAL(iderivative(@(x) csc(x), x0), -csc(x0)*cot(x0), err);
+TEST_EQUAL(iderivative(@(x) sec(x), x0),  sec(x0)*tan(x0), err);
+TEST_EQUAL(iderivative(@(x) cot(x), x0), -csc(x0)^2,       err);
 
 
 
@@ -153,31 +155,29 @@ assert(round(iderivative(@(x) cot(x),x0),6) == round(-csc(x0)^2,6));
 
 % 0 < x0 < 1
 x0 = 0.5;
-assert(round(iderivative(@(x) asin(x),x0),6) == round(1/sqrt(1-x0^2),6));
-assert(round(iderivative(@(x) acos(x),x0),6) == round(-1/sqrt(1-x0^2),6));
-assert(round(iderivative(@(x) atan(x),x0),6) == round(1/(1+x0^2),6));
-assert(round(iderivative(@(x) acot(x),x0),6) == round(-1/(1+x0^2),6));
+TEST_EQUAL(iderivative(@(x) asin(x), x0),  1/sqrt(1-x0^2), err);
+TEST_EQUAL(iderivative(@(x) acos(x), x0), -1/sqrt(1-x0^2), err);
+TEST_EQUAL(iderivative(@(x) atan(x), x0),  1/(1+x0^2),     err);
+TEST_EQUAL(iderivative(@(x) acot(x), x0), -1/(1+x0^2),     err);
 
 % x0 > 1
 x0 = 1.5;
-assert(round(iderivative(@(x) atan(x),x0),6) == round(1/(1+x0^2),6));
-assert(round(iderivative(@(x) acsc(x),x0),6) == round(-1/(x0*sqrt(x0^2-...
-    1)),6));
-assert(round(iderivative(@(x) asec(x),x0),6) == round(1/(x0*sqrt(x0^2-...
-    1)),6));
-assert(round(iderivative(@(x) acot(x),x0),6) == round(-1/(1+x0^2),6));
+TEST_EQUAL(iderivative(@(x) atan(x), x0),  1/(1+x0^2),          err);
+TEST_EQUAL(iderivative(@(x) acsc(x), x0), -1/(x0*sqrt(x0^2-1)), err);
+TEST_EQUAL(iderivative(@(x) asec(x), x0),  1/(x0*sqrt(x0^2-1)), err);
+TEST_EQUAL(iderivative(@(x) acot(x), x0), -1/(1+x0^2),          err);
 
 % -1 < x0 < 0
 x0 = -0.5;
-assert(round(iderivative(@(x) asin(x),x0),6) == round(1/sqrt(1-x0^2),6));
-assert(round(iderivative(@(x) acos(x),x0),6) == round(-1/sqrt(1-x0^2),6));
-assert(round(iderivative(@(x) atan(x),x0),6) == round(1/(1+x0^2),6));
-assert(round(iderivative(@(x) acot(x),x0),6) == round(-1/(1+x0^2),6));
+TEST_EQUAL(iderivative(@(x) asin(x), x0),  1/sqrt(1-x0^2), err);
+TEST_EQUAL(iderivative(@(x) acos(x), x0), -1/sqrt(1-x0^2), err);
+TEST_EQUAL(iderivative(@(x) atan(x), x0),  1/(1+x0^2),     err);
+TEST_EQUAL(iderivative(@(x) acot(x), x0), -1/(1+x0^2),     err);
 
 % x0 < -1
 x0 = -1.5;
-assert(round(iderivative(@(x) atan(x),x0),6) == round(1/(1+x0^2),6));
-assert(round(iderivative(@(x) acot(x),x0),6) == round(-1/(1+x0^2),6));
+TEST_EQUAL(iderivative(@(x) atan(x), x0),  1/(1+x0^2), err);
+TEST_EQUAL(iderivative(@(x) acot(x), x0), -1/(1+x0^2), err);
 
 
 
@@ -185,25 +185,21 @@ assert(round(iderivative(@(x) acot(x),x0),6) == round(-1/(1+x0^2),6));
 
 % positive argument
 x0 = 1;
-assert(round(iderivative(@(x) sinh(x),x0),6) == round(cosh(x0),6));
-assert(round(iderivative(@(x) cosh(x),x0),6) == round(sinh(x0),6));
-assert(round(iderivative(@(x) tanh(x),x0),6) == round(sech(x0)^2,6));
-assert(round(iderivative(@(x) csch(x),x0),6) == round(-csch(x0)*...
-    coth(x0),6));
-assert(round(iderivative(@(x) sech(x),x0),6) == round(-sech(x0)*...
-    tanh(x0),6));
-assert(round(iderivative(@(x) coth(x),x0),6) == round(-csch(x0)^2,6));
+TEST_EQUAL(iderivative(@(x) sinh(x), x0),  cosh(x0),          err);
+TEST_EQUAL(iderivative(@(x) cosh(x), x0),  sinh(x0),          err);
+TEST_EQUAL(iderivative(@(x) tanh(x), x0),  sech(x0)^2,        err);
+TEST_EQUAL(iderivative(@(x) csch(x), x0), -csch(x0)*coth(x0), err);
+TEST_EQUAL(iderivative(@(x) sech(x), x0), -sech(x0)*tanh(x0), err);
+TEST_EQUAL(iderivative(@(x) coth(x), x0), -csch(x0)^2,        err);
 
 % negative argument
 x0 = -1;
-assert(round(iderivative(@(x) sinh(x),x0),6) == round(cosh(x0),6));
-assert(round(iderivative(@(x) cosh(x),x0),6) == round(sinh(x0),6));
-assert(round(iderivative(@(x) tanh(x),x0),6) == round(sech(x0)^2,6));
-assert(round(iderivative(@(x) csch(x),x0),6) == round(-csch(x0)*...
-    coth(x0),6));
-assert(round(iderivative(@(x) sech(x),x0),6) == round(-sech(x0)*...
-    tanh(x0),6));
-assert(round(iderivative(@(x) coth(x),x0),6) == round(-csch(x0)^2,6));
+TEST_EQUAL(iderivative(@(x) sinh(x), x0),  cosh(x0),          err);
+TEST_EQUAL(iderivative(@(x) cosh(x), x0),  sinh(x0),          err);
+TEST_EQUAL(iderivative(@(x) tanh(x), x0),  sech(x0)^2,        err);
+TEST_EQUAL(iderivative(@(x) csch(x), x0), -csch(x0)*coth(x0), err);
+TEST_EQUAL(iderivative(@(x) sech(x), x0), -sech(x0)*tanh(x0), err);
+TEST_EQUAL(iderivative(@(x) coth(x), x0), -csch(x0)^2,        err);
 
 
 
@@ -211,34 +207,32 @@ assert(round(iderivative(@(x) coth(x),x0),6) == round(-csch(x0)^2,6));
 
 % 0 < x0 < 1
 x0 = 0.5;
-assert(round(iderivative(@(x) asinh(x),x0),6) == round(1/sqrt(1+x0^2),6));
-assert(round(iderivative(@(x) atanh(x),x0),6) == round(1/(1-x0^2),6));
-assert(round(iderivative(@(x) acsch(x),x0),6) == round(-1/(abs(x0)*sqrt(...
-    x0^2+1)),6));
-assert(round(iderivative(@(x) asech(x),x0),6) == round(-1/(x0*sqrt(1-x0^...
-    2)),6));
+TEST_EQUAL(iderivative(@(x) asinh(x), x0),  1/sqrt(1+x0^2),           err);
+TEST_EQUAL(iderivative(@(x) atanh(x), x0),  1/(1-x0^2),               err);
+TEST_EQUAL(iderivative(@(x) acsch(x), x0), -1/(abs(x0)*sqrt(x0^2+1)), err);
+TEST_EQUAL(iderivative(@(x) asech(x), x0), -1/(x0*sqrt(1-x0^2)),      err);
 
 % x0 > 1
 x0 = 1.5;
-assert(round(iderivative(@(x) asinh(x),x0),6) == round(1/sqrt(1+x0^2),6));
-assert(round(iderivative(@(x) acosh(x),x0),6) == round(1/sqrt(x0^2-1),6));
-assert(round(iderivative(@(x) acsch(x),x0),6) == round(-1/(abs(x0)*sqrt(...
-    x0^2+1)),6));
-assert(round(iderivative(@(x) acoth(x),x0),6) == round(1/(1-x0^2),6));
+TEST_EQUAL(iderivative(@(x) asinh(x), x0),  1/sqrt(1+x0^2),           err);
+TEST_EQUAL(iderivative(@(x) acosh(x), x0),  1/sqrt(x0^2-1),           err);
+TEST_EQUAL(iderivative(@(x) acsch(x), x0), -1/(abs(x0)*sqrt(x0^2+1)), err);
+TEST_EQUAL(iderivative(@(x) acoth(x), x0),  1/(1-x0^2),               err);
 
 % -1 < x0 < 0
 x0 = -0.5;
-assert(round(iderivative(@(x) asinh(x),x0),6) == round(1/sqrt(1+x0^2),6));
-assert(round(iderivative(@(x) atanh(x),x0),6) == round(1/(1-x0^2),6));
-assert(round(iderivative(@(x) acsch(x),x0),6) == round(-1/(abs(x0)*sqrt(...
-    x0^2+1)),6));
+TEST_EQUAL(iderivative(@(x) asinh(x), x0),  1/sqrt(1+x0^2),           err);
+TEST_EQUAL(iderivative(@(x) atanh(x), x0),  1/(1-x0^2),               err);
+TEST_EQUAL(iderivative(@(x) acsch(x), x0), -1/(abs(x0)*sqrt(x0^2+1)), err);
 
 % x0 < -1
 x0 = -1.5;
-assert(round(iderivative(@(x) asinh(x),x0),6) == round(1/sqrt(1+x0^2),6));
-assert(round(iderivative(@(x) acsch(x),x0),6) == round(-1/(abs(x0)*sqrt(...
-    x0^2+1)),6));
-assert(round(iderivative(@(x) acoth(x),x0),6) == round(1/(1-x0^2),6));
+TEST_EQUAL(iderivative(@(x) asinh(x), x0),  1/sqrt(1+x0^2),           err);
+TEST_EQUAL(iderivative(@(x) acsch(x), x0), -1/(abs(x0)*sqrt(x0^2+1)), err);
+TEST_EQUAL(iderivative(@(x) acoth(x), x0),  1/(1-x0^2),               err);
 
-% prints success message
+
+
+%% PRINTS SUCCESS MESSAGE
+
 fprintf("All tests passed.\n")

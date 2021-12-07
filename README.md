@@ -9,7 +9,7 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 [Technical Documentation](https://tamaskis.github.io/documentation/Numerical_Differentiation_Using_the_Complex_Step_Approximation.pdf)
 
 
-## Functions
+## Differentiation Functions
 
 `df = iderivative(f,x0)`\
 `pf = ipartial(f,x0,j)`\
@@ -17,3 +17,9 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 `Dv = idirectional(f,x0,v)`\
 `J = ijacobian(f,x0)`\
 `H = ihessian(f,x0)`
+
+
+## "Complexified" Functions
+`y = iabs(x)`\
+`z = iatan2(y,x)`\
+`z = iatan2d(y,x)`
