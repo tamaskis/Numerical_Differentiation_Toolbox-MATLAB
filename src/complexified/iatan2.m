@@ -8,7 +8,7 @@
 % See also atan2.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-11-22
+% Last Update: 2021-12-10
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

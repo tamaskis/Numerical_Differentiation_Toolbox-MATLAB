@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-11-14
+% Last Update: 2021-12-10
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,7 +31,7 @@
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) multivariate, scalar-valued function 
+%   f       - (1×1 function_handle) multivariate, scalar-valued function 
 %             (f:Rn->R)
 %   x0      - (n×1 double) point at which to evaluate the directional
 %             derivative
@@ -41,7 +41,7 @@
 % -------
 % OUTPUT:
 % -------
-%   Dv      - (1×1 double) directional derivative of f evaluated at x in
+%   Dv      - (1×1 double) directional derivative of f evaluated at x0 in
 %             the direction of v
 %
 %==========================================================================

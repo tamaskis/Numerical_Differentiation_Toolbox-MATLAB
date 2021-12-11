@@ -1,4 +1,4 @@
-%% itan2_igradient_test.m
+%% iatan2_igradient_test.m
 % Unit testing of the iatan2 and igradient functions.
 %
 % Copyright © 2021 Tamas Kis
