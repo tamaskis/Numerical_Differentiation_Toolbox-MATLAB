@@ -16,7 +16,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_the_Complex_Step_and_Backward_Difference_Approximations.pdf
+% https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf
 %
 % REFERENCES:
 %   [1] https://en.wikipedia.org/wiki/Finite_difference_method

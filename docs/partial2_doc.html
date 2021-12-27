@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>partial2</tt></h1><!--introduction--><p>Partial derivative of a multivariate, scalar or vector-valued function using the backward difference approximation (given two points).</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Partial derivative of a scalar-valued function.</a></li><li><a href="#8">Example #2: Partial derivative of a vector-valued function.</a></li><li><a href="#12">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">pf = partial2(f,xa,xb,j)
+  </style></head><body><div class="content"><h1><tt>partial2</tt></h1><!--introduction--><p>Partial derivative of a multivariate, scalar or vector-valued function using the backward difference approximation (given two points).</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Partial derivative of a scalar-valued function.</a></li><li><a href="#8">Example #2: Partial derivative of a vector-valued function.</a></li><li><a href="#11">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">pf = partial2(f,xa,xb,j)
 </pre><h2 id="2">Description</h2><p><tt>pf = partial2(f,xa,xb,j)</tt> numerically evaluates the partial derivative of <img src="partial2_doc_eq03403988016607310992.png" alt="$\mathbf{f}(\mathbf{x})$" style="width:19px;height:11px;"> with respect to <img src="partial2_doc_eq07686059742296448173.png" alt="$x_{j}$" style="width:10px;height:9px;"> at <img src="partial2_doc_eq01496298698315446244.png" alt="$\mathbf{x}=\mathbf{x}_{b}$" style="width:31px;height:7px;"> using the backward difference approximation.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
@@ -142,7 +142,7 @@ error =
    -0.0038
     0.0011
 
-</pre><p>The approximation is therefore accurate to double precision.</p><h2 id="12">See also</h2><p><a href="derivative2_doc.html"><tt>derivative2</tt></a> | <a href="gradient2_doc.html"><tt>gradient2</tt></a> | <a href="directional2_doc.html"><tt>directional2</tt></a> | <a href="jacobian2_doc.html"><tt>jacobian2</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+</pre><h2 id="11">See also</h2><p><a href="derivative2_doc.html"><tt>derivative2</tt></a> | <a href="gradient2_doc.html"><tt>gradient2</tt></a> | <a href="directional2_doc.html"><tt>directional2</tt></a> | <a href="jacobian2_doc.html"><tt>jacobian2</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |partial2|
 % Partial derivative of a multivariate, scalar or vector-valued function using the backward difference approximation (given two points).
@@ -245,8 +245,6 @@ pf = partial2(f,xa,xb,j)    % differentiation
 %%
 % Calculating the error,
 error = pf-[cos(1)*sin(2);-sin(1)*cos(2)]
-%%
-% The approximation is therefore accurate to double precision.
 %% See also
 % <derivative2_doc.html |derivative2|> | 
 % <gradient2_doc.html |gradient2|> | 
