@@ -2,7 +2,7 @@
 % Unit testing of the iatan2 and igradient functions.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-11-29
+% Last Update: 2021-12-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 
@@ -14,7 +14,7 @@
 clear; clc; close all;
 
 % adds path to "Numerical Differentiation Toolbox" functions
-addpath(genpath("../src"));
+addpath(genpath("../toolbox"));
 
 
 

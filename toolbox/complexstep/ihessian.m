@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, idirectional, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-10
+% Last Update: 2021-12-26
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -36,12 +36,18 @@
 %   f       - (1×1 function_handle) multivariate, scalar-valued function 
 %             (f:Rn->R)
 %   x0      - (n×1 double) point at which to evaluate the Hessian matrix
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to sqrt(eps))
+%   h       - (OPTIONAL) (1×1 double) step size (defaults to √(ɛ), where ɛ
+%             is double precision)
 %
 % -------
 % OUTPUT:
 % -------
 %   H       - (n×1 double) Hessian matrix of f evaluated at x0
+%
+% -----
+% NOTE:
+% -----
+%   --> This function requires TODO n^2 evaluations of f(x).
 %
 %==========================================================================
 function H = ihessian(f,x0,h)

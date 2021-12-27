@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-10
+% Last Update: 2021-12-26
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -36,13 +36,19 @@
 %   x0      - (n×1 double) point at which to evaluate the directional
 %             derivative
 %   v       - (n×1 double) vector defining direction of differentiation
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to sqrt(eps))
+%   h       - (OPTIONAL) (1×1 double) step size (defaults to √(ɛ), where ɛ
+%             is double precision)
 %
 % -------
 % OUTPUT:
 % -------
 %   Dv      - (1×1 double) directional derivative of f evaluated at x0 in
 %             the direction of v
+%
+% -----
+% NOTE:
+% -----
+%   --> This function requires n evaluations of f(x).
 %
 %==========================================================================
 function Dv = idirectional(f,x0,v,h)
