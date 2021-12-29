@@ -8,7 +8,7 @@
 % See also atan2.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-10
+% Last Update: 2021-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,7 +16,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_Using_the_Complex_Step_Approximation.pdf
+% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_the_Complex_Step_Approximation.pdf
 %
 % REFERENCES:
 %   [1] https://mdolab.engin.umich.edu/misc/files/complexify.f90
