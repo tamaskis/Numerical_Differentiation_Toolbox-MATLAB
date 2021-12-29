@@ -25,7 +25,7 @@ function doc_NDT(name)
 
     % opens index if no function name specified
     if nargin == 0
-        web('html/index.html');
+        web('html_NDT/index.html');
 
     % opens technical documentation
     elseif strcmpi(name,'tech')
@@ -34,7 +34,7 @@ function doc_NDT(name)
         
     % opens specified function documentation
     else
-        web(strcat('html/',name,'_doc.html'));
+        web(strcat('html_NDT/',name,'_doc.html'));
 
     end
 end
