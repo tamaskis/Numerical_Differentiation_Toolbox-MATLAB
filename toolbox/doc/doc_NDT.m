@@ -1,11 +1,10 @@
 %==========================================================================
 %
 % doc_Numerical_Differentiation_Toolbox  Opens the documentation for the
-% Numerical Differentiation_Toolbox.
+% Numerical Differentiation Toolbox.
 %
 %   doc_NDT
 %   doc_NDT function_name
-%   doc_NDT(function_name)
 %   doc_NDT tech
 %
 % Copyright © 2021 Tamas Kis
@@ -19,6 +18,7 @@
 % INPUT:
 % ------
 %   name   - (char) name of the function
+%               --> using "tech" opens the technical documentation
 %
 %==========================================================================
 function doc_NDT(name)
