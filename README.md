@@ -10,19 +10,19 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 
 To open the home page of the toolbox documentation in MATLAB, type
 
-```matlab
+```
 doc_NDT
 ```
 
 in the Command Window. To open the documentation of a specific function with name `function_name`, type
 
-```matlab
+```
 doc_NDT function_name
 ```
 
 in the Command Window. To open the technical documentation from MATLAB, type
 
-```matlab
+```
 doc_NDT tech
 ```
 
