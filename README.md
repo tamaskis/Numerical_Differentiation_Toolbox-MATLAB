@@ -14,20 +14,17 @@ To open the home page of the toolbox documentation in MATLAB, type
 doc_NDT
 ```
 
-in the Command Window. To open the documentation of a specific function with name `function_name`, type
+in the Command Window. To open the documentation of a specific function with name `function_name` from the Command Window, type
 
 ```
 doc_NDT function_name
 ```
 
-in the Command Window. To open the technical documentation from MATLAB, type
+To open the PDF file with the technical documentation (Numerical_Differentiation_using_the_Complex_Step_Approximation.pdf) from the Command Window, type
 
 ```
 doc_NDT tech
 ```
-
-in the Command Window.
-
 
 
 ## Differentiation Functions
