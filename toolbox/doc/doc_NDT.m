@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% doc_Numerical_Differentiation_Toolbox  Opens the documentation for the
-% Numerical Differentiation Toolbox.
+% doc_NDT  Opens the documentation for the Numerical Differentiation 
+% Toolbox.
 %
 %   doc_NDT
 %   doc_NDT function_name
