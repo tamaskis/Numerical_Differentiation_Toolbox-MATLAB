@@ -1,0 +1,147 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Numerical Differentiation Toolbox Documentation</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-12-27"><meta name="DC.source" content="index.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Numerical Differentiation Toolbox Documentation</h1><!--introduction--><p><img vspace="5" hspace="5" src="numerical_differentiation_toolbox.png" alt=""> </p><p>Copyright &copy; 2021 Tamas Kis</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Differentiation Using the Complex-Step Approximation</a></li><li><a href="#2">Complexified Functions</a></li><li><a href="#3">Differentiation Using the Backward Difference Approximation</a></li><li><a href="#4">Technical Documentation</a></li><li><a href="#5">Warnings/Disclaimers</a></li><li><a href="#6">Installation</a></li></ul></div><h2 id="1">Differentiation Using the Complex-Step Approximation</h2><div><ul><li><a href="iderivative_doc.html"><b><tt>iderivative</tt></b></a> Derivative of a univariate, scalar or vector-valued function.</li><li><a href="ipartial_doc.html"><b><tt>ipartial</tt></b></a> Partial derivative of a multivariate, scalar or vector-valued function.</li><li><a href="igradient_doc.html"><b><tt>igradient</tt></b></a> Gradient of a multivariate, scalar-valued function.</li><li><a href="idirectional_doc.html"><b><tt>idirectional</tt></b></a> Directional derivative of a multivariate, scalar-valued function.</li><li><a href="ijacobian_doc.html"><b><tt>ijacobian</tt></b></a> Jacobian matrix of a multivariate, vector-valued function.</li><li><a href="ihessian_doc.html"><b><tt>ihessian</tt></b></a> Hessian matrix of a multivariate, scalar-valued function.</li></ul></div><h2 id="2">Complexified Functions</h2><div><ul><li><a href="iabs_doc.html"><b><tt>iabs</tt></b></a> "Complexified" version of the absolute value (<tt>iabs</tt>) function.</li><li><a href="iatan2_doc.html"><b><tt>iatan2</tt></b></a> "Complexified" version of the four quadrant inverse tangent (<tt>atan2</tt>) function (in radians).</li><li><a href="iatan2d_doc.html"><b><tt>iatan2d</tt></b></a> "Complexified" version of the four quadrant inverse tangent (<tt>atan2d</tt>) function (in degrees).</li></ul></div><h2 id="3">Differentiation Using the Backward Difference Approximation</h2><div><ul><li><a href="derivative2_doc.html"><b><tt>derivative2</tt></b></a> Derivative of a univariate, scalar or vector-valued function.</li><li><a href="partial2_doc.html"><b><tt>partial2</tt></b></a> Partial derivative of a multivariate, scalar or vector-valued function.</li><li><a href="gradient2_doc.html"><b><tt>gradient2</tt></b></a> Gradient of a multivariate, scalar-valued function.</li><li><a href="directional2_doc.html"><b><tt>directional2</tt></b></a> Directional derivative of a multivariate, scalar-valued function.</li><li><a href="jacobian2_doc.html"><b><tt>jacobian2</tt></b></a> Jacobian matrix of a multivariate, vector-valued function.</li></ul></div><h2 id="4">Technical Documentation</h2><p>Click <a href="https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf">here</a>.</p><h2 id="5">Warnings/Disclaimers</h2><div><ul><li>Whenever a transpose is used in a function that is being differentiated using the complex-step approximation, special care must be taken to use the non-conjugate transpose (<tt>.'</tt>) instead of the conjugate transpose (<tt>'</tt>) &#8594; see Section 1.4 of the <a href="https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf">technical documentation</a>.</li><li>There are some special cases of functions where the complex-step approximation will not work directly; for example, trying to differentiate functions using MATLAB's <tt>atan2</tt> or <tt>abs</tt> would result in errors. We can "complexify" these functions to make them suitable for use with the complex-step approximation; in this toolbox, we have included <tt>iabs</tt>, <tt>iatan2</tt>, and <tt>iatan2d</tt> in src/complexified. However, more complexified functions can be found (programmed in Fortran) at <a href="https://mdolab.engin.umich.edu/misc/files/complexify.f90">https://mdolab.engin.umich.edu/misc/files/complexify.f90</a>.</li><li>Most differentiable functions can be used with the various functions of this toolbox. Functions that result in errors (likely due to complexification issues) are summarized in Section 1.3.3 of the <a href="https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf">technical documentation</a>.</li><li>The functions in this toolbox cannot perform higher-order derivatives (this limitation is discussed in Section 1.3.1 of the <a href="https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf">technical documentation</a>).</li><li>All of the functions using the complex-step approximation (these functions can be identified by their prefixed "i") are (generally) accurate to double precision <b>with the exception of</b> <a href="ihessian_doc.html"><tt>ihessian</tt></a>. An alternative that will perform better is the <tt>hessian</tt> function provided by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation?s_tid=srchtitle">Adaptive Robust Numerical Differentiation</a> toolbox.</li><li>No error estimates are provided.</li></ul></div><h2 id="6">Installation</h2><p>The toolbox can be downloaded from <a href="https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox">File Exchange</a> or <a href="https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB">GitHub</a>. The downloaded zip folder contains the following:</p><div><ul><li><b>docs</b> &#8594; Contains the HTML documentation. To open a copy of the HTML documentation locally on your computer (without need of an internet connection), open docs/index.html.</li><li><b>INSTALL</b> &#8594; Contains the toolbox installer (Numerical Differentiation Toolbox.mltbx).</li><li><b>licenses</b> &#8594; Contains the software licenses.</li><li><b>README.md</b> &#8594; Markdown documentation for GitHub repository.</li><li><b>Technical Documentation</b> &#8594; Contains the technical documentation (Numerical_Differentiation_Using_the_Complex-Step_Approximation.pdf) for the various algorithms.</li><li><b>tests</b> &#8594; Code for unit tests.</li><li><b>toolbox</b> &#8594; Contains all the functions specific to this toolbox.</li></ul></div><p><b>To install as a toolbox</b>, simply open "Numerical Differentiation Toolbox.mltbx" in the "INSTALL" folder. MATLAB will automatically perform the installation and add all the functions included in the toolbox to the MATLAB search path.</p><p>Alternatively, all the functions in the "toolbox" folder can be used independently.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Numerical Differentiation Toolbox Documentation
+%
+% <<numerical_differentiation_toolbox.png>>
+%
+% Copyright © 2021 Tamas Kis
+%% Differentiation Using the Complex-Step Approximation
+% * <iderivative_doc.html *|iderivative|*> Derivative of a univariate, scalar or vector-valued function.
+% * <ipartial_doc.html *|ipartial|*> Partial derivative of a multivariate, scalar or vector-valued function.
+% * <igradient_doc.html *|igradient|*> Gradient of a multivariate, scalar-valued function.
+% * <idirectional_doc.html *|idirectional|*> Directional derivative of a multivariate, scalar-valued function.
+% * <ijacobian_doc.html *|ijacobian|*> Jacobian matrix of a multivariate, vector-valued function.
+% * <ihessian_doc.html *|ihessian|*> Hessian matrix of a multivariate, scalar-valued function.
+%% Complexified Functions
+% * <iabs_doc.html *|iabs|*> "Complexified" version of the absolute value (|iabs|) function.
+% * <iatan2_doc.html *|iatan2|*> "Complexified" version of the four quadrant inverse tangent (|atan2|) function (in radians).
+% * <iatan2d_doc.html *|iatan2d|*> "Complexified" version of the four quadrant inverse tangent (|atan2d|) function (in degrees).
+%% Differentiation Using the Backward Difference Approximation
+% * <derivative2_doc.html *|derivative2|*> Derivative of a univariate, scalar or vector-valued function.
+% * <partial2_doc.html *|partial2|*> Partial derivative of a multivariate, scalar or vector-valued function.
+% * <gradient2_doc.html *|gradient2|*> Gradient of a multivariate, scalar-valued function.
+% * <directional2_doc.html *|directional2|*> Directional derivative of a multivariate, scalar-valued function.
+% * <jacobian2_doc.html *|jacobian2|*> Jacobian matrix of a multivariate, vector-valued function.
+%% Technical Documentation
+% Click <https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf here>.
+%% Warnings/Disclaimers
+% * Whenever a transpose is used in a function that is being differentiated
+% using the complex-step approximation, special care must be taken to use
+% the non-conjugate transpose (|.'|) instead of the conjugate transpose
+% (|'|) → see Section 1.4 of the <https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf
+% technical documentation>.
+% * There are some special cases of functions where the complex-step 
+% approximation will not work directly; for example, trying to
+% differentiate functions using MATLAB's |atan2| or |abs| would result in
+% errors. We can "complexify" these functions to make them suitable for use
+% with the complex-step approximation; in this toolbox, we have included
+% |iabs|, |iatan2|, and |iatan2d| in src/complexified. However, more
+% complexified functions can be found (programmed in Fortran) at
+% https://mdolab.engin.umich.edu/misc/files/complexify.f90.
+% * Most differentiable functions can be used with the various functions of
+% this toolbox. Functions that result in errors (likely due to
+% complexification issues) are summarized in Section 1.3.3 of the <https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf
+% technical documentation>.
+% * The functions in this toolbox cannot perform higher-order derivatives
+% (this limitation is discussed in Section 1.3.1 of the
+% <https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf
+% technical documentation>).
+% * All of the functions using the complex-step approximation (these 
+% functions can be identified by their prefixed "i") are (generally) 
+% accurate to double precision *with the exception of* 
+% <ihessian_doc.html |ihessian|>. An alternative that will perform better 
+% is the |hessian| function provided by the <https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation?s_tid=srchtitle Adaptive Robust Numerical Differentiation> toolbox.
+% * No error estimates are provided.
+%% Installation
+% The toolbox can be downloaded from <https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox File Exchange> or 
+% <https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB GitHub>.
+% The downloaded zip folder contains the following:
+%
+% * *docs* → Contains the HTML documentation. To open a copy of the HTML
+% documentation locally on your computer (without need of an internet
+% connection), open docs/index.html.
+% * *INSTALL* → Contains the toolbox installer (Numerical Differentiation Toolbox.mltbx).
+% * *licenses* → Contains the software licenses.
+% * *README.md* → Markdown documentation for GitHub repository.
+% * *Technical Documentation* → Contains the technical documentation (Numerical_Differentiation_Using_the_Complex-Step_Approximation.pdf) for the various algorithms.
+% * *tests* → Code for unit tests.
+% * *toolbox* → Contains all the functions specific to this toolbox.
+%
+% *To install as a toolbox*, simply open "Numerical Differentiation
+% Toolbox.mltbx" in the "INSTALL" folder. MATLAB will automatically perform
+% the installation and add all the functions included in the toolbox to the
+% MATLAB search path.
+% 
+% Alternatively, all the functions in the "toolbox" folder can be used 
+% independently.
+##### SOURCE END #####
+--></body></html>

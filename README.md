@@ -1,15 +1,15 @@
 # Numerical Differentiation Toolbox [![View Numerical Differentiation Toolbox on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox)
 
-This toolbox supplies functions to evaluate derivatives, partial derivatives, gradients, directional derivatives, Jacobian matrices, and Hessian matrices using both the complex-step and backward difference approximations of a derivative.
+This toolbox supplies functions to evaluate derivatives, partial derivatives, gradients, directional derivatives, Jacobian matrices, and Hessian matrices using the complex-step approximation of a derivative.
 
 
 ## Documentation
 
 [Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)\
-[Technical Documentation](https://tamaskis.github.io/documentation/Numerical_Differentiation.pdf)
+[Technical Documentation](https://tamaskis.github.io/documentation/Numerical_Differentiation_using_the_Complex_Step_Approximation.pdf)
 
 
-## Differentiation Using the Complex-Step Approximation
+## Differentiation Functions
 
 `df = iderivative(f,x0)`\
 `pf = ipartial(f,x0,j)`\
@@ -23,11 +23,3 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 `y = iabs(x)`\
 `z = iatan2(y,x)`\
 `z = iatan2d(y,x)`
-
-## Differentiation Using the Backward Difference Approximation
-
-`df = derivative2(f,xa,xb)`\
-`pf = partial2(f,xa,xb,j)`\
-`g = gradient2(f,xa,xb)`\
-`Dv = directional2(f,xa,xb,v)`\
-`J = jacobian2(f,xa,xb)`
