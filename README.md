@@ -41,4 +41,4 @@ doc_NDT tech
 `y = iabs(x)`\
 `z = iatan2(y,x)`\
 `z = iatan2d(y,x)`\
-`y = inorm(x)`\
+`y = inorm(x)`
