@@ -1,8 +1,10 @@
 %% iderivative_test.m
+% Numerical Differentiation Toolbox
+%
 % Unit testing of the iderivative function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-26
+% Last Update: 2021-12-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 
@@ -23,7 +25,7 @@ err = 1e-10;
 
 %% FUNCTIONS THAT WILL RESULT IN ERRORS
 
-% absolute value (x0 > 0 and x0 < 0) -- FIX IN NEXT SECTION
+% absolute value (x0 > 0 and x0 < 0) --> FIX IN NEXT SECTION
 TEST_UNEQUAL(iderivative(@(x) abs(x), -1), -1, err);
 TEST_UNEQUAL(iderivative(@(x) abs(x),  1),  1, err);
 

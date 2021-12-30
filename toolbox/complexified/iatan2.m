@@ -8,7 +8,7 @@
 % See also atan2.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-29
+% Last Update: 2021-12-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -35,10 +35,10 @@
 %   z       - (1×1 complex) four quadrant inverse tangent of (x,y) [rad]
 %
 %==========================================================================
-function result = iatan2(y,x)
+function z = iatan2(y,x)
     a = real(y);
     b = imag(y);
     c = real(x);
     d = imag(x);
-    result = atan2(a,c)+1i*((c*b-a*d)/(a^2+c^2));
+    z = atan2(a,c)+1i*((c*b-a*d)/(a^2+c^2));
 end

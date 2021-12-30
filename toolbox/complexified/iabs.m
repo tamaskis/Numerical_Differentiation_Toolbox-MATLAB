@@ -7,7 +7,7 @@
 % See also abs.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-29
+% Last Update: 2021-12-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -33,10 +33,10 @@
 %   y       - (1×1 complex) absolute value of x
 %
 %==========================================================================
-function result = iabs(x)
+function y = iabs(x)
     if (real(x) < 0)
-        result = -real(x)-1i*imag(x);
+        y = -real(x)-1i*imag(x);
     else
-        result = x;
+        y = x;
     end
 end

@@ -40,4 +40,5 @@ doc_NDT tech
 ## "Complexified" Functions
 `y = iabs(x)`\
 `z = iatan2(y,x)`\
-`z = iatan2d(y,x)`
+`z = iatan2d(y,x)`\
+`y = inorm(x)`\

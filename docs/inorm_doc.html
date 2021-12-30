@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>iabs</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-12-30"><meta name="DC.source" content="iabs_doc.m"><style type="text/css">
+      --><title>inorm</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-12-30"><meta name="DC.source" content="inorm_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>iabs</tt></h1><!--introduction--><p>"Complexified" version of the absolute value (<tt>abs</tt>) function.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">y = iabs(x)
-</pre><h2 id="2">Description</h2><p><tt>y = iabs(x)</tt> returns the absolute value of <tt>x</tt>.</p><h2 id="3">Input/Output Parameters</h2><p>
+  </style></head><body><div class="content"><h1><tt>inorm</tt></h1><!--introduction--><p>"Complexified" version of the 2-norm (<tt>norm</tt>) function.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">y = inorm(x)
+</pre><h2 id="2">Description</h2><p><tt>y = inorm(x)</tt> evaluates the 2-norm of <tt>x</tt>.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
           <td></td>
@@ -80,28 +80,28 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       <tr>
           <td rowspan="1" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>x</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
           <td>input argument</td>
-          <td style="text-align:center">1×1<BR>complex</td>
+          <td style="text-align:center">n×1<BR>complex</td>
       </tr>
       <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
           <td style="text-align:center"><TT>y</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;y" title="" /></td>
-          <td>absolute value of <img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;y=\|\mathbf{x}\|" title="" /></td>
+          <td>2-norm of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
           <td style="text-align:center">1×1<BR>complex</td>
       </tr>
   </table>
-</p><h2 id="4">See also</h2><p><a href="https://www.mathworks.com/help/matlab/ref/abs.html"><tt>abs</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+</p><h2 id="4">See also</h2><p><a href="https://www.mathworks.com/help/matlab/ref/norm.html"><tt>norm</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% |iabs|
-% "Complexified" version of the absolute value (|abs|) function.
+%% |inorm|
+% "Complexified" version of the 2-norm (|norm|) function.
 % 
 % <index.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
-%   y = iabs(x)
+%   y = inorm(x)
 %% Description
-% |y = iabs(x)| returns the absolute value of |x|.
+% |y = inorm(x)| evaluates the 2-norm of |x|.
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -115,20 +115,20 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>x</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
 %           <td>input argument</td>
-%           <td style="text-align:center">1×1<BR>complex</td>
+%           <td style="text-align:center">n×1<BR>complex</td>
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
 %           <td style="text-align:center"><TT>y</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;y" title="" /></td>
-%           <td>absolute value of <img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;y=\|\mathbf{x}\|" title="" /></td>
+%           <td>2-norm of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /></td>
 %           <td style="text-align:center">1×1<BR>complex</td>
 %       </tr>
 %   </table>
 % </html>
 %% See also
-% <https://www.mathworks.com/help/matlab/ref/abs.html |abs|>
+% <https://www.mathworks.com/help/matlab/ref/norm.html |norm|>
 ##### SOURCE END #####
 --></body></html>
