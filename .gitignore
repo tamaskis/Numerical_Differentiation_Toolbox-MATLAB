@@ -1,4 +1,5 @@
 .DS_Store
 local/
 INSTALL/Numerical Differentiation Toolbox.prj
+INSTALL/remove_paths.m
 docsgeneration/
