@@ -9,7 +9,7 @@
 % See also iderivative, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-29
+% Last Update: 2022-02-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -35,7 +35,7 @@
 %   x0      - (n×1 double) point at which to differentiate
 %   j       - (1×1 double) index of element of x to differentiate with 
 %             respect to
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to √(ɛ), where ɛ
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
 %             is double precision)
 %
 % -------

@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-29
+% Last Update: 2022-02-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -36,7 +36,7 @@
 %   x0      - (n×1 double) point at which to evaluate the directional
 %             derivative
 %   v       - (n×1 double) vector defining direction of differentiation
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to √(ɛ), where ɛ
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
 %             is double precision)
 %
 % -------
