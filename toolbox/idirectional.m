@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-02-05
+% Last Update: 2022-03-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,19 +31,19 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, scalar-valued function 
-%             (f:Rn->R)
+%   f       - (1×1 function_handle) multivariate, scalar-valued function,
+%             f(x) (f : ℝⁿ → ℝ)
 %   x0      - (n×1 double) point at which to evaluate the directional
-%             derivative
-%   v       - (n×1 double) vector defining direction of differentiation
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
-%             is double precision)
+%             derivative, x₀ ∈ ℝⁿ
+%   v       - (n×1 double) vector defining direction of differentiation, 
+%             v ∈ ℝⁿ
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
 % -------
-%   Dv      - (1×1 double) directional derivative of f evaluated at x0 in
-%             the direction of v
+%   Dv      - (1×1 double) directional derivative of f evaluated at x = x₀
+%             in the direction of v
 %
 % -----
 % NOTE:
@@ -55,7 +55,7 @@ function Dv = idirectional(f,x0,v,h)
     
     % sets the default step size if not input
     if nargin == 3 || isempty(h)
-        h = sqrt(eps);
+        h = 1e-200;
     end
     
     % determines dimension of x

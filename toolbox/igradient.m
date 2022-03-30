@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-02-05
+% Last Update: 2022-03-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,16 +31,15 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, scalar-valued function 
-%             (f:Rn->R)
-%   x0      - (n×1 double) point at which to evaluate the gradient
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
-%             is double precision)
+%   f       - (1×1 function_handle) multivariate, scalar-valued function,
+%             f(x) (f : ℝⁿ → ℝ)
+%   x0      - (n×1 double) point at which to evaluate the gradient, x₀ ∈ ℝⁿ
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
 % -------
-%   g       - (n×1 double) gradient of f evaluated at x0
+%   g       - (n×1 double) gradient of f evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -52,7 +51,7 @@ function g = igradient(f,x0,h)
     
     % sets the default step size if not input
     if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+        h = 1e-200;
     end
     
     % determines dimension of x

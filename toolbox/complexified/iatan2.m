@@ -1,14 +1,14 @@
 %==========================================================================
 %
-% iatan2 "Complexified" version of the four quadrant inverse tangent 
-% (atan2) function (in radians).
+% iatan2  Four-quadrant inverse tangent in radians ("complexified" version 
+% of the |atan2| function).
 %
 %   z = iatan2(y,x)
 %
 % See also atan2.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-30
+% Last Update: 2022-03-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

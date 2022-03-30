@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% ipartial Partial derivative of a multivariate, scalar or vector-valued 
+% ipartial  Partial derivative of a multivariate, scalar or vector-valued 
 % function using the complex-step approximation.
 %
 %   pf = ipartial(f,x0,j)
@@ -9,7 +9,7 @@
 % See also iderivative, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-02-05
+% Last Update: 2022-03-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,18 +31,17 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar or vector-valued 
-%             function (f:Rn->R or f:Rn->Rm)
-%   x0      - (n×1 double) point at which to differentiate
+%             function, f(x) (f:ℝⁿ→ℝ or f:ℝⁿ→ℝᵐ)
+%   x0      - (n×1 double) point at which to differentiate, x₀ ∈ ℝⁿ
 %   j       - (1×1 double) index of element of x to differentiate with 
 %             respect to
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
-%             is double precision)
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
 % -------
-%   pf      - (m×1 double) partial derivative of f with respect to xj, 
-%             evaluated at x0
+%   pf      - (m×1 double) partial derivative of f with respect to xⱼ, 
+%             evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -55,7 +54,7 @@ function pf = ipartial(f,x0,j,h)
 
     % sets the default step size if not input
     if nargin == 3 || isempty(h)
-        h = sqrt(eps);
+        h = 1e-200;
     end
     
     % redefine x0

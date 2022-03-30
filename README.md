@@ -42,4 +42,7 @@ doc_NDT tech
 `z = iatan2(y,x)`\
 `z = iatan2d(y,x)`\
 `z = idot(x,y)`\
+`m = imax(x1,x2)`\
+`m = imin(x1,x2)`\
+`r = imod(a,n)`\
 `y = inorm(x)`

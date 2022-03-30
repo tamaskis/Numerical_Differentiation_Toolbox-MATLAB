@@ -1,14 +1,14 @@
 %==========================================================================
 %
-% iatan2d "Complexified" version of the four quadrant inverse tangent 
-% (atan2d) function (in degrees).
+% iatan2d  Four-quadrant inverse tangent in degrees ("complexified" version
+% of the |atan2d| function).
 %
 %   z = iatan2d(y,x)
 %
 % See also atan2d.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-30
+% Last Update: 2022-03-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

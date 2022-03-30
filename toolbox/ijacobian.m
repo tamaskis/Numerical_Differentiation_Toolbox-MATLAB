@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, idirectional, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-02-05
+% Last Update: 2022-03-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,16 +31,16 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, vector-valued function 
-%             (f:Rn->Rm)
-%   x0      - (n×1 double) point at which to evaluate the Jacobian matrix
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
-%             is double precision)
+%   f       - (1×1 function_handle) multivariate, vector-valued function,
+%             f(x) (f : ℝⁿ → ℝᵐ)
+%   x0      - (n×1 double) point at which to evaluate the Jacobian matrix, 
+%             x₀ ∈ ℝⁿ
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
 % -------
-%   J       - (m×n double) Jacobian matrix of f evaluated at x0
+%   J       - (m×n double) Jacobian matrix of f evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -52,7 +52,7 @@ function J = ijacobian(f,x0,h)
 
     % sets the default step size if not input
     if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+        h = 1e-200;
     end
     
     % determines size of Jacobian

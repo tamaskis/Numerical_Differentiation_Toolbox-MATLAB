@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% iabs "Complexified" version of the absolute value (abs) function.
+% iabs  Absolute value ("complexified" version of the |abs| function).
 %
 %   y = iabs(x)
 %
 % See also abs.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-30
+% Last Update: 2022-03-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

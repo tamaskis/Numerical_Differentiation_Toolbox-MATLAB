@@ -9,7 +9,7 @@
 % See also ipartial, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-02-05
+% Last Update: 2022-03-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,15 +31,14 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) univariate, scalar or vector-valued 
-%             function (f:R->R or f:R->Rm)
-%   x0      - (1×1 double) point at which to differentiate
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
-%             is double precision)
+%             function, f(x) (f:ℝ→ℝ or f:ℝ→ℝᵐ)
+%   x0      - (1×1 double) point at which to differentiate, x₀ ∈ ℝ
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
 % -------
-%   df      - (m×1 double) derivative of f(x) evaluated at x0
+%   df      - (m×1 double) derivative of f evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -52,7 +51,7 @@ function df = iderivative(f,x0,h)
 
     % sets the default step size if not input
     if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+        h = 1e-200;
     end
     
     % evaluates derivative
