@@ -20,17 +20,23 @@ addpath(genpath("../toolbox"));
 
 
 
+%% NOTE
+
+% See https://www.wolframalpha.com/input?i=min%28x%2Cx%5E3%29 for a plot of
+% f(x) and the definition of its derivative, f'(x).
+
+
+
 %% UNIT TESTS
 
 % function
-h = @(x) imin(x,1-0.5*x);
+f = @(x) imin(x,x^3);
 
 % units tests
-TEST_EQUAL(iderivative(h,-1),dhdx(-1));
-TEST_EQUAL(iderivative(h,0),dhdx(0));
-TEST_EQUAL(iderivative(h,1),dhdx(1));
-TEST_EQUAL(iderivative(h,2),dhdx(2));
-TEST_EQUAL(iderivative(h,3),dhdx(3));
+TEST_EQUAL(iderivative(f,-1.5),dfdx(-1.5));
+TEST_EQUAL(iderivative(f,-0.5),dfdx(-0.5));
+TEST_EQUAL(iderivative(f,0.5),dfdx(0.5));
+TEST_EQUAL(iderivative(f,1.5),dfdx(1.5));
 
 
 
@@ -42,11 +48,13 @@ fprintf("All tests passed.\n")
 
 %% AUXILIARY FUNCTION
 
-% h'(x)
-function dh = dhdx(x)
-    if x < 1
-        dh = 1;
+% f'(x)
+function df = dfdx(x)
+    if ((-1 < x) && (x < 0)) || (x > 1)
+        df = 1;
+    elseif ((0 < x) && (x < 1)) || (x < -1)
+        df = 3*x^2;
     else
-        dh = -0.5;
+        df = NaN;
     end
 end

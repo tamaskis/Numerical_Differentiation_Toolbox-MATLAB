@@ -20,17 +20,23 @@ addpath(genpath("../toolbox"));
 
 
 
+%% NOTE
+
+% See https://www.wolframalpha.com/input?i=max%28x%2Cx%5E3%29 for a plot of
+% f(x) and the definition of its derivative, f'(x).
+
+
+
 %% UNIT TESTS
 
 % function
-g = @(x) imax(x,1-0.5*x);
+f = @(x) imax(x,x^3);
 
 % units tests
-TEST_EQUAL(iderivative(g,-1),dgdx(-1));
-TEST_EQUAL(iderivative(g,0),dgdx(0));
-TEST_EQUAL(iderivative(g,1),dgdx(1));
-TEST_EQUAL(iderivative(g,2),dgdx(2));
-TEST_EQUAL(iderivative(g,3),dgdx(3));
+TEST_EQUAL(iderivative(f,-1.5),dfdx(-1.5));
+TEST_EQUAL(iderivative(f,-0.5),dfdx(-0.5));
+TEST_EQUAL(iderivative(f,0.5),dfdx(0.5));
+TEST_EQUAL(iderivative(f,1.5),dfdx(1.5));
 
 
 
@@ -42,11 +48,13 @@ fprintf("All tests passed.\n")
 
 %% AUXILIARY FUNCTION
 
-% g'(x)
-function dg = dgdx(x)
-    if x < 1
-        dg = -0.5;
+% f'(x)
+function df = dfdx(x)
+    if ((0 < x) && (x < 1)) || (x < -1)
+        df = 1;
+    elseif ((-1 < x) && (x < 0)) || (x > 1)
+        df = 3*x^2;
     else
-        dg = 1;
+        df = NaN;
     end
 end
