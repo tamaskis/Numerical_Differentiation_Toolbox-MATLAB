@@ -9,7 +9,7 @@
 % See also iderivative, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-03-30
+% Last Update: 2022-04-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,7 +31,7 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar or vector-valued 
-%             function, f(x) (f:ℝⁿ→ℝ or f:ℝⁿ→ℝᵐ)
+%             function, f(x) (f : ℝⁿ → ℝ or f : ℝⁿ → ℝᵐ)
 %   x0      - (n×1 double) point at which to differentiate, x₀ ∈ ℝⁿ
 %   j       - (1×1 double) index of element of x to differentiate with 
 %             respect to

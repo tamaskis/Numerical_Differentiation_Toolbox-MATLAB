@@ -9,7 +9,7 @@
 % See also ipartial, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-03-09
+% Last Update: 2022-04-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,7 +31,7 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) univariate, scalar or vector-valued 
-%             function, f(x) (f:ℝ→ℝ or f:ℝ→ℝᵐ)
+%             function, f(x) (f : ℝ → ℝ or f : ℝ → ℝᵐ)
 %   x0      - (1×1 double) point at which to differentiate, x₀ ∈ ℝ
 %   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
