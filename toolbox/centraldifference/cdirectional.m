@@ -75,6 +75,6 @@ function Dv = cdirectional(f,x0,v,h)
     end
     
     % evaluates directional derivative
-    Dv = dot(v,g);
+    Dv = g.'*v;
     
 end
