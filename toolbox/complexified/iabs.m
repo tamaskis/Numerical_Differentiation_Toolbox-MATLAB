@@ -17,9 +17,6 @@
 % TECHNICAL DOCUMENTATION:
 % https://tamaskis.github.io/documentation/Numerical_Differentiation_using_the_Complex_Step_Approximation.pdf
 %
-% REFERENCES:
-%   [1] https://mdolab.engin.umich.edu/misc/files/complexify.f90
-%
 %--------------------------------------------------------------------------
 %
 % ------

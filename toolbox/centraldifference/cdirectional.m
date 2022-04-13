@@ -62,16 +62,16 @@ function Dv = cdirectional(f,x0,v,h)
     
     % evaluates gradient
     for k = 1:n
-
+        
         % absolute step size
         dxk = h*(1+abs(x0(k)));
-
+        
         % auxiliary variable
         xk = e(:,k)*dxk;
         
         % partial derivative of f with respect to xₖ
         g(k) = (f(x0+xk)-f(x0-xk))/(2*dxk);
-
+        
     end
     
     % evaluates directional derivative

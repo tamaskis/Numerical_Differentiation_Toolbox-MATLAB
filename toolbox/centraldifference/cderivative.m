@@ -42,12 +42,12 @@
 %
 %==========================================================================
 function df = cderivative(f,x0,h)
-
+    
     % defaults relative step size if not input
     if nargin == 2 || isempty(h)
         h = eps^(1/3);
     end
-
+    
     % absolute step size
     dx = h*(1+abs(x0));
     

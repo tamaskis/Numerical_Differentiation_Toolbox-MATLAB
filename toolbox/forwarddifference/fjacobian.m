@@ -42,7 +42,7 @@
 %
 %==========================================================================
 function J = fjacobian(f,x0,h)
-
+    
     % defaults relative step size if not input
     if nargin == 2 || isempty(h)
         h = sqrt(eps);
@@ -59,14 +59,14 @@ function J = fjacobian(f,x0,h)
     e = eye(n);
     
     % evaluates Jacobian matrix
-    for j = 1:n
-
+    for k = 1:n
+        
         % absolute step size
         dxk = h*(1+abs(x0(k)));
         
         % vector of partial derivatives of f with respect to xₖ
         J(:,k) = (f(x0+e(:,k)*dxk)-f(x0))/dxk;
-
+        
     end
     
 end

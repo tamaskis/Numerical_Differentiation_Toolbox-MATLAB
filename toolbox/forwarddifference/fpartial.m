@@ -44,15 +44,15 @@
 %
 %==========================================================================
 function pf = fpartial(f,x0,k,h)
-
+    
     % defaults relative step size if not input
     if nargin == 3 || isempty(h)
         h = sqrt(eps);
     end
-
+    
     % absolute step size
     dxk = h*(1+abs(x0(k)));
-
+    
     % auxiliary variable
     xk = x0;
     xk(k) = xk(k)+dxk;

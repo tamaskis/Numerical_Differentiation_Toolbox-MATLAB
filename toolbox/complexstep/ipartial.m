@@ -29,8 +29,7 @@
 %   x0      - (n×1 double) point at which to differentiate, x₀ ∈ ℝⁿ
 %   k       - (1×1 double) index of element of x to differentiate with 
 %             respect to
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to 
-%             10⁻²⁰⁰)
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -45,8 +44,8 @@
 %
 %==========================================================================
 function pf = ipartial(f,x0,k,h)
-
-    % defaults relative step size if not input
+    
+    % defaults step size if not input
     if nargin == 3 || isempty(h)
         h = 1e-200;
     end

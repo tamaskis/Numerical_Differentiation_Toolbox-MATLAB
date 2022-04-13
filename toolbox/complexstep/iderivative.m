@@ -33,8 +33,7 @@
 %   f       - (1×1 function_handle) univariate, scalar or vector-valued 
 %             function, f(x) (f : ℝ → ℝ or f : ℝ → ℝᵐ)
 %   x0      - (1×1 double) point at which to differentiate, x₀ ∈ ℝ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to 
-%             10⁻²⁰⁰)
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -49,8 +48,8 @@
 %
 %==========================================================================
 function df = iderivative(f,x0,h)
-
-    % defaults relative step size if not input
+    
+    % defaults step size if not input
     if nargin == 2 || isempty(h)
         h = 1e-200;
     end

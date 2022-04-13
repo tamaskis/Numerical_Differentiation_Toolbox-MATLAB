@@ -19,15 +19,6 @@
 % TECHNICAL DOCUMENTATION:
 % https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf
 %
-% REFERENCES:
-%   [1] Martins et. al, "The Complex-Step Derivative Approximation",
-%       https://dl.acm.org/doi/pdf/10.1145/838250.838251
-%   [2] Squire et. al, "Using Complex Variables to Estimate Derivatives of 
-%       "Real Functions", https://epubs.siam.org/doi/pdf/10.1137/S003614459631241X
-%   [3] https://en.wikipedia.org/wiki/Hessian_matrix
-%   [4] https://www.mathworks.com/matlabcentral/fileexchange/65434-dt-qp-project?s_tid=srchtitle
-%   [5] https://www.mathworks.com/matlabcentral/fileexchange/18177-complex-step-hessian?s_tid=srchtitle
-%
 %--------------------------------------------------------------------------
 %
 % ------
@@ -37,7 +28,7 @@
 %             f(x) (f : ℝⁿ → ℝ)
 %   x0      - (n×1 double) point at which to evaluate the Hessian matrix, 
 %             x₀ ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ɛ)
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to √ɛ)
 %
 % -------
 % OUTPUT:
@@ -52,7 +43,7 @@
 %==========================================================================
 function H = ihessian(f,x0,h)
     
-    % defaults relative step size if not input
+    % defaults step size if not input
     if nargin == 2 || isempty(h)
         h = sqrt(eps);
     end
@@ -89,7 +80,7 @@ function H = ihessian(f,x0,h)
             H(j,k) = H(k,j);
             
         end
-
+        
     end
     
 end

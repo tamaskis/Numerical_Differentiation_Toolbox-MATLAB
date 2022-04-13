@@ -19,13 +19,6 @@
 % TECHNICAL DOCUMENTATION:
 % https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf
 %
-% REFERENCES:
-%   [1] Martins et. al, "The Complex-Step Derivative Approximation",
-%       https://dl.acm.org/doi/pdf/10.1145/838250.838251
-%   [2] Squire et. al, "Using Complex Variables to Estimate Derivatives of 
-%       "Real Functions", https://epubs.siam.org/doi/pdf/10.1137/S003614459631241X
-%   [3] https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant
-%
 %--------------------------------------------------------------------------
 %
 % ------
@@ -35,8 +28,7 @@
 %             f(x) (f : ℝⁿ → ℝᵐ)
 %   x0      - (n×1 double) point at which to evaluate the Jacobian matrix, 
 %             x₀ ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to 
-%             10⁻²⁰⁰)
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -50,8 +42,8 @@
 %
 %==========================================================================
 function J = ijacobian(f,x0,h)
-
-    % defaults relative step size if not input
+    
+    % defaults step size if not input
     if nargin == 2 || isempty(h)
         h = 1e-200;
     end
