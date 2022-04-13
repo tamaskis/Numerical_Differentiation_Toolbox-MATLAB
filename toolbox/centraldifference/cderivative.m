@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % cderivative  Derivative of a univariate, scalar or vector-valued function
-% using the forward difference approximation.
+% using the central difference approximation.
 %
 %   df = cderivative(f,x0)
 %   df = cderivative(f,x0,h)
@@ -45,13 +45,13 @@ function df = cderivative(f,x0,h)
 
     % defaults relative step size if not input
     if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+        h = eps^(1/3);
     end
 
     % absolute step size
     dx = h*(1+abs(x0));
     
     % evaluates derivative
-    df = (f(x0+dx)-f(x0))/dx;
+    df = (f(x0+dx)-f(x0-dx))/(2*dx);
     
 end

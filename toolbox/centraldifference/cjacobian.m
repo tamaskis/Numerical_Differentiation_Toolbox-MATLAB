@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % cjacobian  Jacobian matrix of a multivariate, vector-valued function 
-% using the forward difference approximation.
+% using the central difference approximation.
 %
 %   J = cjacobian(f,x0)
 %   J = cjacobian(f,x0,h)
@@ -28,7 +28,7 @@
 %             f(x) (f : ℝⁿ → ℝᵐ)
 %   x0      - (n×1 double) point at which to evaluate the Jacobian matrix, 
 %             x₀ ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
+%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to ε¹ᐟ³)
 %
 % -------
 % OUTPUT:
@@ -45,7 +45,7 @@ function J = cjacobian(f,x0,h)
 
     % defaults relative step size if not input
     if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+        h = eps^(1/3);
     end
     
     % determines size of Jacobian
@@ -63,9 +63,12 @@ function J = cjacobian(f,x0,h)
 
         % absolute step size
         dxk = h*(1+abs(x0(k)));
+
+        % auxiliary variable
+        xk = e(:,k)*dxk;
         
         % vector of partial derivatives of f with respect to xₖ
-        J(:,k) = (f(x0+e(:,k)*dxk)-f(x0))/dxk;
+        J(:,k) = (f(x0+xk)-f(x0-xk))/(2*dxk);
 
     end
     

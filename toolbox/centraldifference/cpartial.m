@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % cpartial  Partial derivative of a multivariate, scalar-valued function 
-% using the forward difference approximation.
+% using the central difference approximation.
 %
 %   pf = cpartial(f,x0,k)
 %   pf = cpartial(f,x0,k,h)
@@ -29,7 +29,7 @@
 %   x0      - (n×1 double) point at which to differentiate, x₀ ∈ ℝⁿ
 %   k       - (1×1 double) index of element of x to differentiate with 
 %             respect to
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
+%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to ε¹ᐟ³)
 %
 % -------
 % OUTPUT:
@@ -47,17 +47,19 @@ function pf = cpartial(f,x0,k,h)
 
     % defaults relative step size if not input
     if nargin == 3 || isempty(h)
-        h = sqrt(eps);
+        h = eps^(1/3);
     end
 
     % absolute step size
     dxk = h*(1+abs(x0(k)));
 
-    % auxiliary variable
-    xk = x0;
-    xk(k) = xk(k)+dxk;
+    % auxiliary variables
+    x1 = x0;
+    x2 = x0;
+    x1(k) = x1(k)-dxk;
+    x2(k) = x2(k)+dxk;
     
     % evaluates partial derivative with respect to xₖ
-    pf = (f(xk)-f(x0))/dxk;
+    pf = (f(x2)-f(x1))/(2*dxk);
     
 end

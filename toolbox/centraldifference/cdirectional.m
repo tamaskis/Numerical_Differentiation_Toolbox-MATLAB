@@ -1,12 +1,12 @@
 %==========================================================================
 %
-% cgradient  Gradient of a multivariate, scalar-valued function using the 
-% forward difference approximation.
+% cdirectional  Directional derivative of a multivariate, scalar-valued
+% function using the central difference approximation.
 %
-%   g = cgradient(f,x0)
-%   g = cgradient(f,x0,h)
+%   Dv = cdirectional(f,x0,v)
+%   Dv = cdirectional(f,x0,v,h)
 %
-% See also cderivative, cpartial, cdirectional, cjacobian, chessian.
+% See also cderivative, cpartial, cgradient, cjacobian, chessian.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-04-11
@@ -26,13 +26,17 @@
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
 %             f(x) (f : ℝⁿ → ℝ)
-%   x0      - (n×1 double) point at which to evaluate the gradient, x₀ ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
+%   x0      - (n×1 double) point at which to evaluate the directional
+%             derivative, x₀ ∈ ℝⁿ
+%   v       - (n×1 double) vector defining direction of differentiation, 
+%             v ∈ ℝⁿ
+%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to ε¹ᐟ³)
 %
 % -------
 % OUTPUT:
 % -------
-%   g       - (n×1 double) gradient of f evaluated at x = x₀
+%   Dv      - (1×1 double) directional derivative of f evaluated at x = x₀
+%             in the direction of v
 %
 % -----
 % NOTE:
@@ -40,11 +44,11 @@
 %   --> This function requires 2n evaluations of f(x).
 %
 %==========================================================================
-function g = cgradient(f,x0,h)
+function Dv = cdirectional(f,x0,v,h)
     
     % defaults relative step size if not input
-    if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+    if nargin == 3 || isempty(h)
+        h = eps^(1/3);
     end
     
     % determines dimension of x
@@ -61,10 +65,16 @@ function g = cgradient(f,x0,h)
 
         % absolute step size
         dxk = h*(1+abs(x0(k)));
+
+        % auxiliary variable
+        xk = e(:,k)*dxk;
         
         % partial derivative of f with respect to xₖ
-        g(k) = (f(x0+e(:,k)*dxk)-f(x0))/dxk;
+        g(k) = (f(x0+xk)-f(x0-xk))/(2*dxk);
 
     end
+    
+    % evaluates directional derivative
+    Dv = dot(v,g);
     
 end
