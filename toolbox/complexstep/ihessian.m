@@ -17,7 +17,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_the_Complex_Step_Approximation.pdf
+% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf
 %
 % REFERENCES:
 %   [1] Martins et. al, "The Complex-Step Derivative Approximation",
@@ -37,8 +37,7 @@
 %             f(x) (f : ℝⁿ → ℝ)
 %   x0      - (n×1 double) point at which to evaluate the Hessian matrix, 
 %             x₀ ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √(ɛ), where ɛ
-%             is double precision)
+%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ɛ)
 %
 % -------
 % OUTPUT:
@@ -53,7 +52,7 @@
 %==========================================================================
 function H = ihessian(f,x0,h)
     
-    % sets the default step size if not input
+    % defaults relative step size if not input
     if nargin == 2 || isempty(h)
         h = sqrt(eps);
     end

@@ -17,7 +17,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_the_Complex_Step_Approximation.pdf
+% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf
 %
 % REFERENCES:
 %   [1] Martins et. al, "The Complex-Step Derivative Approximation",
@@ -33,7 +33,8 @@
 %   f       - (1×1 function_handle) univariate, scalar or vector-valued 
 %             function, f(x) (f : ℝ → ℝ or f : ℝ → ℝᵐ)
 %   x0      - (1×1 double) point at which to differentiate, x₀ ∈ ℝ
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
+%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to 
+%             10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -43,13 +44,13 @@
 % -----
 % NOTE:
 % -----
-%   --> If the function is scalar-valued, then m = 1.
 %   --> This function requires 1 evaluation of f(x).
+%   --> If the function is scalar-valued, then m = 1.
 %
 %==========================================================================
 function df = iderivative(f,x0,h)
 
-    % sets the default step size if not input
+    % defaults relative step size if not input
     if nargin == 2 || isempty(h)
         h = 1e-200;
     end
