@@ -58,7 +58,7 @@ function J = fjacobian(f,x0,h)
     % preallocates matrix to store Jacobian
     J = zeros(m,n);
     
-    % evaluates Jacobian matrix
+    % evaluates Jacobian
     for k = 1:n
         
         % absolute step size

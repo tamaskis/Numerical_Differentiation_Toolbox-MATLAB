@@ -9,7 +9,7 @@
 % See also cderivative, cpartial, cgradient, cjacobian, chessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -34,14 +34,13 @@
 % -------
 % OUTPUT:
 % -------
-%   Dv      - (1×1 double) directional derivative of f with respect to x in
-%             the direction of v, evaluated at x = x₀
+%   Dv      - (1×1 double) directional derivative of f evaluated at x = x₀
+%             in the direction of v
 %
 % -----
 % NOTE:
 % -----
 %   --> This function requires 2n evaluations of f(x).
-%   --> This implementation does NOT assume that v is a unit vector.
 %
 %==========================================================================
 function Dv = cdirectional(f,x0,v,h)
@@ -57,25 +56,20 @@ function Dv = cdirectional(f,x0,v,h)
     % preallocates vector to store gradient
     g = zeros(n,1);
     
+    % matrix storing standard basis vectors
+    e = eye(n);
+    
     % evaluates gradient
     for k = 1:n
         
         % absolute step size
         dxk = h*(1+abs(x0(k)));
         
-        % steps forward in kth direction
-        x0(k) = x0(k)+dxk;
-        f1 = f(x0);
+        % auxiliary variable
+        xk = e(:,k)*dxk;
         
-        % steps backward in kth direction
-        x0(k) = x0(k)-2*dxk;
-        f2 = f(x0);
-        
-        % evaluates partial derivative with respect to xₖ
-        g(k) = (f1-f2)/(2*dxk);
-        
-        % resets x0
-        x0(k) = x0(k)+dxk;
+        % partial derivative of f with respect to xₖ
+        g(k) = (f(x0+xk)-f(x0-xk))/(2*dxk);
         
     end
     

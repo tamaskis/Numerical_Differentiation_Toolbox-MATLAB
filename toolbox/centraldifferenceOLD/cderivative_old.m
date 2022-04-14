@@ -1,15 +1,15 @@
 %==========================================================================
 %
-% cpartial  Partial derivative of a multivariate, vector-valued function 
+% cderivative  Derivative of a univariate, scalar or vector-valued function
 % using the central difference approximation.
 %
-%   pf = cpartial(f,x0,k)
-%   pf = cpartial(f,x0,k,h)
+%   df = cderivative(f,x0)
+%   df = cderivative(f,x0,h)
 %
-% See also cderivative, cgradient, cdirectional, cjacobian, chessian.
+% See also cpartial, cgradient, cdirectional, cjacobian, chessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,17 +24,15 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, vector-valued function, 
-%             f(x) (f : ℝⁿ → ℝᵐ)
-%   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   k       - (1×1 double) element of x to differentiate with respect to
+%   f       - (1×1 function_handle) univariate, scalar or vector-valued 
+%             function, f(x) (f : ℝ → ℝ or f : ℝ → ℝᵐ)
+%   x0      - (1×1 double) evaluation point, x₀ ∈ ℝ
 %   h       - (1×1 double) (OPTIONAL) relative step size (defaults to ε¹ᐟ³)
 %
 % -------
 % OUTPUT:
 % -------
-%   pf      - (m×1 double) partial derivative of f with respect to xₖ, 
-%             evaluated at x = x₀
+%   df      - (m×1 double) derivative of f evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -43,25 +41,17 @@
 %   --> If the function is scalar-valued, then m = 1.
 %
 %==========================================================================
-function pf = cpartial(f,x0,k,h)
+function df = cderivative(f,x0,h)
     
     % defaults relative step size if not input
-    if nargin == 3 || isempty(h)
+    if nargin == 2 || isempty(h)
         h = eps^(1/3);
     end
     
     % absolute step size
-    dxk = h*(1+abs(x0(k)));
+    dx = h*(1+abs(x0));
     
-    % steps forward in kth direction
-    x0(k) = x0(k)+dxk;
-    f1 = f(x0);
-    
-    % steps backward in kth direction
-    x0(k) = x0(k)-2*dxk;
-    f2 = f(x0);
-    
-    % evaluates partial derivative with respect to xₖ
-    pf = (f1-f2)/(2*dxk);
+    % evaluates derivative
+    df = (f(x0+dx)-f(x0-dx))/(2*dx);
     
 end

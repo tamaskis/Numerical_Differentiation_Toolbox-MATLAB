@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% cjacobian  Jacobian of a multivariate, vector-valued function using the 
-% central difference approximation.
+% cjacobian  Jacobian matrix of a multivariate, vector-valued function 
+% using the central difference approximation.
 %
 %   J = cjacobian(f,x0)
 %   J = cjacobian(f,x0,h)
@@ -9,7 +9,7 @@
 % See also cderivative, cpartial, cgradient, cdirectional, chessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,8 +32,7 @@
 % -------
 % OUTPUT:
 % -------
-%   J       - (m×n double) Jacobian of f with respect to x, evaluated at 
-%             x = x₀
+%   J       - (m×n double) Jacobian matrix of f evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -52,28 +51,23 @@ function J = cjacobian(f,x0,h)
     m = length(f(x0));
     n = length(x0);
     
-    % preallocates matrix to store Jacobian
+    % preallocates array to store Jacobian matrix
     J = zeros(m,n);
     
-    % evaluates Jacobian
+    % matrix storing standard basis vectors
+    e = eye(n);
+    
+    % evaluates Jacobian matrix
     for k = 1:n
         
         % absolute step size
         dxk = h*(1+abs(x0(k)));
         
-        % steps forward in kth direction
-        x0(k) = x0(k)+dxk;
-        f1 = f(x0);
+        % auxiliary variable
+        xk = e(:,k)*dxk;
         
-        % steps backward in kth direction
-        x0(k) = x0(k)-2*dxk;
-        f2 = f(x0);
-        
-        % partial derivative of f with respect to xₖ
-        J(:,k) = (f1-f2)/(2*dxk);
-        
-        % resets x0
-        x0(k) = x0(k)+dxk;
+        % vector of partial derivatives of f with respect to xₖ
+        J(:,k) = (f(x0+xk)-f(x0-xk))/(2*dxk);
         
     end
     

@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% cpartial  Partial derivative of a multivariate, vector-valued function 
+% cpartial  Partial derivative of a multivariate, scalar-valued function 
 % using the central difference approximation.
 %
 %   pf = cpartial(f,x0,k)
@@ -9,7 +9,7 @@
 % See also cderivative, cgradient, cdirectional, cjacobian, chessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,10 +24,11 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, vector-valued function, 
-%             f(x) (f : ℝⁿ → ℝᵐ)
+%   f       - (1×1 function_handle) multivariate, scalar-valued function, 
+%             f(x) (f : ℝⁿ → ℝ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   k       - (1×1 double) element of x to differentiate with respect to
+%   k       - (1×1 double) index of element of x to differentiate with 
+%             respect to
 %   h       - (1×1 double) (OPTIONAL) relative step size (defaults to ε¹ᐟ³)
 %
 % -------
@@ -40,7 +41,6 @@
 % NOTE:
 % -----
 %   --> This function requires 2 evaluations of f(x).
-%   --> If the function is scalar-valued, then m = 1.
 %
 %==========================================================================
 function pf = cpartial(f,x0,k,h)
@@ -53,15 +53,13 @@ function pf = cpartial(f,x0,k,h)
     % absolute step size
     dxk = h*(1+abs(x0(k)));
     
-    % steps forward in kth direction
-    x0(k) = x0(k)+dxk;
-    f1 = f(x0);
-    
-    % steps backward in kth direction
-    x0(k) = x0(k)-2*dxk;
-    f2 = f(x0);
+    % auxiliary variables
+    x1 = x0;
+    x2 = x0;
+    x1(k) = x1(k)-dxk;
+    x2(k) = x2(k)+dxk;
     
     % evaluates partial derivative with respect to xₖ
-    pf = (f1-f2)/(2*dxk);
+    pf = (f(x2)-f(x1))/(2*dxk);
     
 end
