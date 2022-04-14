@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% fjacobian  Jacobian matrix of a multivariate, vector-valued function 
-% using the forward difference approximation.
+% fjacobian  Jacobian of a multivariate, vector-valued function using the 
+% forward difference approximation.
 %
 %   J = fjacobian(f,x0)
 %   J = fjacobian(f,x0,h)
@@ -9,7 +9,7 @@
 % See also fderivative, fpartial, fgradient, fdirectional, fhessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,12 +32,13 @@
 % -------
 % OUTPUT:
 % -------
-%   J       - (m×n double) Jacobian matrix of f evaluated at x = x₀
+%   J       - (m×n double) Jacobian of f with respect to x, evaluated at 
+%             x = x₀
 %
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2n+1 evaluations of f(x).
+%   --> This function requires n+1 evaluations of f(x).
 %
 %==========================================================================
 function J = fjacobian(f,x0,h)
@@ -47,15 +48,15 @@ function J = fjacobian(f,x0,h)
         h = sqrt(eps);
     end
     
+    % evaluates f(x₀)
+    f0 = f(x0);
+    
     % determines size of Jacobian
-    m = length(f(x0));
+    m = length(f0);
     n = length(x0);
     
-    % preallocates array to store Jacobian matrix
+    % preallocates matrix to store Jacobian
     J = zeros(m,n);
-    
-    % matrix storing standard basis vectors
-    e = eye(n);
     
     % evaluates Jacobian matrix
     for k = 1:n
@@ -63,8 +64,14 @@ function J = fjacobian(f,x0,h)
         % absolute step size
         dxk = h*(1+abs(x0(k)));
         
-        % vector of partial derivatives of f with respect to xₖ
-        J(:,k) = (f(x0+e(:,k)*dxk)-f(x0))/dxk;
+        % steps in kth direction
+        x0(k) = x0(k)+dxk;
+        
+        % partial derivative of f with respect to xₖ
+        J(:,k) = (f(x0)-f0)/dxk;
+        
+        % resets x0
+        x0(k) = x0(k)-dxk;
         
     end
     

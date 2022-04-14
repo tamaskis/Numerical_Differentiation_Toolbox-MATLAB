@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% fhessian  Hessian matrix of a multivariate, scalar-valued function using 
-% the forward difference approximation.
+% fhessian  Hessian of a multivariate, scalar-valued function using the 
+% forward difference approximation.
 %
 %   H = fhessian(f,x0)
 %   H = fhessian(f,x0,h)
@@ -32,8 +32,8 @@
 % -------
 % OUTPUT:
 % -------
-%   H       - (n×1 double) Hessian matrix of f with respect to x, evaluated
-%             at x = x₀
+%   H       - (n×1 double) Hessian of f with respect to x, evaluated at
+%             x = x₀
 %
 % -----
 % NOTE:
@@ -51,37 +51,37 @@ function H = fhessian(f,x0,h)
     % determines dimension of x0
     n = length(x0);
     
-    % preallocates array to store Hessian matrix
+    % preallocates matrix to store Hessian
     H = zeros(n);
     
     % evaluates f(x₀)
     f0 = f(x0);
-
+    
     % preallocates arrays to store absolute step sizes and function evals
     a = zeros(n,1);
     b = zeros(n,1);
-
+    
     % populates "a" and "b"
     for k = 1:n
         
         % absolute step size
         dxk = h*(1+abs(x0(k)));
-
+        
         % steps in kth direction
         x0(k) = x0(k)+dxk;
-
+        
         % function evaluation
         b(k) = f(x0);
-
+        
         % resets x0
         x0(k) = x0(k)-dxk;
-
+        
         % stores "dxk" in "a"
         a(k) = dxk;
-
+        
     end
     
-    % loops through hte upper triangular elements
+    % evaluates Hessian, looping through the upper triangular elements
     for k = 1:n
         for j = k:n
             
@@ -94,7 +94,7 @@ function H = fhessian(f,x0,h)
             
             % symmetry
             H(k,j) = H(j,k);
-
+            
             % resets x0
             x0(j) = x0(j)-a(j);
             x0(k) = x0(k)-a(k);

@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% fderivative  Derivative of a univariate, scalar or vector-valued function
-% using the forward difference approximation.
+% fderivative  Derivative of a univariate, vector-valued function using the 
+% forward difference approximation.
 %
 %   df = fderivative(f,x0)
 %   df = fderivative(f,x0,h)
@@ -9,7 +9,7 @@
 % See also fpartial, fgradient, fdirectional, fjacobian, fhessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,8 +24,8 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) univariate, scalar or vector-valued 
-%             function, f(x) (f : ℝ → ℝ or f : ℝ → ℝᵐ)
+%   f       - (1×1 function_handle) univariate, vector-valued function,
+%             f(x) (f : ℝ → ℝᵐ)
 %   x0      - (1×1 double) evaluation point, x₀ ∈ ℝ
 %   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
 %

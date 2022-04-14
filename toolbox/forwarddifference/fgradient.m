@@ -9,7 +9,7 @@
 % See also fderivative, fpartial, fdirectional, fjacobian, fhessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,12 +32,13 @@
 % -------
 % OUTPUT:
 % -------
-%   g       - (n×1 double) gradient of f evaluated at x = x₀
+%   g       - (n×1 double) gradient of f with respect to x, evaluated at 
+%             x = x₀
 %
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2n evaluations of f(x).
+%   --> This function requires n+1 evaluations of f(x).
 %
 %==========================================================================
 function g = fgradient(f,x0,h)
@@ -53,17 +54,23 @@ function g = fgradient(f,x0,h)
     % preallocates vector to store gradient
     g = zeros(n,1);
     
-    % matrix storing standard basis vectors
-    e = eye(n);
+    % evaluates f(x₀)
+    f0 = f(x0);
     
     % evaluates gradient
     for k = 1:n
         
         % absolute step size
         dxk = h*(1+abs(x0(k)));
+
+        % steps in kth direction
+        x0(k) = x0(k)+dxk;
         
-        % partial derivative of f with respect to xₖ
-        g(k) = (f(x0+e(:,k)*dxk)-f(x0))/dxk;
+        % evaluates partial derivative with respect to xₖ
+        g(k) = (f(x0)-f0)/dxk;
+
+        % resets x0
+        x0(k) = x0(k)-dxk;
         
     end
     

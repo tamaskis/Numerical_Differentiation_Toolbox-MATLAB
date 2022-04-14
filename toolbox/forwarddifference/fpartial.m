@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% fpartial  Partial derivative of a multivariate, scalar-valued function 
+% fpartial  Partial derivative of a multivariate, vector-valued function 
 % using the forward difference approximation.
 %
 %   pf = fpartial(f,x0,k)
@@ -9,7 +9,7 @@
 % See also fderivative, fgradient, fdirectional, fjacobian, fhessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,11 +24,10 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, scalar-valued function, 
-%             f(x) (f : ℝⁿ → ℝ)
+%   f       - (1×1 function_handle) multivariate, vector-valued function, 
+%             f(x) (f : ℝⁿ → ℝᵐ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   k       - (1×1 double) index of element of x to differentiate with 
-%             respect to
+%   k       - (1×1 double) element of x to differentiate with respect to
 %   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
 %
 % -------
@@ -41,6 +40,7 @@
 % NOTE:
 % -----
 %   --> This function requires 2 evaluations of f(x).
+%   --> If the function is scalar-valued, then m = 1.
 %
 %==========================================================================
 function pf = fpartial(f,x0,k,h)
@@ -49,15 +49,17 @@ function pf = fpartial(f,x0,k,h)
     if nargin == 3 || isempty(h)
         h = sqrt(eps);
     end
+
+    % evaluates f(x₀)
+    f0 = f(x0);
     
     % absolute step size
     dxk = h*(1+abs(x0(k)));
     
-    % auxiliary variable
-    xk = x0;
-    xk(k) = xk(k)+dxk;
+    % steps in kth direction
+    x0(k) = x0(k)+dxk;
     
     % evaluates partial derivative with respect to xₖ
-    pf = (f(xk)-f(x0))/dxk;
+    pf = (f(x0)-f0)/dxk;
     
 end
