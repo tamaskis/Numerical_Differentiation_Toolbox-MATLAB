@@ -1,15 +1,15 @@
 %==========================================================================
 %
-% ihessian  Hessian matrix of a multivariate, scalar-valued function using 
-% the complex-step and central difference approximations.
+% ihessian  Hessian of a multivariate, scalar-valued function using the 
+% complex-step approximation.
 %
 %   H = ihessian(f,x0)
-%   H = ihessian(f,x0,h)
+%   H = ihessian(f,x0,hi,hc)
 %
 % See also iderivative, ipartial, igradient, idirectional, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,12 +27,16 @@
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
 %             f(x) (f : ℝⁿ → ℝ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) step size (defaults to √ɛ)
+%   hi      - (1×1 double) (OPTIONAL) relative step size for complex-step
+%             approximation (defaults to 10⁻²⁰⁰)
+%   hc      - (1×1 double) (OPTIONAL) relative step size for forward
+%             difference approximation (defaults to ε¹ᐟ³)
 %
 % -------
 % OUTPUT:
 % -------
-%   H       - (n×1 double) Hessian matrix of f evaluated at x = x₀
+%   H       - (n×1 double) Hessian of f with respect to x, evaluated at
+%             x = x₀
 %
 % -----
 % NOTE:
@@ -40,45 +44,62 @@
 %   --> This function requires n(n+1) evaluations of f(x).
 %
 %==========================================================================
-function H = ihessian(f,x0,h)
+function H = ihessian(f,x0,hi,hc)
     
-    % defaults step size if not input
-    if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+    % defaults relative step size for complex-step approx. if not input
+    if nargin < 3 || isempty(hi)
+        hi = 1e-200;
+    end
+    
+    % defaults relative step size for forward diff. approx. if not input
+    if nargin < 4 || isempty(hc)
+        hc = eps^(1/3);
     end
     
     % determines dimension of x0
     n = length(x0);
     
-    % preallocates array to store Hessian matrix
+    % preallocates matrix to store Hessian
     H = zeros(n);
     
-    % complex-step and real-step matrices
-    X = h*1i*eye(n);
-    U = h*eye(n);
+    % preallocates arrays to store absolute step sizes
+    a = zeros(n,1);
     
-    % loops over each independent variable
+    % populates "a"
+    for k = 1:n
+        a(k) = hc*(1+abs(x0(k)));
+    end
+    
+    % loops through rows
     for k = 1:n
         
-        % reference point with complex increment in kth independent
-        % variable
-        xr = x0+X(:,k);
+        % imaginary step forward in kth direction
+        x0(k) = x0(k)+1i*hi;
         
-        % loops through diagonal + upper triangular elements
+        % loops through columns
         for j = k:n
             
-            % reference point with real increment in jth independent
-            % variable
-            yp = xr+U(:,j);
-            ym = xr-U(:,j);
+            % real step forward in jth direction
+            x0(j) = x0(j)+a(j);
+            b = f(x0);
             
-            % Hessian (central + complex step)
-            H(k,j) = imag(f(yp)-f(ym))/(2*h^2);
+            % real step backward in jth direction
+            x0(j) = x0(j)-2*a(j);
+            c = f(x0);
+            
+            % resets x0
+            x0(j) = x0(j)+a(j);
+            
+            % evaluates (j,k)th element of the Hessian
+            H(j,k) = imag(b-c)/(2*hi*a(j));
             
             % symmetry
-            H(j,k) = H(k,j);
+            H(k,j) = H(j,k);
             
         end
+        
+        % resets x0
+        x0(k) = x0(k)-1i*hi;
         
     end
     
