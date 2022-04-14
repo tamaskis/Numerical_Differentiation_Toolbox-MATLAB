@@ -6,10 +6,10 @@
 %   g = fgradient(f,x0)
 %   g = fgradient(f,x0,h)
 %
-% See also fderivative, fpartial, fdirectional, fjacobian, fhessian.
+% See also cgradient, igradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

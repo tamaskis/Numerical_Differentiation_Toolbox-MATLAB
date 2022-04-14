@@ -6,10 +6,10 @@
 %   J = cjacobian(f,x0)
 %   J = cjacobian(f,x0,h)
 %
-% See also cderivative, cpartial, cgradient, cdirectional, chessian.
+% See also fjacobian, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

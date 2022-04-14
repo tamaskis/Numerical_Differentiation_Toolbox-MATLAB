@@ -6,10 +6,10 @@
 %   g = cgradient(f,x0)
 %   g = cgradient(f,x0,h)
 %
-% See also cderivative, cpartial, cdirectional, cjacobian, chessian.
+% See also fgradient, igradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

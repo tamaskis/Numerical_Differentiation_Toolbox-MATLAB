@@ -6,10 +6,10 @@
 %   Dv = cdirectional(f,x0,v)
 %   Dv = cdirectional(f,x0,v,h)
 %
-% See also cderivative, cpartial, cgradient, cjacobian, chessian.
+% See also fdirectional, idirectional.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

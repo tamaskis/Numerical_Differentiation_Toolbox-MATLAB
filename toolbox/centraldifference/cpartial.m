@@ -6,10 +6,10 @@
 %   pf = cpartial(f,x0,k)
 %   pf = cpartial(f,x0,k,h)
 %
-% See also cderivative, cgradient, cdirectional, cjacobian, chessian.
+% See also fpartial, ipartial.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

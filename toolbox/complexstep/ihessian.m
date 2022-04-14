@@ -6,10 +6,10 @@
 %   H = ihessian(f,x0)
 %   H = ihessian(f,x0,hi,hc)
 %
-% See also iderivative, ipartial, igradient, idirectional, ijacobian.
+% See also chessian, fhessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

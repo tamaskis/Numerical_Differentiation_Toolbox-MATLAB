@@ -6,10 +6,10 @@
 %   pf = fpartial(f,x0,k)
 %   pf = fpartial(f,x0,k,h)
 %
-% See also fderivative, fgradient, fdirectional, fjacobian, fhessian.
+% See also cpartial, ipartial.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

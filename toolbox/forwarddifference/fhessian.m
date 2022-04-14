@@ -6,10 +6,10 @@
 %   H = fhessian(f,x0)
 %   H = fhessian(f,x0,h)
 %
-% See also fderivative, fpartial, fgradient, fdirectional, fjacobian.
+% See also chessian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

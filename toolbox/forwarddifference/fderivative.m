@@ -6,10 +6,10 @@
 %   df = fderivative(f,x0)
 %   df = fderivative(f,x0,h)
 %
-% See also fpartial, fgradient, fdirectional, fjacobian, fhessian.
+% See also cderivative, iderivative.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

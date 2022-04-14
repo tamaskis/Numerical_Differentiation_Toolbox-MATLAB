@@ -6,10 +6,10 @@
 %   H = chessian(f,x0)
 %   H = chessian(f,x0,h)
 %
-% See also cderivative, cpartial, cgradient, cdirectional, cjacobian.
+% See also fhessian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-12
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
