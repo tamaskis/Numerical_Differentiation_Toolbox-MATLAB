@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% ijacobian  Jacobian matrix of a multivariate, vector-valued function 
-% using the complex-step approximation.
+% ijacobian  Jacobian of a multivariate, vector-valued function using the 
+% complex-step approximation.
 %
 %   J = ijacobian(f,x0)
 %   J = ijacobian(f,x0,h)
@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, idirectional, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,7 +32,8 @@
 % -------
 % OUTPUT:
 % -------
-%   J       - (m×n double) Jacobian matrix of f evaluated at x = x₀
+%   J       - (m×n double) Jacobian of f with respect to x, evaluated at 
+%             x = x₀
 %
 % -----
 % NOTE:
@@ -44,22 +45,28 @@ function J = ijacobian(f,x0,h)
     
     % defaults step size if not input
     if nargin == 2 || isempty(h)
-        h = 1e-200;
+        h = sqrt(eps);
     end
     
     % determines size of Jacobian
     m = length(f(x0));
     n = length(x0);
     
-    % preallocates array to store Jacobian matrix
+    % preallocates matrix to store Jacobian
     J = zeros(m,n);
     
-    % complex-step matrix
-    X = h*1i*eye(n);
-    
-    % evaluates Jacobian matrix
-    for j = 1:n
-        J(:,j) = imag(f(x0+X(:,j)))/h;
+    % evaluates Jacobian
+    for k = 1:n
+        
+        % steps in kth direction
+        x0(k) = x0(k)+1i*h;
+        
+        % partial derivative of f with respect to xₖ
+        J(:,k) = imag(f(x0))/h;
+        
+        % resets x0
+        x0(k) = x0(k)-1i*h;
+        
     end
     
 end

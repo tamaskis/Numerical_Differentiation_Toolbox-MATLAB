@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% iderivative  Derivative of a univariate, vector-valued function using the
+% iderivative  Derivative of a univariate, vector-valued function using the 
 % complex-step approximation.
 %
 %   df = iderivative(f,x0)
@@ -9,7 +9,7 @@
 % See also ipartial, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -50,6 +50,6 @@ function df = iderivative(f,x0,h)
     end
     
     % evaluates derivative
-    df = imag(f(x0+h*1i))/h;
+    df = imag(f(x0+1i*h))/h;
     
 end

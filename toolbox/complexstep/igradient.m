@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,7 +32,8 @@
 % -------
 % OUTPUT:
 % -------
-%   g       - (n×1 double) gradient of f evaluated at x = x₀
+%   g       - (n×1 double) gradient of f with respect to x, evaluated at 
+%             x = x₀
 %
 % -----
 % NOTE:
@@ -53,12 +54,18 @@ function g = igradient(f,x0,h)
     % preallocates vector to store gradient
     g = zeros(n,1);
     
-    % complex-step matrix
-    X = h*1i*eye(n);
-    
     % evaluates gradient
-    for j = 1:n
-        g(j) = imag(f(x0+X(:,j)))/h;
+    for k = 1:n
+        
+        % steps in kth direction
+        x0(k) = x0(k)+1i*h;
+        
+        % evaluates partial derivative with respect to xₖ
+        g(k) = imag(f(x0))/h;
+        
+        % resets x0
+        x0(k) = x0(k)-1i*h;
+        
     end
     
 end

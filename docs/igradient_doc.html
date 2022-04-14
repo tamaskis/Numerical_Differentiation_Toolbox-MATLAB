@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>igradient</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-30"><meta name="DC.source" content="igradient_doc.m"><style type="text/css">
+      --><title>igradient</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-04-14"><meta name="DC.source" content="igradient_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -69,7 +69,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
   </style></head><body><div class="content"><h1><tt>igradient</tt></h1><!--introduction--><p>Gradient of a multivariate, scalar-valued function using the complex-step approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">g = igradient(f,x0)
 g = igradient(f,x0,h)
-</pre><h2 id="2">Description</h2><p><tt>g = igradient(f,x0)</tt> numerically evaluates the gradient of <img src="igradient_doc_eq01316382371180660608.png" alt="$f(\mathbf{x})$" style="width:21px;height:11px;"> at <img src="igradient_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a default step size of <img src="igradient_doc_eq12016976132402243107.png" alt="$h=\sqrt{\varepsilon}$" style="width:35px;height:12px;">, where <img src="igradient_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine precision.</p><p><tt>g = igradient(f,x0,h)</tt> numerically evaluates the gradient of <img src="igradient_doc_eq01316382371180660608.png" alt="$f(\mathbf{x})$" style="width:21px;height:11px;"> at <img src="igradient_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a user-specified step size <img src="igradient_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>g = igradient(f,x0)</tt> numerically evaluates the gradient of <img src="igradient_doc_eq01316382371180660608.png" alt="$f(\mathbf{x})$" style="width:21px;height:11px;"> at <img src="igradient_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a default step size of <img src="igradient_doc_eq13610038884777442870.png" alt="$h=10^{-200}$" style="width:49px;height:10px;">.</p><p><tt>g = igradient(f,x0,h)</tt> numerically evaluates the gradient of <img src="igradient_doc_eq01316382371180660608.png" alt="$f(\mathbf{x})$" style="width:21px;height:11px;"> at <img src="igradient_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a user-specified step size <img src="igradient_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
           <td></td>
@@ -137,8 +137,7 @@ error =
 %% Description
 % |g = igradient(f,x0)| numerically evaluates the gradient of 
 % $f(\mathbf{x})$ at $\mathbf{x}=\mathbf{x}_{0}$ using the complex-step 
-% approximation with a default step size of $h=\sqrt{\varepsilon}$, where 
-% $\varepsilon$ is the machine precision.
+% approximation with a default step size of $h=10^{-200}$.
 %
 % |g = igradient(f,x0,h)| numerically evaluates the gradient of 
 % $f(\mathbf{x})$ at $\mathbf{x}=\mathbf{x}_{0}$ using the complex-step 

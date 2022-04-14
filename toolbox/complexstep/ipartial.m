@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% ipartial  Partial derivative of a multivariate, scalar-valued function 
+% ipartial  Partial derivative of a multivariate, vector-valued function 
 % using the complex-step approximation.
 %
 %   pf = ipartial(f,x0,k)
@@ -9,7 +9,7 @@
 % See also iderivative, igradient, idirectional, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,11 +24,10 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) multivariate, scalar-valued function, 
-%             f(x) (f : ℝⁿ → ℝ)
+%   f       - (1×1 function_handle) multivariate, vector-valued function, 
+%             f(x) (f : ℝⁿ → ℝᵐ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   k       - (1×1 double) index of element of x to differentiate with 
-%             respect to
+%   k       - (1×1 double) element of x to differentiate with respect to
 %   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
@@ -40,7 +39,8 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 1 evaluation of f(x).
+%   --> This function requires 1 evaluations of f(x).
+%   --> If the function is scalar-valued, then m = 1.
 %
 %==========================================================================
 function pf = ipartial(f,x0,k,h)
@@ -50,8 +50,8 @@ function pf = ipartial(f,x0,k,h)
         h = 1e-200;
     end
     
-    % redefine x0
-    x0(k) = x0(k)+h*1i;
+    % steps in kth direction
+    x0(k) = x0(k)+1i*h;
     
     % evaluates partial derivative with respect to xₖ
     pf = imag(f(x0))/h;

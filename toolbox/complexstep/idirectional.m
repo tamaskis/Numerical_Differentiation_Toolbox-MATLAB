@@ -9,7 +9,7 @@
 % See also iderivative, ipartial, igradient, ijacobian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-11
+% Last Update: 2022-04-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -34,13 +34,14 @@
 % -------
 % OUTPUT:
 % -------
-%   Dv      - (1×1 double) directional derivative of f evaluated at x = x₀
-%             in the direction of v
+%   Dv      - (1×1 double) directional derivative of f with respect to x in
+%             the direction of v, evaluated at x = x₀
 %
 % -----
 % NOTE:
 % -----
 %   --> This function requires n evaluations of f(x).
+%   --> This implementation does NOT assume that v is a unit vector.
 %
 %==========================================================================
 function Dv = idirectional(f,x0,v,h)
@@ -53,15 +54,21 @@ function Dv = idirectional(f,x0,v,h)
     % determines dimension of x
     n = length(x0);
     
-    % preallocate a vector to store the gradient
+    % preallocates vector to store gradient
     g = zeros(n,1);
     
-    % complex-step matrix
-    dX = h*1i*eye(n);
-    
     % evaluates gradient
-    for j = 1:n
-        g(j) = imag(f(x0+dX(:,j)))/h;
+    for k = 1:n
+        
+        % steps in kth direction
+        x0(k) = x0(k)+1i*h;
+        
+        % evaluates partial derivative with respect to xₖ
+        g(k) = imag(f(x0))/h;
+        
+        % resets x0
+        x0(k) = x0(k)-1i*h;
+        
     end
     
     % evaluates directional derivative
