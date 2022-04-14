@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>fhessian</tt></h1><!--introduction--><p>Hessian matrix of a multivariate, scalar-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = fhessian(f,x0)
+  </style></head><body><div class="content"><h1><tt>fhessian</tt></h1><!--introduction--><p>Hessian of a multivariate, scalar-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = fhessian(f,x0)
 H = fhessian(f,x0,h)
 </pre><h2 id="2">Description</h2><p><tt>H = fhessian(f,x0)</tt> numerically evaluates the Hessian of <img src="fhessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="fhessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="fhessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the forward difference approximation with a default relative step size of <img src="fhessian_doc_eq05291420954647382719.png" alt="$h=\varepsilon^{1/3}$" style="width:37px;height:11px;">, where <img src="fhessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = fhessian(f,x0,h)</tt> numerically evaluates the Hessian of <img src="fhessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="fhessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="fhessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the forward difference approximation with a user-specified step size <img src="fhessian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
@@ -127,7 +127,7 @@ error =
 </pre><h2 id="6">See also</h2><p><a href="chessian_doc.html"><tt>chessian</tt></a> | <a href="ihessian_doc.html"><tt>ihessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |fhessian|
-% Hessian matrix of a multivariate, scalar-valued function using the forward difference approximation.
+% Hessian of a multivariate, scalar-valued function using the forward difference approximation.
 % 
 % <index.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax

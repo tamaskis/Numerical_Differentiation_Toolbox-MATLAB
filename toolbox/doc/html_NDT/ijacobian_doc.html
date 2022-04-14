@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>ijacobian</tt></h1><!--introduction--><p>Jacobian matrix of a multivariate, vector-valued function using the complex-step approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">J = ijacobian(f,x0)
+  </style></head><body><div class="content"><h1><tt>ijacobian</tt></h1><!--introduction--><p>Jacobian of a multivariate, vector-valued function using the complex-step approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">J = ijacobian(f,x0)
 J = ijacobian(f,x0,h)
-</pre><h2 id="2">Description</h2><p><tt>J = ijacobian(f,x0)</tt> numerically evaluates the Jacobian matrix of <img src="ijacobian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="ijacobian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ijacobian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a default step size of <img src="ijacobian_doc_eq13610038884777442870.png" alt="$h=10^{-200}$" style="width:49px;height:10px;">.</p><p><tt>J = ijacobian(f,x0,h)</tt> numerically evaluates the Jacobian matrix of <img src="ijacobian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="ijacobian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ijacobian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a user-specified step size <img src="ijacobian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>J = ijacobian(f,x0)</tt> numerically evaluates the Jacobian of <img src="ijacobian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="ijacobian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ijacobian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a default step size of <img src="ijacobian_doc_eq13610038884777442870.png" alt="$h=10^{-200}$" style="width:49px;height:10px;">.</p><p><tt>J = ijacobian(f,x0,h)</tt> numerically evaluates the Jacobian of <img src="ijacobian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="ijacobian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ijacobian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the complex-step approximation with a user-specified step size <img src="ijacobian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
           <td></td>
@@ -88,7 +88,7 @@ J = ijacobian(f,x0,h)
       <tr>
           <td style="text-align:center"><TT>x0</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
-          <td>point at which to evaluate the Jacobian matrix</td>
+          <td>evaluation point</td>
           <td style="text-align:center">n×1<BR>double</td>
       </tr>
       <tr>
@@ -128,7 +128,7 @@ error =
 </pre><p><i><b>NOTE:</b> The function and its corresponding Jacobian are from an example on <a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant#Example_4">Wikipedia</a>.</i></p><h2 id="7">See also</h2><p><a href="cjacobian_doc.html"><tt>cjacobian</tt></a> | <a href="fjacobian_doc.html"><tt>fjacobian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |ijacobian|
-% Jacobian matrix of a multivariate, vector-valued function using the 
+% Jacobian of a multivariate, vector-valued function using the 
 % complex-step approximation.
 % 
 % <index.html Back to Numerical Differentiation Toolbox Contents>.
@@ -136,12 +136,11 @@ error =
 %   J = ijacobian(f,x0)
 %   J = ijacobian(f,x0,h)
 %% Description
-% |J = ijacobian(f,x0)| numerically evaluates the Jacobian matrix of
-% $\mathbf{f}$ with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ 
-% using the complex-step approximation with a default step size of 
-% $h=10^{-200}$.
+% |J = ijacobian(f,x0)| numerically evaluates the Jacobian of $\mathbf{f}$ 
+% with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ using the 
+% complex-step approximation with a default step size of $h=10^{-200}$.
 %
-% |J = ijacobian(f,x0,h)| numerically evaluates the Jacobian matrix of 
+% |J = ijacobian(f,x0,h)| numerically evaluates the Jacobian of
 % $\mathbf{f}$ with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ 
 % using the complex-step approximation with a user-specified step size $h$.
 %% Input/Output Parameters
@@ -164,7 +163,7 @@ error =
 %       <tr>
 %           <td style="text-align:center"><TT>x0</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
-%           <td>point at which to evaluate the Jacobian matrix</td>
+%           <td>evaluation point</td>
 %           <td style="text-align:center">n×1<BR>double</td>
 %       </tr>
 %       <tr>
