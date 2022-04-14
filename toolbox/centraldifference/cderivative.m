@@ -26,7 +26,7 @@
 % ------
 %   f       - (1×1 function_handle) univariate, scalar or vector-valued 
 %             function, f(x) (f : ℝ → ℝ or f : ℝ → ℝᵐ)
-%   x0      - (1×1 double) point at which to differentiate, x₀ ∈ ℝ
+%   x0      - (1×1 double) evaluation point, x₀ ∈ ℝ
 %   h       - (1×1 double) (OPTIONAL) relative step size (defaults to ε¹ᐟ³)
 %
 % -------

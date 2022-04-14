@@ -26,8 +26,7 @@
 % ------
 %   f       - (1×1 function_handle) multivariate, vector-valued function,
 %             f(x) (f : ℝⁿ → ℝᵐ)
-%   x0      - (n×1 double) point at which to evaluate the Jacobian matrix, 
-%             x₀ ∈ ℝⁿ
+%   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------

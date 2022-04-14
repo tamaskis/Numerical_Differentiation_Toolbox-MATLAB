@@ -26,8 +26,7 @@
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
 %             f(x) (f : ℝⁿ → ℝ)
-%   x0      - (n×1 double) point at which to evaluate the Hessian matrix, 
-%             x₀ ∈ ℝⁿ
+%   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   h       - (1×1 double) (OPTIONAL) step size (defaults to √ɛ)
 %
 % -------

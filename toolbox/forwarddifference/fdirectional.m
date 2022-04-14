@@ -26,8 +26,7 @@
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
 %             f(x) (f : ℝⁿ → ℝ)
-%   x0      - (n×1 double) point at which to evaluate the directional
-%             derivative, x₀ ∈ ℝⁿ
+%   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   v       - (n×1 double) vector defining direction of differentiation, 
 %             v ∈ ℝⁿ
 %   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
