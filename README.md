@@ -1,6 +1,6 @@
 # Numerical Differentiation Toolbox [![View Numerical Differentiation Toolbox on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox)
 
-This toolbox supplies functions to evaluate derivatives, partial derivatives, gradients, directional derivatives, Jacobian matrices, and Hessian matrices using the forward difference, central difference, and complex-step approximations of a derivative.
+This toolbox supplies functions to evaluate derivatives, partial derivatives, gradients, directional derivatives, Jacobians, and Hessians using the forward difference, central difference, and complex-step approximations of a derivative.
 
 
 ## Documentation
