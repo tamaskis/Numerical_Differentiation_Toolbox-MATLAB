@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>fgradient</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-04-13"><meta name="DC.source" content="fgradient_doc.m"><style type="text/css">
+      --><title>fgradient</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-04-14"><meta name="DC.source" content="fgradient_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -125,7 +125,7 @@ error =
     0.1119
    -0.0004
 
-</pre><h2 id="6">See also</h2><p><a href="fderivative_doc.html"><tt>fderivative</tt></a> | <a href="fpartial_doc.html"><tt>fpartial</tt></a> | <a href="fdirectional_doc.html"><tt>fdirectional</tt></a> | <a href="fjacobian_doc.html"><tt>fjacobian</tt></a> | <a href="fhessian_doc.html"><tt>fhessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+</pre><h2 id="6">See also</h2><p><a href="cgradient_doc.html"><tt>cgradient</tt></a> | <a href="igradient_doc.html"><tt>igradient</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |fgradient|
 % Gradient of a multivariate, scalar-valued function using the forward 
@@ -201,10 +201,7 @@ g = fgradient(f,x0)
 % Calculating the error,
 error = g-[3125;3*sin(8)^2*cos(8)]
 %% See also
-% <fderivative_doc.html |fderivative|> | 
-% <fpartial_doc.html |fpartial|> | 
-% <fdirectional_doc.html |fdirectional|> | 
-% <fjacobian_doc.html |fjacobian|> | 
-% <fhessian_doc.html |fhessian|>
+% <cgradient_doc.html |cgradient|> | 
+% <igradient_doc.html |igradient|>
 ##### SOURCE END #####
 --></body></html>

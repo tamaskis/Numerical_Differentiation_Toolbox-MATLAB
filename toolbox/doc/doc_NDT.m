@@ -8,7 +8,7 @@
 %   doc_NDT tech
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-12-29
+% Last Update: 2022-04-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -29,8 +29,8 @@ function doc_NDT(name)
 
     % opens technical documentation
     elseif strcmpi(name,'tech')
-        open(strcat('Numerical_Differentiation_using_the_Complex_Step',...
-            '_Approximation.pdf'));
+        open(strcat('Numerical_Differentiation_using_Finite_Difference',...
+            '_and_Complex_Step_Approximations.pdf'));
         
     % opens specified function documentation
     else
