@@ -9,7 +9,7 @@
 % See also fjacobian, ijacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-14
+% Last Update: 2022-04-20
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
