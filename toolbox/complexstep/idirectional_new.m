@@ -1,15 +1,15 @@
 %==========================================================================
 %
-% fdirectional  Directional derivative of a multivariate, scalar-valued
-% function using the forward difference approximation.
+% idirectional  Directional derivative of a multivariate, scalar-valued
+% function using the complex-step approximation.
 %
-%   Dv = fdirectional(f,x0,v)
-%   Dv = fdirectional(f,x0,v,h)
+%   Dv = idirectional(f,x0,v)
+%   Dv = idirectional(f,x0,v,h)
 %
-% See also cdirectional, idirectional.
+% See also cdirectional, fdirectional.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-19
+% Last Update: 2022-04-14
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -29,7 +29,7 @@
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   v       - (n×1 double) vector defining direction of differentiation, 
 %             v ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
+%   h       - (1×1 double) (OPTIONAL) step size (defaults to 10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -40,18 +40,18 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2 evaluations of f(x).
+%   --> This function requires n evaluations of f(x).
 %   --> This implementation does NOT assume that v is a unit vector.
 %
 %==========================================================================
-function Dv = fdirectional(f,x0,v,h)
+function Dv = idirectional_new(f,x0,v,h)
     
-    % defaults relative step size if not input
+    % defaults step size if not input
     if nargin == 3 || isempty(h)
-        h = sqrt(eps);
+        h = 1e-200;
     end
     
-    % evaluates directional derivative
-    Dv = (f(x0+h*v)-f(x0))/h;
-    
+    g = @(alpha) f(x0+alpha*v);
+    Dv = iderivative(g);
+     
 end

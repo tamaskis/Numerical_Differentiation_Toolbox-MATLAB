@@ -9,7 +9,7 @@
 % See also cdirectional, fdirectional.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-14
+% Last Update: 2022-04-20
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -40,7 +40,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires n evaluations of f(x).
+%   --> This function requires 1 evaluation of f(x).
 %   --> This implementation does NOT assume that v is a unit vector.
 %
 %==========================================================================
@@ -51,27 +51,7 @@ function Dv = idirectional(f,x0,v,h)
         h = 1e-200;
     end
     
-    % determines dimension of x
-    n = length(x0);
-    
-    % preallocates vector to store gradient
-    g = zeros(n,1);
-    
-    % evaluates gradient
-    for k = 1:n
-        
-        % steps in kth direction
-        x0(k) = x0(k)+1i*h;
-        
-        % evaluates partial derivative with respect to xₖ
-        g(k) = imag(f(x0))/h;
-        
-        % resets x0
-        x0(k) = x0(k)-1i*h;
-        
-    end
-    
     % evaluates directional derivative
-    Dv = g.'*v;
+    Dv = imag(f(x0+1i*h*v))/h;
     
 end
