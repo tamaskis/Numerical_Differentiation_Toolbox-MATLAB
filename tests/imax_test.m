@@ -4,16 +4,13 @@
 % Unit testing of the imax function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-14
+% Last Update: 2022-06-04
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
-% NOTE:
-%   --> This script requires that the "Simple Unit Testing Toolbox" be
-%       installed:
-%       https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB
-%   --> This script requires that the "Numerical Differentiation Toolbox"
-%       be installed.
+% DEPENDENCIES:
+%   --> Simple Unit Testing Toolbox (https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB)
+%   --> Numerical Differentiation Toolbox (https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox)
 
 
 
