@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>fpartial</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-06-04"><meta name="DC.source" content="fpartial_doc.m"><style type="text/css">
+      --><title>fpartial</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-07-06"><meta name="DC.source" content="fpartial_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>fpartial</tt></h1><!--introduction--><p>Partial derivative of a multivariate, vector-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Partial derivative of a scalar-valued function.</a></li><li><a href="#8">Example #2: Partial derivative of a vector-valued function.</a></li><li><a href="#11">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">pf = fpartial(f,x0,k)
+  </style></head><body><div class="content"><h1><tt>fpartial</tt></h1><!--introduction--><p>Partial derivative of a multivariate, vector-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example #1: Partial derivative of a scalar-valued function.</a></li><li><a href="#9">Example #2: Partial derivative of a vector-valued function.</a></li><li><a href="#12">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">pf = fpartial(f,x0,k)
 pf = fpartial(f,x0,k,h)
 </pre><h2 id="2">Description</h2><p><tt>pf = fpartial(f,x0,k)</tt> numerically evaluates the partial derivative of <img src="fpartial_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="fpartial_doc_eq02024345244404245959.png" alt="$x_{k}$" style="width:10px;height:7px;"> at <img src="fpartial_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the forward difference approximation with a default relative step size of <img src="fpartial_doc_eq12016976132402243107.png" alt="$h=\sqrt{\varepsilon}$" style="width:35px;height:12px;">, where <img src="fpartial_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>pf = fpartial(f,x0,k,h)</tt> numerically evaluates the partial derivative of <img src="fpartial_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="fpartial_doc_eq02024345244404245959.png" alt="$x_{k}$" style="width:10px;height:7px;"> at <img src="fpartial_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the forward difference approximation with a user-specified relative step size <img src="fpartial_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
@@ -111,29 +111,29 @@ pf = fpartial(f,x0,k,h)
           <td style="text-align:center">m×1<BR>double</td>
       </tr>
   </table>
-</p><p><b>NOTE:</b></p><div><ul><li>This function requires 2 evaluations of <img src="fpartial_doc_eq03403988016607310992.png" alt="$\mathbf{f}(\mathbf{x})$" style="width:19px;height:11px;">.</li><li>If the function is scalar-valued, then <img src="fpartial_doc_eq14613861381496079316.png" alt="$m=1$" style="width:29px;height:8px;">.</li></ul></div><h2 id="4">Example #1: Partial derivative of a scalar-valued function.</h2><p><i>Approximate the partial derivative of <img src="fpartial_doc_eq06064307167709903380.png" alt="$f(x,y)=x^{3}\sin{y}$" style="width:80px;height:12px;"> with respect to <img src="fpartial_doc_eq14521328786523663806.png" alt="$y$" style="width:6px;height:8px;"> at at <img src="fpartial_doc_eq06799230972799164765.png" alt="$(x,y)=(5,1)$" style="width:63px;height:11px;"> using the <tt>fpartial</tt> function, and compare the result to the true result of</i></p><p><img src="fpartial_doc_eq09129385801709187487.png" alt="$$\left.\frac{\partial f}{\partial y}\right|_{(x,y)=(5,1)}=5^{3}\cos{(1)}$$" style="width:113px;height:29px;"></p><p>First, we rewrite this function as <img src="fpartial_doc_eq00554480612770079530.png" alt="$f(\mathbf{x})=x_{1}^{3}\sin{x_{2}}$" style="width:74px;height:12px;">.</p><pre class="codeinput">f = @(x) x(1)^3*sin(x(2));
+</p><h2 id="4">Note</h2><div><ul><li>This function requires 2 evaluations of <img src="fpartial_doc_eq03403988016607310992.png" alt="$\mathbf{f}(\mathbf{x})$" style="width:19px;height:11px;">.</li><li>If the function is scalar-valued, then <img src="fpartial_doc_eq14613861381496079316.png" alt="$m=1$" style="width:29px;height:8px;">.</li></ul></div><h2 id="5">Example #1: Partial derivative of a scalar-valued function.</h2><p><i>Approximate the partial derivative of <img src="fpartial_doc_eq06064307167709903380.png" alt="$f(x,y)=x^{3}\sin{y}$" style="width:80px;height:12px;"> with respect to <img src="fpartial_doc_eq14521328786523663806.png" alt="$y$" style="width:6px;height:8px;"> at at <img src="fpartial_doc_eq06799230972799164765.png" alt="$(x,y)=(5,1)$" style="width:63px;height:11px;"> using the <tt>fpartial</tt> function, and compare the result to the true result of</i></p><p><img src="fpartial_doc_eq09129385801709187487.png" alt="$$\left.\frac{\partial f}{\partial y}\right|_{(x,y)=(5,1)}=5^{3}\cos{(1)}$$" style="width:113px;height:29px;"></p><p>First, we rewrite this function as <img src="fpartial_doc_eq00554480612770079530.png" alt="$f(\mathbf{x})=x_{1}^{3}\sin{x_{2}}$" style="width:74px;height:12px;">.</p><pre class="codeinput">f = @(x) x(1)^3*sin(x(2));
 </pre><p>Since the second component of <img src="fpartial_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> represents <img src="fpartial_doc_eq14521328786523663806.png" alt="$y$" style="width:6px;height:8px;">, to approximate the derivative, we use</p><pre class="codeinput">k = 2;
 </pre><p>Approximating the partial derivative using the <tt>fpartial</tt> function,</p><pre class="codeinput">pf = fpartial(f,[5;1],k)
 </pre><pre class="codeoutput">
 pf =
 
-   67.5378
+  67.537786483764648
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = pf-5^3*cos(1)
 </pre><pre class="codeoutput">
 error =
 
-  -1.7498e-06
+    -1.749752826185613e-06
 
-</pre><h2 id="8">Example #2: Partial derivative of a vector-valued function.</h2><p><i>Approximate the partial derivative of</i></p><p><img src="fpartial_doc_eq16749857606043116447.png" alt="$$\mathbf{f}(\mathbf{x})=\pmatrix{\sin{x_{1}}\sin{x_{2}}\cr\cos{x_{1}}\cos{x_{2}}}$$" style="width:109px;height:27px;"></p><p><i>with respect to <img src="fpartial_doc_eq10266327086470986869.png" alt="$x_{1}$" style="width:10px;height:7px;"> at <img src="fpartial_doc_eq11945866699871695210.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(1,2)$" style="width:71px;height:11px;"> using the <tt>fpartial</tt> function, and compare the result to the true result of</i></p><p><img src="fpartial_doc_eq02998781105119806480.png" alt="$$\left.\frac{\partial\mathbf{f}}{\partial x_{1}}\right|_{\mathbf{x}=&#xA;\mathbf{x}_{0}}=\pmatrix{\cos{(1)}\sin{(2)}\cr-\sin{(1)}\cos{(2)}}$$" style="width:146px;height:29px;"></p><p>Defining the function in MATLAB,</p><pre class="codeinput">f = @(x) [sin(x(1))*sin(x(2));cos(x(1))*cos(x(2))];
+</pre><h2 id="9">Example #2: Partial derivative of a vector-valued function.</h2><p><i>Approximate the partial derivative of</i></p><p><img src="fpartial_doc_eq16749857606043116447.png" alt="$$\mathbf{f}(\mathbf{x})=\pmatrix{\sin{x_{1}}\sin{x_{2}}\cr\cos{x_{1}}\cos{x_{2}}}$$" style="width:109px;height:27px;"></p><p><i>with respect to <img src="fpartial_doc_eq10266327086470986869.png" alt="$x_{1}$" style="width:10px;height:7px;"> at <img src="fpartial_doc_eq11945866699871695210.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(1,2)$" style="width:71px;height:11px;"> using the <tt>fpartial</tt> function, and compare the result to the true result of</i></p><p><img src="fpartial_doc_eq02998781105119806480.png" alt="$$\left.\frac{\partial\mathbf{f}}{\partial x_{1}}\right|_{\mathbf{x}=&#xA;\mathbf{x}_{0}}=\pmatrix{\cos{(1)}\sin{(2)}\cr-\sin{(1)}\cos{(2)}}$$" style="width:146px;height:29px;"></p><p>Defining the function in MATLAB,</p><pre class="codeinput">f = @(x) [sin(x(1))*sin(x(2));cos(x(1))*cos(x(2))];
 </pre><p>Approximating the partial derivative using the <tt>fpartial</tt> function,</p><pre class="codeinput">x0 = [1;2];             <span class="comment">% evaluation point</span>
 k = 1;                  <span class="comment">% element of x to differentiate with respect to</span>
 pf = fpartial(f,x0,k)   <span class="comment">% differentiation</span>
 </pre><pre class="codeoutput">
 pf =
 
-    0.4913
-    0.3502
+   0.491295482963324
+   0.350175492465496
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = pf-[cos(1)*sin(2);-sin(1)*cos(2)]
 </pre><pre class="codeoutput">
@@ -141,10 +141,10 @@ error =
 
    1.0e-07 *
 
-   -0.1347
-    0.0409
+  -0.134705583354489
+   0.040914814314341
 
-</pre><h2 id="11">See also</h2><p><a href="cpartial_doc.html"><tt>cpartial</tt></a> | <a href="ipartial_doc.html"><tt>ipartial</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+</pre><h2 id="12">See also</h2><p><a href="cpartial_doc.html"><tt>cpartial</tt></a> | <a href="ipartial_doc.html"><tt>ipartial</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |fpartial|
 % Partial derivative of a multivariate, vector-valued function using the 
@@ -209,8 +209,7 @@ error =
 %   </table>
 % </html>
 %
-% *NOTE:* 
-%
+%% Note
 % * This function requires 2 evaluations of $\mathbf{f}(\mathbf{x})$.
 % * If the function is scalar-valued, then $m=1$.
 %% Example #1: Partial derivative of a scalar-valued function.

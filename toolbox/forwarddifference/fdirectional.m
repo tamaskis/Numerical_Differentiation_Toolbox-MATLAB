@@ -9,7 +9,7 @@
 % See also cdirectional, idirectional.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-20
+% Last Update: 2022-07-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -17,7 +17,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf
+% https://tamaskis.github.io/files/Numerical_Differentiation.pdf
 %
 %--------------------------------------------------------------------------
 %
@@ -29,7 +29,7 @@
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   v       - (n×1 double) vector defining direction of differentiation, 
 %             v ∈ ℝⁿ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
+%   h       - (OPTIONAL) (1×1 double) relative step size (defaults to √ε)
 %
 % -------
 % OUTPUT:

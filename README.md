@@ -6,7 +6,7 @@ This toolbox supplies functions to evaluate derivatives, partial derivatives, gr
 ## Documentation
 
 [Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)\
-[Technical Documentation](https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf)
+[Technical Documentation](https://tamaskis.github.io/files/Numerical_Differentiation.pdf)
 
 To open the home page of the toolbox documentation in MATLAB, type
 
@@ -20,7 +20,7 @@ in the Command Window. To open the documentation of a specific function with nam
 doc_NDT function_name
 ```
 
-To open the PDF file with the technical documentation (Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf) from the Command Window, type
+To open the PDF file with the technical documentation (Numerical_Differentiation.pdf) from the Command Window, type
 
 ```
 doc_NDT tech

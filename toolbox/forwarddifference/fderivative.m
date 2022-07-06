@@ -9,7 +9,7 @@
 % See also cderivative, iderivative.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-04-20
+% Last Update: 2022-07-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -17,7 +17,7 @@
 % https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
 %
 % TECHNICAL DOCUMENTATION:
-% https://tamaskis.github.io/documentation/Numerical_Differentiation_using_Finite_Difference_and_Complex_Step_Approximations.pdf
+% https://tamaskis.github.io/files/Numerical_Differentiation.pdf
 %
 %--------------------------------------------------------------------------
 %
@@ -27,7 +27,7 @@
 %   f       - (1×1 function_handle) univariate, vector-valued function,
 %             f(x) (f : ℝ → ℝᵐ)
 %   x0      - (1×1 double) evaluation point, x₀ ∈ ℝ
-%   h       - (1×1 double) (OPTIONAL) relative step size (defaults to √ε)
+%   h       - (OPTIONAL) (1×1 double) relative step size (defaults to √ε)
 %
 % -------
 % OUTPUT:

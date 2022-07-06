@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>fderivative</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-06-04"><meta name="DC.source" content="fderivative_doc.m"><style type="text/css">
+      --><title>fderivative</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-07-06"><meta name="DC.source" content="fderivative_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>fderivative</tt></h1><!--introduction--><p>Derivative of a univariate, vector-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Derivative of a scalar-valued function.</a></li><li><a href="#6">Example #2: Derivative of a vector-valued function.</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">df = fderivative(f,x0)
+  </style></head><body><div class="content"><h1><tt>fderivative</tt></h1><!--introduction--><p>Derivative of a univariate, vector-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example #1: Derivative of a scalar-valued function.</a></li><li><a href="#7">Example #2: Derivative of a vector-valued function.</a></li><li><a href="#9">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">df = fderivative(f,x0)
 df = fderivative(f,x0,h)
 </pre><h2 id="2">Description</h2><p><tt>df = fderivative(f,x0)</tt> numerically evaluates the derivative of <img src="fderivative_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="fderivative_doc_eq16247206711595679522.png" alt="$x$" style="width:6px;height:6px;"> at <img src="fderivative_doc_eq15895670344772995363.png" alt="$x=x_{0}$" style="width:31px;height:7px;"> using the forward difference approximation with a default relative step size of <img src="fderivative_doc_eq12016976132402243107.png" alt="$h=\sqrt{\varepsilon}$" style="width:35px;height:12px;">, where <img src="fderivative_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>df = fderivative(f,x0,h)</tt> numerically evaluates the derivative of <img src="fderivative_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="fderivative_doc_eq16247206711595679522.png" alt="$x$" style="width:6px;height:6px;"> at <img src="fderivative_doc_eq15895670344772995363.png" alt="$x=x_{0}$" style="width:31px;height:7px;"> using the forward difference approximation with a user-specified relative step size <img src="fderivative_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
@@ -105,26 +105,26 @@ df = fderivative(f,x0,h)
           <td style="text-align:center">m×1<BR>double</td>
       </tr>
   </table>
-</p><p><b>NOTE:</b></p><div><ul><li>This function requires 2 evaluations of <img src="fderivative_doc_eq15621115338434299399.png" alt="$\mathbf{f}(x)$" style="width:19px;height:11px;">.</li><li>If the function is scalar-valued, then <img src="fderivative_doc_eq14613861381496079316.png" alt="$m=1$" style="width:29px;height:8px;">.</li></ul></div><h2 id="4">Example #1: Derivative of a scalar-valued function.</h2><p><i>Approximate the derivative of <img src="fderivative_doc_eq07863013981449083213.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="fderivative_doc_eq04851200360885152548.png" alt="$x=2$" style="width:26px;height:8px;"> using the <tt>fderivative</tt> function, and compare the result to the true result of <img src="fderivative_doc_eq13447770136917483844.png" alt="$f'(2)=12$" style="width:48px;height:12px;"></i>.</p><p>Approximating the derivative,</p><pre class="codeinput">f = @(x) x^3;
+</p><h2 id="4">Note</h2><div><ul><li>This function requires 2 evaluations of <img src="fderivative_doc_eq15621115338434299399.png" alt="$\mathbf{f}(x)$" style="width:19px;height:11px;">.</li><li>If the function is scalar-valued, then <img src="fderivative_doc_eq14613861381496079316.png" alt="$m=1$" style="width:29px;height:8px;">.</li></ul></div><h2 id="5">Example #1: Derivative of a scalar-valued function.</h2><p><i>Approximate the derivative of <img src="fderivative_doc_eq07863013981449083213.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="fderivative_doc_eq04851200360885152548.png" alt="$x=2$" style="width:26px;height:8px;"> using the <tt>fderivative</tt> function, and compare the result to the true result of <img src="fderivative_doc_eq13447770136917483844.png" alt="$f'(2)=12$" style="width:48px;height:12px;"></i>.</p><p>Approximating the derivative,</p><pre class="codeinput">f = @(x) x^3;
 df = fderivative(f,2)
 </pre><pre class="codeoutput">
 df =
 
-   12.0000
+  12.000000278155008
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = df-12
 </pre><pre class="codeoutput">
 error =
 
-   2.7816e-07
+     2.781550083597040e-07
 
-</pre><h2 id="6">Example #2: Derivative of a vector-valued function.</h2><p><i>Approximate the derivative of</i></p><p><img src="fderivative_doc_eq05437446654055475759.png" alt="$$\mathbf{f}(t)=\pmatrix{\sin{t}\cr\cos{t}}$$" style="width:71px;height:27px;"></p><p><i>at <img src="fderivative_doc_eq06658196661290597197.png" alt="$t=1$" style="width:23px;height:8px;"> using the <tt>fderivative</tt> function, and compare the result to the true result of</i></p><p><img src="fderivative_doc_eq07637929496866620270.png" alt="$$\left.\frac{d\mathbf{f}}{dx}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$" style="width:103px;height:28px;"></p><p>Approximating the derivative,</p><pre class="codeinput">f = @(t) [sin(t);cos(t)];
+</pre><h2 id="7">Example #2: Derivative of a vector-valued function.</h2><p><i>Approximate the derivative of</i></p><p><img src="fderivative_doc_eq05437446654055475759.png" alt="$$\mathbf{f}(t)=\pmatrix{\sin{t}\cr\cos{t}}$$" style="width:71px;height:27px;"></p><p><i>at <img src="fderivative_doc_eq06658196661290597197.png" alt="$t=1$" style="width:23px;height:8px;"> using the <tt>fderivative</tt> function, and compare the result to the true result of</i></p><p><img src="fderivative_doc_eq07637929496866620270.png" alt="$$\left.\frac{d\mathbf{f}}{dx}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$" style="width:103px;height:28px;"></p><p>Approximating the derivative,</p><pre class="codeinput">f = @(t) [sin(t);cos(t)];
 df = fderivative(f,1)
 </pre><pre class="codeoutput">
 df =
 
-    0.5403
-   -0.8415
+   0.540302291512489
+  -0.841470994055271
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = df-[cos(1);-sin(1)]
 </pre><pre class="codeoutput">
@@ -132,10 +132,10 @@ error =
 
    1.0e-07 *
 
-   -0.1436
-   -0.0925
+  -0.143556504461628
+  -0.092473746438060
 
-</pre><h2 id="8">See also</h2><p><a href="cderivative_doc.html"><tt>cderivative</tt></a> | <a href="iderivative_doc.html"><tt>iderivative</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+</pre><h2 id="9">See also</h2><p><a href="cderivative_doc.html"><tt>cderivative</tt></a> | <a href="iderivative_doc.html"><tt>iderivative</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |fderivative|
 % Derivative of a univariate, vector-valued function using the forward 
@@ -193,8 +193,7 @@ error =
 %   </table>
 % </html>
 %
-% *NOTE:* 
-%
+%% Note
 % * This function requires 2 evaluations of $\mathbf{f}(x)$.
 % * If the function is scalar-valued, then $m=1$.
 %% Example #1: Derivative of a scalar-valued function.
