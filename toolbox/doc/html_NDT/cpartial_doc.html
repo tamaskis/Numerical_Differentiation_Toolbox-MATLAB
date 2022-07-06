@@ -117,13 +117,13 @@ pf = cpartial(f,x0,k,h)
 </pre><pre class="codeoutput">
 pf =
 
-  67.537788231311154
+   67.5378
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = pf-5^3*cos(1)
 </pre><pre class="codeoutput">
 error =
 
-    -2.206320459663402e-09
+  -2.2063e-09
 
 </pre><h2 id="9">Example #2: Partial derivative of a vector-valued function.</h2><p><i>Approximate the partial derivative of</i></p><p><img src="cpartial_doc_eq16749857606043116447.png" alt="$$\mathbf{f}(\mathbf{x})=\pmatrix{\sin{x_{1}}\sin{x_{2}}\cr\cos{x_{1}}\cos{x_{2}}}$$" style="width:109px;height:27px;"></p><p><i>with respect to <img src="cpartial_doc_eq10266327086470986869.png" alt="$x_{1}$" style="width:10px;height:7px;"> at <img src="cpartial_doc_eq11945866699871695210.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(1,2)$" style="width:71px;height:11px;"> using the <tt>cpartial</tt> function, and compare the result to the true result of</i></p><p><img src="cpartial_doc_eq02998781105119806480.png" alt="$$\left.\frac{\partial\mathbf{f}}{\partial x_{1}}\right|_{\mathbf{x}=&#xA;\mathbf{x}_{0}}=\pmatrix{\cos{(1)}\sin{(2)}\cr-\sin{(1)}\cos{(2)}}$$" style="width:146px;height:29px;"></p><p>Defining the function in MATLAB,</p><pre class="codeinput">f = @(x) [sin(x(1))*sin(x(2));cos(x(1))*cos(x(2))];
 </pre><p>Approximating the partial derivative using the <tt>cpartial</tt> function,</p><pre class="codeinput">x0 = [1;2];             <span class="comment">% evaluation point</span>
@@ -132,8 +132,8 @@ pf = cpartial(f,x0,k)   <span class="comment">% differentiation</span>
 </pre><pre class="codeoutput">
 pf =
 
-   0.491295496424842
-   0.350175488365751
+    0.4913
+    0.3502
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = pf-[cos(1)*sin(2);-sin(1)*cos(2)]
 </pre><pre class="codeoutput">
@@ -141,8 +141,8 @@ error =
 
    1.0e-11 *
 
-  -0.903976893340541
-  -0.826333446113381
+   -0.9040
+   -0.8263
 
 </pre><h2 id="12">See also</h2><p><a href="fpartial_doc.html"><tt>fpartial</tt></a> | <a href="ipartial_doc.html"><tt>ipartial</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####

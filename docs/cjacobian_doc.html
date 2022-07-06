@@ -111,10 +111,10 @@ J = cjacobian(f,x0)
 </pre><pre class="codeoutput">
 J =
 
-   0.999999999999108                   0                   0
-                   0                   0   4.999999999971092
-                   0  48.000000000124793  -2.000000000047107
-   1.985635297800324                   0  -0.958924274654450
+    1.0000         0         0
+         0         0    5.0000
+         0   48.0000   -2.0000
+    1.9856         0   -0.9589
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = J-[1,0,0;0,0,5;0,48,-02;7*cos(5),0,sin(5)]
 </pre><pre class="codeoutput">
@@ -122,10 +122,10 @@ error =
 
    1.0e-09 *
 
-  -0.000892397267194                   0                   0
-                   0                   0  -0.028907543025980
-                   0   0.124792620681546  -0.047106762934845
-  -0.442259784350085                   0   0.008688050279204
+   -0.0009         0         0
+         0         0   -0.0289
+         0    0.1248   -0.0471
+   -0.4423         0    0.0087
 
 </pre><p><i><b>NOTE:</b> The function and its corresponding Jacobian are from an example on <a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant#Example_4">Wikipedia</a>.</i></p><h2 id="8">See also</h2><p><a href="fjacobian_doc.html"><tt>fjacobian</tt></a> | <a href="ijacobian_doc.html"><tt>ijacobian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####

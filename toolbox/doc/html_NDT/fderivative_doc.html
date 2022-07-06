@@ -110,21 +110,21 @@ df = fderivative(f,2)
 </pre><pre class="codeoutput">
 df =
 
-  12.000000278155008
+   12.0000
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = df-12
 </pre><pre class="codeoutput">
 error =
 
-     2.781550083597040e-07
+   2.7816e-07
 
 </pre><h2 id="7">Example #2: Derivative of a vector-valued function.</h2><p><i>Approximate the derivative of</i></p><p><img src="fderivative_doc_eq05437446654055475759.png" alt="$$\mathbf{f}(t)=\pmatrix{\sin{t}\cr\cos{t}}$$" style="width:71px;height:27px;"></p><p><i>at <img src="fderivative_doc_eq06658196661290597197.png" alt="$t=1$" style="width:23px;height:8px;"> using the <tt>fderivative</tt> function, and compare the result to the true result of</i></p><p><img src="fderivative_doc_eq07637929496866620270.png" alt="$$\left.\frac{d\mathbf{f}}{dx}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$" style="width:103px;height:28px;"></p><p>Approximating the derivative,</p><pre class="codeinput">f = @(t) [sin(t);cos(t)];
 df = fderivative(f,1)
 </pre><pre class="codeoutput">
 df =
 
-   0.540302291512489
-  -0.841470994055271
+    0.5403
+   -0.8415
 
 </pre><p>Calculating the error,</p><pre class="codeinput">error = df-[cos(1);-sin(1)]
 </pre><pre class="codeoutput">
@@ -132,8 +132,8 @@ error =
 
    1.0e-07 *
 
-  -0.143556504461628
-  -0.092473746438060
+   -0.1436
+   -0.0925
 
 </pre><h2 id="9">See also</h2><p><a href="cderivative_doc.html"><tt>cderivative</tt></a> | <a href="iderivative_doc.html"><tt>iderivative</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
