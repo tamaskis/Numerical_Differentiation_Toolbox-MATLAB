@@ -32,7 +32,7 @@
 % -------
 % OUTPUT:
 % -------
-%   H       - (n×1 double) Hessian of f with respect to x, evaluated at
+%   H       - (n×n double) Hessian of f with respect to x, evaluated at
 %             x = x₀
 %
 % -----

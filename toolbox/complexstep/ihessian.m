@@ -27,7 +27,7 @@
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
 %             f(x) (f : ℝⁿ → ℝ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   hi      - (OPTIONAL) (1×1 double) relative step size for complex-step
+%   hi      - (OPTIONAL) (1×1 double) step size for complex-step 
 %             approximation (defaults to 10⁻²⁰⁰)
 %   hc      - (OPTIONAL) (1×1 double) relative step size for forward
 %             difference approximation (defaults to ε¹ᐟ³)
@@ -35,7 +35,7 @@
 % -------
 % OUTPUT:
 % -------
-%   H       - (n×1 double) Hessian of f with respect to x, evaluated at
+%   H       - (n×n double) Hessian of f with respect to x, evaluated at
 %             x = x₀
 %
 % -----
@@ -46,7 +46,7 @@
 %==========================================================================
 function H = ihessian(f,x0,hi,hc)
     
-    % defaults relative step size for complex-step approx. if not input
+    % defaults step size for complex-step approximation if not input
     if nargin < 3 || isempty(hi)
         hi = 1e-200;
     end

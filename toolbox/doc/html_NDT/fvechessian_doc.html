@@ -1,0 +1,251 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>fvechessian</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-08-31"><meta name="DC.source" content="fvechessian_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>fvechessian</tt></h1><!--introduction--><p>Vector Hessian of a multivariate, vector-valued function using the forward difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = fvechessian(f,x0)
+H = fvechessian(f,x0,h)
+</pre><h2 id="2">Description</h2><p><tt>H = fvechessian(f,x0)</tt> numerically evaluates the vector Hessian of <img src="fvechessian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="fvechessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="fvechessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the forward difference approximation with a default relative step size of <img src="fvechessian_doc_eq16152409469914233053.png" alt="$h=10^{-200}=\varepsilon^{1/3}$" style="width:81px;height:11px;">, where <img src="fvechessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = fvechessian(f,x0,h)</tt> numerically evaluates the vector Hessian of <img src="fvechessian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="fvechessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="fvechessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the forward difference approximation with a user-specified relative step size <img src="fvechessian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td rowspan="3" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>f</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /></td>
+          <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>x0</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
+          <td>evaluation point</td>
+          <td style="text-align:center">n×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>h</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+          <td>(OPTIONAL) relative step size</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>H</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}(\mathbf{x}_{0})),\dots,\mathbf{H}(f_{m}(\mathbf{x}_{0})))" title="" /></td>
+          <td>vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
+          <td style="text-align:center">n×n×m<BR>double</td>
+      </tr>
+  </table>
+</p><h2 id="4">Note</h2><div><ul><li>This function requires <img src="fvechessian_doc_eq08278739518609541210.png" alt="$m(n+1)+1$" style="width:62px;height:11px;"> evaluations of <img src="fvechessian_doc_eq03403988016607310992.png" alt="$\mathbf{f}(\mathbf{x})$" style="width:19px;height:11px;">.</li></ul></div><h2 id="5">Example</h2><p><i>Approximate the vector Hessian of</i></p><p><img src="fvechessian_doc_eq02325986776153964256.png" alt="$$f(\mathbf{x})=\pmatrix{f_{1}(\mathbf{x}) \cr f_{2}(\mathbf{x})}=&#xA;\pmatrix{x_{1}^{5}x_{2}+x_{1}\sin^{3}{x_{2}} \cr x_{1}^{3}+x_{2}^{4}-&#xA;3x_{1}^{2}x_{2}^{2}}$$" style="width:191px;height:27px;"></p><p><i>at <img src="fvechessian_doc_eq12407751216247896965.png" alt="$\mathbf{x}=\mathbf{x}_{0}=(5,8)^{T}$" style="width:77px;height:13px;"> using the <tt>fvechessian</tt> function, and compare the result to the true result of</i></p><p><img src="fvechessian_doc_eq17601453130965439182.png" alt="$$\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}&#xA;(\mathbf{x}_{0})),\mathbf{H}(f_{2}(\mathbf{x}_{0})))$$" style="width:166px;height:11px;"></p><p><i>where</i></p><p><img src="fvechessian_doc_eq01060674047448903387.png" alt="$$\mathbf{H}(f_{1}(\mathbf{x}_{0}))=\left.\pmatrix{20x_{1}^{3}x_{2} &amp;&#xA;5x_{1}^{4}+3\sin^{2}{x_{2}}\cos{x_{2}} \cr 5x_{1}^{4}+3\sin^{2}{x_{2}}&#xA;\cos{x_{2}} &amp; 6x_{1}\sin{x_{2}}\cos^{2}{x_{2}}-3x_{1}\sin^{3}{x_{2}}}&#xA;\right|_{(x_{1},x_{2})=(5,8)}=\pmatrix{20(5)^{3}(8) &amp; 5(5)^{4}+3&#xA;\sin^{2}{(8)}\cos{(8)} \cr 5(5)^{4}+3\sin^{2}{(8)}\cos{(8)} &amp; 6(5)&#xA;\sin{(8)}\cos^{2}{(8)}-3(5)\sin^{3}{(8)}}$$" style="width:691px;height:30px;"></p><p><img src="fvechessian_doc_eq11635579214614771104.png" alt="$$\mathbf{H}(f_{2}(\mathbf{x}_{0}))=\left.\pmatrix{6x_{1}^{2}-6x_{2}^{2}&#xA;&amp; -12x_{1}x_{2} \cr -12x_{1}x_{2} &amp; 12x_{2}^{2}-6x_{1}^{2}}\right|_&#xA;{(x_{1},x_{2})=(5,8)}=\pmatrix{6(5)-6(8^{2}) &amp; -12(5)(8) \cr -12(5)(8) &amp;&#xA;12(8^{2})-6(5^{2})}=\pmatrix{-354 &amp; -480 \cr -480 &amp; 618}$$" style="width:504px;height:29px;"></p><p>Approximating the Hessian,</p><pre class="codeinput">f = @(x) [x(1)^5*x(2)+x(1)*sin(x(2))^3;
+          x(1)^3+x(2)^4-3*x(1)^2*x(2)^2];
+x0 = [5;8];
+H = fvechessian(f,x0)
+</pre><pre class="codeoutput">
+H(:,:,1) =
+
+   1.0e+04 *
+
+    2.0000    0.3125
+    0.3125   -0.0014
+
+
+H(:,:,2) =
+
+ -354.0008 -480.0037
+ -480.0037  618.0104
+
+</pre><p>Defining the true vector Hessian,</p><pre class="codeinput">H_true = zeros(2,2,2);
+H_true(:,:,1) = [20*5^3*8,5*5^4+3*sin(8)^2*cos(8);5*5^4+3*sin(8)^2*<span class="keyword">...</span>
+    cos(8),6*5*sin(8)*cos(8)^2-3*5*sin(8)^3];
+H_true(:,:,2) = [-354,-480;-480,618];
+</pre><p>Calculating the errors,</p><pre class="codeinput">error = H-H_true
+</pre><pre class="codeoutput">
+error(:,:,1) =
+
+    0.4348    0.0462
+    0.0462    0.0020
+
+
+error(:,:,2) =
+
+   -0.0008   -0.0037
+   -0.0037    0.0104
+
+</pre><h2 id="8">See also</h2><p><a href="cvechessian_doc.html"><tt>cvechessian</tt></a> | <a href="ivechessian_doc.html"><tt>ivechessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |fvechessian|
+% Vector Hessian of a multivariate, vector-valued function using the 
+% forward difference approximation.
+% 
+% <index.html Back to Numerical Differentiation Toolbox Contents>.
+%% Syntax
+%   H = fvechessian(f,x0)
+%   H = fvechessian(f,x0,h)
+%% Description
+% |H = fvechessian(f,x0)| numerically evaluates the vector Hessian of 
+% $\mathbf{f}$ with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ 
+% using the forward difference approximation with a default relative step 
+% size of $h=10^{-200}=\varepsilon^{1/3}$, where $\varepsilon$ is the 
+% machine zero.
+%
+% |H = fvechessian(f,x0,h)| numerically evaluates the vector Hessian of 
+% $\mathbf{f}$ with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ 
+% using the forward difference approximation with a user-specified relative 
+% step size $h$.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>f</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /></td>
+%           <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>x0</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
+%           <td>evaluation point</td>
+%           <td style="text-align:center">n×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>h</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+%           <td>(OPTIONAL) relative step size</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>H</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}(\mathbf{x}_{0})),\dots,\mathbf{H}(f_{m}(\mathbf{x}_{0})))" title="" /></td>
+%           <td>vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
+%           <td style="text-align:center">n×n×m<BR>double</td>
+%       </tr>
+%   </table>
+% </html>
+%
+%% Note
+% * This function requires $m(n+1)+1$ evaluations of 
+% $\mathbf{f}(\mathbf{x})$.
+%% Example
+% _Approximate the vector Hessian of_
+%
+% $$f(\mathbf{x})=\pmatrix{f_{1}(\mathbf{x}) \cr f_{2}(\mathbf{x})}=
+% \pmatrix{x_{1}^{5}x_{2}+x_{1}\sin^{3}{x_{2}} \cr x_{1}^{3}+x_{2}^{4}-
+% 3x_{1}^{2}x_{2}^{2}}$$
+% 
+% _at $\mathbf{x}=\mathbf{x}_{0}=(5,8)^{T}$ using the |fvechessian| 
+% function, and compare the result to the true result of_
+%
+% $$\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}
+% (\mathbf{x}_{0})),\mathbf{H}(f_{2}(\mathbf{x}_{0})))$$
+%
+% _where_
+%
+% $$\mathbf{H}(f_{1}(\mathbf{x}_{0}))=\left.\pmatrix{20x_{1}^{3}x_{2} & 
+% 5x_{1}^{4}+3\sin^{2}{x_{2}}\cos{x_{2}} \cr 5x_{1}^{4}+3\sin^{2}{x_{2}}
+% \cos{x_{2}} & 6x_{1}\sin{x_{2}}\cos^{2}{x_{2}}-3x_{1}\sin^{3}{x_{2}}}
+% \right|_{(x_{1},x_{2})=(5,8)}=\pmatrix{20(5)^{3}(8) & 5(5)^{4}+3
+% \sin^{2}{(8)}\cos{(8)} \cr 5(5)^{4}+3\sin^{2}{(8)}\cos{(8)} & 6(5)
+% \sin{(8)}\cos^{2}{(8)}-3(5)\sin^{3}{(8)}}$$
+%
+% $$\mathbf{H}(f_{2}(\mathbf{x}_{0}))=\left.\pmatrix{6x_{1}^{2}-6x_{2}^{2} 
+% & -12x_{1}x_{2} \cr -12x_{1}x_{2} & 12x_{2}^{2}-6x_{1}^{2}}\right|_
+% {(x_{1},x_{2})=(5,8)}=\pmatrix{6(5)-6(8^{2}) & -12(5)(8) \cr -12(5)(8) &
+% 12(8^{2})-6(5^{2})}=\pmatrix{-354 & -480 \cr -480 & 618}$$
+%
+% Approximating the Hessian,
+f = @(x) [x(1)^5*x(2)+x(1)*sin(x(2))^3;
+          x(1)^3+x(2)^4-3*x(1)^2*x(2)^2];
+x0 = [5;8];
+H = fvechessian(f,x0)
+%%
+% Defining the true vector Hessian,
+H_true = zeros(2,2,2);
+H_true(:,:,1) = [20*5^3*8,5*5^4+3*sin(8)^2*cos(8);5*5^4+3*sin(8)^2*...
+    cos(8),6*5*sin(8)*cos(8)^2-3*5*sin(8)^3];
+H_true(:,:,2) = [-354,-480;-480,618];
+%%
+% Calculating the errors,
+error = H-H_true
+%% See also
+% <cvechessian_doc.html |cvechessian|> | 
+% <ivechessian_doc.html |ivechessian|>
+##### SOURCE END #####
+--></body></html>
