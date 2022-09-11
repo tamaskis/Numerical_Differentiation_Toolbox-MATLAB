@@ -29,7 +29,7 @@ doc_NDT tech
 
 ## `Differentiator` Class
 
-`D = Differentiator(method)`\
+`D = Differentiator(method)`
 
 
 ## Central Difference Differentiation Functions
