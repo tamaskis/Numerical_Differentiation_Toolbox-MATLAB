@@ -3,7 +3,7 @@
 % Differentiator  Class defining a differentiator.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-09-11
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -117,9 +117,9 @@ classdef Differentiator < handle
         
     end
     
-    % ---------------
+    % ----------------
     % Private methods.
-    % ---------------
+    % ----------------
     
     methods (Access = private)
         
