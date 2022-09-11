@@ -34,7 +34,8 @@ doc_NDT tech
 `g = igradient(f,x0)`\
 `Dv = idirectional(f,x0,v)`\
 `J = ijacobian(f,x0)`\
-`H = ihessian(f,x0)`
+`H = ihessian(f,x0)`\
+`H = ivechessian(f,x0)`
 
 
 ## "Complexified" Functions
@@ -54,7 +55,8 @@ doc_NDT tech
 `g = cgradient(f,x0)`\
 `Dv = cdirectional(f,x0,v)`\
 `J = cjacobian(f,x0)`\
-`H = chessian(f,x0)`
+`H = chessian(f,x0)`\
+`H = cvechessian(f,x0)`
 
 ## Forward Difference Differentiation Functions
 
@@ -63,4 +65,5 @@ doc_NDT tech
 `g = fgradient(f,x0)`\
 `Dv = fdirectional(f,x0,v)`\
 `J = fjacobian(f,x0)`\
-`H = fhessian(f,x0)`
+`H = fhessian(f,x0)`\
+`H = fvechessian(f,x0)`

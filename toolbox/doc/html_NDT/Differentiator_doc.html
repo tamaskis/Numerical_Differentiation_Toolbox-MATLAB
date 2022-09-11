@@ -1,0 +1,584 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Differentiator</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-09-10"><meta name="DC.source" content="Differentiator_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>Differentiator</tt></h1><!--introduction--><p>Class defining a differentiator.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Properties</a></li><li><a href="#2">Constructor</a></li><li><a href="#3"><tt>set_step_size</tt></a></li><li><a href="#4">Note</a></li><li><a href="#5">Example #1: Default <tt>Differentiator</tt> object.</a></li><li><a href="#8">Example #2: Specificying a differentiation method.</a></li><li><a href="#11">Example #3: Adjusting the step size.</a></li></ul></div><h2 id="1">Properties</h2><p>
+  <table border=1>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>derivative</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>df = Differentiator.derivative(f,x0)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): univariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}\rightarrow\mathbb{R}^{m}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (1×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{0}\in\mathbb{R}" title="" />)
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>df</TT> (m×1 double): derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>partial</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>pf = Differentiator.partial(f,x0,k)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>k</TT> (1×1 double): element of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /> to differentiate with respect to
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>pf</TT> (m×1 double): partial derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{k}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>gradient</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>g = Differentiator.gradient(f,x0)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>g</TT> (n×1 double): gradient of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>directional</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>Dv = Differentiator.directional(f,x0,v)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>v</TT> (n×1 double): vector defining direction of differentiation (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{v}\in\mathbb{R}^{n}" title="" />)
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>Dv</TT> (1×1 double): directional derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /> in the direction of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{v}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>jacobian</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>J = Differentiator.jacobian(f,x0)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>J</TT> (m×n double): Jacobian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>hessian</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>H = Differentiator.hessian(f,x0)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): univariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>H</TT> (n×n double): Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>vechessian</TT></td>
+          <td style="text-align:center">-</td>
+          <td><TT>H = Differentiator.vechessian(f,x0)</TT>
+              <BR>
+              <BR> &emsp;&emsp; Inputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+              <BR>
+              <BR> &emsp;&emsp; Outputs:
+              <BR> &emsp;&emsp;&emsp;&emsp; - <TT>H</TT> (n×n×m double): vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+          </td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>method</TT></td>
+          <td style="text-align:center">-</td>
+          <td>numerical differentiation method</td>
+          <td style="text-align:center">char</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>hi</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
+          <td>step size for complex-step approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{-200}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>hc</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{c}" title="" /></td>
+          <td>relative step size for central difference approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>hf</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{f}" title="" /></td>
+          <td>relative step size for foward difference approximation (excluding Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\sqrt{\varepsilon}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>hf2</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{f_{2}}" title="" /></td>
+          <td>elative step size for foward difference approximation (specifically for Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+  </table>
+</p><h2 id="2">Constructor</h2><pre class="language-matlab">differentiator = Differentiator
+differentiator = Differentiator(method)
+</pre><p>
+  <table border=1>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>method</TT></td>
+          <td style="text-align:center">-</td>
+          <td>(OPTIONAL) numerical differentiation method (defaults to <TT>'central difference'</TT>)</td>
+          <td style="text-align:center">char</td>
+      </tr>
+  </table>
+</p><h2 id="3"><tt>set_step_size</tt></h2><pre class="language-matlab">Differentiator.set_step_size(h)
+</pre><p><b>Description:</b> Sets the step size.</p><p>
+  <table border=1>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>h</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+          <td>step size (for complex-step approximation) OR relative step size (for central and forward difference approximations)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+  </table>
+</p><h2 id="4">Note</h2><div><ul><li>The <tt>Differentiator</tt> class uses the central difference approximation by default as a compromise between accuracy and compatibility. The central difference approximation, like the forward difference approximation, can be used with any function, but it is also of a higher order than the forward difference approximation. The complex-step approximation is more accurate than the central difference approximation, but it is <i>not</i> compatible with all functions (in some cases, functions have to be replaced with their "complexified" versions to be compatible with the complex-step approximation).</li><li>The complex-step approximation is still the most accurate approximation by far, and should be used if all functions that are incompatible with the complex-step approximation have been replaced with their complexified equivalent (i.e. replacing <tt>atan2</tt> with <tt>iatan2</tt>).</li></ul></div><h2 id="5">Example #1: Default <tt>Differentiator</tt> object.</h2><p>Let's define a default <tt>Differentiator</tt> object.</p><pre class="codeinput">D = Differentiator
+</pre><pre class="codeoutput">
+D = 
+
+  Differentiator with properties:
+
+     derivative: @(f,x)cderivative(f,x,obj.hc)
+        partial: @(f,x,k)cpartial(f,x,k,obj.hc)
+       gradient: @(f,x)cgradient(f,x,obj.hc)
+    directional: @(f,x,v)cdirectional(f,x,v,obj.hc)
+       jacobian: @(f,x)cjacobian(f,x,obj.hc)
+        hessian: @(f,x)chessian(f,x,obj.hc)
+     vechessian: @(f,x)cvechessian(f,x,obj.hc)
+         method: 'central difference'
+             hi: 1.0000e-200
+             hc: 6.0555e-06
+             hf: 1.4901e-08
+            hf2: 6.0555e-06
+
+</pre><p>Note that the <tt>Differentiator</tt> class uses the central difference approximation by default. Evaluating the derivative of <img src="Differentiator_doc_eq17084161653528035876.png" alt="$f(x)=x^{2}$" style="width:46px;height:12px;"> at <img src="Differentiator_doc_eq04851200360885152548.png" alt="$x=2$" style="width:26px;height:8px;">,</p><pre class="codeinput">f = @(x) x^2;
+df = D.derivative(f,2)
+</pre><pre class="codeoutput">
+df =
+
+    4.0000
+
+</pre><p>Taking a look at the error (the expected result is 4),</p><pre class="codeinput">err = abs(df-4)
+</pre><pre class="codeoutput">
+err =
+
+   3.5696e-12
+
+</pre><h2 id="8">Example #2: Specificying a differentiation method.</h2><p>Let's define a <tt>Differentiation</tt> object that uses the forward difference approximation.</p><pre class="codeinput">D = Differentiator(<span class="string">'forward difference'</span>);
+</pre><p>Evaluating the derivative of <img src="Differentiator_doc_eq07863013981449083213.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="Differentiator_doc_eq14752139412850437817.png" alt="$x=3$" style="width:26px;height:8px;">,</p><pre class="codeinput">f = @(x) x^3;
+df = D.derivative(f,3)
+</pre><pre class="codeoutput">
+df =
+
+   27.0000
+
+</pre><p>Taking a look at the error (the expected result is 27),</p><pre class="codeinput">err = abs(df-27)
+</pre><pre class="codeoutput">
+err =
+
+   5.3644e-07
+
+</pre><h2 id="11">Example #3: Adjusting the step size.</h2><p>Let's define a <tt>Differentiation</tt> object that uses the complex-step approximation.</p><pre class="codeinput">D = Differentiator(<span class="string">'complex-step'</span>);
+</pre><p>Evaluating the derivative of <img src="Differentiator_doc_eq07501950415006138384.png" alt="$f(x)=\sin{(x)}$" style="width:65px;height:11px;"> at <img src="Differentiator_doc_eq15469668660187898548.png" alt="$x=\pi$" style="width:27px;height:6px;">,</p><pre class="codeinput">f = @(x) sin(x);
+df = D.derivative(f,pi)
+</pre><pre class="codeoutput">
+df =
+
+    -1
+
+</pre><p>Taking a look at the error (the expected result is -1),</p><pre class="codeinput">err = abs(df-(-1))
+</pre><pre class="codeoutput">
+err =
+
+     0
+
+</pre><p>Now, let's increase the step-size from <img src="Differentiator_doc_eq09646552950603438366.png" alt="$10^{-200}$" style="width:28px;height:10px;"> (the default step size that is used with the complex-step approximation) to <img src="Differentiator_doc_eq00842521489666112223.png" alt="$h=0.001$" style="width:45px;height:8px;">.</p><pre class="codeinput">D.set_step_size(0.001)
+</pre><pre class="codeoutput">
+ans = 
+
+  Differentiator with properties:
+
+     derivative: @(f,x)iderivative(f,x,obj.hi)
+        partial: @(f,x,k)ipartial(f,x,k,obj.hi)
+       gradient: @(f,x)igradient(f,x,obj.hi)
+    directional: @(f,x,v)idirectional(f,x,v,obj.hi)
+       jacobian: @(f,x)ijacobian(f,x,obj.hi)
+        hessian: @(f,x)ihessian(f,x,obj.hi,obj.hc)
+     vechessian: @(f,x)ivechessian(f,x,obj.hi,obj.hc)
+         method: 'complex-step'
+             hi: 1.0000e-03
+             hc: 6.0555e-06
+             hf: 1.4901e-08
+            hf2: 6.0555e-06
+
+</pre><p>We can see that <tt>hi</tt> has been updated to <tt>1.0000e-03</tt>. Now, evaluating the same derivative as before,</p><pre class="codeinput">df = D.derivative(f,pi)
+</pre><pre class="codeoutput">
+df =
+
+   -1.0000
+
+</pre><p>Taking a look at the error once more,</p><pre class="codeinput">err = abs(df-(-1))
+</pre><pre class="codeoutput">
+err =
+
+   1.6667e-07
+
+</pre><p>Note that the error increases substantially when we use a higher step size.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |Differentiator|
+% Class defining a differentiator.
+% 
+% <index.html Back to Numerical Differentiation Toolbox Contents>.
+%% Properties
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>derivative</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>df = Differentiator.derivative(f,x0)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): univariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}\rightarrow\mathbb{R}^{m}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (1×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{0}\in\mathbb{R}" title="" />)
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>df</TT> (m×1 double): derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>partial</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>pf = Differentiator.partial(f,x0,k)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>k</TT> (1×1 double): element of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /> to differentiate with respect to
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>pf</TT> (m×1 double): partial derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{k}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>gradient</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>g = Differentiator.gradient(f,x0)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>g</TT> (n×1 double): gradient of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>directional</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>Dv = Differentiator.directional(f,x0,v)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, scalar-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>v</TT> (n×1 double): vector defining direction of differentiation (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{v}\in\mathbb{R}^{n}" title="" />)
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>Dv</TT> (1×1 double): directional derivative of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" /> in the direction of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{v}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>jacobian</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>J = Differentiator.jacobian(f,x0)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>J</TT> (m×n double): Jacobian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>hessian</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>H = Differentiator.hessian(f,x0)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): univariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;f:\mathbb{R}^{n}\rightarrow\mathbb{R}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>H</TT> (n×n double): Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;f" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>vechessian</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td><TT>H = Differentiator.vechessian(f,x0)</TT>
+%               <BR>
+%               <BR> &emsp;&emsp; Inputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>f</TT> (1×1 function_handle): multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>x0</TT> (n×1 double): evaluation point (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}\in\mathbb{R}^{n}" title="" />)
+%               <BR>
+%               <BR> &emsp;&emsp; Outputs:
+%               <BR> &emsp;&emsp;&emsp;&emsp; - <TT>H</TT> (n×n×m double): vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" />
+%           </td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>method</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>numerical differentiation method</td>
+%           <td style="text-align:center">char</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>hi</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
+%           <td>step size for complex-step approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{-200}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>hc</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{c}" title="" /></td>
+%           <td>relative step size for central difference approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>hf</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{f}" title="" /></td>
+%           <td>relative step size for foward difference approximation (excluding Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\sqrt{\varepsilon}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>hf2</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{f_{2}}" title="" /></td>
+%           <td>elative step size for foward difference approximation (specifically for Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%   </table>
+% </html>
+%% Constructor
+%   differentiator = Differentiator
+%   differentiator = Differentiator(method)
+%
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>method</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>(OPTIONAL) numerical differentiation method (defaults to <TT>'central difference'</TT>)</td>
+%           <td style="text-align:center">char</td>
+%       </tr>
+%   </table>
+% </html>
+%% |set_step_size|
+%   Differentiator.set_step_size(h)
+%
+% *Description:* Sets the step size.
+%
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>h</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
+%           <td>step size (for complex-step approximation) OR relative step size (for central and forward difference approximations)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+% * The |Differentiator| class uses the central difference approximation by
+% default as a compromise between accuracy and compatibility. The central
+% difference approximation, like the forward difference approximation, 
+% can be used with any function, but it is also of a higher order than the 
+% forward difference approximation. The complex-step approximation is more 
+% accurate than the central difference approximation, but it is _not_ 
+% compatible with all functions (in some cases, functions have to be 
+% replaced with their "complexified" versions to be compatible with the 
+% complex-step approximation).
+% * The complex-step approximation is still the most accurate approximation
+% by far, and should be used if all functions that are incompatible with
+% the complex-step approximation have been replaced with their complexified
+% equivalent (i.e. replacing |atan2| with |iatan2|).
+%% Example #1: Default |Differentiator| object.
+% Let's define a default |Differentiator| object.
+D = Differentiator
+%%
+% Note that the |Differentiator| class uses the central difference
+% approximation by default. Evaluating the derivative of $f(x)=x^{2}$ at 
+% $x=2$,
+f = @(x) x^2;
+df = D.derivative(f,2)
+%%
+% Taking a look at the error (the expected result is 4),
+err = abs(df-4)
+%% Example #2: Specificying a differentiation method.
+% Let's define a |Differentiation| object that uses the forward difference
+% approximation.
+D = Differentiator('forward difference');
+%%
+% Evaluating the derivative of $f(x)=x^{3}$ at $x=3$,
+f = @(x) x^3;
+df = D.derivative(f,3)
+%%
+% Taking a look at the error (the expected result is 27),
+err = abs(df-27)
+%% Example #3: Adjusting the step size.
+% Let's define a |Differentiation| object that uses the complex-step
+% approximation.
+D = Differentiator('complex-step');
+%%
+% Evaluating the derivative of $f(x)=\sin{(x)}$ at $x=\pi$,
+f = @(x) sin(x);
+df = D.derivative(f,pi)
+%%
+% Taking a look at the error (the expected result is -1),
+err = abs(df-(-1))
+%%
+% Now, let's increase the step-size from $10^{-200}$ (the default step size
+% that is used with the complex-step approximation) to $h=0.001$.
+D.set_step_size(0.001)
+%%
+% We can see that |hi| has been updated to |1.0000e-03|. Now, evaluating 
+% the same derivative as before,
+df = D.derivative(f,pi)
+%%
+% Taking a look at the error once more,
+err = abs(df-(-1))
+%%
+% Note that the error increases substantially when we use a higher step
+% size.
+##### SOURCE END #####
+--></body></html>

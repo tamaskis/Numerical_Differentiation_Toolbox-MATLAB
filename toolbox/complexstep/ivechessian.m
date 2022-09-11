@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % ivechessian  Vector Hessian of a multivariate, vector-valued function 
-% using the complex-step approximation.
+% using the complex-step and central difference approximations.
 %
 %   H = ivechessian(f,x0)
 %   H = ivechessian(f,x0,hi,hc)
@@ -9,7 +9,7 @@
 % See also cvechessian, fvechessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-08-30
+% Last Update: 2022-09-10
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
