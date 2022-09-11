@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>chessian</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-07-06"><meta name="DC.source" content="chessian_doc.m"><style type="text/css">
+      --><title>chessian</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-09-10"><meta name="DC.source" content="chessian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -69,7 +69,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
   </style></head><body><div class="content"><h1><tt>chessian</tt></h1><!--introduction--><p>Hessian of a multivariate, scalar-valued function using the central difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = chessian(f,x0)
 H = chessian(f,x0,h)
-</pre><h2 id="2">Description</h2><p><tt>H = chessian(f,x0)</tt> numerically evaluates the Hessian of <img src="chessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="chessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="chessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the central difference approximation with a default relative step size of <img src="chessian_doc_eq05291420954647382719.png" alt="$h=\varepsilon^{1/3}$" style="width:37px;height:11px;">, where <img src="chessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = chessian(f,x0,h)</tt> numerically evaluates the Hessian of <img src="chessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="chessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="chessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the central difference approximation with a user-specified step size <img src="chessian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>H = chessian(f,x0)</tt> numerically evaluates the Hessian of <img src="chessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="chessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="chessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the central difference approximation with a default relative step size of <img src="chessian_doc_eq05291420954647382719.png" alt="$h=\varepsilon^{1/3}$" style="width:37px;height:11px;">, where <img src="chessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = chessian(f,x0,h)</tt> numerically evaluates the Hessian of <img src="chessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="chessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="chessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the central difference approximation with a user-specified relative step size <img src="chessian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
           <td></td>
@@ -143,7 +143,7 @@ error =
 %
 % |H = chessian(f,x0,h)| numerically evaluates the Hessian of $f$ with
 % respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ using the central
-% difference approximation with a user-specified step size $h$.
+% difference approximation with a user-specified relative step size $h$.
 %% Input/Output Parameters
 % <html>
 %   <table border=1>

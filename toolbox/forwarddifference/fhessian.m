@@ -9,7 +9,7 @@
 % See also chessian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-07-06
+% Last Update: 2022-09-10
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires n+1 evaluations of f(x).
+%   --> This function requires (n(n+1)/2)+1 evaluations of f(x).
 %
 %==========================================================================
 function H = fhessian(f,x0,h)

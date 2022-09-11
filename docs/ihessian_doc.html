@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ihessian</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-07-06"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
+      --><title>ihessian</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-09-10"><meta name="DC.source" content="ihessian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>ihessian</tt></h1><!--introduction--><p>Hessian of a multivariate, scalar-valued function using the complex-step approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = ihessian(f,x0)
+  </style></head><body><div class="content"><h1><tt>ihessian</tt></h1><!--introduction--><p>Hessian of a multivariate, scalar-valued function using the complex-step and central difference approximations.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = ihessian(f,x0)
 H = ihessian(f,x0,hi,hc)
-</pre><h2 id="2">Description</h2><p><tt>H = ihessian(f,x0)</tt> numerically evaluates the Hessian of <img src="ihessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="ihessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ihessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using a hybrid of complex-step and central difference approximations with default relative step sizes of <img src="ihessian_doc_eq05820341115329729410.png" alt="$h_{i}=10^{-200}$" style="width:53px;height:11px;"> and <img src="ihessian_doc_eq00748322523295720176.png" alt="$h_{c}=\varepsilon^{1/3}$" style="width:41px;height:12px;">, respectively, where <img src="ihessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = ihessian(f,x0,hi,hc)</tt> numerically evaluates the Hessian of <img src="ihessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="ihessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ihessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using a hybrid of complex-step and central difference approximations with user-specified relative step sizes <img src="ihessian_doc_eq00208253058106614172.png" alt="$h_{i}$" style="width:9px;height:10px;"> and <img src="ihessian_doc_eq02051583311403081987.png" alt="$h_{c}$" style="width:10px;height:10px;">, respectively.</p><h2 id="3">Input/Output Parameters</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>H = ihessian(f,x0)</tt> numerically evaluates the Hessian of <img src="ihessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="ihessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ihessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using a hybrid of complex-step and central difference approximations with default step sizes of <img src="ihessian_doc_eq05820341115329729410.png" alt="$h_{i}=10^{-200}$" style="width:53px;height:11px;"> (an absolute step size) and <img src="ihessian_doc_eq00748322523295720176.png" alt="$h_{c}=\varepsilon^{1/3}$" style="width:41px;height:12px;"> (a relative step size), respectively, where <img src="ihessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = ihessian(f,x0,hi,hc)</tt> numerically evaluates the Hessian of <img src="ihessian_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> with respect to <img src="ihessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="ihessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using a hybrid of complex-step and central difference approximations with user-specified step sizes <img src="ihessian_doc_eq00208253058106614172.png" alt="$h_{i}$" style="width:9px;height:10px;"> and <img src="ihessian_doc_eq02051583311403081987.png" alt="$h_{c}$" style="width:10px;height:10px;">, respectively.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
           <td></td>
@@ -94,7 +94,7 @@ H = ihessian(f,x0,hi,hc)
       <tr>
           <td style="text-align:center"><TT>hi</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
-          <td>(OPTIONAL) relative step size for complex-step approximation</td>
+          <td>(OPTIONAL) step size for complex-step approximation</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
@@ -136,7 +136,7 @@ error =
 ##### SOURCE BEGIN #####
 %% |ihessian|
 % Hessian of a multivariate, scalar-valued function using the 
-% complex-step approximation.
+% complex-step and central difference approximations.
 % 
 % <index.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
@@ -145,14 +145,15 @@ error =
 %% Description
 % |H = ihessian(f,x0)| numerically evaluates the Hessian of $f$ with 
 % respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ using a hybrid of
-% complex-step and central difference approximations with default relative 
-% step sizes of $h_{i}=10^{-200}$ and $h_{c}=\varepsilon^{1/3}$, 
-% respectively, where $\varepsilon$ is the machine zero.
+% complex-step and central difference approximations with default step 
+% sizes of $h_{i}=10^{-200}$ (an absolute step size) and 
+% $h_{c}=\varepsilon^{1/3}$ (a relative step size), respectively, where 
+% $\varepsilon$ is the machine zero.
 %
 % |H = ihessian(f,x0,hi,hc)| numerically evaluates the Hessian of $f$ with
 % respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ using a hybrid of
 % complex-step and central difference approximations with user-specified 
-% relative step sizes $h_{i}$ and $h_{c}$, respectively.
+% step sizes $h_{i}$ and $h_{c}$, respectively.
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -179,7 +180,7 @@ error =
 %       <tr>
 %           <td style="text-align:center"><TT>hi</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
-%           <td>(OPTIONAL) relative step size for complex-step approximation</td>
+%           <td>(OPTIONAL) step size for complex-step approximation</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>

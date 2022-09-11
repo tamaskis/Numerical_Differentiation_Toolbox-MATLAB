@@ -178,14 +178,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       <tr>
           <td style="text-align:center"><TT>method</TT></td>
           <td style="text-align:center">-</td>
-          <td>numerical differentiation method</td>
+          <td>numerical differentiation method (<TT>'central difference'</TT>, <TT>'forward difference'</TT>, or <TT>'complex-step'</TT>) (defaults to <TT>'central difference'</TT>)</td>
           <td style="text-align:center">char</td>
-      </tr>
-      <tr>
-          <td style="text-align:center"><TT>hi</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
-          <td>step size for complex-step approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{-200}" title="" />)</td>
-          <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>hc</TT></td>
@@ -202,12 +196,18 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       <tr>
           <td style="text-align:center"><TT>hf2</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{f_{2}}" title="" /></td>
-          <td>elative step size for foward difference approximation (specifically for Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+          <td>relative step size for foward difference approximation (specifically for Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>hi</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
+          <td>step size for complex-step approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{-200}" title="" />)</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
   </table>
-</p><h2 id="2">Constructor</h2><pre class="language-matlab">differentiator = Differentiator
-differentiator = Differentiator(method)
+</p><h2 id="2">Constructor</h2><pre class="language-matlab">d = Differentiator
+d = Differentiator(method)
 </pre><p>
   <table border=1>
       <tr>
@@ -219,7 +219,7 @@ differentiator = Differentiator(method)
       <tr>
           <td style="text-align:center"><TT>method</TT></td>
           <td style="text-align:center">-</td>
-          <td>(OPTIONAL) numerical differentiation method (defaults to <TT>'central difference'</TT>)</td>
+          <td>(OPTIONAL) numerical differentiation method (<TT>'central difference'</TT>, <TT>'forward difference'</TT>, or <TT>'complex-step'</TT>) (defaults to <TT>'central difference'</TT>)</td>
           <td style="text-align:center">char</td>
       </tr>
   </table>
@@ -239,9 +239,9 @@ differentiator = Differentiator(method)
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
   </table>
-</p><h2 id="4">Note</h2><div><ul><li>The <tt>Differentiator</tt> class uses the central difference approximation by default as a compromise between accuracy and compatibility. The central difference approximation, like the forward difference approximation, can be used with any function, but it is also of a higher order than the forward difference approximation. The complex-step approximation is more accurate than the central difference approximation, but it is <i>not</i> compatible with all functions (in some cases, functions have to be replaced with their "complexified" versions to be compatible with the complex-step approximation).</li><li>The complex-step approximation is still the most accurate approximation by far, and should be used if all functions that are incompatible with the complex-step approximation have been replaced with their complexified equivalent (i.e. replacing <tt>atan2</tt> with <tt>iatan2</tt>).</li></ul></div><h2 id="5">Example #1: Default <tt>Differentiator</tt> object.</h2><p>Let's define a default <tt>Differentiator</tt> object.</p><pre class="codeinput">D = Differentiator
+</p><h2 id="4">Note</h2><div><ul><li>The <tt>Differentiator</tt> class uses the central difference approximation by default as a compromise between accuracy and compatibility. The central difference approximation, like the forward difference approximation, can be used with any function, but it is also of a higher order than the forward difference approximation. The complex-step approximation is more accurate than the central difference approximation, but it is <i>not</i> compatible with all functions (in some cases, functions have to be replaced with their "complexified" versions to be compatible with the complex-step approximation).</li><li>The complex-step approximation is still the most accurate approximation by far, and should be used if all functions that are incompatible with the complex-step approximation have been replaced with their complexified equivalent (i.e. replacing <tt>atan2</tt> with <tt>iatan2</tt>).</li><li>The reason that the differentiation functions are defined as properties rather than as methods is for speed. If they were defined as methods, each time they were called they would have to do checking of which differentiation method to use and call then call the appropriate functions. Defining them as properties avoids this repeated logical checking.</li></ul></div><h2 id="5">Example #1: Default <tt>Differentiator</tt> object.</h2><p>Let's define a default <tt>Differentiator</tt> object.</p><pre class="codeinput">d = Differentiator
 </pre><pre class="codeoutput">
-D = 
+d = 
 
   Differentiator with properties:
 
@@ -253,13 +253,13 @@ D =
         hessian: @(f,x)chessian(f,x,obj.hc)
      vechessian: @(f,x)cvechessian(f,x,obj.hc)
          method: 'central difference'
-             hi: 1.0000e-200
              hc: 6.0555e-06
              hf: 1.4901e-08
             hf2: 6.0555e-06
+             hi: 1.0000e-200
 
 </pre><p>Note that the <tt>Differentiator</tt> class uses the central difference approximation by default. Evaluating the derivative of <img src="Differentiator_doc_eq17084161653528035876.png" alt="$f(x)=x^{2}$" style="width:46px;height:12px;"> at <img src="Differentiator_doc_eq04851200360885152548.png" alt="$x=2$" style="width:26px;height:8px;">,</p><pre class="codeinput">f = @(x) x^2;
-df = D.derivative(f,2)
+df = d.derivative(f,2)
 </pre><pre class="codeoutput">
 df =
 
@@ -271,9 +271,9 @@ err =
 
    3.5696e-12
 
-</pre><h2 id="8">Example #2: Specificying a differentiation method.</h2><p>Let's define a <tt>Differentiation</tt> object that uses the forward difference approximation.</p><pre class="codeinput">D = Differentiator(<span class="string">'forward difference'</span>);
+</pre><h2 id="8">Example #2: Specificying a differentiation method.</h2><p>Let's define a <tt>Differentiation</tt> object that uses the forward difference approximation.</p><pre class="codeinput">d = Differentiator(<span class="string">'forward difference'</span>);
 </pre><p>Evaluating the derivative of <img src="Differentiator_doc_eq07863013981449083213.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="Differentiator_doc_eq14752139412850437817.png" alt="$x=3$" style="width:26px;height:8px;">,</p><pre class="codeinput">f = @(x) x^3;
-df = D.derivative(f,3)
+df = d.derivative(f,3)
 </pre><pre class="codeoutput">
 df =
 
@@ -285,9 +285,9 @@ err =
 
    5.3644e-07
 
-</pre><h2 id="11">Example #3: Adjusting the step size.</h2><p>Let's define a <tt>Differentiation</tt> object that uses the complex-step approximation.</p><pre class="codeinput">D = Differentiator(<span class="string">'complex-step'</span>);
+</pre><h2 id="11">Example #3: Adjusting the step size.</h2><p>Let's define a <tt>Differentiation</tt> object that uses the complex-step approximation.</p><pre class="codeinput">d = Differentiator(<span class="string">'complex-step'</span>);
 </pre><p>Evaluating the derivative of <img src="Differentiator_doc_eq07501950415006138384.png" alt="$f(x)=\sin{(x)}$" style="width:65px;height:11px;"> at <img src="Differentiator_doc_eq15469668660187898548.png" alt="$x=\pi$" style="width:27px;height:6px;">,</p><pre class="codeinput">f = @(x) sin(x);
-df = D.derivative(f,pi)
+df = d.derivative(f,pi)
 </pre><pre class="codeoutput">
 df =
 
@@ -299,7 +299,7 @@ err =
 
      0
 
-</pre><p>Now, let's increase the step-size from <img src="Differentiator_doc_eq09646552950603438366.png" alt="$10^{-200}$" style="width:28px;height:10px;"> (the default step size that is used with the complex-step approximation) to <img src="Differentiator_doc_eq00842521489666112223.png" alt="$h=0.001$" style="width:45px;height:8px;">.</p><pre class="codeinput">D.set_step_size(0.001)
+</pre><p>Now, let's increase the step-size from <img src="Differentiator_doc_eq09646552950603438366.png" alt="$10^{-200}$" style="width:28px;height:10px;"> (the default step size that is used with the complex-step approximation) to <img src="Differentiator_doc_eq00842521489666112223.png" alt="$h=0.001$" style="width:45px;height:8px;">.</p><pre class="codeinput">d.set_step_size(0.001)
 </pre><pre class="codeoutput">
 ans = 
 
@@ -313,12 +313,12 @@ ans =
         hessian: @(f,x)ihessian(f,x,obj.hi,obj.hc)
      vechessian: @(f,x)ivechessian(f,x,obj.hi,obj.hc)
          method: 'complex-step'
-             hi: 1.0000e-03
              hc: 6.0555e-06
              hf: 1.4901e-08
             hf2: 6.0555e-06
+             hi: 1.0000e-03
 
-</pre><p>We can see that <tt>hi</tt> has been updated to <tt>1.0000e-03</tt>. Now, evaluating the same derivative as before,</p><pre class="codeinput">df = D.derivative(f,pi)
+</pre><p>We can see that <tt>hi</tt> has been updated to <tt>1.0000e-03</tt>. Now, evaluating the same derivative as before,</p><pre class="codeinput">df = d.derivative(f,pi)
 </pre><pre class="codeoutput">
 df =
 
@@ -448,14 +448,8 @@ err =
 %       <tr>
 %           <td style="text-align:center"><TT>method</TT></td>
 %           <td style="text-align:center">-</td>
-%           <td>numerical differentiation method</td>
+%           <td>numerical differentiation method (<TT>'central difference'</TT>, <TT>'forward difference'</TT>, or <TT>'complex-step'</TT>) (defaults to <TT>'central difference'</TT>)</td>
 %           <td style="text-align:center">char</td>
-%       </tr>
-%       <tr>
-%           <td style="text-align:center"><TT>hi</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
-%           <td>step size for complex-step approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{-200}" title="" />)</td>
-%           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>hc</TT></td>
@@ -472,14 +466,20 @@ err =
 %       <tr>
 %           <td style="text-align:center"><TT>hf2</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{f_{2}}" title="" /></td>
-%           <td>elative step size for foward difference approximation (specifically for Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+%           <td>relative step size for foward difference approximation (specifically for Hessians) (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>hi</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h_{i}" title="" /></td>
+%           <td>step size for complex-step approximation (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{-200}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %   </table>
 % </html>
 %% Constructor
-%   differentiator = Differentiator
-%   differentiator = Differentiator(method)
+%   d = Differentiator
+%   d = Differentiator(method)
 %
 % <html>
 %   <table border=1>
@@ -492,7 +492,7 @@ err =
 %       <tr>
 %           <td style="text-align:center"><TT>method</TT></td>
 %           <td style="text-align:center">-</td>
-%           <td>(OPTIONAL) numerical differentiation method (defaults to <TT>'central difference'</TT>)</td>
+%           <td>(OPTIONAL) numerical differentiation method (<TT>'central difference'</TT>, <TT>'forward difference'</TT>, or <TT>'complex-step'</TT>) (defaults to <TT>'central difference'</TT>)</td>
 %           <td style="text-align:center">char</td>
 %       </tr>
 %   </table>
@@ -532,48 +532,54 @@ err =
 % by far, and should be used if all functions that are incompatible with
 % the complex-step approximation have been replaced with their complexified
 % equivalent (i.e. replacing |atan2| with |iatan2|).
+% * The reason that the differentiation functions are defined as properties
+% rather than as methods is for speed. If they were defined as methods,
+% each time they were called they would have to do checking of which
+% differentiation method to use and call then call the appropriate
+% functions. Defining them as properties avoids this repeated logical
+% checking.
 %% Example #1: Default |Differentiator| object.
 % Let's define a default |Differentiator| object.
-D = Differentiator
+d = Differentiator
 %%
 % Note that the |Differentiator| class uses the central difference
 % approximation by default. Evaluating the derivative of $f(x)=x^{2}$ at 
 % $x=2$,
 f = @(x) x^2;
-df = D.derivative(f,2)
+df = d.derivative(f,2)
 %%
 % Taking a look at the error (the expected result is 4),
 err = abs(df-4)
 %% Example #2: Specificying a differentiation method.
 % Let's define a |Differentiation| object that uses the forward difference
 % approximation.
-D = Differentiator('forward difference');
+d = Differentiator('forward difference');
 %%
 % Evaluating the derivative of $f(x)=x^{3}$ at $x=3$,
 f = @(x) x^3;
-df = D.derivative(f,3)
+df = d.derivative(f,3)
 %%
 % Taking a look at the error (the expected result is 27),
 err = abs(df-27)
 %% Example #3: Adjusting the step size.
 % Let's define a |Differentiation| object that uses the complex-step
 % approximation.
-D = Differentiator('complex-step');
+d = Differentiator('complex-step');
 %%
 % Evaluating the derivative of $f(x)=\sin{(x)}$ at $x=\pi$,
 f = @(x) sin(x);
-df = D.derivative(f,pi)
+df = d.derivative(f,pi)
 %%
 % Taking a look at the error (the expected result is -1),
 err = abs(df-(-1))
 %%
 % Now, let's increase the step-size from $10^{-200}$ (the default step size
 % that is used with the complex-step approximation) to $h=0.001$.
-D.set_step_size(0.001)
+d.set_step_size(0.001)
 %%
 % We can see that |hi| has been updated to |1.0000e-03|. Now, evaluating 
 % the same derivative as before,
-df = D.derivative(f,pi)
+df = d.derivative(f,pi)
 %%
 % Taking a look at the error once more,
 err = abs(df-(-1))

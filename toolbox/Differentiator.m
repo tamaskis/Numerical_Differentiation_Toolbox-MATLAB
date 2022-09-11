@@ -30,10 +30,10 @@ classdef Differentiator < handle
         hessian     % (1×1 function_handle) Hessian of a multivariate, scalar-valued function
         vechessian  % (1×1 function_handle) vector Hessian of a multivariate, vector-valued function
         method      % (char) differentiation method
-        hi          % (1×1 double) step size for complex-step approximation (defaults to 10⁻²⁰⁰)
         hc          % (1×1 double) relative step size for central difference approximation (defaults to ε¹ᐟ³)
         hf          % (1×1 double) relative step size for forward difference approximation (defaults to √ε)
         hf2         % (1×1 double) relative step size for calculating Hessian using forward difference approximation (defaults to ε¹ᐟ³)
+        hi          % (1×1 double) step size for complex-step approximation (defaults to 10⁻²⁰⁰)
     end
     
     % ---------------
@@ -52,9 +52,8 @@ classdef Differentiator < handle
             % INPUT:
             % ------
             %   method  - (OPTIONAL) (char) differentiation method; 
-            %             'central difference', 'complex-step', or
-            %             'forward difference' (defaults to 
-            %             'central difference')
+            %             'central difference', 'forward difference', or
+            %             'complex-step' (defaults to 'central difference')
             %
             % -------
             % OUTPUT:
@@ -139,14 +138,6 @@ classdef Differentiator < handle
                 obj.jacobian = @(f,x) cjacobian(f,x,obj.hc);
                 obj.hessian = @(f,x) chessian(f,x,obj.hc);
                 obj.vechessian = @(f,x) cvechessian(f,x,obj.hc);
-            elseif strcmpi(obj.method,'complex-step')
-                obj.derivative = @(f,x) iderivative(f,x,obj.hi);
-                obj.partial = @(f,x,k) ipartial(f,x,k,obj.hi);
-                obj.gradient = @(f,x) igradient(f,x,obj.hi);
-                obj.directional = @(f,x,v) idirectional(f,x,v,obj.hi);
-                obj.jacobian = @(f,x) ijacobian(f,x,obj.hi);
-                obj.hessian = @(f,x) ihessian(f,x,obj.hi,obj.hc);
-                obj.vechessian = @(f,x) ivechessian(f,x,obj.hi,obj.hc);
             elseif strcmpi(obj.method,'forward difference')
                 obj.derivative = @(f,x) fderivative(f,x,obj.hf);
                 obj.partial = @(f,x,k) fpartial(f,x,k,obj.hf);
@@ -155,6 +146,14 @@ classdef Differentiator < handle
                 obj.jacobian = @(f,x) fjacobian(f,x,obj.hf);
                 obj.hessian = @(f,x) fhessian(f,x,obj.hf2);
                 obj.vechessian = @(f,x) fvechessian(f,x,obj.hf2);
+            elseif strcmpi(obj.method,'complex-step')
+                obj.derivative = @(f,x) iderivative(f,x,obj.hi);
+                obj.partial = @(f,x,k) ipartial(f,x,k,obj.hi);
+                obj.gradient = @(f,x) igradient(f,x,obj.hi);
+                obj.directional = @(f,x,v) idirectional(f,x,v,obj.hi);
+                obj.jacobian = @(f,x) ijacobian(f,x,obj.hi);
+                obj.hessian = @(f,x) ihessian(f,x,obj.hi,obj.hc);
+                obj.vechessian = @(f,x) ivechessian(f,x,obj.hi,obj.hc);
             end
             
         end

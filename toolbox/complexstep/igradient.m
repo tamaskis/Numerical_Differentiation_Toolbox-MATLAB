@@ -9,7 +9,7 @@
 % See also cgradient, fgradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-07-06
+% Last Update: 2022-09-10
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

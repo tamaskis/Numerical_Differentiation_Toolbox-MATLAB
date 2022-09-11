@@ -9,7 +9,7 @@
 % See also cvechessian, ivechessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-08-31
+% Last Update: 2022-09-10
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires m(n+1)+1 evaluations of f(x).
+%   --> This function requires m[(n(n+1)/2)+1]+1 evaluations of f(x).
 %
 %==========================================================================
 function H = fvechessian(f,x0,h)
