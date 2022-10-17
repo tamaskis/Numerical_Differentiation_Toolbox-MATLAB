@@ -1,10 +1,10 @@
-%% inorm_test.m
+%% TEST_inorm.m
 % Numerical Differentiation Toolbox
 %
 % Unit testing of the inorm function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-10-16
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,11 +16,8 @@
 
 %% SCRIPT SETUP
 
-% clears Workspace and Command Window, closes all figures
-clear; clc; close all;
-
-% error tolerance
-err = 1e-10;
+% clears Workspace and closes all figures
+clear; close all;
 
 
 
@@ -31,28 +28,28 @@ x0 = [1;
       2;
       3];
 
-% true results
+% exact results
 pf2 = x0(2)/norm(x0);
 g2 = x0/norm(x0);
 
 % partial derivative test
-TEST_UNEQUAL(ipartial(@(x) norm(x), x0, 2), pf2, err);
+TEST_NOT_EQUAL(ipartial(@(x) norm(x), x0, 2), pf2);
 
 % gradient test
-TEST_UNEQUAL(igradient(@(x) norm(x), x0, 2), g2, err);
+TEST_NOT_EQUAL(igradient(@(x) norm(x), x0, 2), g2);
 
 
 
 %% TESTS FOR "inorm"
 
 % partial derivative test
-TEST_EQUAL(ipartial(@(x) inorm(x), x0, 2), pf2, err);
+TEST_EQUAL(ipartial(@(x) inorm(x), x0, 2), pf2);
 
 % gradient test
-TEST_EQUAL(igradient(@(x) inorm(x), x0), g2, err);
+TEST_EQUAL(igradient(@(x) inorm(x), x0), g2);
 
 
 
 %% PRINTS SUCCESS MESSAGE
 
-fprintf("All tests passed.\n")
+fprintf("All tests in TEST_inorm passed.\n")

@@ -1,10 +1,10 @@
-%% iatan2_igradient_test.m
+%% TEST_iatan2_igradient.m
 % Numerical Differentiation Toolbox
 %
 % Unit testing of the iatan2 and igradient functions.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-10-16
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,8 +16,11 @@
 
 %% SCRIPT SETUP
 
-% clears Workspace and Command Window, closes all figures
-clear; clc; close all;
+% clears Workspace and closes all figures
+clear; close all;
+
+% decimal places of precision
+n = 15;
 
 
 
@@ -30,13 +33,13 @@ g = @(x,y) [-y/(x^2+y^2);x/(x^2+y^2)];
 theta = pi/4;
 x0 = cos(theta);
 y0 = sin(theta);
-TEST_EQUAL(igradient(@(x) iatan2(x(2),x(1)),[x0;y0]), g(x0,y0));
+TEST_EQUAL(igradient(@(x) iatan2(x(2),x(1)),[x0;y0]), g(x0,y0), n);
 
 % quadrant II
 theta = 3*pi/4;
 x0 = cos(theta);
 y0 = sin(theta);
-TEST_EQUAL(igradient(@(x) iatan2(x(2),x(1)),[x0;y0]), g(x0,y0));
+TEST_EQUAL(igradient(@(x) iatan2(x(2),x(1)),[x0;y0]), g(x0,y0), n);
 
 % quadrant III
 theta = 5*pi/4;
@@ -50,5 +53,8 @@ x0 = cos(theta);
 y0 = sin(theta);
 TEST_EQUAL(igradient(@(x) iatan2(x(2),x(1)),[x0;y0]), g(x0,y0));
 
-% prints success message
-fprintf("All tests passed.\n")
+
+
+%% PRINTS SUCCESS MESSAGE
+
+fprintf("All tests in TEST_iatan2_igradient passed.\n")

@@ -1,10 +1,10 @@
-%% idot_test.m
+%% TEST_idot.m
 % Numerical Differentiation Toolbox
 %
 % Unit testing of the idot function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-10-16
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,8 +16,11 @@
 
 %% SCRIPT SETUP
 
-% clears Workspace and Command Window, closes all figures
-clear; clc; close all;
+% clears Workspace and closes all figures
+clear; close all;
+
+% decimal places of precision
+n = 12;
 
 
 
@@ -44,12 +47,12 @@ x0 = [1;2;3];
 % "classic" dot product
 h = @(x) dot(f(x),g(x));
 
-% expected and actual results
-dh_exp = dhdx(x0);
-dh_act = iderivative(h,x0);
+% exact and numerical results
+dh_exact = dhdx(x0);
+dh_numerical = iderivative(h,x0);
 
 % unit test
-TEST_UNEQUAL(dh_act,dh_exp);
+TEST_NOT_EQUAL(dh_numerical,dh_exact);
 
 
 
@@ -58,15 +61,15 @@ TEST_UNEQUAL(dh_act,dh_exp);
 % "complexified" dot product
 h = @(x) idot(f(x),g(x));
 
-% expected and actual results
-dh_exp = dhdx(x0);
-dh_act = iderivative(h,x0);
+% exact and numerical results
+dh_exact = dhdx(x0);
+dh_numerical = iderivative(h,x0);
 
 % unit test
-TEST_EQUAL(dh_act,dh_exp);
+TEST_EQUAL(dh_numerical,dh_exact,n);
 
 
 
 %% PRINTS SUCCESS MESSAGE
 
-fprintf("All tests passed.\n")
+fprintf("All tests in TEST_idot.m passed.\n")

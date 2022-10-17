@@ -1,23 +1,26 @@
-%% cross_test.m
+%% TEST_cross.m
 % Numerical Differentiation Toolbox
 %
 % Unit testing for complex-step differentiation of the "cross" function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-10-16
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 % DEPENDENCIES:
-%   --> Simple Unit Testing Toolbox (https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB)
-%   --> Numerical Differentiation Toolbox (https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox)
+%   • Simple Unit Testing Toolbox (https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB)
+%   • Numerical Differentiation Toolbox (https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox)
 
 
 
 %% SCRIPT SETUP
 
-% clears Workspace and Command Window, closes all figures
-clear; clc; close all;
+% clears Workspace and closes all figures
+clear; close all;
+
+% decimal places of precision
+n = 13;
 
 
 
@@ -40,15 +43,15 @@ dhdx = @(x) cross(dfdx(x),g(x))+cross(f(x),dgdx(x));
 % point at which to differentiate
 x0 = [1;2;3];
 
-% expected and actual results
-dh_exp = dhdx(x0);
-dh_act = iderivative(h,x0);
+% numerical and exact results
+dh_numerical = dhdx(x0);
+dh_exact = iderivative(h,x0);
 
 % unit test
-TEST_EQUAL(dh_act,dh_exp);
+TEST_EQUAL(dh_numerical, dh_exact,n);
 
 
 
 %% PRINTS SUCCESS MESSAGE
 
-fprintf("All tests passed.\n")
+fprintf("All tests in TEST_cross.m passed.\n")
