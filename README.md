@@ -17,19 +17,19 @@ MATLAB will automatically perform the installation and add all the contents of t
 [Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)\
 [Technical Documentation](https://tamaskis.github.io/files/Numerical_Differentiation.pdf)
 
-To open the home page of the toolbox documentation in MATLAB, type
+To open the home page of the toolbox documentation in MATLAB, type the following in the Command Window:
 
 ```
 doc_NDT
 ```
 
-in the Command Window. To open the documentation of a specific function with name `function_name` from the Command Window, type
+To open the documentation of a specific function with name `function_name`, type the following in the Command Window:
 
 ```
 doc_NDT function_name
 ```
 
-To open the PDF file with the technical documentation (Numerical_Differentiation.pdf) from the Command Window, type
+To open the technical documentation PDF (Numerical_Differentiation.pdf), type the following in the Command Window:
 
 ```
 doc_NDT tech
