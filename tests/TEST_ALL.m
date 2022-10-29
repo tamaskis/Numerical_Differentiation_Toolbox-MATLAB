@@ -1,10 +1,10 @@
 %% TEST_ALL.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the inorm function.
+% Runs all unit testing scripts.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-16
+% Last Update: 2022-10-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -19,12 +19,12 @@
 % clears Workspace and Command Window, closes all figures
 clear; clc; close all;
 
-% adds path to testing script
+% adds path to testing scripts
 addpath('scripts')
 
 
 
-%% RUNS ALL TEST
+%% RUNS ALL TESTS
 
 TEST_cross;
 TEST_iatan2_igradient;

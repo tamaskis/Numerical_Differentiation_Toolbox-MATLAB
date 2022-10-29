@@ -4,7 +4,7 @@
 % Unit testing of the idot function.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-16
+% Last Update: 2022-10-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

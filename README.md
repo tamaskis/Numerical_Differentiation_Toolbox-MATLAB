@@ -3,6 +3,15 @@
 This toolbox supplies functions and classes to evaluate derivatives, partial derivatives, gradients, directional derivatives, Jacobians, and Hessians using the forward difference, central difference, and complex-step approximations of a derivative.
 
 
+## Installation
+
+1. Download the toolbox from [MATLAB](https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox) or [GitHub](https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB).
+2. Open the `INSTALL` folder.
+3. Double-click on `Numerical Differentiation Toolbox.mltbx`.
+
+MATLAB will automatically perform the installation and add all the contents of the `toolbox` folder to the MATLAB search path. Alternatively, all of the functions in the `toolbox` folder can be used independently.
+
+
 ## Documentation
 
 [Toolbox Documentation](https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/)\

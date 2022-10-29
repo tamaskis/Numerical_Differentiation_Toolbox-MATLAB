@@ -9,7 +9,7 @@
 % See also cpartial, fpartial.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-10-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -39,8 +39,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 1 evaluations of f(x).
-%   --> If the function is scalar-valued, then m = 1.
+%   --> This function requires 1 evaluation of f(x).
 %
 %==========================================================================
 function pf = ipartial(f,x0,k,h)

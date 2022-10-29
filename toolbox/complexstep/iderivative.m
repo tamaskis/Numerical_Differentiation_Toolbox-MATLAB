@@ -9,7 +9,7 @@
 % See also cderivative, fderivative.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-10
+% Last Update: 2022-10-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -39,7 +39,6 @@
 % NOTE:
 % -----
 %   --> This function requires 1 evaluation of f(x).
-%   --> If the function is scalar-valued, then m = 1.
 %
 %==========================================================================
 function df = iderivative(f,x0,h)
