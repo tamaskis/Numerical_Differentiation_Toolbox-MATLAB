@@ -95,21 +95,28 @@ classdef TestSuite < handle
             
             % initializes counter to count the number of passed tests
             n_passed = 0;
+
+            % number of characters in longest name
+            longest_name = 0;
             
             % runs all tests
             for i = 1:obj.N
 
-                % runs ith tests
+                % runs ith test
                 n_passed = obj.tests(i).run(n_passed,obj.N);
 
-                % prints extra line if previous test failed but this one
-                % didn't
-                if ~obj.tests(i) && obj.tests(i)
-
+                % updates longest name
+                longest_name = max([longest_name,...
+                    length(obj.tests(i).name)]);
+                
             end
             
             % pass rate (%)
             pass_rate = round((n_passed/obj.N)*100);
+
+            % summary title
+            equal_str = [];
+            for i = 1
             
             % prints summary
             fprintf('\n===============================================\n');

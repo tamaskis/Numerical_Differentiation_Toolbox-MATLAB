@@ -104,12 +104,11 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     % diagnostic message
     if passed
         message = '';
+    elseif ~passed && (n_min > 0)
+        message = ['Not equal to ',num2str(n),' decimal places. ',...
+            data_type,' ARE equal to ',num2str(n_min),' decimal places.'];
     else
-        message = ['Not equal to ',num2str(n),' decimal places.'];
-        if n_min > 0
-            message = [message,data_type,' ARE equal to ',...
-                num2str(n_min),' decimal places.'];
-        end
+        message = 'Not equal to any decimal places.';
     end
     
     % results string

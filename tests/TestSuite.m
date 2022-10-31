@@ -32,7 +32,7 @@ classdef TestSuite < handle
     methods (Access = public)
         
         function obj = TestSuite(name)
-            % obj = TestSuite(name)
+            % obj = TestSuite(name,print)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -95,20 +95,35 @@ classdef TestSuite < handle
             
             % initializes counter to count the number of passed tests
             n_passed = 0;
+
+            % number of characters in longest name
+            longest_name = 0;
             
             % runs all tests
             for i = 1:obj.N
+
+                % runs ith test
                 n_passed = obj.tests(i).run(n_passed,obj.N);
+
+                % updates longest name
+                longest_name = max([longest_name,...
+                    length(obj.tests(i).name)]);
+                
             end
             
             % pass rate (%)
             pass_rate = round((n_passed/obj.N)*100);
+
+            % line length for result printout
+            line_length = max([longest_name+5,80]);
+
+            % summary title
+            equal_str = repmat('=',[1,line_length]);
+            dash_str = repmat('-',[1,line_length]);
             
             % prints summary
-            fprintf('\n===============================================\n');
-            fprintf(['Summary of ',obj.name,'\n']);
-            fprintf('-----------------------------------------------\n');
-            fprintf('\n');
+            fprintf(['\n',equal_str,'\n','Summary of ',obj.name,'\n',...
+                dash_str,'\n\n']);
             fprintf(['  Pass Rate: ',num2str(pass_rate),'%%\n']);
             fprintf(['   • passed tests: ',num2str(n_passed),'\n']);
             fprintf(['   • failed tests: ',num2str(obj.N-n_passed),'\n']);
@@ -122,8 +137,7 @@ classdef TestSuite < handle
                     end
                 end
             end
-            fprintf('\n');
-            fprintf('===============================================\n');
+            fprintf(['\n',equal_str,'\n']);
             
         end
         
