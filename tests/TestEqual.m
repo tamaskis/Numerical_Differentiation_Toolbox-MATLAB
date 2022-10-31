@@ -101,14 +101,14 @@ classdef TestEqual < handle
             ratio = (nargin == 3) && ~isempty(n_passed) &&...
                 ~isempty(n_total);
             
-            % string to print for name
+            % name string
             if isempty(obj.name)
                 name_str = '';
             else
                 name_str = [obj.name,': '];
             end
             
-            % string to print
+            % printout string
             print_str = [name_str,result];
             if ratio
                 print_str = [print_str,' (',num2str(n_passed),'/',...

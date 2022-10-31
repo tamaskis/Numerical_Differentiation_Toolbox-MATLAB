@@ -6,7 +6,7 @@
 %   TEST_NOT_EQUAL(X1,X2)
 %   TEST_NOT_EQUAL(X1,X2,n)
 %   TEST_NOT_EQUAL(__,name,print)
-%   [passed,result] = TEST_NOT_EQUAL(__)
+%   [passed,result,message] = TEST_NOT_EQUAL(__)
 %
 % See also TEST_EQUAL.
 %
@@ -32,9 +32,11 @@
 % -------
 %   passed  - (1×1 logical) true if test passed, false otherwise
 %   result  - (char) string storing the result of the test
+%   message - (char) string storing additional diagnostic message if test
+%             failed
 %
 %==========================================================================
-function [passed,result] = TEST_NOT_EQUAL(X1,X2,n,name,print)
+function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     
     % sets decimal places of precision (defaults to 16, corresponding to 
     % 10⁻¹⁶)
@@ -42,12 +44,9 @@ function [passed,result] = TEST_NOT_EQUAL(X1,X2,n,name,print)
         n = 16;
     end
     
-    % appends colon to test name if input, otherwise defaults test name to 
-    % empty string
+    % defaults test name to empty string
     if (nargin < 4) || isempty(name)
         name = '';
-    else
-        name = [name,': '];
     end
     
     % defaults "print" to true if not input
@@ -59,6 +58,7 @@ function [passed,result] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     if size(X1) ~= size(X2)
         passed = true;
         result = 'Passed.';
+        message = '';
         if print, fprintf([name,result,'\n']); end
         return;
     end
@@ -112,17 +112,33 @@ function [passed,result] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     if passed
         result = 'Passed.';
     else
-        if n_min == 0
-            result = ['ERROR -- Equal to ',num2str(n),...
-                ' decimal places.'];
-        else
-            result = ['ERROR -- Equal to ',num2str(n),...
-                ' decimal places. ',data_type,' ARE NOT equal to ',...
-                num2str(n_min),' decimal places.'];
-        end
+        result = 'FAILED.';
+    end
+    
+    % diagnostic message
+    if passed
+        message = '';
+    elseif ~passed && (n_min > 0)
+        message = ['Equal to ',num2str(n),' decimal places. ',data_type,...
+            ' ARE NOT equal to ',num2str(n_min),' decimal places.'];
+    else
+        message = 'Equal to 16 decimal places.';
+    end
+    
+    % name string
+    if isempty(name)
+        name_str = '';
+    else
+        name_str = [name,': '];
     end
     
     % prints result
-    if print, fprintf([name,result,'\n']); end
+    if print
+        if isempty(message)
+            fprintf([name_str,result,'\n']);
+        else
+            fprintf([name_str,result,'\n • ',message,'\n']);
+        end
+    end
     
 end

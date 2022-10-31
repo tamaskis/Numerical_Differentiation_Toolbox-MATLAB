@@ -44,12 +44,9 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
         n = 16;
     end
     
-    % appends colon to test name if input, otherwise defaults test name to 
-    % empty string
+    % defaults test name to empty string
     if (nargin < 4) || isempty(name)
         name = '';
-    else
-        name = [name,': '];
     end
     
     % defaults "print" to true if not input
@@ -61,7 +58,8 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     if size(X1) ~= size(X2)
         passed = false;
         result = 'FAILED.\n • The two arrays are not the same size.';
-        if print, fprintf([name,result,'\n']); end
+        message = 'The two arrays are not the same size';
+        if print, fprintf([name,result,'\n • ',message,'\n']); end
         return;
     end
     
@@ -101,6 +99,13 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
         data_type = 'Arrays';
     end
     
+    % results string
+    if passed
+        result = 'Passed.';
+    else
+        result = 'FAILED.';
+    end
+    
     % diagnostic message
     if passed
         message = '';
@@ -111,19 +116,19 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
         message = 'Not equal to any decimal places.';
     end
     
-    % results string
-    if passed
-        result = 'Passed.';
+    % name string
+    if isempty(name)
+        name_str = '';
     else
-        result = 'FAILED.';
+        name_str = [name,': '];
     end
     
     % prints result
     if print
         if isempty(message)
-            fprintf([name,result,'\n']);
+            fprintf([name_str,result,'\n']);
         else
-            fprintf([name,result,'\n • ',message,'\n']);
+            fprintf([name_str,result,'\n • ',message,'\n']);
         end
     end
     
