@@ -4,7 +4,7 @@
 % Runs all unit testing scripts.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-10-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -20,24 +20,17 @@
 clear; clc; close all;
 
 % adds path to testing scripts
-addpath('scripts')
+addpath('newscripts')
 
 
 
 %% RUNS ALL TESTS
 
-TEST_cross;
-TEST_iatan2_igradient;
+%TEST_cross;
+%TEST_iatan2_igradient;
 TEST_iderivative;
-TEST_idot;
-TEST_imax;
-TEST_imin;
-TEST_inorm;
+%TEST_idot;
+%TEST_imax;
+%TEST_imin;
+%TEST_inorm;
 
-
-
-%% PRINTS SUCCESS MESSAGE
-
-fprintf("\n==========================\n")
-fprintf("SUCCESS: All tests passed.\n")
-fprintf("==========================\n\n")
