@@ -16,14 +16,11 @@ classdef TestSuite < handle
     % -----------
     
     properties
-        tests   % (N×1 cell array) cell array storing TestEqual and TestNotEqual objects comprising the test suite
-        name    % (char) test suite name
-        N       % (1×1 double) number of tests comprising test suite
+        tests       % (N×1 cell array) cell array storing TestEqual and TestNotEqual objects comprising the test suite
+        name        % (char) test suite name
+        N           % (1×1 double) number of tests comprising test suite
+        terminate   % (1×1 logical) if true, test suite terminates after first failed test
     end
-    
-    % TODO: TEST SUMMARY, TEST SUITE NAME
-    % TODO: remove semicolon from test name, make test names mandatory for
-    % TestEqual and TestNotEqual classes
     
     % ---------------
     % Public methods.
@@ -31,8 +28,8 @@ classdef TestSuite < handle
     
     methods (Access = public)
         
-        function obj = TestSuite(name)
-            % obj = TestSuite(name,print)
+        function obj = TestSuite(name,terminate)
+            % obj = TestSuite(name,terminate)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -40,12 +37,16 @@ classdef TestSuite < handle
             % ------
             % INPUT:
             % ------
-            %   name    - (OPTIONAL) (char) test suite name
+            %   name        - (OPTIONAL) (char) test suite name
+            %   terminate   - (1×1 logical) true if test suite should be
+            %                 terminated after first failed unit test, 
+            %                 false if all tests should be run regardless
+            %                 of any failed tests (defaults to false)
             %
             % -------
             % OUTPUT:
             % -------
-            %   obj     - (1×1 TestSuite) TestSuite object
+            %   obj         - (1×1 TestSuite) TestSuite object
             %
             %--------------------------------------------------------------
             
@@ -53,10 +54,17 @@ classdef TestSuite < handle
             obj.tests = {};
             
             % sets test suite name (defaults to empty string)
-            if (nargin == 0) || isempty(name)
+            if (nargin < 1) || isempty(name)
                 obj.name = '';
             else
                 obj.name = [name,' '];
+            end
+            
+            % sets test suite termination (defaults to false)
+            if (nargin < 2) || isempty(terminate)
+                obj.terminate = false;
+            else
+                obj.terminate = terminate;
             end
             
             % initializes number of tests
@@ -101,10 +109,17 @@ classdef TestSuite < handle
             
             % runs all tests
             for i = 1:obj.N
-
+                
                 % runs ith test
                 n_passed = obj.tests(i).run(n_passed,obj.N);
-
+                
+                % terminates test suite
+                if obj.terminate && ~obj.tests(i).passed
+                    fprintf(['\nTEST SUITE TERMINATED EARLY DUE TO ',...
+                        'FAILED UNIT TEST.\n\n'])
+                    return;
+                end
+                
                 % updates longest name
                 longest_name = max([longest_name,...
                     length(obj.tests(i).name)]);
@@ -113,11 +128,11 @@ classdef TestSuite < handle
             
             % pass rate (%)
             pass_rate = round((n_passed/obj.N)*100);
-
+            
             % line length for result printout
             line_length = max([longest_name+5,80]);
-
-            % summary title
+            
+            % repeated ='s and -'s
             equal_str = repmat('=',[1,line_length]);
             dash_str = repmat('-',[1,line_length]);
             

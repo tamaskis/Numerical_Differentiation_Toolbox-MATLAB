@@ -78,7 +78,7 @@ TEST_EQUAL(d_iabs_cs(1),d_iabs(1),[],'iderivative iabs, x₀ > 0');
 
 %% SQUARE ROOT, EXPONENTIAL AND POWER FUNCTIONS
 
-test_suite = TestSuite('iderivative tests');
+test_suite = TestSuite('iderivative tests',false);
 
 % sqrt
 test_suite.add_test(TestEqual(d_sqrt_cs(0.5),d_sqrt(0.5),'iderivative sqrt, 0 < x₀ < 1'));
