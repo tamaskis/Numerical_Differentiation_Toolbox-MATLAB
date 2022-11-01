@@ -9,7 +9,7 @@
 % See also cpartial, ipartial.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -48,7 +48,7 @@ function pf = fpartial(f,x0,k,h)
     if nargin == 3 || isempty(h)
         h = sqrt(eps);
     end
-
+    
     % evaluates f(x₀)
     f0 = f(x0);
     

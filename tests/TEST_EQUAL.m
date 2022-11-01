@@ -82,6 +82,7 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
                 break;
             catch
                 n_array(i) = n_array(i)-1;
+                n_array(i)
             end
         end
     end

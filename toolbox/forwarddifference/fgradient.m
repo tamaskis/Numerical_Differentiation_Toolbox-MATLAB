@@ -9,7 +9,7 @@
 % See also cgradient, igradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -62,13 +62,13 @@ function g = fgradient(f,x0,h)
         
         % absolute step size
         dxk = h*(1+abs(x0(k)));
-
+        
         % steps in kth direction
         x0(k) = x0(k)+dxk;
         
-        % evaluates partial derivative with respect to xₖ
+        % partial derivative of f with respect to xₖ
         g(k) = (f(x0)-f0)/dxk;
-
+        
         % resets x0
         x0(k) = x0(k)-dxk;
         

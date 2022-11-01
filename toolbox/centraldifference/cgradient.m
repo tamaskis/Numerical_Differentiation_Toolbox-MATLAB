@@ -9,7 +9,7 @@
 % See also fgradient, igradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -68,7 +68,7 @@ function g = cgradient(f,x0,h)
         x0(k) = x0(k)-2*dxk;
         f2 = f(x0);
         
-        % evaluates partial derivative with respect to xₖ
+        % partial derivative of f with respect to xₖ
         g(k) = (f1-f2)/(2*dxk);
         
         % resets x0

@@ -56,6 +56,8 @@ classdef TestEqual < handle
             % corresponding to 10⁻¹⁶)
             if (nargin < 4) || isempty (n)
                 obj.n = 16;
+            else
+                obj.n = n;
             end
             
             % stores inputs
@@ -69,7 +71,7 @@ classdef TestEqual < handle
             
         end
         
-        function n_passed = run(obj,n_passed,n_total)
+        function n_passed = run(obj,n_passed,n)
             % TestEqual.run
             %
             % Runs the test.
@@ -80,7 +82,8 @@ classdef TestEqual < handle
             % ------
             %   n_passed    - (1×1 double) number of tests that have passed
             %                 thus far
-            %   n_total     - (1×1 double) total number of tests
+            %   n           - (1×1 double) number of tests to compare
+            %                 against
             %
             % -------
             % OUTPUT:
@@ -99,7 +102,7 @@ classdef TestEqual < handle
             
             % determines if (# passed) / (total #) ratio should be printed
             ratio = (nargin == 3) && ~isempty(n_passed) &&...
-                ~isempty(n_total);
+                ~isempty(n);
             
             % name string
             if isempty(obj.name)
@@ -112,16 +115,16 @@ classdef TestEqual < handle
             print_str = [name_str,result];
             if ratio
                 print_str = [print_str,' (',num2str(n_passed),'/',...
-                    num2str(n_total),')'];
+                    num2str(n),')'];
             end
             if ~obj.passed
-                print_str = [print_str,'\n • ',message];
+                print_str = [print_str,'\n    >>>> ',message];
             end
             print_str = [print_str,'\n'];
             
             % prints test results
             fprintf(print_str);
-            
+
         end
         
     end

@@ -56,6 +56,8 @@ classdef TestNotEqual < handle
             % corresponding to 10⁻¹⁶)
             if (nargin < 3) || isempty (n)
                 obj.n = 16;
+            else
+                obj.n = n;
             end
             
             % stores inputs

@@ -101,6 +101,9 @@ classdef TestSuite < handle
             % Runs all tests in the test suite.
             %--------------------------------------------------------------
             
+            % prints blank line
+            fprintf('\n');
+
             % initializes counter to count the number of passed tests
             n_passed = 0;
 
@@ -111,7 +114,7 @@ classdef TestSuite < handle
             for i = 1:obj.N
                 
                 % runs ith test
-                n_passed = obj.tests(i).run(n_passed,obj.N);
+                n_passed = obj.tests(i).run(n_passed,i);
                 
                 % terminates test suite
                 if obj.terminate && ~obj.tests(i).passed

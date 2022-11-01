@@ -36,7 +36,7 @@ d_log10 = @(x) 1/(x*log(10));
 d_sin = @(x) cos(x);
 d_cos = @(x) -sin(x);
 d_tan = @(x) sec(x)^2;
-d_csc = @(x) -csc(x)*tan(x);
+d_csc = @(x) -csc(x)*cot(x);
 d_sec = @(x) sec(x)*tan(x);
 d_cot = @(x) -csc(x)^2;
 
@@ -44,8 +44,8 @@ d_cot = @(x) -csc(x)^2;
 d_asin = @(x) 1/sqrt(1-x^2);
 d_acos = @(x) -1/sqrt(1-x^2);
 d_atan = @(x) 1/(1+x^2);
-d_acsc = @(x) -1/(x*sqrt(x^2-1));
-d_asec = @(x) 1/(x*sqrt(x^2-1));
+d_acsc = @(x) -1/(abs(x)*sqrt(x^2-1));
+d_asec = @(x) 1/(abs(x)*sqrt(x^2-1));
 d_acot = @(x) -1/(1+x^2);
 
 % hyperbolic functions
@@ -142,7 +142,7 @@ d_log10_cd = @(x) cderivative(@(x)log10(x),x);
 d_sin_cd = @(x) cderivative(@(x)sin(x),x);
 d_cos_cd = @(x) cderivative(@(x)cos(x),x);
 d_tan_cd = @(x) cderivative(@(x)tan(x),x);
-d_cdc_cd = @(x) cderivative(@(x)csc(x),x);
+d_csc_cd = @(x) cderivative(@(x)csc(x),x);
 d_sec_cd = @(x) cderivative(@(x)sec(x),x);
 d_cot_cd = @(x) cderivative(@(x)cot(x),x);
 

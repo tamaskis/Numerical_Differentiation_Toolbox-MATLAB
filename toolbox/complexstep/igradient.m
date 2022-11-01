@@ -9,7 +9,7 @@
 % See also cgradient, fgradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -60,7 +60,7 @@ function g = igradient(f,x0,h)
         % steps in kth direction
         x0(k) = x0(k)+1i*h;
         
-        % evaluates partial derivative with respect to xₖ
+        % partial derivative of f with respect to xₖ
         g(k) = imag(f(x0))/h;
         
         % resets x0
