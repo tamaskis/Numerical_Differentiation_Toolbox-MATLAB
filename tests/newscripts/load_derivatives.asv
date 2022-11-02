@@ -24,8 +24,8 @@ d_max = @(x,f,g) d_max_func(x,f,g);
 d_imax = @(x,f,g) d_max_func(x,f,g);
 
 % min
-d_min = @(x,f,g) d_min_func(x,f,g);
-d_imin = @(x,f,g) d_min_func(x,f,g);
+d_min = @(x,f,g) d_max_func(x,f,g);
+d_imin = @(x,f,g) d_max_func(x,f,g);
 
 % square root
 d_sqrt = @(x) 0.5*x^(-0.5);
@@ -80,10 +80,11 @@ d_acoth = @(x) 1/(1-x^2);
 d_abs_fd = @(x) fderivative(@(x)abs(x),x);
 
 % max
-d_max_fd = @(x,f,g) fderivative(@(x)max(f(x),g(x)),x);
+d_max = @(x,f,g) fderivative(@(x)max(f(x),g(x)),x);
 
 % min
-d_min_fd = @(x,f,g) fderivative(@(x)min(f(x),g(x)),x);
+d_min = @(x,f,g) d_max_func(x,f,g);
+d_imin = @(x,f,g) d_max_func(x,f,g);
 
 % square root
 d_sqrt_fd = @(x) fderivative(@(x)sqrt(x),x);
@@ -138,12 +139,6 @@ d_acoth_fd = @(x) fderivative(@(x)acoth(x),x);
 d_abs_cd = @(x) cderivative(@(x)abs(x),x);
 d_iabs_cd = @(x) cderivative(@(x)iabs(x),x);
 
-% max
-d_max_cd = @(x,f,g) cderivative(@(x)max(f(x),g(x)),x);
-
-% min
-d_min_cd = @(x,f,g) cderivative(@(x)min(f(x),g(x)),x);
-
 % square root
 d_sqrt_cd = @(x) cderivative(@(x)sqrt(x),x);
 
@@ -196,14 +191,6 @@ d_acoth_cd = @(x) cderivative(@(x)acoth(x),x);
 % absolute value
 d_abs_cs = @(x) iderivative(@(x)abs(x),x);
 d_iabs_cs = @(x) iderivative(@(x)iabs(x),x);
-
-% max
-d_max_cs = @(x,f,g) iderivative(@(x)max(f(x),g(x)),x);
-d_imax_cs = @(x,f,g) iderivative(@(x)imax(f(x),g(x)),x);
-
-% min
-d_min_cs = @(x,f,g) iderivative(@(x)min(f(x),g(x)),x);
-d_imin_cs = @(x,f,g) iderivative(@(x)imin(f(x),g(x)),x);
 
 % square root
 d_sqrt_cs = @(x) iderivative(@(x)sqrt(x),x);
@@ -264,7 +251,7 @@ function d_abs = d_abs_func(x)
     end
 end
 
-function d_max = d_max_func(x,f,g)
+function d_max = d_max_func(f,g,x)
     if f(x) > g(x)
         d_max = iderivative(f,x);
     end
@@ -273,7 +260,7 @@ function d_max = d_max_func(x,f,g)
     end
 end
 
-function d_min = d_min_func(x,f,g)
+function d_min = d_min_func(f,g,x)
     if f(x) < g(x)
         d_min = iderivative(f,x);
     end

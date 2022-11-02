@@ -19,58 +19,129 @@
 % clears Workspace and closes all figures
 clear; close all;
 
-% decimal places of precision
-%n = 12;
+% loads derivatives
+load_derivatives;
+
+
+
+%% INSTANTIATE TEST SUITE
 
 test_suite = TestSuite('complexified tests',false);
 
 
 
-%% DOT PRODUCT
+%% MAX
 
-% vector valued functions of x
-f = @(x) [x(1)^2;x(2)^2;x(3)^2];
-g = @(x) [x(1)^3;x(2)^3;x(3)^3];
+% auxiliary functions
+g1 = @(x) x;
+g2 = @(x) x^3;
 
-% derivatives of f and g
-dfdx = @(x) [2*x(1);2*x(2);2*x(3)];
-dgdx = @(x) [3*x(1)^2;3*x(2)^2;3*x(3)^2];
+% --------------------------------
+% Test for "classic" max function.
+% --------------------------------
 
-% derivative of dot product of f and g
-dhdx = @(x) dot(dfdx(x),g(x))+dot(f(x),dgdx(x));
+% function
+f = @(x) max(g1(x),g2(x));
 
-% point at which to differentiate
-x0 = [1;2;3];
+% function handle for complex-step derivative
+df_cs = @(x) iderivative(f,x);
 
-% -------------------------------
-% Test for "classic" dot product.
-% -------------------------------
+% function handle for true derivative
+df_true = @(x) d_max(x,g1,g2);
 
-% "classic" dot product
-h = @(x) dot(f(x),g(x));
+% units tests
+test_suite.add_test(TestNotEqual(df_cs(-1.5),df_true(-1.5),'iderivative(max), x₀ = -1.5'));
+test_suite.add_test(TestNotEqual(df_cs(-0.5),df_true(-0.5),'iderivative(max), x₀ = -0.5'));
+test_suite.add_test(TestNotEqual(df_cs(0.5),df_true(0.5),'iderivative(max), x₀ = 0.5'));
+test_suite.add_test(TestNotEqual(df_cs(1.5),df_true(1.5),'iderivative(max), x₀ = 1.5'));
 
-% exact and numerical results
-dh_exact = dhdx(x0);
-dh_numerical = iderivative(h,x0);
+% TEST_EQUAL(iderivative(f,-1.5),dfdx(-1.5));
+% TEST_EQUAL(iderivative(f,-0.5),dfdx(-0.5));
+% TEST_EQUAL(iderivative(f,0.5),dfdx(0.5));
+% TEST_EQUAL(iderivative(f,1.5),dfdx(1.5),n);
 
-% unit test
-test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'classic dot product with iderivative'));
+% -------------------------------------
+% Test for "complexified" max function.
+% -------------------------------------
 
-% ------------------------------------
-% Test for "complexified" dot product.
-% ------------------------------------
+% function
+f = @(x) imax(g1(x),g2(x));
 
-% "complexified" dot product
-h = @(x) idot(f(x),g(x));
+% function handle for complex-step derivative
+df_cs = @(x) iderivative(f,x);
 
-% exact and numerical results
-dh_exact = dhdx(x0);
-dh_numerical = iderivative(h,x0);
+% function handle for true derivative
+df_true = @(x) d_max(x,g1,g2);
 
-% unit test
-test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'complexified dot product with iderivative'));
-
-
-%% RUNS TEST SUITE
+% units tests
+test_suite.add_test(TestEqual(df_cs(-1.5),df_true(-1.5),'iderivative(imax), x₀ = -1.5'));
+test_suite.add_test(TestEqual(df_cs(-0.5),df_true(-0.5),'iderivative(imax), x₀ = -0.5'));
+test_suite.add_test(TestEqual(df_cs(0.5),df_true(0.5),'iderivative(imax), x₀ = 0.5'));
+test_suite.add_test(TestEqual(df_cs(1.5),df_true(1.5),'iderivative(imax), x₀ = 1.5'));
 
 test_suite.run;
+
+
+% %% DOT PRODUCT
+% 
+% % vector valued functions of x
+% f = @(x) [x(1)^2;x(2)^2;x(3)^2];
+% g = @(x) [x(1)^3;x(2)^3;x(3)^3];
+% 
+% % derivatives of f and g
+% dfdx = @(x) [2*x(1);2*x(2);2*x(3)];
+% dgdx = @(x) [3*x(1)^2;3*x(2)^2;3*x(3)^2];
+% 
+% % derivative of dot product of f and g
+% dhdx = @(x) dot(dfdx(x),g(x))+dot(f(x),dgdx(x));
+% 
+% % point at which to differentiate
+% x0 = [1;2;3];
+% 
+% % -------------------------------
+% % Test for "classic" dot product.
+% % -------------------------------
+% 
+% % "classic" dot product
+% h = @(x) dot(f(x),g(x));
+% 
+% % exact and numerical results
+% dh_exact = dhdx(x0);
+% dh_numerical = iderivative(h,x0);
+% 
+% % unit test
+% test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'iderivative(dot)'));
+% 
+% % ------------------------------------
+% % Test for "complexified" dot product.
+% % ------------------------------------
+% 
+% % "complexified" dot product
+% h = @(x) idot(f(x),g(x));
+% 
+% % exact and numerical results
+% dh_exact = dhdx(x0);
+% dh_numerical = iderivative(h,x0);
+% 
+% % unit test
+% test_suite.add_test(TestEqual(dh_numerical,dh_exact,'iderivative(idot)',12));
+% 
+% 
+% %% RUNS TEST SUITE
+% 
+% test_suite.run;
+% 
+% 
+% 
+% %% AUXILIARY FUNCTIONS
+% 
+% % % f'(x)
+% % function df = dfdx(x)
+% %     if ((0 < x) && (x < 1)) || (x < -1)
+% %         df = 1;
+% %     elseif ((-1 < x) && (x < 0)) || (x > 1)
+% %         df = 3*x^2;
+% %     else
+% %         df = NaN;
+% %     end
+% % end

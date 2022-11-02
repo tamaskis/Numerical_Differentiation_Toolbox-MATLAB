@@ -84,14 +84,13 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
             element_equal = true;
             try
                 assert(round(X1(i),n_array(i)) == round(X2(i),n_array(i)));
-                break;
             catch
-                n_array(i) = n_array(i)-1;
                 element_equal = false;
             end
             if ~element_equal
                 m = m+1;
             end
+            n_array(i) = n_array(i)-1;
         end
     end
     
@@ -124,13 +123,13 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     elseif passed && (n_min > 0)
         message = ['WARNING: This test tested for inequality, but the ',...
             data_type_2,' ARE equal to ',num2str(n_min),...
-            ' decimal places.\n                  To get rid of this ',...
+            ' decimal places.\n    >>>> To get rid of this ',...
             'warning, set the decimal places of precision for this ',...
             'test to n = ',num2str(n_min),'.'];
     elseif ~passed && (n_min > 0)
-        message = ['Equal to ',num2str(n),' decimal places. ',...
-            data_type_1,' ARE NOT equal to ',num2str(n_min),...
-            ' decimal places.'];
+        message = [data_type_1,' are equal to ',num2str(n),...
+            ' decimal places.\n    >>>> ',data_type_1,...
+            ' are NOT equal to ',num2str(n_min),' decimal places.'];
     else
         message = 'Equal to 16 decimal places.';
     end

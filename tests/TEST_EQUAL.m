@@ -57,9 +57,9 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     % if the two arrays do not have the same size, they cannot be equal
     if size(X1) ~= size(X2)
         passed = false;
-        result = 'FAILED.\n • The two arrays are not the same size.';
+        result = 'FAILED.';
         message = 'The two arrays are not the same size';
-        if print, fprintf([name,result,'\n • ',message,'\n']); end
+        if print, fprintf([name,result,'\n    >>>> ',message,'\n']); end
         return;
     end
     
@@ -110,8 +110,9 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     if passed
         message = '';
     elseif ~passed && (n_min > 0)
-        message = ['Not equal to ',num2str(n),' decimal places. ',...
-            data_type,' ARE equal to ',num2str(n_min),' decimal places.'];
+        message = ['Not equal to ',num2str(n),' decimal places.',...
+            '\n    >>>> ',data_type,' ARE equal to ',num2str(n_min),...
+            ' decimal places.'];
     else
         message = 'Not equal to any decimal places.';
     end
