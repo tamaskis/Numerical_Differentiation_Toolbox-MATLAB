@@ -71,8 +71,11 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     N = length(X1);
     
     % array that stores decimals of precision for each element
-    n_array = n*ones(N,1);
+    n_array = (n+1)*ones(N,1);
     
+    % tracks number of inequalities
+    m = 0;
+
     % loops through each array element, testing for equality at desired
     % precision or checking up to which precision equality exists +
     % counting the number of inequalities
@@ -84,10 +87,37 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     
     % determines minimum number of decimal places of equality
     n_min = min(n_array);
-    
+
     % determines if test passed (at least one elementwise inequality
     % exists with respect to the specified precision)
-    passed = (n_min < n);
+    passed = n_m
+
+
+    
+%     % loops through each array element, testing for equality at desired
+%     % precision or checking up to which precision equality exists +
+%     % counting the number of inequalities
+%     for i = 1:N
+%         while (n_array(i) > 0)
+%             element_equal = true;
+%             try
+%                 assert(round(X1(i),n_array(i)) == round(X2(i),n_array(i)));
+%             catch
+%                 element_equal = false;
+%             end
+%             if ~element_equal
+%                 m = m+1;
+%             end
+%             n_array(i) = n_array(i)-1;
+%         end
+%     end
+    
+    % determines minimum number of decimal places of equality
+    n_min = min(n_array);
+    
+    % determines if test passed (at least one elementwise inequality 
+    % exists)
+    passed = (m > 0);
     
     % determines data type of input
     if N == 1
@@ -104,7 +134,7 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     else
         result = 'FAILED.';
     end
-    
+    n_min
     % diagnostic message
     if passed && (n_min == 0)
         message = '';
@@ -114,7 +144,7 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
             ' decimal places.\n    >>>> To get rid of this ',...
             'warning, set the decimal places of precision for this ',...
             'test to n = ',num2str(n_min),'.'];
-    elseif ~passed && (n_min > 0) && (n_min < n)
+    elseif ~passed && (n_min > 0)
         message = [data_type_1,' are equal to ',num2str(n),...
             ' decimal places.\n    >>>> ',data_type_1,...
             ' are NOT equal to ',num2str(n_min),' decimal places.'];
