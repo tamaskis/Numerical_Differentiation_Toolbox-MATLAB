@@ -36,40 +36,17 @@ load_derivatives;
 
 %% FUNCTIONS THAT WILL RESULT IN ERRORS
 
-% % absolute value (x0 > 0 and x0 < 0) --> FIX IN NEXT SECTION TODO
-% TEST_NOT_EQUAL(d_abs_cs(-1),-1,[],'iderivative abs, x₀ < 0');
-% TEST_NOT_EQUAL(d_abs_cs(1),1,[],'iderivative abs, x₀ > 0');
-% 
-% % inverse trigonometric functions (x0 < -1) --> NO FIX
-% x0 = -1.5;
-% TEST_NOT_EQUAL(d_acsc_cs(x0),d_acsc(x0),[],'iderivative acsc, x₀ < -1');
-% TEST_NOT_EQUAL(d_asec_cs(x0),d_asec(x0),[],'iderivative asec, x₀ < -1');
-% 
-% % inverse hyperbolic functions (0 < x0 < 1) --> NO FIX
-% x0 = 0.5;
-% TEST_NOT_EQUAL(d_acoth_cs(x0),d_acoth(x0),[],'iderivative acoth, 0 < x₀ < 1');
-% 
-% % inverse hyperbolic functions (x0 > 1) --> NO FIX
-% x0 = 1.5;
-% TEST_NOT_EQUAL(d_atanh_cs(x0),d_atanh(x0),[],'iderivative atanh, x₀ > 1');
-% 
-% % inverse hyperbolic functions (-1 < x0 < 0) --> NO FIX
-% x0 = -0.5;
-% TEST_NOT_EQUAL(d_asech_cs(x0),d_asech(x0),[],'iderivative asech, -1 < x₀ < 0');
-% TEST_NOT_EQUAL(d_acoth_cs(x0),d_acoth(x0),[],'iderivative acoth, -1 < x₀ < 0');
-% 
-% % inverse hyperbolic functions (x0 < -1) --> NO FIX
-% x0 = -1.5;
-% TEST_NOT_EQUAL(d_acosh_cs(x0),d_acosh(x0),[],'iderivative acosh, x₀ < -1');
-% TEST_NOT_EQUAL(d_atanh_cs(x0),d_atanh(x0),[],'iderivative atanh, x₀ < -1');
-% 
-% 
-% 
-% %% COMPLEXIFIED FUNCTIONS TO ADDRESS ERRORS FROM PREVIOUS SECTION
-% 
-% % absolute value (x0 > 0 and x0 < 0)
-% TEST_EQUAL(d_iabs_cs(-1),d_iabs(-1),[],'iderivative iabs, x₀ < 0');
-% TEST_EQUAL(d_iabs_cs(1),d_iabs(1),[],'iderivative iabs, x₀ > 0');
+% absolute value (x0 > 0 and x0 < 0) --> FIX IN NEXT SECTION TODO
+TEST_NOT_EQUAL(d_abs_cs(-1),-1,[],'iderivative abs, x₀ < 0');
+TEST_NOT_EQUAL(d_abs_cs(1),1,[],'iderivative abs, x₀ > 0');
+
+
+
+%% COMPLEXIFIED FUNCTIONS TO ADDRESS ERRORS FROM PREVIOUS SECTION
+
+% absolute value (x0 > 0 and x0 < 0)
+TEST_EQUAL(d_iabs_cs(-1),d_iabs(-1),[],'iderivative iabs, x₀ < 0');
+TEST_EQUAL(d_iabs_cs(1),d_iabs(1),[],'iderivative iabs, x₀ > 0');
 
 
 
@@ -279,6 +256,15 @@ test_suite.add_test(TestEqual(d_acoth_cs(1.5),d_acoth(1.5),'iderivative acoth, x
 
 
 
-%%
+%% MISCELLANEOUS FUNCTIONS
+
+test_suite.add_test(TestNotEqual(d_abs_cs(-1),d_abs(-1),'iderivative abs, x₀ < 0'));
+test_suite.add_test(TestNotEqual(d_abs_cs(1),d_abs(1),'iderivative abs, x₀ > 0'));
+
+
+%TEST_NOT_EQUAL(d_abs_cs(1),d_abs(1),[],'iderivative abs, x₀ > 0');
+
+
+%% RUNS TEST SUITE
 
 test_suite.run;

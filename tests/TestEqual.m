@@ -71,7 +71,7 @@ classdef TestEqual < handle
             
         end
         
-        function n_passed = run(obj,n_passed,n)
+        function n_passed = run(obj,n_passed,n_run)
             % TestEqual.run
             %
             % Runs the test.
@@ -82,13 +82,13 @@ classdef TestEqual < handle
             % ------
             %   n_passed    - (1×1 double) number of tests that have passed
             %                 thus far
-            %   n           - (1×1 double) number of tests to compare
-            %                 against
+            %   n_run       - (1×1 double) number of tests that have been
+            %                 run thus far
             %
             % -------
             % OUTPUT:
             % -------
-            %   n_passed    - (1×1 double) updated numebr of tests that
+            %   n_passed    - (1×1 double) updated number of tests that
             %                 have passed thus far
             %
             %--------------------------------------------------------------
@@ -100,9 +100,9 @@ classdef TestEqual < handle
             % increments number of passed tests results if test passed
             if obj.passed, n_passed = n_passed + 1; end
             
-            % determines if (# passed) / (total #) ratio should be printed
+            % determines if (# passed) / (# run) ratio should be printed
             ratio = (nargin == 3) && ~isempty(n_passed) &&...
-                ~isempty(n);
+                ~isempty(n_run);
             
             % name string
             if isempty(obj.name)
@@ -115,7 +115,7 @@ classdef TestEqual < handle
             print_str = [name_str,result];
             if ratio
                 print_str = [print_str,' (',num2str(n_passed),'/',...
-                    num2str(n),')'];
+                    num2str(n_run),')'];
             end
             if ~obj.passed
                 print_str = [print_str,'\n    >>>> ',message];
@@ -124,7 +124,7 @@ classdef TestEqual < handle
             
             % prints test results
             fprintf(print_str);
-
+            
         end
         
     end

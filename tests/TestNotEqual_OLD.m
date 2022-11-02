@@ -4,7 +4,7 @@
 % certain number of decimal places.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-10-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -54,7 +54,7 @@ classdef TestNotEqual < handle
             
             % sets decimal places of precision (defaults to 16, 
             % corresponding to 10⁻¹⁶)
-            if (nargin < 4) || isempty (n)
+            if (nargin < 3) || isempty (n)
                 obj.n = 16;
             else
                 obj.n = n;
@@ -71,8 +71,8 @@ classdef TestNotEqual < handle
             
         end
         
-        function n_passed = run(obj,n_passed,n_run)
-            % TestNotEqual.run
+        function n_passed = run(obj,n_passed,n_total)
+            % TestEqual.run
             %
             % Runs the test.
             %--------------------------------------------------------------
@@ -82,48 +82,34 @@ classdef TestNotEqual < handle
             % ------
             %   n_passed    - (1×1 double) number of tests that have passed
             %                 thus far
-            %   n_run       - (1×1 double) number of tests that have been
-            %                 run thus far
+            %   n_total     - (1×1 double) total number of tests
             %
             % -------
             % OUTPUT:
             % -------
-            %   n_passed    - (1×1 double) updated number of tests that
+            %   n_passed    - (1×1 double) updated numebr of tests that
             %                 have passed thus far
             %
             %--------------------------------------------------------------
             
             % runs test
-            [obj.passed,result,message] = TEST_NOT_EQUAL(obj.X1,obj.X2,...
-                obj.n,obj.name,false);
+            [obj.passed,result] = TEST_NOT_EQUAL(obj.X1,obj.X2,obj.n,...
+                obj.name,false);
             
             % increments number of passed tests results if test passed
             if obj.passed, n_passed = n_passed + 1; end
             
-            % determines if (# passed) / (# run) ratio should be printed
-            ratio = (nargin == 3) && ~isempty(n_passed) &&...
-                ~isempty(n_run);
+            % determines if (# passed) / (total #) ratio should be printed
+            ratio = (nargin == 2) && ~isempty(n_passed) &&...
+                ~isempty(n_total);
             
-            % name string
-            if isempty(obj.name)
-                name_str = '';
-            else
-                name_str = [obj.name,': '];
-            end
-            
-            % printout string
-            print_str = [name_str,result];
+            % prints results
             if ratio
-                print_str = [print_str,' (',num2str(n_passed),'/',...
-                    num2str(n_run),')'];
+                fprintf([obj.name,result,'(',num2str(n_passed),'/',...
+                    num2str(n_total),')\n']);
+            else
+                fprintf([obj.name,result,'\n']);
             end
-            if ~obj.passed
-                print_str = [print_str,'\n    >>>> ',message];
-            end
-            print_str = [print_str,'\n'];
-            
-            % prints test results
-            fprintf(print_str);
             
         end
         

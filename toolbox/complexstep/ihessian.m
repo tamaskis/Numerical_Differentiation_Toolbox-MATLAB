@@ -29,7 +29,7 @@
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   hi      - (OPTIONAL) (1×1 double) step size for complex-step 
 %             approximation (defaults to 10⁻²⁰⁰)
-%   hc      - (OPTIONAL) (1×1 double) relative step size for forward
+%   hc      - (OPTIONAL) (1×1 double) relative step size for central
 %             difference approximation (defaults to ε¹ᐟ³)
 %
 % -------
@@ -51,7 +51,7 @@ function H = ihessian(f,x0,hi,hc)
         hi = 1e-200;
     end
     
-    % defaults relative step size for forward diff. approx. if not input
+    % defaults relative step size for central diff. approx. if not input
     if nargin < 4 || isempty(hc)
         hc = eps^(1/3);
     end
@@ -62,7 +62,7 @@ function H = ihessian(f,x0,hi,hc)
     % preallocates matrix to store Hessian
     H = zeros(n);
     
-    % preallocates arrays to store absolute step sizes
+    % preallocates array to store absolute step sizes
     a = zeros(n,1);
     
     % populates "a"
@@ -70,13 +70,13 @@ function H = ihessian(f,x0,hi,hc)
         a(k) = hc*(1+abs(x0(k)));
     end
     
-    % loops through rows
+    % loops through columns
     for k = 1:n
         
         % imaginary step forward in kth direction
         x0(k) = x0(k)+1i*hi;
         
-        % loops through columns
+        % loops through rows
         for j = k:n
             
             % real step forward in jth direction
