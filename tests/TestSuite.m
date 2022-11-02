@@ -133,14 +133,14 @@ classdef TestSuite < handle
             pass_rate = round((n_passed/obj.N)*100);
             
             % line length for result printout
-            line_length = max([longest_name+5,80]);
+            line_length = max([longest_name+5,120]);
             
             % repeated ='s and -'s
             equal_str = repmat('=',[1,line_length]);
             dash_str = repmat('-',[1,line_length]);
             
             % prints summary
-            fprintf(['\n',equal_str,'\n','Summary of ',obj.name,'\n',...
+            fprintf(['\n',equal_str,'\n','SUMMARY: ',obj.name,'\n',...
                 dash_str,'\n\n']);
             fprintf(['  Pass Rate: ',num2str(pass_rate),'%%\n']);
             fprintf(['   • total tests: ',num2str(obj.N),'\n']);

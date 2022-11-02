@@ -104,9 +104,11 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     
     % determines data type of input
     if N == 1
-        data_type = 'Values';
+        data_type_1 = 'Values';
+        data_type_2 = 'values';
     else
-        data_type = 'Arrays';
+        data_type_1 = 'Arrays';
+        data_type_2 = 'arrays';
     end
     
     % results string
@@ -121,13 +123,14 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
         message = '';
     elseif passed && (n_min > 0)
         message = ['WARNING: This test tested for inequality, but the ',...
-            data_type,' ARE equal to ',num2str(n_min),...
-            ' decimal places. To get rid of this warning, set the ',...
-            'decimal places of precision for this test to n = ',...
-            num2str(n_min)];
+            data_type_2,' ARE equal to ',num2str(n_min),...
+            ' decimal places.\n                  To get rid of this ',...
+            'warning, set the decimal places of precision for this ',...
+            'test to n = ',num2str(n_min),'.'];
     elseif ~passed && (n_min > 0)
-        message = ['Equal to ',num2str(n),' decimal places. ',data_type,...
-            ' ARE NOT equal to ',num2str(n_min),' decimal places.'];
+        message = ['Equal to ',num2str(n),' decimal places. ',...
+            data_type_1,' ARE NOT equal to ',num2str(n_min),...
+            ' decimal places.'];
     else
         message = 'Equal to 16 decimal places.';
     end
@@ -144,7 +147,7 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
         if isempty(message)
             fprintf([name_str,result,'\n']);
         else
-            fprintf([name_str,result,'\n • ',message,'\n']);
+            fprintf([name_str,result,'\n    >>>> ',message,'\n']);
         end
     end
     
