@@ -11,7 +11,7 @@
 % See also TEST_NOT_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-10-30
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -69,9 +69,6 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     
     % number of array elements
     N = length(X1);
-    
-    % array that stores decimals of precision for each element
-    n_array = n*ones(N,1);
     
     % array that stores decimals of precision for each element
     n_array = n*ones(N,1);
