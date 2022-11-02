@@ -74,8 +74,7 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     n_array = n*ones(N,1);
     
     % loops through each array element, testing for equality at desired
-    % precision or checking up to which precision equality exists +
-    % counting the number of inequalities
+    % precision or checking up to which precision equality exists
     for i = 1:N
         while (n_array(i) > 0) &&...
                 (round(X1(i),n_array(i)) ~= round(X2(i),n_array(i)))

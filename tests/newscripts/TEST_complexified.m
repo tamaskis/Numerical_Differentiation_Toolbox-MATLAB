@@ -233,10 +233,10 @@ g_true = @(x) [-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
 g_cs = @(x) igradient(@(x)iatan2(x(2),x(1)),x);
 
 % unit tests
-test_suite.add_test(TestNotEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(iatan2), quadrant I'));
-test_suite.add_test(TestNotEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(iatan2), quadrant II'));
-test_suite.add_test(TestNotEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(iatan2), quadrant III'));
-test_suite.add_test(TestNotEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iatan2), quadrant IV'));
+test_suite.add_test(TestEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(iatan2), quadrant I'));
+test_suite.add_test(TestEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(iatan2), quadrant II'));
+test_suite.add_test(TestEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(iatan2), quadrant III'));
+test_suite.add_test(TestEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iatan2), quadrant IV'));
 
 
 
