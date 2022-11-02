@@ -36,17 +36,14 @@ load_derivatives;
 
 %% FUNCTIONS THAT WILL RESULT IN ERRORS
 
-% absolute value (x0 > 0 and x0 < 0) --> FIX IN NEXT SECTION TODO
-TEST_NOT_EQUAL(d_abs_cs(-1),-1,[],'iderivative abs, x₀ < 0');
-TEST_NOT_EQUAL(d_abs_cs(1),1,[],'iderivative abs, x₀ > 0');
 
 
 
 %% COMPLEXIFIED FUNCTIONS TO ADDRESS ERRORS FROM PREVIOUS SECTION
 
 % absolute value (x0 > 0 and x0 < 0)
-TEST_EQUAL(d_iabs_cs(-1),d_iabs(-1),[],'iderivative iabs, x₀ < 0');
-TEST_EQUAL(d_iabs_cs(1),d_iabs(1),[],'iderivative iabs, x₀ > 0');
+% TEST_EQUAL(d_iabs_cs(-1),d_iabs(-1),[],'iderivative iabs, x₀ < 0');
+% TEST_EQUAL(d_iabs_cs(1),d_iabs(1),[],'iderivative iabs, x₀ > 0');
 
 
 
@@ -258,11 +255,9 @@ test_suite.add_test(TestEqual(d_acoth_cs(1.5),d_acoth(1.5),'iderivative acoth, x
 
 %% MISCELLANEOUS FUNCTIONS
 
-test_suite.add_test(TestNotEqual(d_abs_cs(-1),d_abs(-1),'iderivative abs, x₀ < 0'));
+test_suite.add_test(TestEqual(d_abs_cs(-1),d_abs(-1),'iderivative abs, x₀ < 0'));
 test_suite.add_test(TestNotEqual(d_abs_cs(1),d_abs(1),'iderivative abs, x₀ > 0'));
 
-
-%TEST_NOT_EQUAL(d_abs_cs(1),d_abs(1),[],'iderivative abs, x₀ > 0');
 
 
 %% RUNS TEST SUITE

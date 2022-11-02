@@ -57,7 +57,7 @@ classdef TestSuite < handle
             if (nargin < 1) || isempty(name)
                 obj.name = '';
             else
-                obj.name = [name,' '];
+                obj.name = name;
             end
             
             % sets test suite termination (defaults to false)
@@ -87,11 +87,11 @@ classdef TestSuite < handle
             %
             %--------------------------------------------------------------
             
-            % adds test to test suite
-            obj.tests = [obj.tests,test];
-            
             % increments number of tests in test suite
             obj.N = obj.N+1;
+            
+            % adds test to test suite
+            obj.tests{obj.N} = test;
             
         end
         
@@ -114,10 +114,10 @@ classdef TestSuite < handle
             for i = 1:obj.N
                 
                 % runs ith test
-                n_passed = obj.tests(i).run(n_passed,i);
+                n_passed = obj.tests{i}.run(n_passed,i);
                 
                 % terminates test suite
-                if obj.terminate && ~obj.tests(i).passed
+                if obj.terminate && ~obj.tests{i}.passed
                     fprintf(['\nTEST SUITE TERMINATED EARLY DUE TO ',...
                         'FAILED UNIT TEST.\n\n'])
                     return;
@@ -125,7 +125,7 @@ classdef TestSuite < handle
                 
                 % updates longest name
                 longest_name = max([longest_name,...
-                    length(obj.tests(i).name)]);
+                    length(obj.tests{i}.name)]);
                 
             end
             
@@ -143,15 +143,15 @@ classdef TestSuite < handle
             fprintf(['\n',equal_str,'\n','Summary of ',obj.name,'\n',...
                 dash_str,'\n\n']);
             fprintf(['  Pass Rate: ',num2str(pass_rate),'%%\n']);
+            fprintf(['   • total tests: ',num2str(obj.N),'\n']);
             fprintf(['   • passed tests: ',num2str(n_passed),'\n']);
             fprintf(['   • failed tests: ',num2str(obj.N-n_passed),'\n']);
-            fprintf(['   • total number of tests: ',num2str(obj.N),'\n']);
             if n_passed < obj.N
                 fprintf('\n');
                 fprintf('  Failed Tests:\n');
                 for i = 1:obj.N
-                    if ~obj.tests(i).passed
-                        fprintf(['   • ',obj.tests(i).name,'\n']);
+                    if ~obj.tests{i}.passed
+                        fprintf(['   • ',obj.tests{i}.name,'\n']);
                     end
                 end
             end
