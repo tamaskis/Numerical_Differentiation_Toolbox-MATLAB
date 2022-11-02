@@ -77,7 +77,8 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     % precision or checking up to which precision equality exists +
     % counting the number of inequalities
     for i = 1:N
-        while (round(X1(i),n_array(i)) ~= round(X2(i),n_array(i)))
+        while (n_array(i) > 0) &&...
+                (round(X1(i),n_array(i)) ~= round(X2(i),n_array(i)))
             n_array(i) = n_array(i)-1;
         end
     end
