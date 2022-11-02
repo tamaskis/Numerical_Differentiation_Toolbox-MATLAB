@@ -55,11 +55,6 @@ test_suite.add_test(TestNotEqual(df_cs(-0.5),df_true(-0.5),'iderivative(max), x�
 test_suite.add_test(TestNotEqual(df_cs(0.5),df_true(0.5),'iderivative(max), x₀ = 0.5'));
 test_suite.add_test(TestNotEqual(df_cs(1.5),df_true(1.5),'iderivative(max), x₀ = 1.5'));
 
-% TEST_EQUAL(iderivative(f,-1.5),dfdx(-1.5));
-% TEST_EQUAL(iderivative(f,-0.5),dfdx(-0.5));
-% TEST_EQUAL(iderivative(f,0.5),dfdx(0.5));
-% TEST_EQUAL(iderivative(f,1.5),dfdx(1.5),n);
-
 % -------------------------------------
 % Test for "complexified" max function.
 % -------------------------------------
@@ -79,69 +74,54 @@ test_suite.add_test(TestEqual(df_cs(-0.5),df_true(-0.5),'iderivative(imax), x₀
 test_suite.add_test(TestEqual(df_cs(0.5),df_true(0.5),'iderivative(imax), x₀ = 0.5'));
 test_suite.add_test(TestEqual(df_cs(1.5),df_true(1.5),'iderivative(imax), x₀ = 1.5'));
 
+
+
+%% DOT PRODUCT
+
+% vector valued functions of x
+f = @(x) [x(1)^2;x(2)^2;x(3)^2];
+g = @(x) [x(1)^3;x(2)^3;x(3)^3];
+
+% derivatives of f and g
+dfdx = @(x) [2*x(1);2*x(2);2*x(3)];
+dgdx = @(x) [3*x(1)^2;3*x(2)^2;3*x(3)^2];
+
+% derivative of dot product of f and g
+dhdx = @(x) dot(dfdx(x),g(x))+dot(f(x),dgdx(x));
+
+% point at which to differentiate
+x0 = [1;2;3];
+
+% -------------------------------
+% Test for "classic" dot product.
+% -------------------------------
+
+% "classic" dot product
+h = @(x) dot(f(x),g(x));
+
+% exact and numerical results
+dh_exact = dhdx(x0);
+dh_numerical = iderivative(h,x0);
+
+% unit test
+test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'iderivative(dot)'));
+
+% ------------------------------------
+% Test for "complexified" dot product.
+% ------------------------------------
+
+% "complexified" dot product
+h = @(x) idot(f(x),g(x));
+
+% exact and numerical results
+dh_exact = dhdx(x0);
+dh_numerical = iderivative(h,x0);
+
+% unit test
+test_suite.add_test(TestEqual(dh_numerical,dh_exact,'iderivative(idot)',12));
+
+
+
+%% RUNS TEST SUITE
+
 test_suite.run;
-
-
-% %% DOT PRODUCT
-% 
-% % vector valued functions of x
-% f = @(x) [x(1)^2;x(2)^2;x(3)^2];
-% g = @(x) [x(1)^3;x(2)^3;x(3)^3];
-% 
-% % derivatives of f and g
-% dfdx = @(x) [2*x(1);2*x(2);2*x(3)];
-% dgdx = @(x) [3*x(1)^2;3*x(2)^2;3*x(3)^2];
-% 
-% % derivative of dot product of f and g
-% dhdx = @(x) dot(dfdx(x),g(x))+dot(f(x),dgdx(x));
-% 
-% % point at which to differentiate
-% x0 = [1;2;3];
-% 
-% % -------------------------------
-% % Test for "classic" dot product.
-% % -------------------------------
-% 
-% % "classic" dot product
-% h = @(x) dot(f(x),g(x));
-% 
-% % exact and numerical results
-% dh_exact = dhdx(x0);
-% dh_numerical = iderivative(h,x0);
-% 
-% % unit test
-% test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'iderivative(dot)'));
-% 
-% % ------------------------------------
-% % Test for "complexified" dot product.
-% % ------------------------------------
-% 
-% % "complexified" dot product
-% h = @(x) idot(f(x),g(x));
-% 
-% % exact and numerical results
-% dh_exact = dhdx(x0);
-% dh_numerical = iderivative(h,x0);
-% 
-% % unit test
-% test_suite.add_test(TestEqual(dh_numerical,dh_exact,'iderivative(idot)',12));
-% 
-% 
-% %% RUNS TEST SUITE
-% 
-% test_suite.run;
-% 
-% 
-% 
-% %% AUXILIARY FUNCTIONS
-% 
-% % % f'(x)
-% % function df = dfdx(x)
-% %     if ((0 < x) && (x < 1)) || (x < -1)
-% %         df = 1;
-% %     elseif ((-1 < x) && (x < 0)) || (x > 1)
-% %         df = 3*x^2;
-% %     else
-% %         df = NaN;
-% %     end
-% % end
