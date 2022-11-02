@@ -116,7 +116,7 @@ classdef UnitTest < handle
                 print_str = [print_str,' (',num2str(n_passed),'/',...
                     num2str(n_run),')'];
             end
-            if ~obj.passed
+            if ~isempty(message)
                 print_str = [print_str,'\n    >>>> ',message];
             end
             print_str = [print_str,'\n'];

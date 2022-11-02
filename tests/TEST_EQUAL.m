@@ -94,9 +94,11 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     
     % determines data type of input
     if N == 1
-        data_type = 'Values';
+        data_type_1 = 'Values';
+        data_type_2 = 'values';
     else
-        data_type = 'Arrays';
+        data_type_1 = 'Arrays';
+        data_type_2 = 'arrays';
     end
     
     % results string
@@ -111,7 +113,7 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
         message = '';
     elseif ~passed && (n_min > 0)
         message = ['Not equal to ',num2str(n),' decimal places. ',...
-            data_type,' ARE equal to ',num2str(n_min),' decimal places.'];
+            data_type_2,' ARE equal to ',num2str(n_min),' decimal places.'];
     else
         message = 'Not equal to any decimal places.';
     end
