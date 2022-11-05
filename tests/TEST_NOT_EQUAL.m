@@ -98,7 +98,7 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
         data_type_2 = 'arrays';
     end
     
-    % results string
+    % result string
     if passed
         result = 'Passed.';
     else

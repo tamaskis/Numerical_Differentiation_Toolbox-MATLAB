@@ -210,76 +210,78 @@ x0 = @(theta) [cos(theta);
 % true gradient
 g_true = @(x) [-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
 
-% % -----------------------------------
-% % Tests for "classic" atan2 function.
-% % -----------------------------------
-% 
-% % complex-step gradient
-% g_cs = @(x) igradient(@(x)atan2(x(2),x(1)),x);
-% 
-% % TODO: TEST FOR ERROR
-% 
-% % unit tests
+% -----------------------------------
+% Tests for "classic" atan2 function.
+% -----------------------------------
+
+% complex-step gradient
+g_cs = @(x) igradient(@(x)atan2(x(2),x(1)),x);
+
+TEST_NO_ERROR(g_cs,{x0(pi/4)},'HAHAHA',true);
+
+% TODO: TEST FOR ERROR
+
+% unit tests
 % test_suite.add_test(TestNotEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(atan2), quadrant I'));
 % test_suite.add_test(TestNotEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(atan2), quadrant II'));
 % test_suite.add_test(TestNotEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(atan2), quadrant III'));
 % test_suite.add_test(TestNotEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(atan2), quadrant IV'));
-
-% ----------------------------------------
-% Tests for "complexified" atan2 function.
-% ----------------------------------------
-
-% complex-step gradient
-g_cs = @(x) igradient(@(x)iatan2(x(2),x(1)),x);
-
-% unit tests
-test_suite.add_test(TestEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(iatan2), quadrant I'));
-test_suite.add_test(TestEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(iatan2), quadrant II'));
-test_suite.add_test(TestEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(iatan2), quadrant III'));
-test_suite.add_test(TestEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iatan2), quadrant IV'));
-
-
-
-%% ATAN2D
-
-% function handle for evaluation point
-x0 = @(theta) [cosd(theta);
-               sind(theta)];
-
-% true gradient TODO: DOCUMENT 180/pi and subsequent loss of precision
-g_true = @(x) (180/pi)*[-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
-
-
-% % ------------------------------------
-% % Tests for "classic" atan2d function.
-% % ------------------------------------
+% 
+% % ----------------------------------------
+% % Tests for "complexified" atan2 function.
+% % ----------------------------------------
 % 
 % % complex-step gradient
-% g_cs = @(x) igradient(@(x)atan2d(x(2),x(1)),x);
-% 
-% % TODO: TEST FOR ERROR
+% g_cs = @(x) igradient(@(x)iatan2(x(2),x(1)),x);
 % 
 % % unit tests
+% test_suite.add_test(TestEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(iatan2), quadrant I'));
+% test_suite.add_test(TestEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(iatan2), quadrant II'));
+% test_suite.add_test(TestEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(iatan2), quadrant III'));
+% test_suite.add_test(TestEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iatan2), quadrant IV'));
+% 
+% 
+% 
+% %% ATAN2D
+% 
+% % function handle for evaluation point
+% x0 = @(theta) [cosd(theta);
+%                sind(theta)];
+% 
+% % true gradient TODO: DOCUMENT 180/pi and subsequent loss of precision
+% g_true = @(x) (180/pi)*[-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
+% 
+% 
+% % % ------------------------------------
+% % % Tests for "classic" atan2d function.
+% % % ------------------------------------
+% % 
+% % % complex-step gradient
+% % g_cs = @(x) igradient(@(x)atan2d(x(2),x(1)),x);
+% % 
+% % % TODO: TEST FOR ERROR
+% % 
+% % % unit tests
 % test_suite.add_test(TestNotEqual(g_cs(x0(45)),g_true(x0(45)),'igradient(atan2d), quadrant I'));
 % test_suite.add_test(TestNotEqual(g_cs(x0(135)),g_true(x0(135)),'igradient(atan2d), quadrant II'));
 % test_suite.add_test(TestNotEqual(g_cs(x0(225)),g_true(x0(225)),'igradient(atan2d), quadrant III'));
 % test_suite.add_test(TestNotEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(atan2d), quadrant IV'));
-
-% -----------------------------------------
-% Tests for "complexified" atan2d function.
-% -----------------------------------------
-
-% complex-step gradient
-g_cs = @(x) igradient(@(x)iatan2d(x(2),x(1)),x);
-
-% unit tests
-test_suite.add_test(TestEqual(g_cs(x0(45)),g_true(x0(45)),'igradient(iatan2d), quadrant I'));
-test_suite.add_test(TestEqual(g_cs(x0(135)),g_true(x0(135)),'igradient(iatan2d), quadrant II'));
-test_suite.add_test(TestEqual(g_cs(x0(225)),g_true(x0(225)),'igradient(iatan2d), quadrant III'));
-test_suite.add_test(TestEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(iatan2d), quadrant IV'));
-
-
+% 
+% % -----------------------------------------
+% % Tests for "complexified" atan2d function.
+% % -----------------------------------------
+% 
+% % complex-step gradient
+% g_cs = @(x) igradient(@(x)iatan2d(x(2),x(1)),x);
+% 
+% % unit tests
+% test_suite.add_test(TestEqual(g_cs(x0(45)),g_true(x0(45)),'igradient(iatan2d), quadrant I'));
+% test_suite.add_test(TestEqual(g_cs(x0(135)),g_true(x0(135)),'igradient(iatan2d), quadrant II'));
+% test_suite.add_test(TestEqual(g_cs(x0(225)),g_true(x0(225)),'igradient(iatan2d), quadrant III'));
+% test_suite.add_test(TestEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(iatan2d), quadrant IV'));
+% 
+% 
 
 %% RUNS TEST SUITE
 
-test_suite.run;
+%test_suite.run;
