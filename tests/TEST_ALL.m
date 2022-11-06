@@ -26,7 +26,7 @@ addpath('newscripts')
 
 %% RUNS ALL TESTS
 
-%TEST_iderivative;
+TEST_iderivative;
 TEST_complexified;
 
 %TEST_cross;

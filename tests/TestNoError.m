@@ -1,7 +1,6 @@
 %==========================================================================
 %
-% TestEqual  Class defining a test that tests for array equality to a
-% certain number of decimal places.
+% TestNoError  Test for confirming that a function does not throw an error.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-10-30
@@ -10,7 +9,7 @@
 %
 %==========================================================================
 
-classdef TestEqual < UnitTest
+classdef TestNoError < UnitTest
     
     % ---------------
     % Public methods.
@@ -18,8 +17,8 @@ classdef TestEqual < UnitTest
     
     methods (Access = public)
         
-        function obj = TestEqual(X1,X2,name,n)
-            % obj = TestEqual(X1,X2,name,n)
+        function obj = TestNoError(f,args,name)
+            % obj = TestNoError(f,args,name)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -27,27 +26,20 @@ classdef TestEqual < UnitTest
             % ------
             % INPUT:
             % ------
-            %   X1      - (double array) double array #1
-            %   X2      - (double array) double array #2
+            %   f       - (function_handle) function handle assigned to 
+            %             function you want to test
+            %   args    - (cell array) input arguments to f
             %   name    - (char) test name
-            %   n       - (OPTIONAL) (1×1 double) decimal places of 
-            %             precision
             %
             % -------
             % OUTPUT:
             % -------
-            %   obj     - (1×1 TestEqual) TestEqual object
+            %   obj     - (1×1 TestNoError) TestNoError object
             %
             %--------------------------------------------------------------
             
-            % defaults decimal places of precision to 16 (corresponding to 
-            % 10⁻¹⁶)
-            if (nargin < 4) || isempty (n)
-                n = 16;
-            end
-            
-            % initializes TestEqual object (subclass of UnitTest)
-            obj@UnitTest({X1,X2,n},name,'equal');
+            % initializes TestNoError object (subclass of UnitTest)
+            obj@UnitTest({f,args},name,'no error');
             
         end
         

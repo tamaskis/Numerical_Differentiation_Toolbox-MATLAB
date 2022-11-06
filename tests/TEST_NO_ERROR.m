@@ -21,7 +21,7 @@
 % ------
 %   f       - (function_handle) function handle assigned to function you 
 %             want to test
-%   args    - (OPTIONAL) (cell array TODO) input arguments to f
+%   args    - (OPTIONAL) (cell array) input arguments to f
 %   name    - (OPTIONAL) (char) test name
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
 %             printed to Command Window, false otherwise

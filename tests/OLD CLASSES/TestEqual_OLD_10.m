@@ -1,16 +1,16 @@
 %==========================================================================
 %
-% TestNotEqual  Class defining a test that tests for array inequality to a
+% TestEqual  Class defining a test that tests for array equality to a
 % certain number of decimal places.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-10-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 %==========================================================================
 
-classdef TestNotEqual < UnitTest
+classdef TestEqual < UnitTest
     
     % ---------------
     % Public methods.
@@ -18,8 +18,8 @@ classdef TestNotEqual < UnitTest
     
     methods (Access = public)
         
-        function obj = TestNotEqual(X1,X2,name,n)
-            % obj = TestNotEqual(X1,X2,name,n)
+        function obj = TestEqual(X1,X2,name,n)
+            % obj = TestEqual(X1,X2,name,n)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -36,7 +36,7 @@ classdef TestNotEqual < UnitTest
             % -------
             % OUTPUT:
             % -------
-            %   obj     - (1×1 TestNotEqual) TestNotEqual object
+            %   obj     - (1×1 TestEqual) TestEqual object
             %
             %--------------------------------------------------------------
             
@@ -46,8 +46,8 @@ classdef TestNotEqual < UnitTest
                 n = 16;
             end
             
-            % initializes TestNotEqual object (subclass of UnitTest)
-            obj@UnitTest({X1,X2,n},name,'not equal');
+            % initializes TestEqual object (subclass of UnitTest)
+            obj@UnitTest(X1,X2,name,'equal',n);
             
         end
         

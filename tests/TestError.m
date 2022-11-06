@@ -1,16 +1,15 @@
 %==========================================================================
 %
-% TestNotEqual  Class defining a test that tests for array inequality to a
-% certain number of decimal places.
+% TestError  Unit test for confirming that a function throws an error.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-10-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 %==========================================================================
 
-classdef TestNotEqual < UnitTest
+classdef TestError < UnitTest
     
     % ---------------
     % Public methods.
@@ -18,8 +17,8 @@ classdef TestNotEqual < UnitTest
     
     methods (Access = public)
         
-        function obj = TestNotEqual(X1,X2,name,n)
-            % obj = TestNotEqual(X1,X2,name,n)
+        function obj = TestError(f,args,name)
+            % obj = TestError(f,args,name)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -27,27 +26,25 @@ classdef TestNotEqual < UnitTest
             % ------
             % INPUT:
             % ------
-            %   X1      - (double array) double array #1
-            %   X2      - (double array) double array #2
+            %   f       - (function_handle) function handle assigned to 
+            %             function you want to test
+            %   args    - (OPTIONAL) (cell array) input arguments to f
             %   name    - (char) test name
-            %   n       - (OPTIONAL) (1×1 double) decimal places of 
-            %             precision
             %
             % -------
             % OUTPUT:
             % -------
-            %   obj     - (1×1 TestNotEqual) TestNotEqual object
+            %   obj     - (1×1 TestError) TestError object
             %
             %--------------------------------------------------------------
             
-            % defaults decimal places of precision to 16 (corresponding to 
-            % 10⁻¹⁶)
-            if (nargin < 4) || isempty (n)
-                n = 16;
+            % defaults input arguments to empty vector
+            if (nargin < 2)
+                args = [];
             end
             
-            % initializes TestNotEqual object (subclass of UnitTest)
-            obj@UnitTest({X1,X2,n},name,'not equal');
+            % initializes TestError object (subclass of UnitTest)
+            obj@UnitTest({f,args},name,'error');
             
         end
         

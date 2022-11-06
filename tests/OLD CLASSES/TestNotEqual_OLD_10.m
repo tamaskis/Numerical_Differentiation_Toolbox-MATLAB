@@ -47,7 +47,7 @@ classdef TestNotEqual < UnitTest
             end
             
             % initializes TestNotEqual object (subclass of UnitTest)
-            obj@UnitTest({X1,X2,n},name,'not equal');
+            obj@UnitTest(X1,X2,name,'not equal',n);
             
         end
         

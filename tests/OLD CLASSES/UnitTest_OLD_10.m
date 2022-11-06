@@ -3,7 +3,7 @@
 % UnitTest  Class defining a unit test.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,10 +16,12 @@ classdef UnitTest < handle
     % -----------
     
     properties
-        test_args   % (cell array) inputs to testing function
-        name        % (char) test name
-        type        % (char) test type
-        passed      % (1×1 logical) true if test passed, false otherwise
+        X1      % (double array) double array #1
+        X2      % (double array) double array #2
+        n       % (1×1 double) decimal places of precision
+        name    % (char) test name
+        type    % (char) 'equal' or 'not equal'
+        passed  % (1×1 logical) true if test passed, false otherwise
     end
     
     % ---------------
@@ -28,7 +30,7 @@ classdef UnitTest < handle
     
     methods (Access = public)
         
-        function obj = UnitTest(test_args,name,type)
+        function obj = UnitTest(X1,X2,name,type,n)
             % obj = UnitTest(X1,X2,name,type,n)
             %
             % Constructor.
@@ -37,22 +39,25 @@ classdef UnitTest < handle
             % ------
             % INPUT:
             % ------
-            %   test_args   - (cell array) inputs to testing function
-            %   name        - (char) test name
-            %   type        - (char) test type ('equal', 'not equal', 
-            %                 'error', or 'no error')
+            %   X1      - (double array) double array #1
+            %   X2      - (double array) double array #2
+            %   name    - (char) test name
+            %   type    - (char) 'equal' or 'not equal'
+            %   n       - (1×1 double) decimal places of precision
             %
             % -------
             % OUTPUT:
             % -------
-            %   obj         - (1×1 UnitTest) UnitTest object
+            %   obj     - (1×1 UnitTest) UnitTest object
             %
             %--------------------------------------------------------------
             
             % stores inputs
-            obj.test_args = test_args;
+            obj.X1 = X1;
+            obj.X2 = X2;
             obj.name = name;
             obj.type = type;
+            obj.n = n;
             
             % "passed" initialized to false (test cannot have passed before
             % it was run)
@@ -84,19 +89,11 @@ classdef UnitTest < handle
             
             % runs test
             if strcmpi(obj.type,'equal')
-                [obj.passed,result,message] = TEST_EQUAL(...
-                    obj.test_args{1},obj.test_args{2},obj.test_args{3},...
-                    obj.name,false);
-            elseif strcmpi(obj.type,'not equal')
-                [obj.passed,result,message] = TEST_NOT_EQUAL(...
-                    obj.test_args{1},obj.test_args{2},obj.test_args{3},...
-                    obj.name,false);
-            elseif strcmpi(obj.type,'error')
-                [obj.passed,result,message] = TEST_ERROR(...
-                    obj.test_args{1},obj.test_args{2},obj.name,false);
-            elseif strcmpi(obj.type,'no error')
-                [obj.passed,result,message] = TEST_NO_ERROR(...
-                    obj.test_args{1},obj.test_args{2},obj.name,false);
+                [obj.passed,result,message] = TEST_EQUAL(obj.X1,obj.X2,...
+                    obj.n,obj.name,false);
+            else
+                [obj.passed,result,message] = TEST_NOT_EQUAL(obj.X1,...
+                    obj.X2,obj.n,obj.name,false);
             end
             
             % increments number of passed tests results if test passed
