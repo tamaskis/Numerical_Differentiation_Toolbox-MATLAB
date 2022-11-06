@@ -1,7 +1,7 @@
 %% TEST_gradient.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the cgradient, fgradient, and igradient functions.
+% Unit testing of the fgradient, cgradient, and igradient functions.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-11-05

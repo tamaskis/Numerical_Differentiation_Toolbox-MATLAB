@@ -1,7 +1,7 @@
 %% TEST_jacobian.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the cjacobian, fjacobian, and ijacobian functions.
+% Unit testing of the fjacobian, cjacobian, and ijacobian functions.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-11-05

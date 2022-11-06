@@ -15,17 +15,8 @@
 
 %% TRUE DERIVATIVES
 
-% absolute value
-d_abs = @(x) d_abs_func(x);
-d_iabs = @(x) d_abs_func(x);
-
-% max
-d_max = @(x,f,g) d_max_func(x,f,g);
-d_imax = @(x,f,g) d_max_func(x,f,g);
-
-% min
-d_min = @(x,f,g) d_min_func(x,f,g);
-d_imin = @(x,f,g) d_min_func(x,f,g);
+% polynomial
+d_poly = @(x,n) n*x^(n-1);
 
 % square root
 d_sqrt = @(x) 0.5*x^(-0.5);
@@ -72,18 +63,24 @@ d_acsch = @(x) -1/(abs(x)*sqrt(x^2+1));
 d_asech = @(x) -1/(x*sqrt(1-x^2));
 d_acoth = @(x) 1/(1-x^2);
 
+% absolute value
+d_abs = @(x) d_abs_func(x);
+d_iabs = @(x) d_abs_func(x);
+
+% max
+d_max = @(x,f,g) d_max_func(x,f,g);
+d_imax = @(x,f,g) d_max_func(x,f,g);
+
+% min
+d_min = @(x,f,g) d_min_func(x,f,g);
+d_imin = @(x,f,g) d_min_func(x,f,g);
+
 
 
 %% FORWARD DIFFERENCE APPROXIMATIONS
 
-% absolute value
-d_abs_fd = @(x) fderivative(@(x)abs(x),x);
-
-% max
-d_max_fd = @(x,f,g) fderivative(@(x)max(f(x),g(x)),x);
-
-% min
-d_min_fd = @(x,f,g) fderivative(@(x)min(f(x),g(x)),x);
+% polynomial
+d_poly_fd = @(x,n) fderivative(@(x)x^n,x);
 
 % square root
 d_sqrt_fd = @(x) fderivative(@(x)sqrt(x),x);
@@ -102,7 +99,7 @@ d_log10_fd = @(x) fderivative(@(x)log10(x),x);
 d_sin_fd = @(x) fderivative(@(x)sin(x),x);
 d_cos_fd = @(x) fderivative(@(x)cos(x),x);
 d_tan_fd = @(x) fderivative(@(x)tan(x),x);
-d_fdc_fd = @(x) fderivative(@(x)csc(x),x);
+d_csc_fd = @(x) fderivative(@(x)csc(x),x);
 d_sec_fd = @(x) fderivative(@(x)sec(x),x);
 d_cot_fd = @(x) fderivative(@(x)cot(x),x);
 
@@ -130,19 +127,21 @@ d_acsch_fd = @(x) fderivative(@(x)acsch(x),x);
 d_asech_fd = @(x) fderivative(@(x)asech(x),x);
 d_acoth_fd = @(x) fderivative(@(x)acoth(x),x);
 
+% absolute value
+d_abs_fd = @(x) fderivative(@(x)abs(x),x);
+
+% max
+d_max_fd = @(x,f,g) fderivative(@(x)max(f(x),g(x)),x);
+
+% min
+d_min_fd = @(x,f,g) fderivative(@(x)min(f(x),g(x)),x);
+
 
 
 %% CENTRAL DIFFERENCE APPROXIMATIONS
 
-% absolute value
-d_abs_cd = @(x) cderivative(@(x)abs(x),x);
-d_iabs_cd = @(x) cderivative(@(x)iabs(x),x);
-
-% max
-d_max_cd = @(x,f,g) cderivative(@(x)max(f(x),g(x)),x);
-
-% min
-d_min_cd = @(x,f,g) cderivative(@(x)min(f(x),g(x)),x);
+% polynomial
+d_poly_cd = @(x,n) cderivative(@(x)x^n,x);
 
 % square root
 d_sqrt_cd = @(x) cderivative(@(x)sqrt(x),x);
@@ -189,21 +188,21 @@ d_acsch_cd = @(x) cderivative(@(x)acsch(x),x);
 d_asech_cd = @(x) cderivative(@(x)asech(x),x);
 d_acoth_cd = @(x) cderivative(@(x)acoth(x),x);
 
+% absolute value
+d_abs_cd = @(x) cderivative(@(x)abs(x),x);
+
+% max
+d_max_cd = @(x,f,g) cderivative(@(x)max(f(x),g(x)),x);
+
+% min
+d_min_cd = @(x,f,g) cderivative(@(x)min(f(x),g(x)),x);
+
 
 
 %% COMPLEX-STEP APPROXIMATIONS
 
-% absolute value
-d_abs_cs = @(x) iderivative(@(x)abs(x),x);
-d_iabs_cs = @(x) iderivative(@(x)iabs(x),x);
-
-% max
-d_max_cs = @(x,f,g) iderivative(@(x)max(f(x),g(x)),x);
-d_imax_cs = @(x,f,g) iderivative(@(x)imax(f(x),g(x)),x);
-
-% min
-d_min_cs = @(x,f,g) iderivative(@(x)min(f(x),g(x)),x);
-d_imin_cs = @(x,f,g) iderivative(@(x)imin(f(x),g(x)),x);
+% polynomial
+d_poly_cs = @(x,n) iderivative(@(x)x^n,x);
 
 % square root
 d_sqrt_cs = @(x) iderivative(@(x)sqrt(x),x);
@@ -249,6 +248,18 @@ d_atanh_cs = @(x) iderivative(@(x)atanh(x),x);
 d_acsch_cs = @(x) iderivative(@(x)acsch(x),x);
 d_asech_cs = @(x) iderivative(@(x)asech(x),x);
 d_acoth_cs = @(x) iderivative(@(x)acoth(x),x);
+
+% absolute value
+d_abs_cs = @(x) iderivative(@(x)abs(x),x);
+d_iabs_cs = @(x) iderivative(@(x)iabs(x),x);
+
+% max
+d_max_cs = @(x,f,g) iderivative(@(x)max(f(x),g(x)),x);
+d_imax_cs = @(x,f,g) iderivative(@(x)imax(f(x),g(x)),x);
+
+% min
+d_min_cs = @(x,f,g) iderivative(@(x)min(f(x),g(x)),x);
+d_imin_cs = @(x,f,g) iderivative(@(x)imin(f(x),g(x)),x);
 
 
 

@@ -1,10 +1,11 @@
-%% TEST_idot.m
+%% TEST_complexified.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the idot function.
+% Unit testing of the complexified functions (iabs, imax, imin, idot, 
+% inorm, iatan2, and iatan2d).
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-11-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -149,6 +150,11 @@ test_suite.add_test(TestEqual(df_cs(-0.5),df_true(-0.5),'iderivative(imin), x₀
 test_suite.add_test(TestEqual(df_cs(0.5),df_true(0.5),'iderivative(imin), x₀ = 0.5'));
 test_suite.add_test(TestEqual(df_cs(1.5),df_true(1.5),'iderivative(imin), x₀ = 1.5'));
 
+
+
+%% MOD
+
+% TODO
 
 
 %% DOT PRODUCT

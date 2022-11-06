@@ -1,7 +1,7 @@
 %% TEST_hessian.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the chessian, fhessian, and ihessian functions.
+% Unit testing of the fhessian, chessian, and ihessian functions.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-11-05

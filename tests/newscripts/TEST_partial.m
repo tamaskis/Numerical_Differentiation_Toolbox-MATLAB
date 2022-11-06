@@ -1,7 +1,7 @@
 %% TEST_partial.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the cpartial, fpartial, and ipartial functions.
+% Unit testing of the fpartial, cpartial, and ipartial functions.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-11-05

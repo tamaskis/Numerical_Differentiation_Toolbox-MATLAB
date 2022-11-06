@@ -1,7 +1,7 @@
 %% TEST_directional.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the cdirectional, fdirectional, and idirectional 
+% Unit testing of the fdirectional, cdirectional, and idirectional 
 % functions.
 %
 % Copyright © 2021 Tamas Kis

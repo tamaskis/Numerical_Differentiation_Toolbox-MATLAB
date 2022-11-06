@@ -1,7 +1,7 @@
 %% TEST_vecvechessian.m
 % Numerical Differentiation Toolbox
 %
-% Unit testing of the cvechessian, fvechessian, and ivechessian functions.
+% Unit testing of the fvechessian, cvechessian, and ivechessian functions.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-11-05
