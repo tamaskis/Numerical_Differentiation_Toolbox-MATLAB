@@ -23,7 +23,7 @@ clear; close all;
 
 %% INSTANTIATE TEST SUITE
 
-test_suite = TestSuite('partial tests',false);
+test_suite = TestSuite('partial derivative tests',false);
 
 
 

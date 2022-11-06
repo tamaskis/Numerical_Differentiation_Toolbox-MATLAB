@@ -26,13 +26,9 @@ addpath('newscripts')
 
 %% RUNS ALL TESTS
 
-TEST_iderivative;
-TEST_complexified;
-
-%TEST_cross;
-%TEST_iatan2_igradient;
 %TEST_iderivative;
-%TEST_idot;
-%TEST_imax;
-%TEST_imin;
-%TEST_inorm;
+TEST_partial;
+TEST_gradient;
+TEST_directional;
+TEST_jacobian;
+%TEST_complexified;
