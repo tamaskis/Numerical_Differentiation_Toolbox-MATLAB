@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% idot  Vector dot product ("complexified" version of the |dot| function).
+% idot  Vector dot product (complexified version of |dot|).
 %
 %   z = idot(x,y)
 %
 % See also dot.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

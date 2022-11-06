@@ -59,6 +59,120 @@ test_suite.add_test(TestEqual(df_cs(-1),df_true(-1),'iderivative(iabs), x₀ = -
 test_suite.add_test(TestEqual(df_cs(1),df_true(1),'iderivative(iabs), x₀ = 1'));
 
 
+%% ATAN2
+
+% function handle for evaluation point
+x0 = @(theta) [cos(theta);
+               sin(theta)];
+
+% true gradient
+g_true = @(x) [-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
+
+% -----------------------------------
+% Tests for "classic" atan2 function.
+% -----------------------------------
+
+% complex-step gradient
+g_cs = @(x) igradient(@(x)atan2(x(2),x(1)),x);
+
+% unit test
+test_suite.add_test(TestError(g_cs,{x0(pi/4)},'igradient(atan2)'));
+
+% ----------------------------------------
+% Tests for "complexified" atan2 function.
+% ----------------------------------------
+
+% complex-step gradient
+g_cs = @(x) igradient(@(x)iatan2(x(2),x(1)),x);
+
+% unit tests
+test_suite.add_test(TestEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(iatan2), quadrant I'));
+test_suite.add_test(TestEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(iatan2), quadrant II'));
+test_suite.add_test(TestEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(iatan2), quadrant III'));
+test_suite.add_test(TestEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iatan2), quadrant IV'));
+
+
+
+%% ATAN2D
+
+% function handle for evaluation point
+x0 = @(theta) [cosd(theta);
+               sind(theta)];
+
+% true gradient TODO: DOCUMENT 180/pi and subsequent loss of precision
+g_true = @(x) (180/pi)*[-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
+
+
+% ------------------------------------
+% Tests for "classic" atan2d function.
+% ------------------------------------
+
+% complex-step gradient
+g_cs = @(x) igradient(@(x)atan2d(x(2),x(1)),x);
+
+% unit test
+test_suite.add_test(TestError(g_cs,{x0(45)},'igradient(atan2d)'));
+
+% -----------------------------------------
+% Tests for "complexified" atan2d function.
+% -----------------------------------------
+
+% complex-step gradient
+g_cs = @(x) igradient(@(x)iatan2d(x(2),x(1)),x);
+
+% unit tests
+test_suite.add_test(TestEqual(g_cs(x0(45)),g_true(x0(45)),'igradient(iatan2d), quadrant I'));
+test_suite.add_test(TestEqual(g_cs(x0(135)),g_true(x0(135)),'igradient(iatan2d), quadrant II'));
+test_suite.add_test(TestEqual(g_cs(x0(225)),g_true(x0(225)),'igradient(iatan2d), quadrant III'));
+test_suite.add_test(TestEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(iatan2d), quadrant IV'));
+
+
+
+%% DOT PRODUCT
+
+% vector valued functions of x
+f = @(x) [x(1)^2;x(2)^2;x(3)^2];
+g = @(x) [x(1)^3;x(2)^3;x(3)^3];
+
+% derivatives of f and g
+dfdx = @(x) [2*x(1);2*x(2);2*x(3)];
+dgdx = @(x) [3*x(1)^2;3*x(2)^2;3*x(3)^2];
+
+% derivative of dot product of f and g
+dhdx = @(x) dot(dfdx(x),g(x))+dot(f(x),dgdx(x));
+
+% point at which to differentiate
+x0 = [1;2;3];
+
+% -------------------------------
+% Test for "classic" dot product.
+% -------------------------------
+
+% "classic" dot product
+h = @(x) dot(f(x),g(x));
+
+% exact and numerical results
+dh_exact = dhdx(x0);
+dh_numerical = iderivative(h,x0);
+
+% unit test
+test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'iderivative(dot)'));
+
+% ------------------------------------
+% Test for "complexified" dot product.
+% ------------------------------------
+
+% "complexified" dot product
+h = @(x) idot(f(x),g(x));
+
+% exact and numerical results
+dh_exact = dhdx(x0);
+dh_numerical = iderivative(h,x0);
+
+% unit test
+test_suite.add_test(TestEqual(dh_numerical,dh_exact,'iderivative(idot)',12));
+
+
 
 %% MAX
 
@@ -157,49 +271,7 @@ test_suite.add_test(TestEqual(df_cs(1.5),df_true(1.5),'iderivative(imin), x₀ =
 % TODO
 
 
-%% DOT PRODUCT
 
-% vector valued functions of x
-f = @(x) [x(1)^2;x(2)^2;x(3)^2];
-g = @(x) [x(1)^3;x(2)^3;x(3)^3];
-
-% derivatives of f and g
-dfdx = @(x) [2*x(1);2*x(2);2*x(3)];
-dgdx = @(x) [3*x(1)^2;3*x(2)^2;3*x(3)^2];
-
-% derivative of dot product of f and g
-dhdx = @(x) dot(dfdx(x),g(x))+dot(f(x),dgdx(x));
-
-% point at which to differentiate
-x0 = [1;2;3];
-
-% -------------------------------
-% Test for "classic" dot product.
-% -------------------------------
-
-% "classic" dot product
-h = @(x) dot(f(x),g(x));
-
-% exact and numerical results
-dh_exact = dhdx(x0);
-dh_numerical = iderivative(h,x0);
-
-% unit test
-test_suite.add_test(TestNotEqual(dh_numerical,dh_exact,'iderivative(dot)'));
-
-% ------------------------------------
-% Test for "complexified" dot product.
-% ------------------------------------
-
-% "complexified" dot product
-h = @(x) idot(f(x),g(x));
-
-% exact and numerical results
-dh_exact = dhdx(x0);
-dh_numerical = iderivative(h,x0);
-
-% unit test
-test_suite.add_test(TestEqual(dh_numerical,dh_exact,'iderivative(idot)',12));
 
 
 
@@ -246,75 +318,6 @@ g_cs = @(x) igradient(@(x)inorm(x),x);
 % unit tests
 test_suite.add_test(TestEqual(pf_cs(x0,k),pf_true(x0,k),'ipartial(inorm)'));
 test_suite.add_test(TestEqual(g_cs(x0),g_true(x0),'igradient(inorm)'));
-
-
-
-%% ATAN2
-
-% function handle for evaluation point
-x0 = @(theta) [cos(theta);
-               sin(theta)];
-
-% true gradient
-g_true = @(x) [-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
-
-% -----------------------------------
-% Tests for "classic" atan2 function.
-% -----------------------------------
-
-% complex-step gradient
-g_cs = @(x) igradient(@(x)atan2(x(2),x(1)),x);
-
-% unit test
-test_suite.add_test(TestError(g_cs,{x0(pi/4)},'igradient(atan2)'));
-
-% ----------------------------------------
-% Tests for "complexified" atan2 function.
-% ----------------------------------------
-
-% complex-step gradient
-g_cs = @(x) igradient(@(x)iatan2(x(2),x(1)),x);
-
-% unit tests
-test_suite.add_test(TestEqual(g_cs(x0(pi/4)),g_true(x0(pi/4)),'igradient(iatan2), quadrant I'));
-test_suite.add_test(TestEqual(g_cs(x0(3*pi/4)),g_true(x0(3*pi/4)),'igradient(iatan2), quadrant II'));
-test_suite.add_test(TestEqual(g_cs(x0(5*pi/4)),g_true(x0(5*pi/4)),'igradient(iatan2), quadrant III'));
-test_suite.add_test(TestEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iatan2), quadrant IV'));
-
-
-
-%% ATAN2D
-
-% function handle for evaluation point
-x0 = @(theta) [cosd(theta);
-               sind(theta)];
-
-% true gradient TODO: DOCUMENT 180/pi and subsequent loss of precision
-g_true = @(x) (180/pi)*[-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
-
-
-% ------------------------------------
-% Tests for "classic" atan2d function.
-% ------------------------------------
-
-% complex-step gradient
-g_cs = @(x) igradient(@(x)atan2d(x(2),x(1)),x);
-
-% unit test
-test_suite.add_test(TestError(g_cs,{x0(45)},'igradient(atan2d)'));
-
-% -----------------------------------------
-% Tests for "complexified" atan2d function.
-% -----------------------------------------
-
-% complex-step gradient
-g_cs = @(x) igradient(@(x)iatan2d(x(2),x(1)),x);
-
-% unit tests
-test_suite.add_test(TestEqual(g_cs(x0(45)),g_true(x0(45)),'igradient(iatan2d), quadrant I'));
-test_suite.add_test(TestEqual(g_cs(x0(135)),g_true(x0(135)),'igradient(iatan2d), quadrant II'));
-test_suite.add_test(TestEqual(g_cs(x0(225)),g_true(x0(225)),'igradient(iatan2d), quadrant III'));
-test_suite.add_test(TestEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(iatan2d), quadrant IV'));
 
 
 

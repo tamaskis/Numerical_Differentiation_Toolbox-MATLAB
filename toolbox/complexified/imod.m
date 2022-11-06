@@ -1,14 +1,14 @@
 %==========================================================================
 %
-% imod  Remainder after division ("complexified" version of the |mod| 
-% function).
+% imod  Remainder after division with divisor's sign (complexified version 
+% of |mod|).
 %
 %   r = imod(a,n)
 %
 % See also mod.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -29,7 +29,7 @@
 % -------
 % OUTPUT:
 % -------
-%   r       - (1×1 complex) remainder of a/n
+%   r       - (1×1 complex) remainder of a/n (with divisor's sign)
 %
 % -----
 % NOTE:

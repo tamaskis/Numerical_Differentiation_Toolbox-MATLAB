@@ -1,14 +1,13 @@
 %==========================================================================
 %
-% imax  Maximum of two numbers ("complexified" version of the |max| 
-% function).
+% imax  Maximum of two numbers (complexified version of |max|).
 %
-%   m = imax(x1,x2)
+%   m = imax(x,y)
 %
 % See also max.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -23,19 +22,19 @@
 % ------
 % INPUT:
 % ------
-%   x1      - (1×1 complex) input 1
-%   x2      - (1×1 complex) input 2
+%   x       - (1×1 complex) input argument
+%   y       - (1×1 complex) input argument
 %
 % -------
 % OUTPUT:
 % -------
-%   m       - (1×1 complex) maximum of the inputs
+%   m       - (1×1 complex) maximum of x and y
 %
 %==========================================================================
-function m = imax(x1,x2)
-    if real(x1) < real(x2)
-        m = x2;
+function m = imax(x,y)
+    if real(x) < real(y)
+        m = y;
     else
-        m = x1;
+        m = x;
     end
 end

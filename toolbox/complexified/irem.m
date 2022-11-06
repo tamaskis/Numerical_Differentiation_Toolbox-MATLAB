@@ -1,10 +1,11 @@
 %==========================================================================
 %
-% inorm  2-norm of a vector (complexified version of |norm|).
+% irem  Remainder after division with dividend's sign (complexified version 
+% of |rem|).
 %
-%   y = inorm(x)
+%   r = irem(a,n)
 %
-% See also norm.
+% See also rem.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2022-11-06
@@ -22,14 +23,20 @@
 % ------
 % INPUT:
 % ------
-%   x       - (n×1 complex) input argument
+%   a       - (1×1 complex) dividend
+%   n       - (1×1 double) divisor
 %
 % -------
 % OUTPUT:
 % -------
-%   y       - (1×1 complex) 2-norm of x
+%   r       - (1×1 complex) remainder of a/n (with dividend's sign)
+%
+% -----
+% NOTE:
+% -----
+%   --> "n" is a real number.
 %
 %==========================================================================
-function y = inorm(x)
-    y = sqrt(x.'*x);
+function r = irem(a,n)
+    r = a-fix(a/n)*n;
 end

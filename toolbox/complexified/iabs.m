@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% iabs  Absolute value ("complexified" version of the |abs| function).
+% iabs  Absolute value (complexified version of |abs|).
 %
 %   y = iabs(x)
 %
 % See also abs.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,7 +32,7 @@
 %==========================================================================
 function y = iabs(x)
     if (real(x) < 0)
-        y = -real(x)-1i*imag(x);
+        y = -x;
     else
         y = x;
     end
