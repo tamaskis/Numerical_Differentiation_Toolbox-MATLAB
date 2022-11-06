@@ -20,15 +20,15 @@
 clear; clc; close all;
 
 % adds path to testing scripts
-addpath('newscripts')
+addpath('scripts')
 
 
 
 %% RUNS ALL TESTS
 
-%TEST_iderivative;
+TEST_derivative;
 TEST_partial;
 TEST_gradient;
 TEST_directional;
 TEST_jacobian;
-%TEST_complexified;
+TEST_complexified;

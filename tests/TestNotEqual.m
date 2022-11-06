@@ -1,10 +1,10 @@
 %==========================================================================
 %
-% TestNotEqual  Class defining a test that tests for array inequality to a
-% certain number of decimal places.
+% TestNotEqual  Unit test for array inequality to a certain number of 
+% decimal places.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-11-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

@@ -1,10 +1,10 @@
 %==========================================================================
 %
-% TestEqual  Class defining a test that tests for array equality to a
-% certain number of decimal places.
+% TestEqual  Unit test for array equality to a certain number of decimal 
+% places.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-10-30
+% Last Update: 2022-11-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
