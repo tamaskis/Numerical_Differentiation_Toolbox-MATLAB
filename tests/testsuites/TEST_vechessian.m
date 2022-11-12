@@ -23,7 +23,7 @@ clear; close all;
 
 %% INSTANTIATE TEST SUITE
 
-test_suite = TestSuite('Hessian tests',false);
+test_suite = TestSuite('Vector Hessian tests',false);
 
 
 

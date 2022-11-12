@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% imin  Minimum of two numbers (complexified version of |min|).
+% imin  Minimum of two numbers (complexified version of min).
 %
 %   m = imin(x,y)
 %
 % See also min.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-06
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

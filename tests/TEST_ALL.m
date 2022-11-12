@@ -4,7 +4,7 @@
 % Runs all unit testing scripts.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -26,9 +26,11 @@ addpath('scripts')
 
 %% RUNS ALL TESTS
 
-TEST_derivative;
-TEST_partial;
-TEST_gradient;
-TEST_directional;
-TEST_jacobian;
 TEST_complexified;
+TEST_derivative;
+TEST_directional;
+TEST_gradient;
+TEST_hessian;
+TEST_jacobian;
+TEST_partial;
+TEST_vechessian;

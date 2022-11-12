@@ -1,14 +1,14 @@
 %==========================================================================
 %
 % irem  Remainder after division with dividend's sign (complexified version 
-% of |rem|).
+% of rem).
 %
 %   r = irem(a,n)
 %
 % See also rem.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-06
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

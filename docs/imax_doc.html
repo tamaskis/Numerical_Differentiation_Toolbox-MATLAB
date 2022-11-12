@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>imax</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-09-11"><meta name="DC.source" content="imax_doc.m"><style type="text/css">
+      --><title>imax</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-11-12"><meta name="DC.source" content="imax_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>imax</tt></h1><!--introduction--><p>Maximum of two numbers ("complexified" version of the <tt>max</tt> function).</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">m = imax(x1,x2)
-</pre><h2 id="2">Description</h2><p><tt>m = imax(x1,x2)</tt> returns the larger one of x1 and x2.</p><h2 id="3">Input/Output Parameters</h2><p>
+  </style></head><body><div class="content"><h1><tt>imax</tt></h1><!--introduction--><p>Maximum of two numbers (complexified version of <tt>max</tt>).</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">m = imax(x,y)
+</pre><h2 id="2">Description</h2><p><tt>m = imax(x,y)</tt> returns the maximum of <tt>x</tt> and <tt>y</tt>.</p><h2 id="3">Input/Output Parameters</h2><p>
   <table border=1>
       <tr>
           <td></td>
@@ -79,35 +79,35 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       </tr>
       <tr>
           <td rowspan="2" style="text-align:center"><b>Input</b></td>
-          <td style="text-align:center"><TT>x1</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{1}" title="" /></td>
-          <td>input 1</td>
+          <td style="text-align:center"><TT>x</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /></td>
+          <td>input argument</td>
           <td style="text-align:center">1×1<BR>complex</td>
       </tr>
       <tr>
-          <td style="text-align:center"><TT>x2</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{2}" title="" /></td>
-          <td>input 2</td>
+          <td style="text-align:center"><TT>y</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;y" title="" /></td>
+          <td>input argument</td>
           <td style="text-align:center">1×1<BR>complex</td>
       </tr>
       <tr>
           <td rowspan="1" style="text-align:center"><b>Output</b></td>
           <td style="text-align:center"><TT>m</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;m" title="" /></td>
-          <td>maximum of the inputs</td>
+          <td>maximum of <img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /> and <img src="https://latex.codecogs.com/svg.latex?\inline&space;y" title="" /></td>
           <td style="text-align:center">1×1<BR>complex</td>
       </tr>
   </table>
 </p><h2 id="4">See also</h2><p><a href="https://www.mathworks.com/help/matlab/ref/max.html"><tt>max</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |imax|
-% Maximum of two numbers ("complexified" version of the |max| function).
+% Maximum of two numbers (complexified version of |max|).
 % 
 % <index.html Back to Numerical Differentiation Toolbox Contents>.
 %% Syntax
-%   m = imax(x1,x2)
+%   m = imax(x,y)
 %% Description
-% |m = imax(x1,x2)| returns the larger one of x1 and x2.
+% |m = imax(x,y)| returns the maximum of |x| and |y|.
 %% Input/Output Parameters
 % <html>
 %   <table border=1>
@@ -120,22 +120,22 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %       </tr>
 %       <tr>
 %           <td rowspan="2" style="text-align:center"><b>Input</b></td>
-%           <td style="text-align:center"><TT>x1</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{1}" title="" /></td>
-%           <td>input 1</td>
+%           <td style="text-align:center"><TT>x</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /></td>
+%           <td>input argument</td>
 %           <td style="text-align:center">1×1<BR>complex</td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><TT>x2</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;x_{2}" title="" /></td>
-%           <td>input 2</td>
+%           <td style="text-align:center"><TT>y</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;y" title="" /></td>
+%           <td>input argument</td>
 %           <td style="text-align:center">1×1<BR>complex</td>
 %       </tr>
 %       <tr>
 %           <td rowspan="1" style="text-align:center"><b>Output</b></td>
 %           <td style="text-align:center"><TT>m</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;m" title="" /></td>
-%           <td>maximum of the inputs</td>
+%           <td>maximum of <img src="https://latex.codecogs.com/svg.latex?\inline&space;x" title="" /> and <img src="https://latex.codecogs.com/svg.latex?\inline&space;y" title="" /></td>
 %           <td style="text-align:center">1×1<BR>complex</td>
 %       </tr>
 %   </table>

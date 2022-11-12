@@ -5,7 +5,7 @@
 % inorm, iatan2, and iatan2d).
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,7 +31,7 @@ test_suite = TestSuite('complexified tests',false);
 
 
 
-%% ABS
+%% iabs
 
 % true derivative
 df_true = d_abs;
@@ -60,7 +60,7 @@ test_suite.add_test(TestEqual(df_cs(1),df_true(1),'iderivative(iabs), x₀ = 1')
 
 
 
-%% ATAN2
+%% iatan2
 
 % function handle for evaluation point
 x0 = @(theta) [cos(theta);
@@ -94,13 +94,13 @@ test_suite.add_test(TestEqual(g_cs(x0(7*pi/4)),g_true(x0(7*pi/4)),'igradient(iat
 
 
 
-%% ATAN2D
+%% iatan2d
 
 % function handle for evaluation point
 x0 = @(theta) [cosd(theta);
                sind(theta)];
 
-% true gradient TODO: DOCUMENT 180/pi and subsequent loss of precision
+% true gradient
 g_true = @(x) (180/pi)*[-x(2)/(x(1)^2+x(2)^2);x(1)/(x(1)^2+x(2)^2)];
 
 
@@ -129,7 +129,7 @@ test_suite.add_test(TestEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(iatan2d),
 
 
 
-%% DOT PRODUCT
+%% idot
 
 % vector valued functions of x
 f = @(x) [x;
@@ -183,7 +183,7 @@ test_suite.add_test(TestEqual(dh_numerical,dh_exact,'iderivative(idot)',12));
 
 
 
-%% MAX
+%% imax
 
 % auxiliary functions
 g1 = @(x) x;
@@ -229,7 +229,7 @@ test_suite.add_test(TestEqual(df_cs(1.5),df_true(1.5),'iderivative(imax), x₀ =
 
 
 
-%% MIN
+%% imin
 
 % auxiliary functions
 g1 = @(x) x;
@@ -275,16 +275,17 @@ test_suite.add_test(TestEqual(df_cs(1.5),df_true(1.5),'iderivative(imin), x₀ =
 
 
 
-%% MOD
+%% imod
 
-% TODO
+% unit tests
+test_suite.add_test(TestEqual(imod(10+10i,3+3i),1+1i,'imod(10+10i,3+3i)'));
+test_suite.add_test(TestEqual(imod(10+10i,-3-3i),-2-2i,'imod(10+10i,-3-3i)'));
+test_suite.add_test(TestEqual(imod(10+10i,5+5i),0+0i,'imod(10+10i,5+5i)'));
+test_suite.add_test(TestEqual(imod(10+10i,-5-5i),0+0i,'imod(10+10i,-5-5i)'));
 
 
 
-
-
-
-%% 2-NORM
+%% inorm
 
 % point at which to differentiate
 x0 = [1;
@@ -327,6 +328,16 @@ g_cs = @(x) igradient(@(x)inorm(x),x);
 % unit tests
 test_suite.add_test(TestEqual(pf_cs(x0,k),pf_true(x0,k),'ipartial(inorm)'));
 test_suite.add_test(TestEqual(g_cs(x0),g_true(x0),'igradient(inorm)'));
+
+
+
+%% irem
+
+% unit tests
+test_suite.add_test(TestEqual(irem(10+10i,3+3i),1+1i,'irem(10+10i,3+3i)'));
+test_suite.add_test(TestEqual(irem(10+10i,-3-3i),1+1i,'irem(10+10i,-3-3i)'));
+test_suite.add_test(TestEqual(irem(10+10i,5+5i),0+0i,'irem(10+10i,5+5i)'));
+test_suite.add_test(TestEqual(irem(10+10i,-5-5i),0+0i,'irem(10+10i,-5-5i)'));
 
 
 

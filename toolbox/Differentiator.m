@@ -3,7 +3,7 @@
 % Differentiator  Class defining a differentiator.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

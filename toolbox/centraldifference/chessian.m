@@ -9,7 +9,7 @@
 % See also fhessian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

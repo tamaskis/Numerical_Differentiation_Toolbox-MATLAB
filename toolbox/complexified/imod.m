@@ -1,14 +1,14 @@
 %==========================================================================
 %
 % imod  Remainder after division with divisor's sign (complexified version 
-% of |mod|).
+% of mod).
 %
 %   r = imod(a,n)
 %
 % See also mod.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-06
+% Last Update: 2022-11-12
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
