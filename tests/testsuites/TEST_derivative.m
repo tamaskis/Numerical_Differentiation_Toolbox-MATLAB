@@ -4,7 +4,7 @@
 % Unit testing of the fderivative, cderivative, and iderivative functions.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2022-11-23
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -220,10 +220,9 @@ test_suite.add_test(TestEqual(d_sech_fd(-1),d_sech(-1),'fderivative sech, x₀ <
 test_suite.add_test(TestEqual(d_sech_fd(0),d_sech(0),'fderivative sech, x₀ = 0'));
 test_suite.add_test(TestEqual(d_sech_fd(1),d_sech(1),'fderivative sech, x₀ > 0',8));
 
-% tanh
-test_suite.add_test(TestEqual(d_tanh_fd(-1),d_tanh(-1),'fderivative tanh, x₀ < 0',7));
-test_suite.add_test(TestEqual(d_tanh_fd(0),d_tanh(0),'fderivative tanh, x₀ = 0'));
-test_suite.add_test(TestEqual(d_tanh_fd(1),d_tanh(1),'fderivative tanh, x₀ > 0',7));
+% coth
+test_suite.add_test(TestEqual(d_coth_fd(-1),d_coth(-1),'fderivative coth, x₀ < 0',7));
+test_suite.add_test(TestEqual(d_coth_fd(1),d_coth(1),'fderivative coth, x₀ > 0',6));
 
 % -----------------------------
 % Inverse hyperbolic functions.
@@ -446,10 +445,9 @@ test_suite.add_test(TestEqual(d_sech_cd(-1),d_sech(-1),'cderivative sech, x₀ <
 test_suite.add_test(TestEqual(d_sech_cd(0),d_sech(0),'cderivative sech, x₀ = 0'));
 test_suite.add_test(TestEqual(d_sech_cd(1),d_sech(1),'cderivative sech, x₀ > 0',10));
 
-% tanh
-test_suite.add_test(TestEqual(d_tanh_cd(-1),d_tanh(-1),'cderivative tanh, x₀ < 0',10));
-test_suite.add_test(TestEqual(d_tanh_cd(0),d_tanh(0),'cderivative tanh, x₀ = 0',10));
-test_suite.add_test(TestEqual(d_tanh_cd(1),d_tanh(1),'cderivative tanh, x₀ > 0',10));
+% coth
+test_suite.add_test(TestEqual(d_coth_cd(-1),d_coth(-1),'cderivative coth, x₀ < 0',9));
+test_suite.add_test(TestEqual(d_coth_cd(1),d_coth(1),'cderivative coth, x₀ > 0',9));
 
 % -----------------------------
 % Inverse hyperbolic functions.
@@ -672,10 +670,9 @@ test_suite.add_test(TestEqual(d_sech_cs(-1),d_sech(-1),'iderivative sech, x₀ <
 test_suite.add_test(TestEqual(d_sech_cs(0),d_sech(0),'iderivative sech, x₀ = 0'));
 test_suite.add_test(TestEqual(d_sech_cs(1),d_sech(1),'iderivative sech, x₀ > 0'));
 
-% tanh
-test_suite.add_test(TestEqual(d_tanh_cs(-1),d_tanh(-1),'iderivative tanh, x₀ < 0'));
-test_suite.add_test(TestEqual(d_tanh_cs(0),d_tanh(0),'iderivative tanh, x₀ = 0'));
-test_suite.add_test(TestEqual(d_tanh_cs(1),d_tanh(1),'iderivative tanh, x₀ > 0'));
+% coth
+test_suite.add_test(TestEqual(d_coth_cs(-1),d_coth(-1),'iderivative coth, x₀ < 0'));
+test_suite.add_test(TestEqual(d_coth_cs(1),d_coth(1),'iderivative coth, x₀ > 0'));
 
 % -----------------------------
 % Inverse hyperbolic functions.
