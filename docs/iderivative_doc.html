@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>iderivative</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-11-12"><meta name="DC.source" content="iderivative_doc.m"><style type="text/css">
+      --><title>iderivative</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-11-28"><meta name="DC.source" content="iderivative_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -94,7 +94,7 @@ df = iderivative(f,x0,h)
       <tr>
           <td style="text-align:center"><TT>h</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-          <td>(OPTIONAL) step size</td>
+          <td>(OPTIONAL) step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;h=10^{-200}" title="" />)</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
@@ -105,7 +105,7 @@ df = iderivative(f,x0,h)
           <td style="text-align:center">m×1<BR>double</td>
       </tr>
   </table>
-</p><h2 id="4">Note</h2><div><ul><li>This function requires 1 evaluation of <img src="iderivative_doc_eq15621115338434299399.png" alt="$\mathbf{f}(x)$" style="width:19px;height:11px;">.</li><li>If the function is scalar-valued, then <img src="iderivative_doc_eq14613861381496079316.png" alt="$m=1$" style="width:29px;height:8px;">.</li></ul></div><h2 id="5">Example #1: Derivative of a scalar-valued function.</h2><p><i>Approximate the derivative of <img src="iderivative_doc_eq07863013981449083213.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="iderivative_doc_eq04851200360885152548.png" alt="$x=2$" style="width:26px;height:8px;"> using the <tt>iderivative</tt> function, and compare the result to the true result of <img src="iderivative_doc_eq13447770136917483844.png" alt="$f'(2)=12$" style="width:48px;height:12px;"></i>.</p><p>Approximating the derivative,</p><pre class="codeinput">f = @(x) x^3;
+</p><h2 id="4">Note</h2><div><ul><li>This function requires 1 evaluation of <img src="iderivative_doc_eq15621115338434299399.png" alt="$\mathbf{f}(x)$" style="width:19px;height:11px;">.</li></ul></div><h2 id="5">Example #1: Derivative of a scalar-valued function.</h2><p><i>Approximate the derivative of <img src="iderivative_doc_eq07863013981449083213.png" alt="$f(x)=x^{3}$" style="width:46px;height:12px;"> at <img src="iderivative_doc_eq04851200360885152548.png" alt="$x=2$" style="width:26px;height:8px;"> using the <tt>iderivative</tt> function, and compare the result to the true result of <img src="iderivative_doc_eq13447770136917483844.png" alt="$f'(2)=12$" style="width:48px;height:12px;"></i>.</p><p>Approximating the derivative,</p><pre class="codeinput">f = @(x) x^3;
 df = iderivative(f,2)
 </pre><pre class="codeoutput">
 df =
@@ -118,7 +118,7 @@ error =
 
      0
 
-</pre><h2 id="7">Example #2: Derivative of a vector-valued function.</h2><p><i>Approximate the derivative of</i></p><p><img src="iderivative_doc_eq05437446654055475759.png" alt="$$\mathbf{f}(t)=\pmatrix{\sin{t}\cr\cos{t}}$$" style="width:71px;height:27px;"></p><p><i>at <img src="iderivative_doc_eq06658196661290597197.png" alt="$t=1$" style="width:23px;height:8px;"> using the <tt>iderivative</tt> function, and compare the result to the true result of</i></p><p><img src="iderivative_doc_eq07637929496866620270.png" alt="$$\left.\frac{d\mathbf{f}}{dx}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$" style="width:103px;height:28px;"></p><p>Approximating the derivative,</p><pre class="codeinput">f = @(t) [sin(t);cos(t)];
+</pre><h2 id="7">Example #2: Derivative of a vector-valued function.</h2><p><i>Approximate the derivative of</i></p><p><img src="iderivative_doc_eq05437446654055475759.png" alt="$$\mathbf{f}(t)=\pmatrix{\sin{t}\cr\cos{t}}$$" style="width:71px;height:27px;"></p><p><i>at <img src="iderivative_doc_eq06658196661290597197.png" alt="$t=1$" style="width:23px;height:8px;"> using the <tt>iderivative</tt> function, and compare the result to the true result of</i></p><p><img src="iderivative_doc_eq07766495636705099736.png" alt="$$\left.\frac{d\mathbf{f}}{dt}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$" style="width:102px;height:28px;"></p><p>Approximating the derivative,</p><pre class="codeinput">f = @(t) [sin(t);cos(t)];
 df = iderivative(f,1)
 </pre><pre class="codeoutput">
 df =
@@ -177,7 +177,7 @@ error =
 %       <tr>
 %           <td style="text-align:center"><TT>h</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-%           <td>(OPTIONAL) step size</td>
+%           <td>(OPTIONAL) step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;h=10^{-200}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
@@ -192,7 +192,6 @@ error =
 %
 %% Note
 % * This function requires 1 evaluation of $\mathbf{f}(x)$.
-% * If the function is scalar-valued, then $m=1$.
 %% Example #1: Derivative of a scalar-valued function.
 % _Approximate the derivative of $f(x)=x^{3}$ at $x=2$ using the
 % |iderivative| function, and compare the result to the true result of
@@ -212,7 +211,7 @@ error = df-12
 % _at $t=1$ using the |iderivative| function, and compare the result to the
 % true result of_
 %
-% $$\left.\frac{d\mathbf{f}}{dx}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$
+% $$\left.\frac{d\mathbf{f}}{dt}\right|_{t=1}=\pmatrix{\cos{(1)}\cr-\sin{(1)}}$$
 %
 % Approximating the derivative,
 f = @(t) [sin(t);cos(t)];

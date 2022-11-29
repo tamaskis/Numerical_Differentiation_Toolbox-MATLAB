@@ -59,7 +59,7 @@ test_suite.add_test(TestEqual(pf_cs(x0,k),pf_true(x0),'ipartial, univariate, sca
 f = @(x) [x^4;
           x^3];
 
-% true partial derivative with respect to x
+% true partial derivative
 pf_true = @(x) [4*x^3;
                 3*x^2];
 

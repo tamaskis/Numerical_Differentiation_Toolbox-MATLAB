@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>fpartial</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-11-12"><meta name="DC.source" content="fpartial_doc.m"><style type="text/css">
+      --><title>fpartial</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-11-28"><meta name="DC.source" content="fpartial_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -100,7 +100,7 @@ pf = fpartial(f,x0,k,h)
       <tr>
           <td style="text-align:center"><TT>h</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-          <td>(OPTIONAL) relative step size</td>
+          <td>(OPTIONAL) relative step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;h=\sqrt{\varepsilon}" title="" />)</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
@@ -111,7 +111,7 @@ pf = fpartial(f,x0,k,h)
           <td style="text-align:center">m×1<BR>double</td>
       </tr>
   </table>
-</p><h2 id="4">Note</h2><div><ul><li>This function requires 2 evaluations of <img src="fpartial_doc_eq03403988016607310992.png" alt="$\mathbf{f}(\mathbf{x})$" style="width:19px;height:11px;">.</li><li>If the function is scalar-valued, then <img src="fpartial_doc_eq14613861381496079316.png" alt="$m=1$" style="width:29px;height:8px;">.</li></ul></div><h2 id="5">Example #1: Partial derivative of a scalar-valued function.</h2><p><i>Approximate the partial derivative of <img src="fpartial_doc_eq06064307167709903380.png" alt="$f(x,y)=x^{3}\sin{y}$" style="width:80px;height:12px;"> with respect to <img src="fpartial_doc_eq14521328786523663806.png" alt="$y$" style="width:6px;height:8px;"> at at <img src="fpartial_doc_eq06799230972799164765.png" alt="$(x,y)=(5,1)$" style="width:63px;height:11px;"> using the <tt>fpartial</tt> function, and compare the result to the true result of</i></p><p><img src="fpartial_doc_eq09129385801709187487.png" alt="$$\left.\frac{\partial f}{\partial y}\right|_{(x,y)=(5,1)}=5^{3}\cos{(1)}$$" style="width:113px;height:29px;"></p><p>First, we rewrite this function as <img src="fpartial_doc_eq00554480612770079530.png" alt="$f(\mathbf{x})=x_{1}^{3}\sin{x_{2}}$" style="width:74px;height:12px;">.</p><pre class="codeinput">f = @(x) x(1)^3*sin(x(2));
+</p><h2 id="4">Note</h2><div><ul><li>This function requires 2 evaluations of <img src="fpartial_doc_eq03403988016607310992.png" alt="$\mathbf{f}(\mathbf{x})$" style="width:19px;height:11px;">.</li></ul></div><h2 id="5">Example #1: Partial derivative of a scalar-valued function.</h2><p><i>Approximate the partial derivative of <img src="fpartial_doc_eq06064307167709903380.png" alt="$f(x,y)=x^{3}\sin{y}$" style="width:80px;height:12px;"> with respect to <img src="fpartial_doc_eq14521328786523663806.png" alt="$y$" style="width:6px;height:8px;"> at at <img src="fpartial_doc_eq06799230972799164765.png" alt="$(x,y)=(5,1)$" style="width:63px;height:11px;"> using the <tt>fpartial</tt> function, and compare the result to the true result of</i></p><p><img src="fpartial_doc_eq09129385801709187487.png" alt="$$\left.\frac{\partial f}{\partial y}\right|_{(x,y)=(5,1)}=5^{3}\cos{(1)}$$" style="width:113px;height:29px;"></p><p>First, we rewrite this function as <img src="fpartial_doc_eq00554480612770079530.png" alt="$f(\mathbf{x})=x_{1}^{3}\sin{x_{2}}$" style="width:74px;height:12px;">.</p><pre class="codeinput">f = @(x) x(1)^3*sin(x(2));
 </pre><p>Since the second component of <img src="fpartial_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> represents <img src="fpartial_doc_eq14521328786523663806.png" alt="$y$" style="width:6px;height:8px;">, to approximate the derivative, we use</p><pre class="codeinput">k = 2;
 </pre><p>Approximating the partial derivative using the <tt>fpartial</tt> function,</p><pre class="codeinput">pf = fpartial(f,[5;1],k)
 </pre><pre class="codeoutput">
@@ -196,7 +196,7 @@ error =
 %       <tr>
 %           <td style="text-align:center"><TT>h</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-%           <td>(OPTIONAL) relative step size</td>
+%           <td>(OPTIONAL) relative step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;h=\sqrt{\varepsilon}" title="" />)</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
@@ -211,7 +211,6 @@ error =
 %
 %% Note
 % * This function requires 2 evaluations of $\mathbf{f}(\mathbf{x})$.
-% * If the function is scalar-valued, then $m=1$.
 %% Example #1: Partial derivative of a scalar-valued function.
 % _Approximate the partial derivative of $f(x,y)=x^{3}\sin{y}$ with respect
 % to $y$ at at $(x,y)=(5,1)$ using the |fpartial| function, and compare the

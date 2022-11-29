@@ -107,7 +107,7 @@ test_suite.add_test(TestEqual(H_cs(x0),H_true(x0),'ivechessian, multivariate, sc
 f = @(x) [x(1)^5*x(2)+x(1)*sin(x(2))^3;
           x(1)^3+x(2)^4-3*x(1)^2*x(2)^2];
 
-% true vector Hessians
+% true vector Hessian
 H1 = @(x) [20*x(1)^3*x(2),5*x(1)^4+3*sin(x(2))^2*cos(x(2));
            5*x(1)^4+3*sin(x(2))^2*cos(x(2)),...
            6*x(1)*sin(x(2))*cos(x(2))^2-3*x(1)*sin(x(2))^3];

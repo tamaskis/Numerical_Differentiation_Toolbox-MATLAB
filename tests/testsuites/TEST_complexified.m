@@ -131,7 +131,7 @@ test_suite.add_test(TestEqual(g_cs(x0(315)),g_true(x0(315)),'igradient(iatan2d),
 
 %% idot
 
-% vector valued functions of x
+% vector-valued functions of x
 f = @(x) [x;
           x^2;
           x^3];
@@ -150,7 +150,7 @@ dgdx = @(x) [ cos(x);
 % derivative of dot product of f and g
 dhdx = @(x) dfdx(x).'*g(x)+f(x).'*dgdx(x);
 
-% point at which to differentiate
+% evaluation point
 x0 = 2;
 
 % --------------------------------
@@ -287,7 +287,7 @@ test_suite.add_test(TestEqual(imod(10+10i,-5-5i),0+0i,'imod(10+10i,-5-5i)'));
 
 %% inorm
 
-% point at which to differentiate
+% evaluation point
 x0 = [1;
       2;
       3];
