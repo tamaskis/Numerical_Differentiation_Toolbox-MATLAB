@@ -5,7 +5,7 @@ This toolbox supplies functions and classes to evaluate derivatives, partial der
 
 ## Installation
 
-1. Download the toolbox from [MATLAB](https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox) or [GitHub](https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB).
+1. Download the toolbox from [File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/97267-numerical-differentiation-toolbox) or [GitHub](https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB).
 2. Open the `INSTALL` folder.
 3. Double-click on `Numerical Differentiation Toolbox.mltbx`.
 
@@ -23,10 +23,10 @@ To open the home page of the toolbox documentation in MATLAB, type the following
 doc_NDT
 ```
 
-To open the documentation of a specific function with name `function_name`, type the following in the Command Window:
+To open the documentation of a specific function or class with name `name`, type the following in the Command Window:
 
 ```
-doc_NDT function_name
+doc_NDT name
 ```
 
 To open the technical documentation PDF (Numerical_Differentiation.pdf), type the following in the Command Window:

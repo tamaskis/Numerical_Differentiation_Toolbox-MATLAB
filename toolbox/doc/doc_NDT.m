@@ -4,7 +4,7 @@
 % Toolbox.
 %
 %   doc_NDT
-%   doc_NDT function_name
+%   doc_NDT name
 %   doc_NDT tech
 %
 % Copyright © 2021 Tamas Kis
@@ -17,7 +17,7 @@
 % ------
 % INPUT:
 % ------
-%   name   - (char) name of the function
+%   name   - (char) name of the function or class
 %               --> using "tech" opens the technical documentation
 %
 %==========================================================================
@@ -33,7 +33,7 @@ function doc_NDT(name)
         
     % opens specified function documentation
     else
-        web(strcat('html_NDT/',name,'_doc.html'));
+        web(['html_NDT/',name,'_doc.html']);
         
     end
     
