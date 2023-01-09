@@ -52,15 +52,15 @@ function H = fhessian(f,x0,h)
     n = length(x0);
     
     % preallocates matrix to store Hessian
-    H = zeros(n);
+    H = zeros(n,n);
     
-    % evaluates f(x₀)
-    f0 = f(x0);
-    
-    % preallocates arrays to store absolute step sizes and function evals
+    % preallocates vectors to store absolute step sizes and function evals
     a = zeros(n,1);
     b = zeros(n,1);
     
+    % evaluates f(x₀)
+    f0 = f(x0);
+
     % populates "a" and "b"
     for k = 1:n
         

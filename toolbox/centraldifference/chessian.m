@@ -52,9 +52,9 @@ function H = chessian(f,x0,h)
     n = length(x0);
     
     % preallocates matrix to store Hessian
-    H = zeros(n);
+    H = zeros(n,n);
     
-    % preallocates arrays to store absolute step sizes
+    % preallocates vector to store absolute step sizes
     a = zeros(n,1);
     
     % populates "a"

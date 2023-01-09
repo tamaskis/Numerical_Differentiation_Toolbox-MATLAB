@@ -9,7 +9,7 @@
 % See also cjacobian, fjacobian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires n+1 evaluations of f(x).
+%   --> This function requires n evaluations of f(x).
 %
 %==========================================================================
 function J = ijacobian(f,x0,h)
@@ -48,15 +48,25 @@ function J = ijacobian(f,x0,h)
         h = sqrt(eps);
     end
     
+    % steps in 1st direction
+    x0(1) = x0(1)+1i*h;
+    
+    % partial derivative of f with respect to x₁ (1st column of Jacobian)
+    J1 = imag(f(x0))/h;
+    
+    % resets x0
+    x0(1) = x0(1)-1i*h;
+    
     % determines size of Jacobian
-    m = length(f(x0));
+    m = length(J1);
     n = length(x0);
     
-    % preallocates matrix to store Jacobian
+    % preallocates matrix to store Jacobian and stores first column
     J = zeros(m,n);
+    J(:,1) = J1;
     
-    % evaluates Jacobian
-    for k = 1:n
+    % evaluates remaining columns of Jacobian
+    for k = 2:n
         
         % steps in kth direction
         x0(k) = x0(k)+1i*h;

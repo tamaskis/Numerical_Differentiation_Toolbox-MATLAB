@@ -60,7 +60,7 @@ function H = ihessian(f,x0,hi,hc)
     n = length(x0);
     
     % preallocates matrix to store Hessian
-    H = zeros(n);
+    H = zeros(n,n);
     
     % preallocates array to store absolute step sizes
     a = zeros(n,1);
