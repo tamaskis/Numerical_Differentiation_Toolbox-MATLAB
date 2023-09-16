@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires n+1 evaluations of f(x).
+%   • This function requires n+1 evaluations of f(x).
 %
 %==========================================================================
 function J = fjacobian(f,x0,h)

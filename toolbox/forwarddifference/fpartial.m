@@ -39,7 +39,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2 evaluations of f(x).
+%   • This function requires 2 evaluations of f(x).
 %
 %==========================================================================
 function pf = fpartial(f,x0,k,h)

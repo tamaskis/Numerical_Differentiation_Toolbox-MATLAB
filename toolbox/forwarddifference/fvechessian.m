@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires m[(n(n+1)/2)+1]+1 evaluations of f(x).
+%   • This function requires m[(n(n+1)/2)+1]+1 evaluations of f(x).
 %
 %==========================================================================
 function H = fvechessian(f,x0,h)

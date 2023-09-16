@@ -4,12 +4,12 @@
 % using the complex-step approximation.
 %
 %   pf = ipartial(f,x0,k)
-%   pf = ipartial(f,x0,k,h)
+%   pf = ipartial(f,x0,k,dx)
 %
 % See also cpartial, fpartial.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-05-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -25,10 +25,11 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, vector-valued function, 
-%             f(x) (f : ℝⁿ → ℝᵐ)
+%             f(x) (f : ℂⁿ → ℂᵐ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   k       - (1×1 double) element of x to differentiate with respect to
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to 10⁻²⁰⁰)
+%   dx      - (OPTIONAL) (1×1 double) absolute step size (defaults to 
+%             10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -39,20 +40,20 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 1 evaluation of f(x).
+%   • This function requires 1 evaluation of f(x).
 %
 %==========================================================================
-function pf = ipartial(f,x0,k,h)
+function pf = ipartial(f,x0,k,dx)
     
-    % defaults step size if not input
-    if nargin == 3 || isempty(h)
-        h = 1e-200;
+    % defaults absolute step size if not input
+    if nargin == 3 || isempty(dx)
+        dx = 1e-200;
     end
     
     % steps in kth direction
-    x0(k) = x0(k)+1i*h;
+    x0(k) = x0(k)+1i*dx;
     
     % evaluates partial derivative with respect to xₖ
-    pf = imag(f(x0))/h;
+    pf = imag(f(x0))/dx;
     
 end

@@ -9,7 +9,7 @@
 % See also cdirectional, fdirectional.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-05-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -25,11 +25,12 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
-%             f(x) (f : ℝⁿ → ℝ)
+%             f(x) (f : ℂⁿ → ℂ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
 %   v       - (n×1 double) vector defining direction of differentiation, 
 %             v ∈ ℝⁿ
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to 10⁻²⁰⁰)
+%   dx      - (OPTIONAL) (1×1 double) absolute step size (defaults to 
+%             10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -40,18 +41,18 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 1 evaluation of f(x).
-%   --> This implementation does NOT assume that v is a unit vector.
+%   • This function requires 1 evaluation of f(x).
+%   • This implementation does NOT assume that v is a unit vector.
 %
 %==========================================================================
-function Dv = idirectional(f,x0,v,h)
+function Dv = idirectional(f,x0,v,dx)
     
-    % defaults step size if not input
-    if nargin == 3 || isempty(h)
-        h = 1e-200;
+    % defaults absolute step size if not input
+    if nargin == 3 || isempty(dx)
+        dx = 1e-200;
     end
     
     % evaluates directional derivative
-    Dv = imag(f(x0+1i*h*v))/h;
+    Dv = imag(f(x0+1i*dx*v))/dx;
     
 end

@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2n evaluations of f(x).
+%   • This function requires 2n evaluations of f(x).
 %
 %==========================================================================
 function J = cjacobian(f,x0,h)

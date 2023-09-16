@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% chessian  Hessian of a multivariate, scalar-valued function using the 
-% central difference approximation.
+% chessdiag  Diagonal elements of the Hessian of a multivariate, 
+% scalar-valued function using the central difference approximation.
 %
 %   H = chessian(f,x0)
 %   H = chessian(f,x0,h)
@@ -9,7 +9,7 @@
 % See also fhessian, ihessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,8 +32,8 @@
 % -------
 % OUTPUT:
 % -------
-%   H       - (n×n double) Hessian of f with respect to x, evaluated at
-%             x = x₀
+%   H_diag  - (n×1 double) diagonal elements of the Hessian of f with 
+%             respect to x, evaluated at x = x₀
 %
 % -----
 % NOTE:
@@ -41,7 +41,7 @@
 %   • This function requires 2n(n+1) evaluations of f(x).
 %
 %==========================================================================
-function H = chessian(f,x0,h)
+function H_diag = chessdiag(f,x0,h)
     
     % defaults relative step size if not input
     if nargin == 2 || isempty(h)
@@ -51,8 +51,8 @@ function H = chessian(f,x0,h)
     % determines dimension of x0
     n = length(x0);
     
-    % preallocates matrix to store Hessian
-    H = zeros(n,n);
+    % preallocates vector to store diagonal elements of Hessian
+    H = zeros(n,1);
     
     % preallocates vector to store absolute step sizes
     a = zeros(n,1);
@@ -62,8 +62,12 @@ function H = chessian(f,x0,h)
         a(k) = h*(1+abs(x0(k)));
     end
     
-    % evaluates Hessian, looping through the upper triangular elements
+    % evaluates diagonal elements of Hessian
     for k = 1:n
+
+        % steps forward in kth direction
+        x0(k) = x0(k)+a(k);
+
         for j = k:n
             
             % steps forward in jth and kth directions

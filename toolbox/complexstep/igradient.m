@@ -9,7 +9,7 @@
 % See also cgradient, fgradient.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-05-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -25,9 +25,10 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, scalar-valued function,
-%             f(x) (f : ℝⁿ → ℝ)
+%             f(x) (f : ℂⁿ → ℂ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to 10⁻²⁰⁰)
+%   dx      - (OPTIONAL) (1×1 double) absolute step size (defaults to 
+%             10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -38,14 +39,14 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires n evaluations of f(x).
+%   • This function requires n evaluations of f(x).
 %
 %==========================================================================
-function g = igradient(f,x0,h)
+function g = igradient(f,x0,dx)
     
-    % defaults step size if not input
-    if nargin == 2 || isempty(h)
-        h = 1e-200;
+    % defaults absolute step size if not input
+    if nargin == 2 || isempty(dx)
+        dx = 1e-200;
     end
     
     % determines dimension of x
@@ -58,13 +59,13 @@ function g = igradient(f,x0,h)
     for k = 1:n
         
         % steps in kth direction
-        x0(k) = x0(k)+1i*h;
+        x0(k) = x0(k)+1i*dx;
         
         % partial derivative of f with respect to xₖ
-        g(k) = imag(f(x0))/h;
+        g(k) = imag(f(x0))/dx;
         
         % resets x0
-        x0(k) = x0(k)-1i*h;
+        x0(k) = x0(k)-1i*dx;
         
     end
     

@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2mn(n+1)+1 evaluations of f(x).
+%   • This function requires 2mn(n+1)+1 evaluations of f(x).
 %
 %==========================================================================
 function H = cvechessian(f,x0,h)

@@ -25,7 +25,7 @@ load_derivatives;
 
 
 
-%% INSTANTIATE TEST SUITE
+%% INITIALIZE TEST SUITE
 
 test_suite = TestSuite('complexified tests',false);
 

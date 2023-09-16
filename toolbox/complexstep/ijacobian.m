@@ -25,9 +25,10 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, vector-valued function,
-%             f(x) (f : ℝⁿ → ℝᵐ)
+%             f(x) (f : ℂⁿ → ℂᵐ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   h       - (OPTIONAL) (1×1 double) step size (defaults to 10⁻²⁰⁰)
+%   dx      - (OPTIONAL) (1×1 double) absolute step size (defaults to 
+%             10⁻²⁰⁰)
 %
 % -------
 % OUTPUT:
@@ -38,24 +39,24 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires n evaluations of f(x).
+%   • This function requires n evaluations of f(x).
 %
 %==========================================================================
-function J = ijacobian(f,x0,h)
+function J = ijacobian(f,x0,dx)
     
-    % defaults step size if not input
-    if nargin == 2 || isempty(h)
-        h = sqrt(eps);
+    % defaults absolute step size if not input
+    if nargin == 2 || isempty(dx)
+        dx = sqrt(eps);
     end
     
     % steps in 1st direction
-    x0(1) = x0(1)+1i*h;
+    x0(1) = x0(1)+1i*dx;
     
     % partial derivative of f with respect to x₁ (1st column of Jacobian)
-    J1 = imag(f(x0))/h;
+    J1 = imag(f(x0))/dx;
     
     % resets x0
-    x0(1) = x0(1)-1i*h;
+    x0(1) = x0(1)-1i*dx;
     
     % determines size of Jacobian
     m = length(J1);
@@ -69,13 +70,13 @@ function J = ijacobian(f,x0,h)
     for k = 2:n
         
         % steps in kth direction
-        x0(k) = x0(k)+1i*h;
+        x0(k) = x0(k)+1i*dx;
         
         % partial derivative of f with respect to xₖ
-        J(:,k) = imag(f(x0))/h;
+        J(:,k) = imag(f(x0))/dx;
         
         % resets x0
-        x0(k) = x0(k)-1i*h;
+        x0(k) = x0(k)-1i*dx;
         
     end
     

@@ -22,7 +22,7 @@ clear; close all;
 
 
 
-%% INSTANTIATE TEST SUITE
+%% INITIALIZE TEST SUITE
 
 test_suite = TestSuite('directional derivative tests',false);
 

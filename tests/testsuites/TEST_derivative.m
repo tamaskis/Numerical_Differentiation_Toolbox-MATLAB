@@ -31,7 +31,7 @@ load_derivatives;
 
 
 
-%% INSTANTIATE TEST SUITE
+%% INITIALIZE TEST SUITE
 
 test_suite = TestSuite('derivative tests',false);
 

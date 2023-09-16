@@ -40,8 +40,8 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires 2 evaluations of f(x).
-%   --> This implementation does NOT assume that v is a unit vector.
+%   • This function requires 2 evaluations of f(x).
+%   • This implementation does NOT assume that v is a unit vector.
 %
 %==========================================================================
 function Dv = fdirectional(f,x0,v,h)

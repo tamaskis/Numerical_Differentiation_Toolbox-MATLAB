@@ -1,12 +1,12 @@
 %==========================================================================
 %
-% iderivative  Derivative of a univariate, vector-valued function using the 
-% complex-step approximation.
+% iderivative2  Second derivative of a univariate, vector-valued function 
+% using the complex-step approximation.
 %
-%   df = iderivative(f,x0)
-%   df = iderivative(f,x0,dx)
+%   df = iderivative2(f,x0)
+%   df = iderivative2(f,x0,h)
 %
-% See also cderivative, fderivative.
+% See also cderivative2, fderivative2.
 %
 % Copyright © 2021 Tamas Kis
 % Last Update: 2023-05-27
@@ -27,29 +27,31 @@
 %   f       - (1×1 function_handle) univariate, vector-valued function,
 %             f(x) (f : ℂ → ℂᵐ)
 %   x0      - (1×1 double) evaluation point, x₀ ∈ ℝ
-%   dx      - (OPTIONAL) (1×1 double) absolute step size (defaults to 
-%             10⁻²⁰⁰)
+%   h       - (OPTIONAL) (1×1 double) relative step size (defaults to ε¹ᐟ⁴)
 %
 % -------
 % OUTPUT:
 % -------
-%   df      - (m×1 double) derivative of f with respect to x, evaluated at 
-%             x = x₀
+%   df      - (m×1 double) second derivative of f with respect to x, 
+%             evaluated at x = x₀
 %
 % -----
 % NOTE:
 % -----
-%   • This function requires 1 evaluation of f(x).
+%   • This function requires 2 evaluations of f(x).
 %
 %==========================================================================
-function df = iderivative(f,x0,dx)
+function df2 = iderivative2(f,x0,h)
     
-    % defaults absolute step size if not input
-    if nargin == 2 || isempty(dx)
-        dx = 1e-200;
+    % defaults relative step size if not input
+    if nargin == 2 || isempty(h)
+        h = eps^(1/4);
     end
     
-    % evaluates derivative
-    df = imag(f(x0+1i*dx))/dx;
+    % absolute step size
+    dx = h*(1+abs(x0));
+    
+    % evaluates second derivative
+    df2 = 2*(f(x0)-real(f(x0+1i*h)))/(dx^2);
     
 end

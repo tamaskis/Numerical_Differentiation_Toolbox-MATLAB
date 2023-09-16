@@ -21,7 +21,7 @@ clear; close all;
 
 
 
-%% INSTANTIATE TEST SUITE
+%% INITIALIZE TEST SUITE
 
 test_suite = TestSuite('Hessian tests',false);
 

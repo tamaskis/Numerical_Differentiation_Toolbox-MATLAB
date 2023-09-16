@@ -3,7 +3,7 @@
 % Differentiator  Class defining a differentiator.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-05-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -23,13 +23,14 @@ classdef Differentiator < handle
     
     properties
         derivative  % (1×1 function_handle) derivative of a univariate, vector-valued function
+        derivative2 % (1×1 function_handle) second derivative of a univariate, vector-valued function
         partial     % (1×1 function_handle) partial derivative of a multivariate, vector-valued function
         gradient    % (1×1 function_handle) gradient of a multivariate, scalar-valued function
         directional % (1×1 function_handle) directional derivative of a multivariate, scalar-valued function
         jacobian    % (1×1 function_handle) Jacobian of a multivariate, vector-valued function
         hessian     % (1×1 function_handle) Hessian of a multivariate, scalar-valued function
         vechessian  % (1×1 function_handle) vector Hessian of a multivariate, vector-valued function
-        method      % (char) differentiation method
+        method      % (char array) differentiation method
         hc          % (1×1 double) relative step size for central difference approximation (defaults to ε¹ᐟ³)
         hf          % (1×1 double) relative step size for forward difference approximation (defaults to √ε)
         hf2         % (1×1 double) relative step size for calculating Hessian using forward difference approximation (defaults to ε¹ᐟ³)
@@ -51,7 +52,7 @@ classdef Differentiator < handle
             % ------
             % INPUT:
             % ------
-            %   method  - (OPTIONAL) (char) differentiation method; 
+            %   method  - (OPTIONAL) (char array) differentiation method; 
             %             'central difference', 'forward difference', or
             %             'complex-step' (defaults to 'central difference')
             %

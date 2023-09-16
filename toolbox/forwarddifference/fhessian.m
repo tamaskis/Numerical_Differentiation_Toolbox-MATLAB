@@ -38,7 +38,7 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires (n(n+1)/2)+1 evaluations of f(x).
+%   • This function requires (n(n+1)/2)+1 evaluations of f(x).
 %
 %==========================================================================
 function H = fhessian(f,x0,h)

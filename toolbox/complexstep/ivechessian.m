@@ -9,7 +9,7 @@
 % See also cvechessian, fvechessian.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-11-12
+% Last Update: 2023-05-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -25,11 +25,11 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) multivariate, vector-valued function,
-%             f(x) (f : ℝⁿ → ℝᵐ)
+%             f(x) (f : ℂⁿ → ℂᵐ)
 %   x0      - (n×1 double) evaluation point, x₀ ∈ ℝⁿ
-%   hi      - (OPTIONAL) (1×1 double) step size for complex-step 
+%   dx      - (OPTIONAL) (1×1 double) absolute step size for complex-step 
 %             approximation (defaults to 10⁻²⁰⁰)
-%   hc      - (OPTIONAL) (1×1 double) relative step size for forward
+%   h       - (OPTIONAL) (1×1 double) relative step size for forward
 %             difference approximation (defaults to ε¹ᐟ³)
 %
 % -------
@@ -41,19 +41,19 @@
 % -----
 % NOTE:
 % -----
-%   --> This function requires mn(n+1)+1 evaluations of f(x).
+%   • This function requires mn(n+1)+1 evaluations of f(x).
 %
 %==========================================================================
-function H = ivechessian(f,x0,hi,hc)
+function H = ivechessian(f,x0,dx,h)
     
-    % default step size for complex-step approximation if not input
-    if nargin < 3 || isempty(hi)
-        hi = 1e-200;
+    % defaults absolute step size for complex-step approx. if not input
+    if nargin < 3 || isempty(dx)
+        dx = 1e-200;
     end
     
     % defaults relative step size for forward diff. approx. if not input
-    if nargin < 4 || isempty(hc)
-        hc = eps^(1/3);
+    if nargin < 4 || isempty(h)
+        h = eps^(1/3);
     end
     
     % determines size of vector Hessian
@@ -70,7 +70,7 @@ function H = ivechessian(f,x0,hi,hc)
         fk = @(x) helper(f,x,k);
         
         % evaluates kth Hessian
-        H(:,:,k) = ihessian(fk,x0,hi,hc);
+        H(:,:,k) = ihessian(fk,x0,dx,h);
         
     end
     
