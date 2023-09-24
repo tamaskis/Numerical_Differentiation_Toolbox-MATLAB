@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>cvechessian</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-08"><meta name="DC.source" content="cvechessian_doc.m"><style type="text/css">
+      --><title>cvechessian</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-23"><meta name="DC.source" content="cvechessian_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,41 +67,47 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>cvechessian</tt></h1><!--introduction--><p>Vector Hessian of a multivariate, vector-valued function using the central difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = cvechessian(f,x0)
+  </style></head><body><div class="content"><h1><tt>cvechessian</tt></h1><!--introduction--><p>Vector Hessian of a multivariate, vector-valued function using the central difference approximation.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">H = cvechessian(f,x0)
 H = cvechessian(f,x0,h)
-</pre><h2 id="2">Description</h2><p><tt>H = cvechessian(f,x0)</tt> numerically evaluates the vector Hessian of <img src="cvechessian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="cvechessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="cvechessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the central difference approximation with a default relative step size of <img src="cvechessian_doc_eq05291420954647382719.png" alt="$h=\varepsilon^{1/3}$" style="width:37px;height:11px;">, where <img src="cvechessian_doc_eq13794615980392037191.png" alt="$\varepsilon$" style="width:5px;height:6px;"> is the machine zero.</p><p><tt>H = cvechessian(f,x0,h)</tt> numerically evaluates the vector Hessian of <img src="cvechessian_doc_eq15898890414513100043.png" alt="$\mathbf{f}$" style="width:5px;height:8px;"> with respect to <img src="cvechessian_doc_eq17274866754917724950.png" alt="$\mathbf{x}$" style="width:7px;height:5px;"> at <img src="cvechessian_doc_eq13769496404156091705.png" alt="$\mathbf{x}=\mathbf{x}_{0}$" style="width:32px;height:7px;"> using the central difference approximation with a user-specified relative step size <img src="cvechessian_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+</pre><h2 id="2">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td rowspan="3" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>f</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /></td>
-          <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)</td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})"/></td>
+          <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}"/>)</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>x0</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}"/></td>
           <td>evaluation point</td>
           <td style="text-align:center">n×1<BR>double</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>h</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-          <td>(OPTIONAL) relative step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;h=\varepsilon^{1/3}" title="" />)</td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h"/></td>
+          <td>(OPTIONAL) relative step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}"/>)</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
+  </table>
+</p><h2 id="3">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>H</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}(\mathbf{x}_{0})),\dots,\mathbf{H}(f_{m}(\mathbf{x}_{0})))" title="" /></td>
-          <td>vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}(\mathbf{x}_{0})),\dots,\mathbf{H}(f_{m}(\mathbf{x}_{0})))"/></td>
+          <td>vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}"/> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}"/>, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}"/></td>
           <td style="text-align:center">n×n×m<BR>double</td>
       </tr>
   </table>
@@ -144,7 +150,7 @@ error(:,:,2) =
     0.0920   -0.0388
    -0.0388   -0.1051
 
-</pre><h2 id="8">See also</h2><p><a href="fvechessian_doc.html"><tt>fvechessian</tt></a> | <a href="ivechessian_doc.html"><tt>ivechessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">See also</h2><p><a href="fvechessian_doc.html"><tt>fvechessian</tt></a> | <a href="ivechessian_doc.html"><tt>ivechessian</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |cvechessian|
 % Vector Hessian of a multivariate, vector-valued function using the 
@@ -154,55 +160,52 @@ error(:,:,2) =
 %% Syntax
 %   H = cvechessian(f,x0)
 %   H = cvechessian(f,x0,h)
-%% Description
-% |H = cvechessian(f,x0)| numerically evaluates the vector Hessian of 
-% $\mathbf{f}$ with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ 
-% using the central difference approximation with a default relative step 
-% size of $h=\varepsilon^{1/3}$, where $\varepsilon$ is the machine zero.
-%
-% |H = cvechessian(f,x0,h)| numerically evaluates the vector Hessian of 
-% $\mathbf{f}$ with respect to $\mathbf{x}$ at $\mathbf{x}=\mathbf{x}_{0}$ 
-% using the central difference approximation with a user-specified relative 
-% step size $h$.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>f</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})" title="" /></td>
-%           <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}" title="" />)</td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}(\mathbf{x})"/></td>
+%           <td>multivariate, vector-valued function (<img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}"/>)</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>x0</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}" title="" /></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}_{0}"/></td>
 %           <td>evaluation point</td>
 %           <td style="text-align:center">n×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>h</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h" title="" /></td>
-%           <td>(OPTIONAL) relative step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;h=\varepsilon^{1/3}" title="" />)</td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;h"/></td>
+%           <td>(OPTIONAL) relative step size (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\varepsilon^{1/3}"/>)</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>H</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}(\mathbf{x}_{0})),\dots,\mathbf{H}(f_{m}(\mathbf{x}_{0})))" title="" /></td>
-%           <td>vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}" title="" /> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}" title="" />, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}" title="" /></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{H}(\mathbf{f}(\mathbf{x}_{0}))=(\mathbf{H}(f_{1}(\mathbf{x}_{0})),\dots,\mathbf{H}(f_{m}(\mathbf{x}_{0})))"/></td>
+%           <td>vector Hessian of <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{f}"/> with respect to <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}"/>, evaluated at <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{x}=\mathbf{x}_{0}"/></td>
 %           <td style="text-align:center">n×n×m<BR>double</td>
 %       </tr>
 %   </table>
 % </html>
-%
 %% Note
 % * This function requires $2mn(n+1)+1$ evaluations of 
 % $\mathbf{f}(\mathbf{x})$.
